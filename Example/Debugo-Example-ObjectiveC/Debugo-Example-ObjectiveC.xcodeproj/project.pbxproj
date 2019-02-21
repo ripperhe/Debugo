@@ -1,0 +1,1040 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
+		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
+		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
+		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
+		C9B45648221D02A60098644E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B45646221D02A60098644E /* Main.storyboard */; };
+		C9B4564A221D02A70098644E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B45649221D02A70098644E /* Assets.xcassets */; };
+		C9B4564D221D02A70098644E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B4564B221D02A70098644E /* LaunchScreen.storyboard */; };
+		C9B45650221D02A70098644E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4564F221D02A70098644E /* main.m */; };
+		C9B45659221D069B0098644E /* UIView+IB.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45657221D069B0098644E /* UIView+IB.m */; };
+		C9B4565F221D29240098644E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4565B221D29230098644E /* LoginViewController.m */; };
+		C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4565C221D29230098644E /* LoginSuccessViewController.m */; };
+		C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45667221D2B460098644E /* DGConfiguration.m */; };
+		C9B456F8221D2B460098644E /* DGAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566A221D2B460098644E /* DGAssistant.m */; };
+		C9B456F9221D2B460098644E /* DGDebugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566D221D2B460098644E /* DGDebugo.m */; };
+		C9B456FA221D2B460098644E /* DGTestAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGTestAction.m */; };
+		C9B456FB221D2B460098644E /* DGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45670221D2B460098644E /* DGAccount.m */; };
+		C9B456FC221D2B460098644E /* DGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45676221D2B460098644E /* DGCache.m */; };
+		C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45678221D2B460098644E /* DGDebugo+Additional.m */; };
+		C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4567F221D2B460098644E /* DGTabBarController.m */; };
+		C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45680221D2B460098644E /* DGNavigationController.m */; };
+		C9B45700221D2B460098644E /* DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGViewController.m */; };
+		C9B45701221D2B460098644E /* DGTestActionSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45683221D2B460098644E /* DGTestActionSubViewController.m */; };
+		C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45684221D2B460098644E /* DGAccountViewController.m */; };
+		C9B45703221D2B460098644E /* DGTestActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45686221D2B460098644E /* DGTestActionViewController.m */; };
+		C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45687221D2B460098644E /* DGAppInfoViewController.m */; };
+		C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45689221D2B460098644E /* DGSettingViewController.m */; };
+		C9B45706221D2B460098644E /* DGFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568C221D2B460098644E /* DGFileViewController.m */; };
+		C9B45707221D2B460098644E /* DGQuickLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */; };
+		C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45694221D2B460098644E /* NSObject+Debugo.m */; };
+		C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45697221D2B460098644E /* NSDate+Debugo.m */; };
+		C9B4570A221D2B460098644E /* DGBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4569B221D2B460098644E /* DGBundle.m */; };
+		C9B4570B221D2B460098644E /* DGPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A1221D2B460098644E /* DGPopOverMenu.m */; };
+		C9B4570C221D2B460098644E /* DGThread.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A4221D2B460098644E /* DGThread.m */; };
+		C9B4570D221D2B460098644E /* DGDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A8221D2B460098644E /* DGDevice.m */; };
+		C9B4570E221D2B460098644E /* DGPlister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AB221D2B460098644E /* DGPlister.m */; };
+		C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AE221D2B460098644E /* DGOrderedDictionary.m */; };
+		C9B45710221D2B460098644E /* Debugo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B456B0221D2B460098644E /* Debugo.bundle */; };
+		C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */; };
+		C9B45712221D2B460098644E /* DGSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B5221D2B460098644E /* DGSuspensionView.m */; };
+		C9B45713221D2B460098644E /* DGSuspensionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGSuspensionContainer.m */; };
+		C9B45714221D2B460098644E /* DGSuspensionViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */; };
+		C9B45715221D2B460098644E /* DGSuspensionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456BA221D2B460098644E /* DGSuspensionManager.m */; };
+		C9B45716221D2B460098644E /* DGSuspensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456BD221D2B460098644E /* DGSuspensionViewController.m */; };
+		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
+		C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C1221D2B460098644E /* DGFileBrowser.m */; };
+		C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C2221D2B460098644E /* DGFileInfoViewController.m */; };
+		C9B4571A221D2B460098644E /* DGFBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C3221D2B460098644E /* DGFBFile.m */; };
+		C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C5221D2B460098644E /* DGFileListViewController.m */; };
+		C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */; };
+		C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */; };
+		C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D1221D2B460098644E /* DGDatabaseOperation.m */; };
+		C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D2221D2B460098644E /* DGDatabaseContentTableViewCell.m */; };
+		C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D3221D2B460098644E /* DGDatabaseGridView.m */; };
+		C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */; };
+		C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */; };
+		C9B45723221D2B460098644E /* DGDatabaseUIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */; };
+		C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */; };
+		C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */; };
+		C9B45726221D2B460098644E /* DGPreviewTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E2221D2B460098644E /* DGPreviewTransitionViewController.m */; };
+		C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */; };
+		C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E5221D2B460098644E /* DGPreviewManager.m */; };
+		C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */; };
+		C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E9221D2B460098644E /* DGFPSLabel.m */; };
+		C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EB221D2B460098644E /* DGWeakProxy.m */; };
+		C9B4572C221D2B460098644E /* DGTouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456ED221D2B460098644E /* DGTouchViewController.m */; };
+		C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EE221D2B460098644E /* DGTouchFingerView.m */; };
+		C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F0221D2B460098644E /* DGTouchWindow.m */; };
+		C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchMonitor.m */; };
+		C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
+		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
+		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
+		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9B45641221D02A60098644E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9B45643221D02A60098644E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C9B45644221D02A60098644E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C9B45647221D02A60098644E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C9B45649221D02A70098644E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9B4564C221D02A70098644E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C9B4564E221D02A70098644E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9B4564F221D02A70098644E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9B45656221D02B90098644E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C9B45657221D069B0098644E /* UIView+IB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IB.m"; sourceTree = "<group>"; };
+		C9B45658221D069B0098644E /* UIView+IB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IB.h"; sourceTree = "<group>"; };
+		C9B4565B221D29230098644E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C9B4565C221D29230098644E /* LoginSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSuccessViewController.m; sourceTree = "<group>"; };
+		C9B4565D221D29230098644E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C9B4565E221D29230098644E /* LoginSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSuccessViewController.h; sourceTree = "<group>"; };
+		C9B45666221D2B460098644E /* DGAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAssistant.h; sourceTree = "<group>"; };
+		C9B45667221D2B460098644E /* DGConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGConfiguration.m; sourceTree = "<group>"; };
+		C9B45668221D2B460098644E /* DGPluginEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPluginEnable.h; sourceTree = "<group>"; };
+		C9B45669221D2B460098644E /* DGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConfiguration.h; sourceTree = "<group>"; };
+		C9B4566A221D2B460098644E /* DGAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAssistant.m; sourceTree = "<group>"; };
+		C9B4566B221D2B460098644E /* DebugoEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugoEnable.h; sourceTree = "<group>"; };
+		C9B4566C221D2B460098644E /* DGDebugo+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DGDebugo+Additional.h"; sourceTree = "<group>"; };
+		C9B4566D221D2B460098644E /* DGDebugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugo.m; sourceTree = "<group>"; };
+		C9B4566F221D2B460098644E /* DGTestAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTestAction.m; sourceTree = "<group>"; };
+		C9B45670221D2B460098644E /* DGAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccount.m; sourceTree = "<group>"; };
+		C9B45671221D2B460098644E /* DGTestAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTestAction.h; sourceTree = "<group>"; };
+		C9B45672221D2B460098644E /* DGAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccount.h; sourceTree = "<group>"; };
+		C9B45673221D2B460098644E /* DGDebugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugo.h; sourceTree = "<group>"; };
+		C9B45676221D2B460098644E /* DGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCache.m; sourceTree = "<group>"; };
+		C9B45677221D2B460098644E /* DGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCache.h; sourceTree = "<group>"; };
+		C9B45678221D2B460098644E /* DGDebugo+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DGDebugo+Additional.m"; sourceTree = "<group>"; };
+		C9B45679221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
+		C9B4567B221D2B460098644E /* DGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTabBarController.h; sourceTree = "<group>"; };
+		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
+		C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGQuickLoginViewController.h; sourceTree = "<group>"; };
+		C9B4567E221D2B460098644E /* DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGViewController.h; sourceTree = "<group>"; };
+		C9B4567F221D2B460098644E /* DGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTabBarController.m; sourceTree = "<group>"; };
+		C9B45680221D2B460098644E /* DGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNavigationController.m; sourceTree = "<group>"; };
+		C9B45681221D2B460098644E /* DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGViewController.m; sourceTree = "<group>"; };
+		C9B45683221D2B460098644E /* DGTestActionSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTestActionSubViewController.m; sourceTree = "<group>"; };
+		C9B45684221D2B460098644E /* DGAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountViewController.m; sourceTree = "<group>"; };
+		C9B45685221D2B460098644E /* DGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSettingViewController.h; sourceTree = "<group>"; };
+		C9B45686221D2B460098644E /* DGTestActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTestActionViewController.m; sourceTree = "<group>"; };
+		C9B45687221D2B460098644E /* DGAppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppInfoViewController.m; sourceTree = "<group>"; };
+		C9B45688221D2B460098644E /* DGFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileViewController.h; sourceTree = "<group>"; };
+		C9B45689221D2B460098644E /* DGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSettingViewController.m; sourceTree = "<group>"; };
+		C9B4568A221D2B460098644E /* DGAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountViewController.h; sourceTree = "<group>"; };
+		C9B4568B221D2B460098644E /* DGTestActionSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTestActionSubViewController.h; sourceTree = "<group>"; };
+		C9B4568C221D2B460098644E /* DGFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileViewController.m; sourceTree = "<group>"; };
+		C9B4568D221D2B460098644E /* DGAppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppInfoViewController.h; sourceTree = "<group>"; };
+		C9B4568E221D2B460098644E /* DGTestActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTestActionViewController.h; sourceTree = "<group>"; };
+		C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGQuickLoginViewController.m; sourceTree = "<group>"; };
+		C9B45694221D2B460098644E /* NSObject+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Debugo.m"; sourceTree = "<group>"; };
+		C9B45695221D2B460098644E /* NSDate+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Debugo.h"; sourceTree = "<group>"; };
+		C9B45696221D2B460098644E /* NSObject+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Debugo.h"; sourceTree = "<group>"; };
+		C9B45697221D2B460098644E /* NSDate+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Debugo.m"; sourceTree = "<group>"; };
+		C9B45698221D2B460098644E /* DGBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBase.h; sourceTree = "<group>"; };
+		C9B4569A221D2B460098644E /* DGBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBundle.h; sourceTree = "<group>"; };
+		C9B4569B221D2B460098644E /* DGBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBundle.m; sourceTree = "<group>"; };
+		C9B4569D221D2B460098644E /* DGConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConst.h; sourceTree = "<group>"; };
+		C9B4569E221D2B460098644E /* DGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLog.h; sourceTree = "<group>"; };
+		C9B456A1221D2B460098644E /* DGPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPopOverMenu.m; sourceTree = "<group>"; };
+		C9B456A2221D2B460098644E /* DGPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPopOverMenu.h; sourceTree = "<group>"; };
+		C9B456A4221D2B460098644E /* DGThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGThread.m; sourceTree = "<group>"; };
+		C9B456A5221D2B460098644E /* DGThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGThread.h; sourceTree = "<group>"; };
+		C9B456A7221D2B460098644E /* DGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDevice.h; sourceTree = "<group>"; };
+		C9B456A8221D2B460098644E /* DGDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDevice.m; sourceTree = "<group>"; };
+		C9B456AA221D2B460098644E /* DGPlister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPlister.h; sourceTree = "<group>"; };
+		C9B456AB221D2B460098644E /* DGPlister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPlister.m; sourceTree = "<group>"; };
+		C9B456AD221D2B460098644E /* DGOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOrderedDictionary.h; sourceTree = "<group>"; };
+		C9B456AE221D2B460098644E /* DGOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOrderedDictionary.m; sourceTree = "<group>"; };
+		C9B456B0221D2B460098644E /* Debugo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Debugo.bundle; sourceTree = "<group>"; };
+		C9B456B2221D2B460098644E /* DGDebuggingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebuggingOverlay.h; sourceTree = "<group>"; };
+		C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebuggingOverlay.m; sourceTree = "<group>"; };
+		C9B456B5221D2B460098644E /* DGSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionView.m; sourceTree = "<group>"; };
+		C9B456B6221D2B460098644E /* DGSuspensionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionManager.h; sourceTree = "<group>"; };
+		C9B456B7221D2B460098644E /* DGSuspensionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionViewController.h; sourceTree = "<group>"; };
+		C9B456B8221D2B460098644E /* DGSuspensionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionContainer.m; sourceTree = "<group>"; };
+		C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionViewConfig.m; sourceTree = "<group>"; };
+		C9B456BA221D2B460098644E /* DGSuspensionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionManager.m; sourceTree = "<group>"; };
+		C9B456BB221D2B460098644E /* DGSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionView.h; sourceTree = "<group>"; };
+		C9B456BC221D2B460098644E /* DGSuspensionContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionContainer.h; sourceTree = "<group>"; };
+		C9B456BD221D2B460098644E /* DGSuspensionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionViewController.m; sourceTree = "<group>"; };
+		C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionViewConfig.h; sourceTree = "<group>"; };
+		C9B456C0221D2B460098644E /* DGFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileParser.m; sourceTree = "<group>"; };
+		C9B456C1221D2B460098644E /* DGFileBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileBrowser.m; sourceTree = "<group>"; };
+		C9B456C2221D2B460098644E /* DGFileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileInfoViewController.m; sourceTree = "<group>"; };
+		C9B456C3221D2B460098644E /* DGFBFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFBFile.m; sourceTree = "<group>"; };
+		C9B456C4221D2B460098644E /* DGPreviewTransitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPreviewTransitionViewController.h; sourceTree = "<group>"; };
+		C9B456C5221D2B460098644E /* DGFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileListViewController.m; sourceTree = "<group>"; };
+		C9B456C6221D2B460098644E /* DGDatabasePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabasePreviewViewController.h; sourceTree = "<group>"; };
+		C9B456C7221D2B460098644E /* DGPreviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPreviewManager.h; sourceTree = "<group>"; };
+		C9B456C8221D2B460098644E /* DGWebviewPreviewViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWebviewPreviewViewContoller.h; sourceTree = "<group>"; };
+		C9B456C9221D2B460098644E /* DGFileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileInfoViewController.h; sourceTree = "<group>"; };
+		C9B456CB221D2B460098644E /* DGDatabaseTableContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableContentViewController.h; sourceTree = "<group>"; };
+		C9B456CC221D2B460098644E /* DGDatabaseTableInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableInfoViewController.h; sourceTree = "<group>"; };
+		C9B456CD221D2B460098644E /* DGDatabaseUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseUIConfig.h; sourceTree = "<group>"; };
+		C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseContentParser.h; sourceTree = "<group>"; };
+		C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableInfo.m; sourceTree = "<group>"; };
+		C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseLeftTableViewCell.m; sourceTree = "<group>"; };
+		C9B456D1221D2B460098644E /* DGDatabaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseOperation.m; sourceTree = "<group>"; };
+		C9B456D2221D2B460098644E /* DGDatabaseContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseContentTableViewCell.m; sourceTree = "<group>"; };
+		C9B456D3221D2B460098644E /* DGDatabaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseGridView.m; sourceTree = "<group>"; };
+		C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseColumnInfo.m; sourceTree = "<group>"; };
+		C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableInfoViewController.m; sourceTree = "<group>"; };
+		C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseUIConfig.m; sourceTree = "<group>"; };
+		C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableContentViewController.m; sourceTree = "<group>"; };
+		C9B456D8221D2B460098644E /* DGDatabaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseOperation.h; sourceTree = "<group>"; };
+		C9B456D9221D2B460098644E /* DGDatabaseLeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseLeftTableViewCell.h; sourceTree = "<group>"; };
+		C9B456DA221D2B460098644E /* DGDatabaseTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableInfo.h; sourceTree = "<group>"; };
+		C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseContentParser.m; sourceTree = "<group>"; };
+		C9B456DC221D2B460098644E /* DGDatabaseContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseContentTableViewCell.h; sourceTree = "<group>"; };
+		C9B456DD221D2B460098644E /* DGDatabaseColumnInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseColumnInfo.h; sourceTree = "<group>"; };
+		C9B456DE221D2B460098644E /* DGDatabaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseGridView.h; sourceTree = "<group>"; };
+		C9B456DF221D2B460098644E /* DGFileBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileBrowser.h; sourceTree = "<group>"; };
+		C9B456E0221D2B460098644E /* DGFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileParser.h; sourceTree = "<group>"; };
+		C9B456E1221D2B460098644E /* DGFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileListViewController.h; sourceTree = "<group>"; };
+		C9B456E2221D2B460098644E /* DGPreviewTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPreviewTransitionViewController.m; sourceTree = "<group>"; };
+		C9B456E3221D2B460098644E /* DGFBFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFBFile.h; sourceTree = "<group>"; };
+		C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWebviewPreviewViewContoller.m; sourceTree = "<group>"; };
+		C9B456E5221D2B460098644E /* DGPreviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPreviewManager.m; sourceTree = "<group>"; };
+		C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabasePreviewViewController.m; sourceTree = "<group>"; };
+		C9B456E8221D2B460098644E /* DGWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWeakProxy.h; sourceTree = "<group>"; };
+		C9B456E9221D2B460098644E /* DGFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFPSLabel.m; sourceTree = "<group>"; };
+		C9B456EA221D2B460098644E /* DGFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFPSLabel.h; sourceTree = "<group>"; };
+		C9B456EB221D2B460098644E /* DGWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWeakProxy.m; sourceTree = "<group>"; };
+		C9B456ED221D2B460098644E /* DGTouchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchViewController.m; sourceTree = "<group>"; };
+		C9B456EE221D2B460098644E /* DGTouchFingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchFingerView.m; sourceTree = "<group>"; };
+		C9B456EF221D2B460098644E /* DGTouchMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchMonitor.h; sourceTree = "<group>"; };
+		C9B456F0221D2B460098644E /* DGTouchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchWindow.m; sourceTree = "<group>"; };
+		C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DGTouchMonitor.h"; sourceTree = "<group>"; };
+		C9B456F2221D2B460098644E /* DGTouchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchViewController.h; sourceTree = "<group>"; };
+		C9B456F3221D2B460098644E /* DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchMonitor.m; sourceTree = "<group>"; };
+		C9B456F4221D2B460098644E /* DGTouchFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchFingerView.h; sourceTree = "<group>"; };
+		C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DGTouchMonitor.m"; sourceTree = "<group>"; };
+		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
+		C9E73FC3221D399000BA9149 /* Debugo.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = Debugo.podspec; path = ../../Debugo.podspec; sourceTree = "<group>"; };
+		C9E73FC4221D399000BA9149 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		C9E73FC5221D399000BA9149 /* README_EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README_EN.md; path = ../../README_EN.md; sourceTree = "<group>"; };
+		C9E73FC6221D399000BA9149 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = TODO.md; path = ../../TODO.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9B4563A221D02A60098644E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		322E2CA4D88365927F22FB2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */,
+				5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C9B45634221D02A50098644E = {
+			isa = PBXGroup;
+			children = (
+				C9E73FC2221D397200BA9149 /* Podspec Metadata */,
+				C9B45663221D2B460098644E /* Debugo */,
+				C9B4563F221D02A60098644E /* Debugo-Example-ObjectiveC */,
+				C9B4563E221D02A60098644E /* Products */,
+				322E2CA4D88365927F22FB2C /* Pods */,
+				FFF05105D6B17D3CEF96B84E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C9B4563E221D02A60098644E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9B4563F221D02A60098644E /* Debugo-Example-ObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4565A221D29230098644E /* Login */,
+				C9B45640221D02A60098644E /* AppDelegate.h */,
+				C9B45641221D02A60098644E /* AppDelegate.m */,
+				C9B45643221D02A60098644E /* ViewController.h */,
+				C9B45644221D02A60098644E /* ViewController.m */,
+				C9B45658221D069B0098644E /* UIView+IB.h */,
+				C9B45657221D069B0098644E /* UIView+IB.m */,
+				C9B45656221D02B90098644E /* PrefixHeader.pch */,
+				C9B45646221D02A60098644E /* Main.storyboard */,
+				C9B45649221D02A70098644E /* Assets.xcassets */,
+				C9B4564B221D02A70098644E /* LaunchScreen.storyboard */,
+				C9B4564E221D02A70098644E /* Info.plist */,
+				C9B4564F221D02A70098644E /* main.m */,
+				C976851A221D9D8700D8E418 /* picooc.production.sqlite */,
+			);
+			path = "Debugo-Example-ObjectiveC";
+			sourceTree = "<group>";
+		};
+		C9B4565A221D29230098644E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4565D221D29230098644E /* LoginViewController.h */,
+				C9B4565B221D29230098644E /* LoginViewController.m */,
+				C9B4565E221D29230098644E /* LoginSuccessViewController.h */,
+				C9B4565C221D29230098644E /* LoginSuccessViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C9B45663221D2B460098644E /* Debugo */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45664221D2B460098644E /* Core */,
+				C9B45690221D2B460098644E /* Plugin */,
+			);
+			name = Debugo;
+			path = ../../Debugo;
+			sourceTree = "<group>";
+		};
+		C9B45664221D2B460098644E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45679221D2B460098644E /* Debugo.h */,
+				C9B4566B221D2B460098644E /* DebugoEnable.h */,
+				C9B45673221D2B460098644E /* DGDebugo.h */,
+				C9B4566D221D2B460098644E /* DGDebugo.m */,
+				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
+				C9B45678221D2B460098644E /* DGDebugo+Additional.m */,
+				C9B45665221D2B460098644E /* Assistant */,
+				C9B45674221D2B460098644E /* Service */,
+				C9B4566E221D2B460098644E /* Model */,
+				C9B4567A221D2B460098644E /* ViewController */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C9B45665221D2B460098644E /* Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45668221D2B460098644E /* DGPluginEnable.h */,
+				C9B45666221D2B460098644E /* DGAssistant.h */,
+				C9B4566A221D2B460098644E /* DGAssistant.m */,
+				C9B45669221D2B460098644E /* DGConfiguration.h */,
+				C9B45667221D2B460098644E /* DGConfiguration.m */,
+			);
+			path = Assistant;
+			sourceTree = "<group>";
+		};
+		C9B4566E221D2B460098644E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45671221D2B460098644E /* DGTestAction.h */,
+				C9B4566F221D2B460098644E /* DGTestAction.m */,
+				C9B45672221D2B460098644E /* DGAccount.h */,
+				C9B45670221D2B460098644E /* DGAccount.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C9B45674221D2B460098644E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45675221D2B460098644E /* Cache */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C9B45675221D2B460098644E /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45676221D2B460098644E /* DGCache.m */,
+				C9B45677221D2B460098644E /* DGCache.h */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		C9B4567A221D2B460098644E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4567B221D2B460098644E /* DGTabBarController.h */,
+				C9B4567F221D2B460098644E /* DGTabBarController.m */,
+				C9B4567C221D2B460098644E /* DGNavigationController.h */,
+				C9B45680221D2B460098644E /* DGNavigationController.m */,
+				C9B4567E221D2B460098644E /* DGViewController.h */,
+				C9B45681221D2B460098644E /* DGViewController.m */,
+				C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */,
+				C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */,
+				C9B45682221D2B460098644E /* TabViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C9B45682221D2B460098644E /* TabViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4568A221D2B460098644E /* DGAccountViewController.h */,
+				C9B45684221D2B460098644E /* DGAccountViewController.m */,
+				C9B4568E221D2B460098644E /* DGTestActionViewController.h */,
+				C9B45686221D2B460098644E /* DGTestActionViewController.m */,
+				C9B4568B221D2B460098644E /* DGTestActionSubViewController.h */,
+				C9B45683221D2B460098644E /* DGTestActionSubViewController.m */,
+				C9B45688221D2B460098644E /* DGFileViewController.h */,
+				C9B4568C221D2B460098644E /* DGFileViewController.m */,
+				C9B4568D221D2B460098644E /* DGAppInfoViewController.h */,
+				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
+				C9B45685221D2B460098644E /* DGSettingViewController.h */,
+				C9B45689221D2B460098644E /* DGSettingViewController.m */,
+			);
+			path = TabViewController;
+			sourceTree = "<group>";
+		};
+		C9B45690221D2B460098644E /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45691221D2B460098644E /* DGBase */,
+				C9B456E7221D2B460098644E /* DGFPSLabel */,
+				C9B456B1221D2B460098644E /* DGDebuggingOverlay */,
+				C9B456B4221D2B460098644E /* DGSuspensionView */,
+				C9B456EC221D2B460098644E /* DGTouchMonitor */,
+				C9B456BF221D2B460098644E /* DGFileBrowser */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		C9B45691221D2B460098644E /* DGBase */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45692221D2B460098644E /* Classes */,
+				C9B456AF221D2B460098644E /* Assets */,
+			);
+			path = DGBase;
+			sourceTree = "<group>";
+		};
+		C9B45692221D2B460098644E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45698221D2B460098644E /* DGBase.h */,
+				C9B45699221D2B460098644E /* Bundle */,
+				C9B4569C221D2B460098644E /* Macro */,
+				C9B45693221D2B460098644E /* Category */,
+				C9B4569F221D2B460098644E /* Utility */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C9B45693221D2B460098644E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45696221D2B460098644E /* NSObject+Debugo.h */,
+				C9B45694221D2B460098644E /* NSObject+Debugo.m */,
+				C9B45695221D2B460098644E /* NSDate+Debugo.h */,
+				C9B45697221D2B460098644E /* NSDate+Debugo.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		C9B45699221D2B460098644E /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4569A221D2B460098644E /* DGBundle.h */,
+				C9B4569B221D2B460098644E /* DGBundle.m */,
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
+		C9B4569C221D2B460098644E /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4569D221D2B460098644E /* DGConst.h */,
+				C9B4569E221D2B460098644E /* DGLog.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		C9B4569F221D2B460098644E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456A3221D2B460098644E /* DGThread */,
+				C9B456A0221D2B460098644E /* DGPopOverMenu */,
+				C9B456A9221D2B460098644E /* DGPlister */,
+				C9B456AC221D2B460098644E /* DGOrderedDictionary */,
+				C9B456A6221D2B460098644E /* DGDevice */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		C9B456A0221D2B460098644E /* DGPopOverMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456A2221D2B460098644E /* DGPopOverMenu.h */,
+				C9B456A1221D2B460098644E /* DGPopOverMenu.m */,
+			);
+			path = DGPopOverMenu;
+			sourceTree = "<group>";
+		};
+		C9B456A3221D2B460098644E /* DGThread */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456A5221D2B460098644E /* DGThread.h */,
+				C9B456A4221D2B460098644E /* DGThread.m */,
+			);
+			path = DGThread;
+			sourceTree = "<group>";
+		};
+		C9B456A6221D2B460098644E /* DGDevice */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456A7221D2B460098644E /* DGDevice.h */,
+				C9B456A8221D2B460098644E /* DGDevice.m */,
+			);
+			path = DGDevice;
+			sourceTree = "<group>";
+		};
+		C9B456A9221D2B460098644E /* DGPlister */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456AA221D2B460098644E /* DGPlister.h */,
+				C9B456AB221D2B460098644E /* DGPlister.m */,
+			);
+			path = DGPlister;
+			sourceTree = "<group>";
+		};
+		C9B456AC221D2B460098644E /* DGOrderedDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456AD221D2B460098644E /* DGOrderedDictionary.h */,
+				C9B456AE221D2B460098644E /* DGOrderedDictionary.m */,
+			);
+			path = DGOrderedDictionary;
+			sourceTree = "<group>";
+		};
+		C9B456AF221D2B460098644E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456B0221D2B460098644E /* Debugo.bundle */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C9B456B1221D2B460098644E /* DGDebuggingOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456B2221D2B460098644E /* DGDebuggingOverlay.h */,
+				C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */,
+			);
+			path = DGDebuggingOverlay;
+			sourceTree = "<group>";
+		};
+		C9B456B4221D2B460098644E /* DGSuspensionView */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456BB221D2B460098644E /* DGSuspensionView.h */,
+				C9B456B5221D2B460098644E /* DGSuspensionView.m */,
+				C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */,
+				C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */,
+				C9B456BC221D2B460098644E /* DGSuspensionContainer.h */,
+				C9B456B8221D2B460098644E /* DGSuspensionContainer.m */,
+				C9B456B7221D2B460098644E /* DGSuspensionViewController.h */,
+				C9B456BD221D2B460098644E /* DGSuspensionViewController.m */,
+				C9B456B6221D2B460098644E /* DGSuspensionManager.h */,
+				C9B456BA221D2B460098644E /* DGSuspensionManager.m */,
+			);
+			path = DGSuspensionView;
+			sourceTree = "<group>";
+		};
+		C9B456BF221D2B460098644E /* DGFileBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456E3221D2B460098644E /* DGFBFile.h */,
+				C9B456C3221D2B460098644E /* DGFBFile.m */,
+				C9B456E0221D2B460098644E /* DGFileParser.h */,
+				C9B456C0221D2B460098644E /* DGFileParser.m */,
+				C9B456DF221D2B460098644E /* DGFileBrowser.h */,
+				C9B456C1221D2B460098644E /* DGFileBrowser.m */,
+				C9B456E1221D2B460098644E /* DGFileListViewController.h */,
+				C9B456C5221D2B460098644E /* DGFileListViewController.m */,
+				C9B456C9221D2B460098644E /* DGFileInfoViewController.h */,
+				C9B456C2221D2B460098644E /* DGFileInfoViewController.m */,
+				C9B456C7221D2B460098644E /* DGPreviewManager.h */,
+				C9B456E5221D2B460098644E /* DGPreviewManager.m */,
+				C9B456C4221D2B460098644E /* DGPreviewTransitionViewController.h */,
+				C9B456E2221D2B460098644E /* DGPreviewTransitionViewController.m */,
+				C9B456C8221D2B460098644E /* DGWebviewPreviewViewContoller.h */,
+				C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */,
+				C9B456C6221D2B460098644E /* DGDatabasePreviewViewController.h */,
+				C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */,
+				C9B456CA221D2B460098644E /* DatabasePreview */,
+			);
+			path = DGFileBrowser;
+			sourceTree = "<group>";
+		};
+		C9B456CA221D2B460098644E /* DatabasePreview */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456CC221D2B460098644E /* DGDatabaseTableInfoViewController.h */,
+				C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */,
+				C9B456CB221D2B460098644E /* DGDatabaseTableContentViewController.h */,
+				C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */,
+				C9B456DE221D2B460098644E /* DGDatabaseGridView.h */,
+				C9B456D3221D2B460098644E /* DGDatabaseGridView.m */,
+				C9B456D9221D2B460098644E /* DGDatabaseLeftTableViewCell.h */,
+				C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */,
+				C9B456DC221D2B460098644E /* DGDatabaseContentTableViewCell.h */,
+				C9B456D2221D2B460098644E /* DGDatabaseContentTableViewCell.m */,
+				C9B456D8221D2B460098644E /* DGDatabaseOperation.h */,
+				C9B456D1221D2B460098644E /* DGDatabaseOperation.m */,
+				C9B456DA221D2B460098644E /* DGDatabaseTableInfo.h */,
+				C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */,
+				C9B456DD221D2B460098644E /* DGDatabaseColumnInfo.h */,
+				C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */,
+				C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */,
+				C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */,
+				C9B456CD221D2B460098644E /* DGDatabaseUIConfig.h */,
+				C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */,
+			);
+			path = DatabasePreview;
+			sourceTree = "<group>";
+		};
+		C9B456E7221D2B460098644E /* DGFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456E8221D2B460098644E /* DGWeakProxy.h */,
+				C9B456EB221D2B460098644E /* DGWeakProxy.m */,
+				C9B456EA221D2B460098644E /* DGFPSLabel.h */,
+				C9B456E9221D2B460098644E /* DGFPSLabel.m */,
+			);
+			path = DGFPSLabel;
+			sourceTree = "<group>";
+		};
+		C9B456EC221D2B460098644E /* DGTouchMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456EF221D2B460098644E /* DGTouchMonitor.h */,
+				C9B456F3221D2B460098644E /* DGTouchMonitor.m */,
+				C9B456F6221D2B460098644E /* DGTouchWindow.h */,
+				C9B456F0221D2B460098644E /* DGTouchWindow.m */,
+				C9B456F2221D2B460098644E /* DGTouchViewController.h */,
+				C9B456ED221D2B460098644E /* DGTouchViewController.m */,
+				C9B456F4221D2B460098644E /* DGTouchFingerView.h */,
+				C9B456EE221D2B460098644E /* DGTouchFingerView.m */,
+				C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */,
+				C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */,
+			);
+			path = DGTouchMonitor;
+			sourceTree = "<group>";
+		};
+		C9E73FC2221D397200BA9149 /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				C9E73FC3221D399000BA9149 /* Debugo.podspec */,
+				C9E73FC4221D399000BA9149 /* README.md */,
+				C9E73FC5221D399000BA9149 /* README_EN.md */,
+				C9E73FC6221D399000BA9149 /* TODO.md */,
+			);
+			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		FFF05105D6B17D3CEF96B84E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9B4563C221D02A60098644E /* Debugo-Example-ObjectiveC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9B45653221D02A70098644E /* Build configuration list for PBXNativeTarget "Debugo-Example-ObjectiveC" */;
+			buildPhases = (
+				8C867F1F84CADEE7EA9E765E /* [CP] Check Pods Manifest.lock */,
+				C9B45639221D02A60098644E /* Sources */,
+				C9B4563A221D02A60098644E /* Frameworks */,
+				C9B4563B221D02A60098644E /* Resources */,
+				C9B4573A221D2FB40098644E /* Debugo Build Info */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Debugo-Example-ObjectiveC";
+			productName = "Debugo-Example-ObjectiveC";
+			productReference = C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9B45635221D02A50098644E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = ripperhe;
+				TargetAttributes = {
+					C9B4563C221D02A60098644E = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = C9B45638221D02A50098644E /* Build configuration list for PBXProject "Debugo-Example-ObjectiveC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9B45634221D02A50098644E;
+			productRefGroup = C9B4563E221D02A60098644E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9B4563C221D02A60098644E /* Debugo-Example-ObjectiveC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9B4563B221D02A60098644E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B4564D221D02A70098644E /* LaunchScreen.storyboard in Resources */,
+				C9B4564A221D02A70098644E /* Assets.xcassets in Resources */,
+				C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */,
+				C9B45648221D02A60098644E /* Main.storyboard in Resources */,
+				C9B45710221D2B460098644E /* Debugo.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C867F1F84CADEE7EA9E765E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Debugo-Example-ObjectiveC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9B4573A221D2FB40098644E /* Debugo Build Info */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Debugo Build Info";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# direct drag / pod no use_frameworks!\nbuildInfoSh=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n# pod use_frameworks!\nbuildInfoSh2=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Frameworks/Debugo.framework/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n\nif [ -x \"${buildInfoSh}\" ]; then\n${buildInfoSh}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh}\"\nelif [ -x \"${buildInfoSh2}\" ]; then\n${buildInfoSh2}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh2}\"\nelse\necho \"com.ripperhe.debugo.build.info.sh not found!!! \"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9B45639221D02A60098644E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */,
+				C9B45717221D2B460098644E /* DGFileParser.m in Sources */,
+				C9B45715221D2B460098644E /* DGSuspensionManager.m in Sources */,
+				C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */,
+				C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */,
+				C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */,
+				C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */,
+				C9B45645221D02A60098644E /* ViewController.m in Sources */,
+				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
+				C9B4570E221D2B460098644E /* DGPlister.m in Sources */,
+				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
+				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
+				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
+				C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */,
+				C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */,
+				C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */,
+				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
+				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
+				C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */,
+				C9B45713221D2B460098644E /* DGSuspensionContainer.m in Sources */,
+				C9B4570D221D2B460098644E /* DGDevice.m in Sources */,
+				C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */,
+				C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */,
+				C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */,
+				C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */,
+				C9B45701221D2B460098644E /* DGTestActionSubViewController.m in Sources */,
+				C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */,
+				C9B456FC221D2B460098644E /* DGCache.m in Sources */,
+				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
+				C9B45703221D2B460098644E /* DGTestActionViewController.m in Sources */,
+				C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */,
+				C9B4570C221D2B460098644E /* DGThread.m in Sources */,
+				C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */,
+				C9B45700221D2B460098644E /* DGViewController.m in Sources */,
+				C9B45650221D02A70098644E /* main.m in Sources */,
+				C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */,
+				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
+				C9B456F9221D2B460098644E /* DGDebugo.m in Sources */,
+				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
+				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
+				C9B45716221D2B460098644E /* DGSuspensionViewController.m in Sources */,
+				C9B45714221D2B460098644E /* DGSuspensionViewConfig.m in Sources */,
+				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
+				C9B45726221D2B460098644E /* DGPreviewTransitionViewController.m in Sources */,
+				C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */,
+				C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */,
+				C9B45642221D02A60098644E /* AppDelegate.m in Sources */,
+				C9B45706221D2B460098644E /* DGFileViewController.m in Sources */,
+				C9B4571A221D2B460098644E /* DGFBFile.m in Sources */,
+				C9B45707221D2B460098644E /* DGQuickLoginViewController.m in Sources */,
+				C9B45712221D2B460098644E /* DGSuspensionView.m in Sources */,
+				C9B45723221D2B460098644E /* DGDatabaseUIConfig.m in Sources */,
+				C9B456F8221D2B460098644E /* DGAssistant.m in Sources */,
+				C9B4570B221D2B460098644E /* DGPopOverMenu.m in Sources */,
+				C9B4572C221D2B460098644E /* DGTouchViewController.m in Sources */,
+				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
+				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
+				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
+				C9B456FA221D2B460098644E /* DGTestAction.m in Sources */,
+				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
+				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
+				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
+				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9B45646221D02A60098644E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9B45647221D02A60098644E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C9B4564B221D02A70098644E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9B4564C221D02A70098644E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9B45651221D02A70098644E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C9B45652221D02A70098644E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9B45654221D02A70098644E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7B8E83XAJ6;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
+				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.Debugo-Example-ObjectiveCx";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C9B45655221D02A70098644E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7B8E83XAJ6;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
+				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.Debugo-Example-ObjectiveCx";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9B45638221D02A50098644E /* Build configuration list for PBXProject "Debugo-Example-ObjectiveC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B45651221D02A70098644E /* Debug */,
+				C9B45652221D02A70098644E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9B45653221D02A70098644E /* Build configuration list for PBXNativeTarget "Debugo-Example-ObjectiveC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B45654221D02A70098644E /* Debug */,
+				C9B45655221D02A70098644E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9B45635221D02A50098644E /* Project object */;
+}
