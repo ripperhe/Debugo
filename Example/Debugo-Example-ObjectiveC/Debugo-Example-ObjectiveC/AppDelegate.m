@@ -17,8 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
     DGDebugo.shared.delegate = self;
     [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
         
