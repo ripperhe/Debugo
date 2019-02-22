@@ -31,7 +31,7 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 
 ## Example
 
-克隆或下载仓库到本地，进入到 Example 文件夹，执行 `pod install` 之后运行即可。
+克隆或下载仓库到本地，进入到 Example/Debugo-Example-ObjectiveC 文件夹，执行 `pod install` 之后运行即可。
 
 ## Requirements
 
