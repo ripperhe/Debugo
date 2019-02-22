@@ -12,7 +12,7 @@
 Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非常简单。以 Debug 为宗旨，自然要做到尽量简单，要是出现因为 Debug 工具而导致 Bug 的情况，那就和初衷背道而驰了。后续应该还会加入一些新的功能，不过都会建立在硬需求的基础之上~
 
 - [x] **方便** 一行代码即可启用
-- [x] **安全** 内部做了控制，仅在 DEBUG 模式可以启用，携带上线无压力
+- [x] **安全** 内部做了控制，仅在 **DEBUG** 模式可以启用，携带上线无压力
 - [x] **灵活** 可执行各种自定义功能代码或者跳转自定义页面
 
 ## Features
@@ -27,7 +27,7 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 
 ## Snapshot
 
-![](https://raw.githubusercontent.com/ripperhe/Resource/master/20180930/Debugo.gif)
+![](https://raw.githubusercontent.com/ripperhe/Resource/master/20180930/debugo.gif)
 
 ## Example
 
@@ -41,7 +41,7 @@ iOS 8.0+
 
 本框架内部借鉴了很多框架，但是真正依赖的只有一个框架：
 
-* [FMDB](https://github.com/ccgus/fmdb)
+* [FMDB (2.7.5)](https://github.com/ccgus/fmdb)
 
 ## Installation
 

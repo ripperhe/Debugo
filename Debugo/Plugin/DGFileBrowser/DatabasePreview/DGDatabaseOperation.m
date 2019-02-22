@@ -10,7 +10,7 @@
 #if __has_include(<fmdb/FMDB.h>)
     #import <fmdb/FMDB.h>
 #else
-    #import "FMDB.H"
+    #import "FMDB.h"
 #endif
 
 @interface DGDatabaseOperation ()
