@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Debugo.h"
+#import "DGFilePath.h"
 
 @interface AppDelegate ()<DGDebugoDelegate>
 
@@ -52,10 +53,11 @@
                                                   [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject],
                                                   [NSURL URLWithString:[NSBundle mainBundle].bundlePath],
                                                   ];
-        NSString *libDirectory = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject;
-        NSString *userDefaultPath = [NSString stringWithFormat:@"%@/Preferences/%@.plist", libDirectory, [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleIdentifier"]];
-        configuration.shortcutForAnyURLs = @[[NSURL fileURLWithPath:userDefaultPath]];
-        
+
+        configuration.shortcutForAnyURLs = @[
+                                             [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject],
+                                             DGFilePath.userDefaultsPlistFileURL,
+                                             ];
     }];
     
     [DGDebugo addTestActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
@@ -87,6 +89,9 @@
     [DGDebugo addTestActionWithTitle:@"screen bounds" handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionViewController) {
         DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
     }];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"value..." forKey:@"Test UserDefaults"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
 }

@@ -16,3 +16,4 @@
 #import "DGPlister.h"
 #import "DGOrderedDictionary.h"
 #import "DGDevice.h"
+#import "DGFilePath.h"

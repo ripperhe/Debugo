@@ -259,7 +259,7 @@ static DGAssistant *_instance;
     config.buttonType = UIButtonTypeSystem;
     config.leanStateAlpha = .9;
     
-    DGSuspensionView *debugBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (self.configuration.isFullScreen?240:270 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGSuspensionView *debugBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (self.configuration.isFullScreen?255:275 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     debugBubble.name = @"Debug Bubble";
     debugBubble.tag = DGDebugBubbleTag;
@@ -326,7 +326,7 @@ static DGAssistant *_instance;
     config.leanStateAlpha = .9;
     config.showLongPressAnimation = NO;
     
-    DGSuspensionView *loginBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (self.configuration.isFullScreen?150:180 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGSuspensionView *loginBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (self.configuration.isFullScreen?165:185 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     loginBubble.name = @"Login Bubble";
     loginBubble.tag = DGLoginBubbleTag;

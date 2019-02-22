@@ -26,9 +26,8 @@
         _isOpenFPS = [DGCache.shared.settingPlister boolForKey:@"isOpenFPS"];
         _isShowTouches = [DGCache.shared.settingPlister boolForKey:@"isShowTouches"];
         _accountEnvironmentIsBeta = YES;
-        _shortcutForDatabaseURLs = @[
-                                     [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject],
-                                     ];
+        _shortcutForDatabaseURLs = @[DGFilePath.documentsDirectoryURL];
+        _shortcutForAnyURLs = @[DGFilePath.userDefaultsPlistFileURL];
     }
     return self;
 }

@@ -29,7 +29,7 @@ static NSString *kDGCellID = @"kDGCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self configTableView];
+    //    [self configTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,6 +54,16 @@ static NSString *kDGCellID = @"kDGCellID";
         }else {
             self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
         }
+    }
+    
+    // table footer
+    if (!self.dataArray.count) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"💡 Please add test action.";
+        self.tableView.tableFooterView = label;
+    }else {
+        self.tableView.tableFooterView = nil;
     }
 }
 
@@ -95,7 +105,7 @@ static NSString *kDGCellID = @"kDGCellID";
         NSArray *commonActions = [DGAssistant shared].configuration.commonTestActions.copy;
         // anonymous
         NSArray *anonymousActions = [DGAssistant shared].anonymousTestActionDic.reverseSortedValues;
-
+        
         if (currentActions.count) {
             currentActions.dg_copyExtObj = DGDebugo.shared.currentUser;
             [_dataArray addObject:currentActions];

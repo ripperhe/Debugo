@@ -61,6 +61,15 @@ static NSString *kCellValue = @"value";
                            @{kCellTitle:@"fileGroupOwnerAccountID", kCellValue:self.file.fileAttributes.fileGroupOwnerAccountID?:@"null"},
                            ],
                        ];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:self.file.fileURL.path]) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"❌ File or directory do not exist!";
+        self.tableView.tableHeaderView = label;
+    }else {
+        self.tableView.tableHeaderView = nil;
+    }
 }
 
 - (NSString *)sizeStringWithSize:(long long)size {
