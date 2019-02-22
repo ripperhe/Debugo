@@ -141,6 +141,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDGCellID];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kDGCellID];
+        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
     }
     
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];

@@ -257,6 +257,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
