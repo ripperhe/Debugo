@@ -28,6 +28,13 @@
     // Add share button
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareFile:)];
     self.navigationItem.rightBarButtonItem = shareButton;
+    
+    // For set lineBreakMode
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.text = self.title;
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.navigationItem.titleView = titleLabel;
 }
 
 - (void)viewWillLayoutSubviews

@@ -32,7 +32,13 @@ static NSString *kCellValue = @"value";
     [super viewDidLoad];
     
     self.title = self.table.name;
-    
+    // For set lineBreakMode
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.text = self.title;
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.navigationItem.titleView = titleLabel;
+
     self.dataArray = @[
                        @{kCellTitle:@"name", kCellValue:self.table.name?:@"null"},
                        @{kCellTitle:@"tbl_name", kCellValue:self.table.tbl_name?:@"null"},

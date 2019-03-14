@@ -71,13 +71,19 @@
             UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
             self.navigationItem.rightBarButtonItem = dismissButton;
         }
+        
+        // For set lineBreakMode
+        UILabel *titleLabel = [UILabel new];
+        titleLabel.text = self.title;
+        titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        self.navigationItem.titleView = titleLabel;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     [self tableView];
     [self prepareData];

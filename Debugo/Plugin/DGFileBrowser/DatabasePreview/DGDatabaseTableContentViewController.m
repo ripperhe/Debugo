@@ -42,7 +42,13 @@
     
     self.title = self.table.name;
     self.view.backgroundColor = UIColor.whiteColor;
-    
+    // For set lineBreakMode
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.text = self.title;
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.navigationItem.titleView = titleLabel;
+
     DGDatabaseGridView *gridView = [[DGDatabaseGridView alloc] initWithFrame:self.view.bounds];
     gridView.delegate = self;
     gridView.dataSource = self;

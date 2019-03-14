@@ -55,6 +55,13 @@
         DGPreviewTransitionViewController *previewTransitionViewController = [DGPreviewTransitionViewController new];
         previewTransitionViewController.quickLookPreviewController.dataSource = self;
         
+        // For set lineBreakMode
+        UILabel *titleLabel = [UILabel new];
+        titleLabel.text = file.fileURL.lastPathComponent;
+        titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        previewTransitionViewController.quickLookPreviewController.navigationItem.titleView = titleLabel;
+
         self.fileURL = file.fileURL;
         if (fromNavigation) {
             return previewTransitionViewController.quickLookPreviewController;

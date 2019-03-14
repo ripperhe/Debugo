@@ -23,6 +23,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // For set lineBreakMode
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.text = self.title;
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.navigationItem.titleView = titleLabel;
+
     [self addChildViewController:self.quickLookPreviewController];
     [self.containerView addSubview:self.quickLookPreviewController.view];
     self.quickLookPreviewController.view.frame = self.containerView.bounds;
