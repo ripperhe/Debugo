@@ -116,7 +116,6 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.detailTextLabel.textColor = kDGHighlightColor;
         UISwitch *switchView = [[UISwitch alloc] init];
         [switchView addTarget:self action:@selector(swithValueChanged:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = switchView;

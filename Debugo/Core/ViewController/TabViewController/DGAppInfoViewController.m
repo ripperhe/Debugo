@@ -146,7 +146,6 @@ static NSString *kDGCellValue = @"kDGCellValue";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kDGCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.detailTextLabel.textColor = kDGHighlightColor;
         cell.detailTextLabel.numberOfLines = 0;
     }
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
