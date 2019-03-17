@@ -60,7 +60,7 @@ static NSString *kDGCellID = @"kDGCellID";
     if (!self.dataArray.count) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"💡 Please add test action.";
+        label.text = @"Please add test actions.";
         self.tableView.tableFooterView = label;
     }else {
         self.tableView.tableFooterView = nil;
