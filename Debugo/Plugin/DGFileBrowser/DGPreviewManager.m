@@ -8,81 +8,34 @@
 //
 
 #import "DGPreviewManager.h"
-#import <QuickLook/QuickLook.h>
-#import "DGFBFile.h"
 #import "DGWebviewPreviewViewContoller.h"
-#import "DGPreviewTransitionViewController.h"
+#import "DGDefaultPreviewViewController.h"
 #import "DGDatabasePreviewViewController.h"
-
-@interface DGPreviewItem: NSObject<QLPreviewItem>
-
-/*!
- * @abstract The URL of the item to preview.
- * @discussion The URL must be a file URL.
- */
-@property (nonatomic, strong) NSURL *fileURL;
-@end
-
-@implementation DGPreviewItem
-
-- (NSURL *)previewItemURL
-{
-    if (self.fileURL) {
-        return self.fileURL;
-    }
-    return nil;
-}
-@end
-
-#pragma mark -
-
-@interface DGPreviewManager ()<QLPreviewControllerDataSource>
-@property (nonatomic, strong) NSURL *fileURL;
-@end
 
 @implementation DGPreviewManager
 
 - (UIViewController *)previewViewControllerForFile:(DGFBFile *)file fromNavigation:(BOOL)fromNavigation uiConfig:(DGDatabaseUIConfig *)uiConfig
 {
-    if (file.type == DGFBFileTypePLIST || file.type == DGFBFileTypeJSON) {
-        DGWebviewPreviewViewContoller *webviewPreviewViewContoller = [DGWebviewPreviewViewContoller new];
-        webviewPreviewViewContoller.file = file;
-        return webviewPreviewViewContoller;
-    }else if (file.type == DGFBFileTypeDB) {
-        DGDatabasePreviewViewController *databasePreviewViewController = [[DGDatabasePreviewViewController alloc] initWithFile:file databaseUIConfig:uiConfig];
-        return databasePreviewViewController;
-    }else {
-        DGPreviewTransitionViewController *previewTransitionViewController = [DGPreviewTransitionViewController new];
-        previewTransitionViewController.quickLookPreviewController.dataSource = self;
-        
-        // For set lineBreakMode
-        UILabel *titleLabel = [UILabel new];
-        titleLabel.text = file.fileURL.lastPathComponent;
-        titleLabel.font = [UIFont boldSystemFontOfSize:17];
-        titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-        previewTransitionViewController.quickLookPreviewController.navigationItem.titleView = titleLabel;
-
-        self.fileURL = file.fileURL;
-        if (fromNavigation) {
-            return previewTransitionViewController.quickLookPreviewController;
-        }else{
+    switch (file.type) {
+        case DGFBFileTypePLIST:
+        case DGFBFileTypeJSON: {
+            DGWebviewPreviewViewContoller *webviewPreviewViewContoller = [DGWebviewPreviewViewContoller new];
+            webviewPreviewViewContoller.file = file;
+            return webviewPreviewViewContoller;
+        }
+            break;
+        case DGFBFileTypeDB: {
+            DGDatabasePreviewViewController *databasePreviewViewController = [[DGDatabasePreviewViewController alloc] initWithFile:file databaseUIConfig:uiConfig];
+            return databasePreviewViewController;
+        }
+            break;
+        default: {
+            DGDefaultPreviewViewController *previewTransitionViewController = [DGDefaultPreviewViewController new];
+            previewTransitionViewController.file = file;
             return previewTransitionViewController;
         }
+            break;
     }
-}
-
-- (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller
-{
-    return 1;
-}
-
-- (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index
-{
-    DGPreviewItem *item = [[DGPreviewItem alloc] init];
-    if (self.fileURL) {
-        item.fileURL = self.fileURL;
-    }
-    return item;
 }
 
 @end

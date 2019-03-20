@@ -10,7 +10,7 @@
 #import "DGFileListViewController.h"
 #import "DGFileParser.h"
 #import "DGPreviewManager.h"
-#import "DGPreviewTransitionViewController.h"
+#import "DGDefaultPreviewViewController.h"
 #import "DGFileInfoViewController.h"
 #import "DGBase.h"
 
@@ -66,11 +66,19 @@
         self.searchController.searchBar.delegate = self;
         self.searchController.delegate = self;
         
+        // navigationItem
+        __weak typeof(self) weakSelf = self;
+        DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+            return @[weakSelf.initialURL];
+        }];
+
         self.showCancelButton = showCancelButton;
         if (showCancelButton) {
             // Add dismiss button
             UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
-            self.navigationItem.rightBarButtonItem = dismissButton;
+            self.navigationItem.rightBarButtonItems = @[dismissButton, shareBarButtonItem];
+        }else {
+            self.navigationItem.rightBarButtonItem = shareBarButtonItem;
         }
         
         // For set lineBreakMode
@@ -399,8 +407,8 @@
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
 {
-    DGPreviewTransitionViewController *previewTransitionViewController = (DGPreviewTransitionViewController *)viewControllerToCommit;
-    if ([previewTransitionViewController isKindOfClass:[DGPreviewTransitionViewController class]]) {
+    DGDefaultPreviewViewController *previewTransitionViewController = (DGDefaultPreviewViewController *)viewControllerToCommit;
+    if ([previewTransitionViewController isKindOfClass:[DGDefaultPreviewViewController class]]) {
         [self.navigationController pushViewController:previewTransitionViewController.quickLookPreviewController animated:YES];
     }else{
         [self.navigationController pushViewController:viewControllerToCommit animated:YES];

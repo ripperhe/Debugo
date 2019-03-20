@@ -9,6 +9,7 @@
 
 #import "DGWebviewPreviewViewContoller.h"
 #import <WebKit/WebKit.h>
+#import "DGBase.h"
 
 @interface DGWebviewPreviewViewContoller ()
 
@@ -26,9 +27,12 @@
     [self webView];
     
     // Add share button
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareFile:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
-    
+    __weak typeof(self) weakSelf = self;
+    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+        return @[weakSelf.file.fileURL];
+    }];
+    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
+
     // For set lineBreakMode
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = self.title;
@@ -64,21 +68,6 @@
         _webView = webView;
     }
     return _webView;
-}
-
-#pragma mark - share
-- (void)shareFile:(UIBarButtonItem *)sender
-{
-    if (!self.file) {
-        return;
-    }
-    
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.file.fileURL] applicationActivities:nil];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
-        && [activityViewController respondsToSelector:@selector(popoverPresentationController)]) {
-        activityViewController.popoverPresentationController.barButtonItem = sender;
-    }
-    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 #pragma mark - processing

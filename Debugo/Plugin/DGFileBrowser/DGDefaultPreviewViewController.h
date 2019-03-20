@@ -1,5 +1,5 @@
 //
-//  DGPreviewTransitionViewController.h
+//  DGDefaultPreviewViewController.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -9,7 +9,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuickLook/QuickLook.h>
+#import "DGFBFile.h"
 
-@interface DGPreviewTransitionViewController : UIViewController
+@interface DGDefaultPreviewViewController : UIViewController
+@property (nonatomic, strong) DGFBFile *file;
 @property (nonatomic, strong) QLPreviewController *quickLookPreviewController;
 @end

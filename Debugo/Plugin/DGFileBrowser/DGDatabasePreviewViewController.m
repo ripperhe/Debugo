@@ -10,6 +10,7 @@
 #import "DGDatabaseOperation.h"
 #import "DGDatabaseTableContentViewController.h"
 #import "DGDatabaseTableInfoViewController.h"
+#import "DGBase.h"
 
 @interface DGDatabasePreviewViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -45,25 +46,13 @@
     self.navigationItem.titleView = titleLabel;
 
     // Add share button
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareFile:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
+    __weak typeof(self) weakSelf = self;
+    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+        return @[weakSelf.file.fileURL];
+    }];
+    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
 
     self.tableArray = [self.dbOperation queryAllTableInfo];
-}
-
-#pragma mark - share
-- (void)shareFile:(UIBarButtonItem *)sender
-{
-    if (!self.file) {
-        return;
-    }
-    
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.file.fileURL] applicationActivities:nil];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
-        && [activityViewController respondsToSelector:@selector(popoverPresentationController)]) {
-        activityViewController.popoverPresentationController.barButtonItem = sender;
-    }
-    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource

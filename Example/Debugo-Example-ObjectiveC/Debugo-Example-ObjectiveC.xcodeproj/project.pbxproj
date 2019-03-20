@@ -66,7 +66,7 @@
 		C9B45723221D2B460098644E /* DGDatabaseUIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */; };
 		C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */; };
 		C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */; };
-		C9B45726221D2B460098644E /* DGPreviewTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E2221D2B460098644E /* DGPreviewTransitionViewController.m */; };
+		C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */; };
 		C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */; };
 		C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E5221D2B460098644E /* DGPreviewManager.m */; };
 		C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */; };
@@ -78,6 +78,7 @@
 		C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchMonitor.m */; };
 		C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */; };
 		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
+		C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,7 +178,7 @@
 		C9B456C1221D2B460098644E /* DGFileBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileBrowser.m; sourceTree = "<group>"; };
 		C9B456C2221D2B460098644E /* DGFileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileInfoViewController.m; sourceTree = "<group>"; };
 		C9B456C3221D2B460098644E /* DGFBFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFBFile.m; sourceTree = "<group>"; };
-		C9B456C4221D2B460098644E /* DGPreviewTransitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPreviewTransitionViewController.h; sourceTree = "<group>"; };
+		C9B456C4221D2B460098644E /* DGDefaultPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDefaultPreviewViewController.h; sourceTree = "<group>"; };
 		C9B456C5221D2B460098644E /* DGFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileListViewController.m; sourceTree = "<group>"; };
 		C9B456C6221D2B460098644E /* DGDatabasePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabasePreviewViewController.h; sourceTree = "<group>"; };
 		C9B456C7221D2B460098644E /* DGPreviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPreviewManager.h; sourceTree = "<group>"; };
@@ -206,7 +207,7 @@
 		C9B456DF221D2B460098644E /* DGFileBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileBrowser.h; sourceTree = "<group>"; };
 		C9B456E0221D2B460098644E /* DGFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileParser.h; sourceTree = "<group>"; };
 		C9B456E1221D2B460098644E /* DGFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileListViewController.h; sourceTree = "<group>"; };
-		C9B456E2221D2B460098644E /* DGPreviewTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPreviewTransitionViewController.m; sourceTree = "<group>"; };
+		C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDefaultPreviewViewController.m; sourceTree = "<group>"; };
 		C9B456E3221D2B460098644E /* DGFBFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFBFile.h; sourceTree = "<group>"; };
 		C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWebviewPreviewViewContoller.m; sourceTree = "<group>"; };
 		C9B456E5221D2B460098644E /* DGPreviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPreviewManager.m; sourceTree = "<group>"; };
@@ -227,6 +228,8 @@
 		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
 		C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Debugo.h"; sourceTree = "<group>"; };
 		C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Debugo.m"; sourceTree = "<group>"; };
+		C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGShareBarButtonItem.h; sourceTree = "<group>"; };
+		C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGShareBarButtonItem.m; sourceTree = "<group>"; };
 		C9E73FC3221D399000BA9149 /* Debugo.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = Debugo.podspec; path = ../../Debugo.podspec; sourceTree = "<group>"; };
 		C9E73FC4221D399000BA9149 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		C9E73FC5221D399000BA9149 /* README_EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README_EN.md; path = ../../README_EN.md; sourceTree = "<group>"; };
@@ -485,6 +488,7 @@
 		C9B4569F221D2B460098644E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C9CEA533224250E300BD5AEB /* DGShare */,
 				C9B456A3221D2B460098644E /* DGThread */,
 				C9B456A0221D2B460098644E /* DGPopOverMenu */,
 				C9B456A9221D2B460098644E /* DGPlister */,
@@ -589,8 +593,8 @@
 				C9B456C2221D2B460098644E /* DGFileInfoViewController.m */,
 				C9B456C7221D2B460098644E /* DGPreviewManager.h */,
 				C9B456E5221D2B460098644E /* DGPreviewManager.m */,
-				C9B456C4221D2B460098644E /* DGPreviewTransitionViewController.h */,
-				C9B456E2221D2B460098644E /* DGPreviewTransitionViewController.m */,
+				C9B456C4221D2B460098644E /* DGDefaultPreviewViewController.h */,
+				C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */,
 				C9B456C8221D2B460098644E /* DGWebviewPreviewViewContoller.h */,
 				C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */,
 				C9B456C6221D2B460098644E /* DGDatabasePreviewViewController.h */,
@@ -653,6 +657,15 @@
 				C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */,
 			);
 			path = DGTouchMonitor;
+			sourceTree = "<group>";
+		};
+		C9CEA533224250E300BD5AEB /* DGShare */ = {
+			isa = PBXGroup;
+			children = (
+				C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */,
+				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
+			);
+			path = DGShare;
 			sourceTree = "<group>";
 		};
 		C9E73FC2221D397200BA9149 /* Podspec Metadata */ = {
@@ -800,6 +813,7 @@
 				C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */,
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
 				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
+				C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */,
 				C9B4570E221D2B460098644E /* DGPlister.m in Sources */,
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
 				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
@@ -835,7 +849,7 @@
 				C9B45716221D2B460098644E /* DGSuspensionViewController.m in Sources */,
 				C9B45714221D2B460098644E /* DGSuspensionViewConfig.m in Sources */,
 				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
-				C9B45726221D2B460098644E /* DGPreviewTransitionViewController.m in Sources */,
+				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
 				C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */,
 				C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */,
 				C9B45642221D02A60098644E /* AppDelegate.m in Sources */,

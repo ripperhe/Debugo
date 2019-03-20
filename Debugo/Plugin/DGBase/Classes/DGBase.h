@@ -14,6 +14,7 @@
 #import "NSNumber+Debugo.h"
 #import "DGThread.h"
 #import "DGPopOverMenu.h"
+#import "DGShareBarButtonItem.h"
 #import "DGPlister.h"
 #import "DGOrderedDictionary.h"
 #import "DGDevice.h"

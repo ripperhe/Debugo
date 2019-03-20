@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DGFBFile.h"
-#import "DGDatabasePreviewViewController.h"
+#import "DGDatabaseUIConfig.h"
 
 @interface DGPreviewManager : NSObject
 
