@@ -15,4 +15,7 @@
 // yyyy-MM-dd HH:mm:ss.SSS
 - (NSString *)dg_dateString;
 
+- (NSString *)dg_dateStringWithFormat:(NSString *)format;
+
+
 @end

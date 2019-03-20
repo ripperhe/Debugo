@@ -18,18 +18,13 @@
         self.fileURL = fileURL;
         BOOL isDirectory = [self checkDirectoryWithURL:fileURL];
         self.isDirectory = isDirectory;
+        self.fileAttributes = [self getFileAttributesWithURL:self.fileURL];
         if (self.isDirectory) {
-            self.fileAttributes = nil;
             self.fileExtension = nil;
             self.type = DGFBFileTypeDirectory;
         }else{
-            self.fileAttributes = [self getFileAttributesWithURL:self.fileURL];
             self.fileExtension = self.fileURL.pathExtension;
-            if (self.fileExtension.length) {
-                self.type = [self typeForPathExtension:self.fileExtension];
-            }else{
-                self.type = DGFBFileTypeDefault;
-            }
+            self.type = [self typeForPathExtension:self.fileExtension];
         }
         self.displayName = fileURL.lastPathComponent;
     }
@@ -76,6 +71,8 @@
 
 - (DGFBFileType)typeForPathExtension:(NSString *)pathExtension
 {
+    if (!pathExtension.length) return DGFBFileTypeDefault;
+    
     if ([pathExtension isEqualToString:@"gif"]) {
         return DGFBFileTypeGIF;
     }else if ([pathExtension isEqualToString:@"jpg"]) {
@@ -100,33 +97,52 @@
 
 - (UIImage *)image
 {
+    static NSMutableDictionary *_cachedImageDic;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _cachedImageDic = [NSMutableDictionary dictionary];
+    });
+    
     DGFBFileType type = self.type;
-    NSString *fileName = nil;
+    NSString *imageName = nil;
     switch (type) {
         case DGFBFileTypeDirectory:
-            fileName = @"file_folder";
+            imageName = @"file_folder";
             break;
         case DGFBFileTypeGIF:
         case DGFBFileTypeJPG:
         case DGFBFileTypePNG:
-            fileName = @"file_image";
+            imageName = @"file_image";
             break;
         case DGFBFileTypePDF:
-            fileName = @"file_pdf";
+            imageName = @"file_pdf";
             break;
         case DGFBFileTypeZIP:
-            fileName = @"file_zip";
+            imageName = @"file_zip";
             break;
         case DGFBFileTypeDB:
-            fileName = @"file_database";
+            imageName = @"file_database";
             break;
         default:
-            fileName = @"file_file";
+            imageName = @"file_file";
             break;
     }
-    UIImage *image = [DGBundle imageNamed:fileName];
+    UIImage *image = [_cachedImageDic objectForKey:imageName];
+    if (!image) {
+        image = [DGBundle imageNamed:imageName];
+        [_cachedImageDic setObject:image forKey:imageName];
+    }
     return image;
 }
 
+- (NSString *)simpleInfo {
+    if (!self.fileAttributes.fileModificationDate) {
+        return nil;
+    }
+    
+    NSString *dateInfo = [self.fileAttributes.fileModificationDate dg_dateStringWithFormat:@"yyyy/MM/dd"];
+    NSString *sizeInfo = [@(self.fileAttributes.fileSize) dg_sizeString];
+    return [dateInfo stringByAppendingFormat:@" - %@", sizeInfo];
+}
 
 @end

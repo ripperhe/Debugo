@@ -7,6 +7,7 @@
 //
 
 #import "DGFileInfoViewController.h"
+#import "DGBase.h"
 
 static NSString *kCellID = @"cell";
 static NSString *kCellTitle = @"title";
@@ -49,7 +50,7 @@ static NSString *kCellValue = @"value";
                            @{kCellTitle:@"Deletable", kCellValue:[NSFileManager.defaultManager isDeletableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
                            ],
                        @[
-                           @{kCellTitle:@"fileSize", kCellValue:[self sizeStringWithSize:self.file.fileAttributes.fileSize]},
+                           @{kCellTitle:@"fileSize", kCellValue:[NSString stringWithFormat:@"%lld bytes (%@)", self.file.fileAttributes.fileSize, [@(self.file.fileAttributes.fileSize) dg_sizeString]]},
                            @{kCellTitle:@"fileModificationDate", kCellValue:[self dateStringWithDate:self.file.fileAttributes.fileModificationDate]},
                            @{kCellTitle:@"fileCreationDate", kCellValue:[self dateStringWithDate:self.file.fileAttributes.fileCreationDate]},
                            @{kCellTitle:@"fileType", kCellValue:self.file.fileAttributes.fileType?:@"null"},
@@ -78,32 +79,9 @@ static NSString *kCellValue = @"value";
     }
 }
 
-- (NSString *)sizeStringWithSize:(long long)size {
-    NSString *sizeStr;
-    long long bytes = size;
-    double kbs = bytes/1024.0;
-    double mbs = kbs/1024.0;
-    double gbs = mbs/1024.0;
-    if (gbs > 1) {
-        sizeStr = [NSString stringWithFormat:@"%lld Bytes (%f GB)", bytes, gbs];
-    }else if (mbs > 1) {
-        sizeStr = [NSString stringWithFormat:@"%lld Bytes (%f MB)", bytes, mbs];
-    }else if (kbs > 1) {
-        sizeStr = [NSString stringWithFormat:@"%lld Bytes (%f KB)", bytes, mbs];
-    }else{
-        sizeStr = [NSString stringWithFormat:@"%lld Bytes", bytes];
-    }
-    return sizeStr;
-}
-
 - (NSString *)dateStringWithDate:(NSDate *)date {
     if (!date) return @"null";
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"yyyy年MM月dd日 HH:mm:ss";
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    NSString *dateStr = [dateFormatter stringFromDate:date];
-    return dateStr;
+    return [date dg_dateStringWithFormat:@"yyyy年MM月dd日 HH:mm:ss"];
 }
 
 #pragma mark - Table view data source

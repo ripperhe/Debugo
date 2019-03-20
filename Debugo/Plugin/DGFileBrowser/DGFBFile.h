@@ -32,9 +32,10 @@ typedef NS_ENUM(NSUInteger, DGFBFileType) {
 @property (nonatomic, strong) NSDictionary *fileAttributes;
 @property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign) DGFBFileType type;
+@property (nonatomic, readonly) UIImage *image;
+@property (nullable, nonatomic, readonly) NSString *simpleInfo;
 
 - (instancetype)initWithFileURL:(NSURL *)fileURL;
-- (UIImage *)image;
 - (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
 
 @end

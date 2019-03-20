@@ -11,6 +11,7 @@
 #import "DGConst.h"
 #import "NSObject+Debugo.h"
 #import "NSDate+Debugo.h"
+#import "NSNumber+Debugo.h"
 #import "DGThread.h"
 #import "DGPopOverMenu.h"
 #import "DGPlister.h"

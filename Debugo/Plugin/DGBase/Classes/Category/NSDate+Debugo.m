@@ -12,11 +12,14 @@
 
 @implementation NSDate (Debugo)
 
-- (NSString *)dg_dateString
-{
+- (NSString *)dg_dateString {
+    return [self dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+}
+
+- (NSString *)dg_dateStringWithFormat:(NSString *)format {
     // https://stackoverflow.com/questions/1526990/nstimezone-what-is-the-difference-between-localtimezone-and-systemtimezone
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
+    dateFormatter.dateFormat = format;
     dateFormatter.timeZone = [NSTimeZone localTimeZone];
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
     dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];

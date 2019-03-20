@@ -12,6 +12,7 @@
 #import "DGPreviewManager.h"
 #import "DGPreviewTransitionViewController.h"
 #import "DGFileInfoViewController.h"
+#import "DGBase.h"
 
 @interface DGFileListViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
 
@@ -268,7 +269,8 @@
     }
     DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
     cell.textLabel.text = selectedFile.displayName;
-    cell.imageView.image = [selectedFile image];
+    cell.detailTextLabel.text = selectedFile.simpleInfo;
+    cell.imageView.image = selectedFile.image;
     if (selectedFile.isDirectory) {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }else {

@@ -85,7 +85,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
         
         NSString *plistUpdateTimestamp = [plister stringForKey:@"PlistUpdateTimestamp"];
         if (plistUpdateTimestamp.length) {
-            plistUpdateTimestamp = [NSDate dateWithTimeIntervalSince1970:plistUpdateTimestamp.doubleValue].dg_dateString;
+            plistUpdateTimestamp = [[NSDate dateWithTimeIntervalSince1970:plistUpdateTimestamp.doubleValue] dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
         }
         plistUpdateTimestamp = plistUpdateTimestamp?:@"unknown";
         NSString *buildConfiguration = [plister stringForKey:@"BuildConfiguration" nilOrEmpty:nilOrEmptyHandler];
@@ -100,7 +100,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
             NSString *gitLastCommitUser = [plister stringForKey:@"GitLastCommitUser" nilOrEmpty:nilOrEmptyHandler];
             NSString *gitLastCommitTimestamp = [plister stringForKey:@"GitLastCommitTimestamp"];
             if (gitLastCommitTimestamp.length) {
-                gitLastCommitTimestamp = [NSDate dateWithTimeIntervalSince1970:gitLastCommitTimestamp.doubleValue].dg_dateString;
+                gitLastCommitTimestamp = [[NSDate dateWithTimeIntervalSince1970:gitLastCommitTimestamp.doubleValue] dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
             }
             gitLastCommitTimestamp = gitLastCommitTimestamp?:@"unknown";
             
