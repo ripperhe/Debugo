@@ -61,7 +61,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
         NSMutableArray *array = [NSMutableArray array];
         
         // genaral
-        DGFBFile *sandboxFile = [[DGFBFile alloc] initWithURL:[NSURL URLWithString:NSHomeDirectory()]];
+        DGFBFile *sandboxFile = [[DGFBFile alloc] initWithURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
         DGFBFile *bundleFile = [[DGFBFile alloc] initWithURL:[[NSBundle mainBundle] bundleURL]];
         NSArray *generalArray = @[
                        @{kDGCellTitle:@"Sandbox",

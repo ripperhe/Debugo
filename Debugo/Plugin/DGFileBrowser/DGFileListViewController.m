@@ -189,11 +189,8 @@
     cell.textLabel.text = selectedFile.displayName;
     cell.detailTextLabel.text = selectedFile.simpleInfo;
     cell.imageView.image = selectedFile.image;
-    if (selectedFile.isDirectory) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }else {
-        cell.accessoryType = UITableViewCellAccessoryDetailButton;
-    }
+    cell.accessoryType = selectedFile.isDirectory?UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryDetailButton;
+    cell.accessoryView.userInteractionEnabled = !selectedFile.isDirectory;
     return cell;
 }
 
