@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 
 - (void)swithValueChanged:(UISwitch *)sender
 {
-    NSLog(@"%@\n%d", sender.dg_strongExtObj, sender.isOn);
+//    NSLog(@"%@\n%d", sender.dg_strongExtObj, sender.isOn);
     NSIndexPath *indexPath = sender.dg_strongExtObj;
 //    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];

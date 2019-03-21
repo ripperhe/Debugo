@@ -26,6 +26,21 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // navigationItem
+    __weak typeof(self) weakSelf = self;
+    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+        if (!weakSelf) return nil;
+        NSString *fileName = [NSString stringWithFormat:@"%@-info-%@.plist", [self getBundleInfo:@"CFBundleName"], [[NSDate date] dg_dateStringWithFormat:@"yyyy-MM-dd-HH-mm-ss"]];
+        NSURL *fileURL = [NSURL fileURLWithPath:[DGFilePath.cachesDirectory stringByAppendingPathComponent:fileName]];
+        // TODO: 优化内容
+        BOOL result = [weakSelf.dataArray writeToFile:fileURL.path atomically:YES];
+        if (result) {
+            return @[fileURL];
+        }
+        return @[];
+    }];
+    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
 }
 
 #pragma mark - data
@@ -131,6 +146,22 @@ static NSString *kDGCellValue = @"kDGCellValue";
     return buildInfoArray;
 }
 
+#pragma mark - event
+
+- (void)clickedCopyBtn:(UIButton *)sender {
+    if (@available(iOS 10.0, *)) {
+        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+        [feedBackGenertor impactOccurred];
+    }
+    NSIndexPath *indexPath = sender.dg_strongExtObj;
+    
+    // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
+    // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = [self.tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text;
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -147,29 +178,35 @@ static NSString *kDGCellValue = @"kDGCellValue";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kDGCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        [btn setImage:[DGBundle imageNamed:@"copy"] forState:UIControlStateNormal];
+        [btn setFrame:CGRectMake(0, 0, 44, 44)];
+        [btn addTarget:self action:@selector(clickedCopyBtn:) forControlEvents:UIControlEventTouchUpInside];
+        cell.accessoryView = btn;
     }
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
     cell.textLabel.text = data[kDGCellTitle];
     cell.detailTextLabel.text = data[kDGCellValue];
+    cell.accessoryView.dg_strongExtObj = indexPath;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    DGPopOverMenuConfiguration *config = [DGPopOverMenuConfiguration defaultConfiguration];
-    config.textAlignment = NSTextAlignmentCenter;
-    [DGPopOverMenu showForSender:cell
-                   withMenuArray:@[@"Copy"]
-                      imageArray:nil
-                   configuration:config
-                       doneBlock:^(NSInteger selectedIndex) {
-                           // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
-                           // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
-                           UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-                           pasteboard.string = cell.detailTextLabel.text;
-                       }
-                    dismissBlock:nil];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    DGPopOverMenuConfiguration *config = [DGPopOverMenuConfiguration defaultConfiguration];
+//    config.textAlignment = NSTextAlignmentCenter;
+//    [DGPopOverMenu showForSender:cell
+//                   withMenuArray:@[@"Copy"]
+//                      imageArray:nil
+//                   configuration:config
+//                       doneBlock:^(NSInteger selectedIndex) {
+//                           // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
+//                           // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
+//                           UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+//                           pasteboard.string = cell.detailTextLabel.text;
+//                       }
+//                    dismissBlock:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
