@@ -10,33 +10,21 @@
 #import "DGFileListViewController.h"
 #import "DGFileParser.h"
 #import "DGPreviewManager.h"
-#import "DGDefaultPreviewViewController.h"
 #import "DGFileInfoViewController.h"
 #import "DGBase.h"
 
 @interface DGFileListViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
 
-// TableView
-@property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic, strong) UILocalizedIndexedCollation *collation;
+// Current directory
+@property (nonatomic, strong) DGFBFile *file;
 
 // Data
 @property (nonatomic, strong) NSArray <DGFBFile *>*files;
-@property (nonatomic, strong) NSURL *initialURL;
-@property (nonatomic, weak) DGFileParser *parser;
-@property (nonatomic, strong) DGPreviewManager *previewManager;
 @property (nonatomic, strong) NSMutableArray <NSMutableArray <DGFBFile *>*>*sections;
 
 // Search controller
-@property (nonatomic, strong) NSArray <DGFBFile *>*filteredFiles;
 @property (nonatomic, strong) UISearchController *searchController;
-
-// Navigation
-@property (nonatomic, assign) BOOL showCancelButton;
-
-// Fix
-@property (nonatomic, assign) BOOL originalNavigationBarTranslucent;
-@property (nonatomic, assign) BOOL hasChangeNavigationBarTranslucent;
+@property (nonatomic, strong) NSArray <DGFBFile *>*filteredFiles;
 
 @end
 
@@ -44,138 +32,86 @@
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithInitialURL:(NSURL *)initialURL
-{
-    return [self initWithInitialURL:initialURL showCancelButton:YES];
-}
-
-- (instancetype)initWithInitialURL:(NSURL *)initialURL showCancelButton:(BOOL)showCancelButton
-{
+- (instancetype)initWithInitialURL:(NSURL *)initialURL configuration:(DGFileConfiguration *)configuration {
     self = [super init];
     if (self) {
-        
-        // TODO: Search 新方案
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-
-        // Set initial path
-        self.initialURL = initialURL;
-        self.title = initialURL.lastPathComponent;
-        
-        // Set search controller delegates
-        self.searchController.searchResultsUpdater = self;
-        self.searchController.searchBar.delegate = self;
-        self.searchController.delegate = self;
-        
-        // navigationItem
-        __weak typeof(self) weakSelf = self;
-        DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
-            return @[weakSelf.initialURL];
-        }];
-
-        self.showCancelButton = showCancelButton;
-        if (showCancelButton) {
-            // Add dismiss button
-            UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
-            self.navigationItem.rightBarButtonItems = @[dismissButton, shareBarButtonItem];
-        }else {
-            self.navigationItem.rightBarButtonItem = shareBarButtonItem;
-        }
-        
-        // For set lineBreakMode
-        UILabel *titleLabel = [UILabel new];
-        titleLabel.text = self.title;
-        titleLabel.font = [UIFont boldSystemFontOfSize:17];
-        titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-        self.navigationItem.titleView = titleLabel;
+        self.file = [[DGFBFile alloc] initWithURL:initialURL];
+        self.configuration = configuration;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self tableView];
-    [self prepareData];
-    
-    // Set search bar
-    self.tableView.tableHeaderView = self.searchController.searchBar;
+
+    self.definesPresentationContext = YES;
+
+    // navigationItem
+    __weak typeof(self) weakSelf = self;
+    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+        return @[weakSelf.file.fileURL];
+    }];
+    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
+
+    // Set search controller
+    if (@available(iOS 11.0, *)) {
+        self.navigationItem.searchController = self.searchController;
+        self.navigationItem.hidesSearchBarWhenScrolling = NO;
+        // [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    }else {
+        self.tableView.tableHeaderView = self.searchController.searchBar;
+    }
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.delegate = self;
+
+    // Set tableView
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     // Register for 3D touch
     [self registerFor3DTouch];
+    
+    [self prepareData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    // Scroll to hide search bar
-    self.tableView.contentOffset = CGPointMake(0, self.searchController.searchBar.frame.size.height);
-    
     // Make sure navigation bar is visible
     if (self.navigationController.isNavigationBarHidden) {
         self.navigationController.navigationBarHidden = NO;
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    // Fix
-    if (self.hasChangeNavigationBarTranslucent) {
-        self.navigationController.navigationBar.translucent = self.originalNavigationBarTranslucent;
-        self.hasChangeNavigationBarTranslucent = NO;
-    }
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    self.tableView.frame = self.view.bounds;
-}
-
-#pragma mark - event
-- (void)dismiss:(UIBarButtonItem *)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma mark - Data
 
-- (void)prepareData
-{
-    if (self.initialURL) {
-        __weak typeof(self) weakSelf = self;
-        self.files = [self.parser filesForDirectory:self.initialURL errorHandler:^(NSError *error) {
-            if (!error) return;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-                [alertController addAction:OKAction];
-                [weakSelf presentViewController:alertController animated:YES completion:nil];
-            });
-        }];
-        [self indexFiles];
-    }
+- (void)prepareData {
+    if (!self.file.fileURL) return;
+    
+    __weak typeof(self) weakSelf = self;
+    self.files = [DGFileParser filesForDirectory:self.file.fileURL configuration:self.configuration errorHandler:^(NSError *error) {
+        if (!error) return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction:OKAction];
+            [weakSelf presentViewController:alertController animated:YES completion:nil];
+        });
+    }];
+    [self indexFiles];
 }
 
-- (void)indexFiles
-{
+- (void)indexFiles {
     [self.sections removeAllObjects];
-    for (int i = 0; i < self.collation.sectionTitles.count; i++) {
-        NSMutableArray *array = [NSMutableArray array];
-        [self.sections addObject:array];
-    }
-    NSArray *sortedObjects = [self.collation sortedArrayFromArray:self.files collationStringSelector:@selector(displayName)];
-    for (id object in sortedObjects) {
-        NSInteger sectionNumber = [self.collation sectionForObject:object collationStringSelector:@selector(displayName)];
-        [[self.sections objectAtIndex:sectionNumber] addObject:object];
-    }
+    
+    NSArray *sortedObjects = [self.files sortedArrayUsingComparator:^NSComparisonResult(DGFBFile *  _Nonnull obj1, DGFBFile *  _Nonnull obj2) {
+        return [obj1.displayName compare:obj2.displayName];
+    }];
+    
+    [self.sections addObject:sortedObjects.mutableCopy];
 }
 
-- (DGFBFile *)fileForIndexPath:(NSIndexPath *)indexPath
-{
+- (DGFBFile *)fileForIndexPath:(NSIndexPath *)indexPath {
     DGFBFile *file = nil;
     if (self.searchController.isActive) {
         file = [self.filteredFiles objectAtIndex:indexPath.row];
@@ -194,39 +130,14 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - setter
+
+- (void)setFile:(DGFBFile *)file {
+    _file = file;
+    self.title = file.displayName;
+}
+
 #pragma mark - getter
-- (UITableView *)tableView
-{
-    if (!_tableView) {
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        [self.view addSubview:tableView];
-        _tableView = tableView;
-    }
-    return _tableView;
-}
-
-- (UILocalizedIndexedCollation *)collation
-{
-    if (!_collation) {
-        _collation = [UILocalizedIndexedCollation currentCollation];
-    }
-    return _collation;
-}
-
-- (DGFileParser *)parser
-{
-    return DGFileParser.shareInstance;
-}
-
-- (DGPreviewManager *)previewManager
-{
-    if (!_previewManager) {
-        _previewManager = [[DGPreviewManager alloc] init];
-    }
-    return _previewManager;
-}
 
 - (NSMutableArray<NSMutableArray<DGFBFile *> *> *)sections
 {
@@ -241,7 +152,6 @@
     if (!_searchController) {
         UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-        searchController.searchBar.backgroundColor = UIColor.whiteColor;
         searchController.dimsBackgroundDuringPresentation = NO;
         _searchController = searchController;
     }
@@ -296,28 +206,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
-    self.searchController.active = NO;
+    DGLog(@"\n%@", selectedFile.fileURL.path);
+    UIViewController *nextViewController = nil;
     if (selectedFile.isDirectory) {
-        DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:selectedFile.fileURL showCancelButton:self.showCancelButton];
-        fileListViewController.allowEditing = self.allowEditing;
-        fileListViewController.didSelectFile = self.didSelectFile;
-        fileListViewController.databaseFileUIConfig = self.databaseFileUIConfig;
-        [self.navigationController pushViewController:fileListViewController animated:YES];
+        DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:selectedFile.fileURL configuration:self.configuration];
+        nextViewController = fileListViewController;
     }else{
-        if (self.didSelectFile) {
-            [self dismiss:nil];
-            self.didSelectFile(selectedFile);
+        if (self.configuration.didSelectFileBlock) {
+            self.configuration.didSelectFileBlock(selectedFile);
         }else{
-            DGDatabaseUIConfig *config = nil;
-            if (selectedFile.type == DGFBFileTypeDB && self.databaseFileUIConfig) {
-                config = self.databaseFileUIConfig(selectedFile);
-            }
-            UIViewController *filePreview = [self.previewManager previewViewControllerForFile:selectedFile fromNavigation:YES uiConfig:config];
-            [self.navigationController pushViewController:filePreview animated:YES];
+            UIViewController *filePreview = [DGPreviewManager previewViewControllerForFile:selectedFile configuration:self.configuration];
+            nextViewController = filePreview;
         }
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (nextViewController) {
+        if (self.searchController.isActive) {
+            self.searchController.active = NO;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController pushViewController:nextViewController animated:YES];
+            });
+        }else {
+            [self.navigationController pushViewController:nextViewController animated:YES];
+        }
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -327,7 +242,7 @@
     }
     
     if ([self.sections objectAtIndex:section].count > 0) {
-        return [self.collation.sectionTitles objectAtIndex:section];
+        return nil;
     }else{
         return nil;
     }
@@ -338,7 +253,7 @@
     if (self.searchController.isActive) {
         return nil;
     }
-    return self.collation.sectionIndexTitles;
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
@@ -346,7 +261,7 @@
     if (self.searchController.isActive) {
         return 0;
     }
-    return [self.collation sectionForSectionIndexTitleAtIndex:index];
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -372,7 +287,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.allowEditing;
+    return self.configuration.allowEditing;
 }
 
 #pragma mark - UIViewControllerPreviewingDelegate
@@ -392,13 +307,9 @@
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
         if (indexPath) {
             DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
-            DGDatabaseUIConfig *config = nil;
-            if (selectedFile.type == DGFBFileTypeDB && self.databaseFileUIConfig) {
-                config = self.databaseFileUIConfig(selectedFile);
-            }
-            previewingContext.sourceRect = [self.tableView rectForRowAtIndexPath:indexPath];
             if (selectedFile.isDirectory == NO) {
-                return [self.previewManager previewViewControllerForFile:selectedFile fromNavigation:NO uiConfig:config];
+                previewingContext.sourceRect = [self.tableView rectForRowAtIndexPath:indexPath];
+                return [DGPreviewManager previewViewControllerForFile:selectedFile configuration:self.configuration];
             }
         }
     }
@@ -407,30 +318,16 @@
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
 {
-    DGDefaultPreviewViewController *previewTransitionViewController = (DGDefaultPreviewViewController *)viewControllerToCommit;
-    if ([previewTransitionViewController isKindOfClass:[DGDefaultPreviewViewController class]]) {
-        [self.navigationController pushViewController:previewTransitionViewController.quickLookPreviewController animated:YES];
-    }else{
-        [self.navigationController pushViewController:viewControllerToCommit animated:YES];
-    }
+    [self.navigationController pushViewController:viewControllerToCommit animated:YES];
 }
 
 #pragma mark - UISearchControllerDelegate
 - (void)willPresentSearchController:(UISearchController *)searchController
 {
-    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-    // Fix searchbar 消失的问题
-    // 参考：https://blog.csdn.net/yejiajun945/article/details/51698603
-    self.originalNavigationBarTranslucent = self.navigationController.navigationBar.translucent;
-    self.hasChangeNavigationBarTranslucent = YES;
-    self.navigationController.navigationBar.translucent = YES;
 }
 
 - (void)willDismissSearchController:(UISearchController *)searchController
 {
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.navigationController.navigationBar.translucent = self.originalNavigationBarTranslucent;
-    self.hasChangeNavigationBarTranslucent = NO;
 }
 
 #pragma mark - UISearchBarDelegate

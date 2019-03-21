@@ -1,12 +1,12 @@
 //
-//  DGDatabaseUIConfig.m
+//  DGDatabasePreviewConfiguration.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/1/16.
 //  Copyright © 2019 ripper. All rights reserved.
 //
 
-#import "DGDatabaseUIConfig.h"
+#import "DGDatabasePreviewConfiguration.h"
 
 #define isValidRowHeight(h) (h>=30.0&&h<=100.0?YES:NO)
 #define isValidColumnWidth(w) (w>=50.0&&w<=300.0?YES:NO)
@@ -14,7 +14,7 @@
 static CGFloat kDefaultRowHeight = 40.0;
 static CGFloat kDefaultColumnWidth = 100.0;
 
-@implementation DGDatabaseUIConfig
+@implementation DGDatabasePreviewConfiguration
 
 - (instancetype)init
 {
@@ -42,30 +42,30 @@ static CGFloat kDefaultColumnWidth = 100.0;
     _columnWidth = columnWidth;
 }
 
-- (DGDatabaseTableUIConfig *)tableUIConfigForTableName:(NSString *)tableName
+- (DGDatabaseTablePreviewConfiguration *)tablePreviewConfigurationForTableName:(NSString *)tableName
 {
     if (!tableName.length) return nil;
     
-    DGDatabaseTableUIConfig *tableUIConfig = [self.specialConfigForTable objectForKey:tableName];
-    if (!tableUIConfig) {
-        tableUIConfig = [DGDatabaseTableUIConfig new];
-        tableUIConfig.rowHeight = self.rowHeight;
-        tableUIConfig.columnWidth = self.columnWidth;
+    DGDatabaseTablePreviewConfiguration *tablePreviewConfiguration = [self.specialConfigurationForTable objectForKey:tableName];
+    if (!tablePreviewConfiguration) {
+        tablePreviewConfiguration = [DGDatabaseTablePreviewConfiguration new];
+        tablePreviewConfiguration.rowHeight = self.rowHeight;
+        tablePreviewConfiguration.columnWidth = self.columnWidth;
     }else{
-        if (!isValidRowHeight(tableUIConfig.rowHeight)) {
-            tableUIConfig.rowHeight = self.rowHeight;
+        if (!isValidRowHeight(tablePreviewConfiguration.rowHeight)) {
+            tablePreviewConfiguration.rowHeight = self.rowHeight;
         }
-        if (!isValidColumnWidth(tableUIConfig.columnWidth)) {
-            tableUIConfig.columnWidth = self.columnWidth;
+        if (!isValidColumnWidth(tablePreviewConfiguration.columnWidth)) {
+            tablePreviewConfiguration.columnWidth = self.columnWidth;
         }
     }
-    return tableUIConfig;
+    return tablePreviewConfiguration;
 }
 
 
 @end
 
-@implementation DGDatabaseTableUIConfig
+@implementation DGDatabaseTablePreviewConfiguration
 
 
 - (instancetype)init

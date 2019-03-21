@@ -12,13 +12,13 @@
 
 @implementation DGFBFile
 
-- (instancetype)initWithFileURL:(NSURL *)fileURL
+- (instancetype)initWithURL:(NSURL *)URL
 {
     if (self = [super init]) {
-        self.fileURL = fileURL;
-        BOOL isDirectory = [self checkDirectoryWithURL:fileURL];
+        self.fileURL = URL;
+        BOOL isDirectory = [self checkDirectoryWithURL:URL];
         self.isDirectory = isDirectory;
-        self.fileAttributes = [self getFileAttributesWithURL:self.fileURL];
+        self.fileAttributes = [self getFileAttributesWithURL:URL];
         if (self.isDirectory) {
             self.fileExtension = nil;
             self.type = DGFBFileTypeDirectory;
@@ -26,7 +26,7 @@
             self.fileExtension = self.fileURL.pathExtension;
             self.type = [self typeForPathExtension:self.fileExtension];
         }
-        self.displayName = fileURL.lastPathComponent;
+        self.displayName = URL.lastPathComponent;
     }
     return self;
 }
@@ -136,13 +136,25 @@
 }
 
 - (NSString *)simpleInfo {
-    if (!self.fileAttributes.fileModificationDate) {
-        return nil;
-    }
+    if (!self.fileAttributes.fileModificationDate) return nil;
     
     NSString *dateInfo = [self.fileAttributes.fileModificationDate dg_dateStringWithFormat:@"yyyy/MM/dd"];
+    if ([dateInfo isEqualToString:@"1970/01/01"]) return @"Unknown";
+    
+    if (self.isDirectory) return dateInfo;
+    
     NSString *sizeInfo = [@(self.fileAttributes.fileSize) dg_sizeString];
     return [dateInfo stringByAppendingFormat:@" - %@", sizeInfo];
+}
+
+#pragma mark - QLPreviewItem
+
+- (NSURL *)previewItemURL {
+    return self.fileURL;
+}
+
+- (NSString *)previewItemTitle {
+    return self.displayName;
 }
 
 @end

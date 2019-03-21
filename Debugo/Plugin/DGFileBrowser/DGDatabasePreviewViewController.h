@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DGFBFile.h"
-#import "DGDatabaseUIConfig.h"
+#import "DGDatabasePreviewConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,12 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface DGDatabasePreviewViewController : UITableViewController
 
-@property (nonatomic, strong, readonly) DGFBFile *file;
-
-+ (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithStyle:(UITableViewStyle)style NS_UNAVAILABLE;
-- (instancetype)initWithFile:(DGFBFile *)file databaseUIConfig:(nullable DGDatabaseUIConfig *)uiConfig;
+@property (nonatomic, strong) DGFBFile *file;
+@property (nonatomic, strong) DGDatabasePreviewConfiguration *previewConfiguration;
 
 @end
 

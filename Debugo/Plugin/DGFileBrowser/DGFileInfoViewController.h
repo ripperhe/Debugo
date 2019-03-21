@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGFileInfoViewController : UITableViewController
 
-@property (nonatomic, strong) DGFBFile *file;
+@property (nonatomic, strong, readonly) DGFBFile *file;
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

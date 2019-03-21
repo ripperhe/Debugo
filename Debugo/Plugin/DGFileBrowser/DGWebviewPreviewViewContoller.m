@@ -24,21 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self webView];
-    
     // Add share button
     __weak typeof(self) weakSelf = self;
     DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         return @[weakSelf.file.fileURL];
     }];
     self.navigationItem.rightBarButtonItem = shareBarButtonItem;
-
-    // For set lineBreakMode
-    UILabel *titleLabel = [UILabel new];
-    titleLabel.text = self.title;
-    titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.navigationItem.titleView = titleLabel;
+    
+    [self webView];
 }
 
 - (void)viewWillLayoutSubviews
@@ -49,14 +42,10 @@
 }
 
 #pragma mark - setter
-- (void)setFile:(DGFBFile *)file
-{
+- (void)setFile:(DGFBFile *)file {
     _file = file;
-    
-    if (file.displayName.length) {
-        self.title = file.displayName;
-        [self processForDisplay];
-    }
+    self.title = file.displayName;
+    [self processForDisplay];
 }
 
 #pragma mark - getter

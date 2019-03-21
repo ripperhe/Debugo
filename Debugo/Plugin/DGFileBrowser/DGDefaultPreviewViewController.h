@@ -11,7 +11,6 @@
 #import <QuickLook/QuickLook.h>
 #import "DGFBFile.h"
 
-@interface DGDefaultPreviewViewController : UIViewController
+@interface DGDefaultPreviewViewController : QLPreviewController
 @property (nonatomic, strong) DGFBFile *file;
-@property (nonatomic, strong) QLPreviewController *quickLookPreviewController;
 @end

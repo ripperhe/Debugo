@@ -141,10 +141,10 @@
 }
 
 // 自定义显示数据库文件时的宽高
-- (DGDatabaseUIConfig *)debugoDatabaseUIConfigForDatabaseURL:(NSURL *)databaseURL
+- (DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL
 {
-    if ([databaseURL.path.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
-        DGDatabaseTableUIConfig *errorTableConfig = [DGDatabaseTableUIConfig new];
+    if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
+        DGDatabaseTablePreviewConfiguration *errorTableConfig = [DGDatabaseTablePreviewConfiguration new];
         errorTableConfig.specialWidthForColumn = @{
                                                    @"pk_createTime":@(160.0),
                                                    @"pk_updateTime":@(160.0),
@@ -154,8 +154,8 @@
                                                    @"productWxUrl":@(180.0),
                                                    };
         
-        DGDatabaseUIConfig *config = [DGDatabaseUIConfig new];
-        config.specialConfigForTable = @{
+        DGDatabasePreviewConfiguration *config = [DGDatabasePreviewConfiguration new];
+        config.specialConfigurationForTable = @{
                                          @"error_info":errorTableConfig,
                                          };
         return config;

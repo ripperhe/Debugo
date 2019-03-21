@@ -13,11 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGDatabaseTableInfoViewController : UITableViewController
 
-@property (nonatomic, strong, readonly) DGDatabaseTableInfo *table;
+@property (nonatomic, strong) DGDatabaseTableInfo *table;
 
-+ (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithStyle:(UITableViewStyle)style NS_UNAVAILABLE;
 - (instancetype)initWithTable:(DGDatabaseTableInfo *)table;
 
 @end

@@ -12,7 +12,7 @@
 #import "NSDate+Debugo.h"
 
 #if DEBUG
-    #define DGLog(format, ...)  do { fprintf(stderr,"[%s ● %s ● %d] %s ☄️ %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String]);} while (0)
+    #define DGLog(format, ...)  do { fprintf(stderr,"☄️ [%s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String]);} while (0)
 #else
     #define DGLog(...)
 #endif

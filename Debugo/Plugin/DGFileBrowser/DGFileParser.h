@@ -8,16 +8,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGFBFile.h"
+#import "DGFileConfiguration.h"
 
 @interface DGFileParser : NSObject
 
-@property (nonatomic, strong) NSArray <NSString *>*excludesFileExtensions;
-@property (nonatomic, strong) NSArray <NSURL *>*excludesFileURLs;
-
-+ (instancetype)shareInstance;
-- (NSFileManager *)fileManager;
-- (NSURL *)documentsURL;
-- (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
++ (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
 
 @end

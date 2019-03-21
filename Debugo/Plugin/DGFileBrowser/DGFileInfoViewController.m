@@ -22,7 +22,6 @@ static NSString *kCellValue = @"value";
 @implementation DGFileInfoViewController
 
 - (instancetype)initWithFile:(DGFBFile *)file {
-    NSAssert(!file.isDirectory, @"不支持文件夹类型");
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         self->_file = file;
     }
@@ -33,12 +32,6 @@ static NSString *kCellValue = @"value";
     [super viewDidLoad];
     
     self.title = self.file.displayName;
-    // For set lineBreakMode
-    UILabel *titleLabel = [UILabel new];
-    titleLabel.text = self.title;
-    titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.navigationItem.titleView = titleLabel;
 
     self.dataArray = @[
                        @[
@@ -75,7 +68,7 @@ static NSString *kCellValue = @"value";
         label.text = @"❌ File or directory do not exist!";
         self.tableView.tableHeaderView = label;
     }else {
-        self.tableView.tableHeaderView = nil;
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     }
 }
 

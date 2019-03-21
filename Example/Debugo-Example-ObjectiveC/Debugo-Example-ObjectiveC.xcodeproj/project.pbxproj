@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
 		C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGFilePath.m */; };
+		C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFileConfiguration.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
@@ -63,7 +64,7 @@
 		C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D3221D2B460098644E /* DGDatabaseGridView.m */; };
 		C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */; };
 		C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */; };
-		C9B45723221D2B460098644E /* DGDatabaseUIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */; };
+		C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D6221D2B460098644E /* DGDatabasePreviewConfiguration.m */; };
 		C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */; };
 		C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */; };
 		C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */; };
@@ -87,6 +88,8 @@
 		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92F8C78221FA1E00080C156 /* DGFilePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePath.h; sourceTree = "<group>"; };
 		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
+		C934EDCB224369C400B6979C /* DGFileConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileConfiguration.h; sourceTree = "<group>"; };
+		C934EDCC224369C400B6979C /* DGFileConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileConfiguration.m; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -186,7 +189,7 @@
 		C9B456C9221D2B460098644E /* DGFileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileInfoViewController.h; sourceTree = "<group>"; };
 		C9B456CB221D2B460098644E /* DGDatabaseTableContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableContentViewController.h; sourceTree = "<group>"; };
 		C9B456CC221D2B460098644E /* DGDatabaseTableInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableInfoViewController.h; sourceTree = "<group>"; };
-		C9B456CD221D2B460098644E /* DGDatabaseUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseUIConfig.h; sourceTree = "<group>"; };
+		C9B456CD221D2B460098644E /* DGDatabasePreviewConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabasePreviewConfiguration.h; sourceTree = "<group>"; };
 		C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseContentParser.h; sourceTree = "<group>"; };
 		C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableInfo.m; sourceTree = "<group>"; };
 		C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseLeftTableViewCell.m; sourceTree = "<group>"; };
@@ -195,7 +198,7 @@
 		C9B456D3221D2B460098644E /* DGDatabaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseGridView.m; sourceTree = "<group>"; };
 		C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseColumnInfo.m; sourceTree = "<group>"; };
 		C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableInfoViewController.m; sourceTree = "<group>"; };
-		C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseUIConfig.m; sourceTree = "<group>"; };
+		C9B456D6221D2B460098644E /* DGDatabasePreviewConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabasePreviewConfiguration.m; sourceTree = "<group>"; };
 		C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableContentViewController.m; sourceTree = "<group>"; };
 		C9B456D8221D2B460098644E /* DGDatabaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseOperation.h; sourceTree = "<group>"; };
 		C9B456D9221D2B460098644E /* DGDatabaseLeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseLeftTableViewCell.h; sourceTree = "<group>"; };
@@ -583,6 +586,8 @@
 			children = (
 				C9B456E3221D2B460098644E /* DGFBFile.h */,
 				C9B456C3221D2B460098644E /* DGFBFile.m */,
+				C934EDCB224369C400B6979C /* DGFileConfiguration.h */,
+				C934EDCC224369C400B6979C /* DGFileConfiguration.m */,
 				C9B456E0221D2B460098644E /* DGFileParser.h */,
 				C9B456C0221D2B460098644E /* DGFileParser.m */,
 				C9B456DF221D2B460098644E /* DGFileBrowser.h */,
@@ -625,8 +630,8 @@
 				C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */,
 				C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */,
 				C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */,
-				C9B456CD221D2B460098644E /* DGDatabaseUIConfig.h */,
-				C9B456D6221D2B460098644E /* DGDatabaseUIConfig.m */,
+				C9B456CD221D2B460098644E /* DGDatabasePreviewConfiguration.h */,
+				C9B456D6221D2B460098644E /* DGDatabasePreviewConfiguration.m */,
 			);
 			path = DatabasePreview;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				C9B456FC221D2B460098644E /* DGCache.m in Sources */,
 				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
 				C9B45703221D2B460098644E /* DGTestActionViewController.m in Sources */,
+				C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */,
 				C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */,
 				C9B4570C221D2B460098644E /* DGThread.m in Sources */,
 				C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */,
@@ -857,7 +863,7 @@
 				C9B4571A221D2B460098644E /* DGFBFile.m in Sources */,
 				C9B45707221D2B460098644E /* DGQuickLoginViewController.m in Sources */,
 				C9B45712221D2B460098644E /* DGSuspensionView.m in Sources */,
-				C9B45723221D2B460098644E /* DGDatabaseUIConfig.m in Sources */,
+				C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */,
 				C9B456F8221D2B460098644E /* DGAssistant.m in Sources */,
 				C9B4570B221D2B460098644E /* DGPopOverMenu.m in Sources */,
 				C9B4572C221D2B460098644E /* DGTouchViewController.m in Sources */,
@@ -946,7 +952,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -999,7 +1005,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

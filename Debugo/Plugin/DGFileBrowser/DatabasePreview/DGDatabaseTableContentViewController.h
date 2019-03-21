@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DGDatabaseOperation.h"
-#import "DGDatabaseUIConfig.h"
+#import "DGDatabasePreviewConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tableUIConfig:(nullable DGDatabaseTableUIConfig *)tableUIConfig;
+- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tablePreviewConfiguration:(nullable DGDatabaseTablePreviewConfiguration *)tablePreviewConfiguration;
 
 @end
 

@@ -9,49 +9,12 @@
 
 #import "DGFileParser.h"
 
-@interface DGFileParser()
-
-@end
-
 @implementation DGFileParser
 
-static DGFileParser *_instance;
-+ (instancetype)shareInstance
++ (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler
 {
-    if (!_instance) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            _instance = [[DGFileParser alloc] init];
-        });
-    }
-    return _instance;
-}
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
-    });
-    return _instance;
-}
-
-- (NSFileManager *)fileManager
-{
-    return NSFileManager.defaultManager;
-}
-
-- (NSURL *)documentsURL
-{
-    return [[self.fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-}
-
-- (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler
-{
-    NSLog(@"%@", direcotryURL.path);
-
     BOOL isDirectory = NO;
-    BOOL isExist = [self.fileManager fileExistsAtPath:direcotryURL.path isDirectory:&isDirectory];
+    BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:direcotryURL.path isDirectory:&isDirectory];
     if (!isExist || !isDirectory) {
         return nil;
     }
@@ -61,7 +24,7 @@ static DGFileParser *_instance;
     
     // get contents
     NSError *error;
-    fileURLs = [self.fileManager contentsOfDirectoryAtURL:direcotryURL includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+    fileURLs = [NSFileManager.defaultManager contentsOfDirectoryAtURL:direcotryURL includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
     if (error) {
         NSLog(@"%@ %s error:%@", self, __func__, error);
         errorHandler(error);
@@ -70,13 +33,19 @@ static DGFileParser *_instance;
     
     // parse
     for (NSURL *URL in fileURLs) {
-        DGFBFile *file = [[DGFBFile alloc] initWithFileURL:URL];
-        if (file.fileExtension.length) {
-            if ([self.excludesFileExtensions containsObject:file.fileExtension]) {
+        DGFBFile *file = [[DGFBFile alloc] initWithURL:URL];
+        
+        if (configuration.allowedFileTypes.count) {
+            if (![configuration.allowedFileTypes containsObject:@(file.type)]) {
                 continue;
             }
         }
-        if ([self.excludesFileURLs containsObject:file.fileURL]) {
+        if (file.fileExtension.length) {
+            if ([configuration.excludesFileExtensions containsObject:file.fileExtension]) {
+                continue;
+            }
+        }
+        if ([configuration.excludesFileURLs containsObject:file.fileURL]) {
             continue;
         }
         if (file.displayName.length) {
@@ -90,6 +59,7 @@ static DGFileParser *_instance;
     }];
     return files;
 }
+
 
 
 @end

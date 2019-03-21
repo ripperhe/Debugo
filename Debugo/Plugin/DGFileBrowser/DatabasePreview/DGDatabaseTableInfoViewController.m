@@ -22,8 +22,9 @@ static NSString *kCellValue = @"value";
 
 - (instancetype)initWithTable:(DGDatabaseTableInfo *)table
 {
-    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-        self->_table = table;
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        self.table = table;
     }
     return self;
 }
@@ -31,14 +32,6 @@ static NSString *kCellValue = @"value";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = self.table.name;
-    // For set lineBreakMode
-    UILabel *titleLabel = [UILabel new];
-    titleLabel.text = self.title;
-    titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.navigationItem.titleView = titleLabel;
-
     self.dataArray = @[
                        @{kCellTitle:@"name", kCellValue:self.table.name?:@"null"},
                        @{kCellTitle:@"tbl_name", kCellValue:self.table.tbl_name?:@"null"},
@@ -48,6 +41,11 @@ static NSString *kCellValue = @"value";
                        ];
 }
 
+- (void)setTable:(DGDatabaseTableInfo *)table {
+    _table = table;
+    
+    self.title = table.name;
+}
 
 #pragma mark - Table view data source
 

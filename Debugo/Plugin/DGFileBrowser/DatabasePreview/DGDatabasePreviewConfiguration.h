@@ -1,5 +1,5 @@
 //
-//  DGDatabaseUIConfig.h
+//  DGDatabasePreviewConfiguration.h
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/1/16.
@@ -7,23 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DGDatabaseTableUIConfig;
+@class DGDatabaseTablePreviewConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGDatabaseUIConfig : NSObject
+@interface DGDatabasePreviewConfiguration : NSObject
 
 @property (nonatomic, assign) CGFloat rowHeight;
 @property (nonatomic, assign) CGFloat columnWidth;
 /** key为table名字，value对这个table的个性配置；没有设置则使用默认配置 */
-@property (nonatomic, strong) NSDictionary <NSString *, DGDatabaseTableUIConfig *>*specialConfigForTable;
+@property (nonatomic, strong) NSDictionary <NSString *, DGDatabaseTablePreviewConfiguration *>*specialConfigurationForTable;
 
-- (DGDatabaseTableUIConfig *)tableUIConfigForTableName:(NSString *)tableName;
+- (DGDatabaseTablePreviewConfiguration *)tablePreviewConfigurationForTableName:(NSString *)tableName;
 
 @end
 
 
-@interface DGDatabaseTableUIConfig : NSObject
+@interface DGDatabaseTablePreviewConfiguration : NSObject
 
 @property (nonatomic, assign) CGFloat rowHeight;
 @property (nonatomic, assign) CGFloat columnWidth;

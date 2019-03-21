@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "DebugoEnable.h"
 #import "DGConfiguration.h"
-#import "DGDatabaseUIConfig.h"
+#import "DGDatabasePreviewConfiguration.h"
 @class DGDebugo;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -46,7 +46,7 @@ extern NSString *const DGDebugoDidLogoutSuccessNotification;
 /** 使用 login bubble 选中列表中的某个账号时，会调用这个代理方法，并传回账号信息，你需要在这个代理方法实现自动登录 */
 - (void)debugoLoginAccount:(DGAccount *)account;
 /** 需要自行控制显示数据库文件的表的行高、列宽的时候需要实现该代理方法 */
-- (nullable DGDatabaseUIConfig *)debugoDatabaseUIConfigForDatabaseURL:(NSURL *)databaseURL;
+- (nullable DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL;
 
 @end
 

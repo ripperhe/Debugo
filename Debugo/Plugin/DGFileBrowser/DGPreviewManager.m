@@ -8,15 +8,20 @@
 //
 
 #import "DGPreviewManager.h"
+#import "DGFileListViewController.h"
 #import "DGWebviewPreviewViewContoller.h"
 #import "DGDefaultPreviewViewController.h"
 #import "DGDatabasePreviewViewController.h"
 
 @implementation DGPreviewManager
 
-- (UIViewController *)previewViewControllerForFile:(DGFBFile *)file fromNavigation:(BOOL)fromNavigation uiConfig:(DGDatabaseUIConfig *)uiConfig
-{
++ (UIViewController *)previewViewControllerForFile:(DGFBFile *)file configuration:(DGFileConfiguration *)configuration {
     switch (file.type) {
+        case DGFBFileTypeDirectory: {
+            DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:file.fileURL configuration:configuration];
+            return fileListViewController;
+        }
+            break;
         case DGFBFileTypePLIST:
         case DGFBFileTypeJSON: {
             DGWebviewPreviewViewContoller *webviewPreviewViewContoller = [DGWebviewPreviewViewContoller new];
@@ -25,7 +30,9 @@
         }
             break;
         case DGFBFileTypeDB: {
-            DGDatabasePreviewViewController *databasePreviewViewController = [[DGDatabasePreviewViewController alloc] initWithFile:file databaseUIConfig:uiConfig];
+            DGDatabasePreviewViewController *databasePreviewViewController = [DGDatabasePreviewViewController new];
+            databasePreviewViewController.file = file;
+            databasePreviewViewController.previewConfiguration = configuration.databaseFilePreviewConfigurationBlock?configuration.databaseFilePreviewConfigurationBlock(file):nil;
             return databasePreviewViewController;
         }
             break;

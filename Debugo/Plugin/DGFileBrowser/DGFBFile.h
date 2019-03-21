@@ -7,8 +7,8 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <QuickLook/QuickLook.h>
 
 typedef NS_ENUM(NSUInteger, DGFBFileType) {
     DGFBFileTypeDirectory, // directory
@@ -23,8 +23,7 @@ typedef NS_ENUM(NSUInteger, DGFBFileType) {
     DGFBFileTypeDefault, // file
 };
 
-
-@interface DGFBFile : NSObject
+@interface DGFBFile : NSObject<QLPreviewItem>
 
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, assign) BOOL isDirectory;
@@ -35,7 +34,7 @@ typedef NS_ENUM(NSUInteger, DGFBFileType) {
 @property (nonatomic, readonly) UIImage *image;
 @property (nullable, nonatomic, readonly) NSString *simpleInfo;
 
-- (instancetype)initWithFileURL:(NSURL *)fileURL;
+- (instancetype)initWithURL:(NSURL *)URL;
 - (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
 
 @end

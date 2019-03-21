@@ -21,18 +21,18 @@
 
 @property (nonatomic, strong) DGDatabaseOperation *dbOperation;
 @property (nonatomic, strong) DGDatabaseTableInfo *table;
-@property (nonatomic, strong) DGDatabaseTableUIConfig *tableUIConfig;
+@property (nonatomic, strong) DGDatabaseTablePreviewConfiguration *tablePreviewConfiguration;
 
 @end
 
 @implementation DGDatabaseTableContentViewController
 
-- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tableUIConfig:(DGDatabaseTableUIConfig *)tableUIConfig
+- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tablePreviewConfiguration:(DGDatabaseTablePreviewConfiguration *)tablePreviewConfiguration
 {
     if (self = [super init]) {
         self.dbOperation = operation;
         self.table = table;
-        self.tableUIConfig = tableUIConfig ?: [DGDatabaseTableUIConfig new];
+        self.tablePreviewConfiguration = tablePreviewConfiguration ?: [DGDatabaseTablePreviewConfiguration new];
     }
     return self;
 }
@@ -42,12 +42,6 @@
     
     self.title = self.table.name;
     self.view.backgroundColor = UIColor.whiteColor;
-    // For set lineBreakMode
-    UILabel *titleLabel = [UILabel new];
-    titleLabel.text = self.title;
-    titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.navigationItem.titleView = titleLabel;
 
     DGDatabaseGridView *gridView = [[DGDatabaseGridView alloc] initWithFrame:self.view.bounds];
     gridView.delegate = self;
@@ -115,11 +109,11 @@
 }
 
 - (CGFloat)gridView:(DGDatabaseGridView *)gridView widthForContentCellInColumn:(NSInteger)column {
-    return [self.tableUIConfig columnWidthForColumnName:_columnArray[column].name];
+    return [self.tablePreviewConfiguration columnWidthForColumnName:_columnArray[column].name];
 }
 
 - (CGFloat)gridView:(DGDatabaseGridView *)gridView heightForContentCellInRow:(NSInteger)row {
-    return self.tableUIConfig.rowHeight;
+    return self.tablePreviewConfiguration.rowHeight;
 }
 
 - (void)gridView:(DGDatabaseGridView *)gridView didClickContentLabel:(nonnull UILabel *)label gridIndex:(DGGridIndex)gridIndex {

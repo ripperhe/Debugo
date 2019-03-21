@@ -8,11 +8,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGFBFile.h"
-#import "DGDatabaseUIConfig.h"
+#import "DGFileConfiguration.h"
 
 @interface DGPreviewManager : NSObject
 
-- (UIViewController *)previewViewControllerForFile:(DGFBFile *)file fromNavigation:(BOOL)fromNavigation uiConfig:(DGDatabaseUIConfig *)uiConfig;
++ (UIViewController *)previewViewControllerForFile:(DGFBFile *)file configuration:(DGFileConfiguration *)configuration;
 
 @end

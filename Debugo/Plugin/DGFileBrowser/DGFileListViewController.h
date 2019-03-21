@@ -8,20 +8,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGFBFile.h"
-#import "DGDatabaseUIConfig.h"
+#import "DGFileConfiguration.h"
 
-typedef void (^DGFBFileDidSelectFileBlock)(DGFBFile *file);
-typedef DGDatabaseUIConfig * (^DGFBFileDatabaseFileUIConfigBlock)(DGFBFile *file);
+@interface DGFileListViewController : UITableViewController
 
-@interface DGFileListViewController : UIViewController
+@property (nonatomic, strong) DGFileConfiguration *configuration;
 
-// Data
-@property (nonatomic, copy) DGFBFileDidSelectFileBlock didSelectFile;
-@property (nonatomic, copy) DGFBFileDatabaseFileUIConfigBlock databaseFileUIConfig;
-@property (nonatomic, assign) BOOL allowEditing;
-
-- (instancetype)initWithInitialURL:(NSURL *)initialURL;
-- (instancetype)initWithInitialURL:(NSURL *)initialURL showCancelButton:(BOOL)showCancelButton;
+- (instancetype)initWithInitialURL:(NSURL *)initialURL configuration:(DGFileConfiguration *)configuration;
 
 @end
