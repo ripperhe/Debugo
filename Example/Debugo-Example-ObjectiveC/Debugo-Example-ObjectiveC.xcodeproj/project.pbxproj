@@ -382,8 +382,8 @@
 		C9B45675221D2B460098644E /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45676221D2B460098644E /* DGCache.m */,
 				C9B45677221D2B460098644E /* DGCache.h */,
+				C9B45676221D2B460098644E /* DGCache.m */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1020,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4JPU9286A5;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1028,9 +1028,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.Debugo-Example-ObjectiveC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.picooc.Picooc-Production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = PicoocProductionDevelopProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1042,7 +1042,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4JPU9286A5;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1050,9 +1050,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.Debugo-Example-ObjectiveC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.picooc.Picooc-Production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = PicoocProductionDevelopProfile;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
