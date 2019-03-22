@@ -85,12 +85,18 @@ static NSString *kDGCellID = @"kDGCellID";
                 currentActions = obj.reverseSortedValues;
             }else {
                 // other
-                static NSArray <NSString *>*_person = nil;
+                static NSArray <NSString *>*_persons = nil;
+                static NSMutableDictionary *_cachedPersonsDic = nil;
                 static dispatch_once_t onceToken;
                 dispatch_once(&onceToken, ^{
-                    _person = @[@"👮‍♀️", @"👷🏿‍♀️", @"💂🏽‍♀️", @"👨🏽‍🌾", @"👨🏻‍🍳", @"🕵🏾‍♂️", @"👩🏽‍🏭", @"👨🏼‍💻", @"👩🏾‍🏫", @"👩🏻‍💻", @"🧝‍♀️", @"🧜🏾‍♀️", @"🤦🏼‍♀️", @"🤷🏻‍♂️", @"🙆🏼‍♂️", @"🙇🏿‍♂️", @"🧜🏿‍♂️", @"👩‍🚒"];
+                    _persons = @[@"👮‍♀️", @"👷🏿‍♀️", @"💂🏽‍♀️", @"👨🏽‍🌾", @"👨🏻‍🍳", @"🕵🏾‍♂️", @"👩🏽‍🏭", @"👨🏼‍💻", @"👩🏾‍🏫", @"👩🏻‍💻", @"🧝‍♀️", @"🧜🏾‍♀️", @"🤦🏼‍♀️", @"🤷🏻‍♂️", @"🙆🏼‍♂️", @"🙇🏿‍♂️", @"🧜🏿‍♂️", @"👩‍🚒"];
+                    _cachedPersonsDic = [NSMutableDictionary dictionary];
                 });
-                NSString *title = [_person[arc4random()%_person.count] stringByAppendingFormat:@" %@", key];
+                NSString *title = [_cachedPersonsDic objectForKey:key];
+                if (!title.length) {
+                    title = [_persons[arc4random()%_persons.count] stringByAppendingFormat:@" %@", key];
+                    [_cachedPersonsDic setObject:title forKey:key];
+                }
                 DGTestAction *action = [DGTestAction actionWithTitle:title autoClose:NO handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
                     DGTestActionSubViewController *subVC = [[DGTestActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
                     subVC.title = action.title;
