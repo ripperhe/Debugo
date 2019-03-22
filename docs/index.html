@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- 网站标题 -->
-  <title>ZYDebugo</title>
+  <title>Debugo</title>
   <!-- 网站icon -->
   <link rel="icon" href="_media/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -22,7 +22,7 @@
       // ************************* Configuration *************************
       // https://docsify.js.org/#/zh-cn/configuration
       // --> 首页 「README.md」
-      homepage: 'https://raw.githubusercontent.com/ripperhe/ZYDebugo/master/README.md',
+      homepage: 'https://raw.githubusercontent.com/ripperhe/Debugo/master/README.md',
       // -->封面 「_coverpage.md」
       coverpage: false,
       // -->侧边栏 [_sidebar.md]
@@ -40,9 +40,9 @@
       // 网址logo
       // logo: '/_media/icon.svg',
       // 文档标题，显示在侧边栏顶部
-      name: 'ZYDebugo',
+      name: 'Debugo',
       // 仓库地址（设置之后，会在页面右上角渲染一个 GitHub Corner 挂件）
-      repo: 'ripperhe/ZYDebugo',
+      repo: 'ripperhe/Debugo',
       // 页面切换之后，自动跳转到顶部
       auto2top: true,
       // 格式化
@@ -56,7 +56,7 @@
         // Edit On Github
         function (hook, vm) {
           hook.beforeEach(function (html) {
-            var url = 'https://github.com/ripperhe/ZYDebugo/blob/master/docs/' + vm.route.file
+            var url = 'https://github.com/ripperhe/Debugo/blob/master/docs/' + vm.route.file
             var editHtml = '[:memo: Edit Document](' + url + ')\n\n'
             return editHtml
               + html
@@ -82,7 +82,7 @@
       const gitalk = new Gitalk({
           clientID: '6dcf63ab4e93d33d33fa',
           clientSecret: 'aa430158c8d3fc3c2c15c94063854d6513bda0e6',
-          repo: 'ZYDebugo',
+          repo: 'Debugo',
           owner: 'ripperhe',
           admin: ['ripperhe'],
           // id: '{{ page.url | truncate: 50, '' }}',
