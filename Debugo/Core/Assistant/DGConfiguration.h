@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Debug 页面是否全屏显示; 默认为 NO */
 @property (nonatomic, assign) BOOL isFullScreen;
+/** 是否在 push 时显示 tabBar */
+@property (nonatomic, assign) BOOL isShowBottomBarWhenPushed;
 /** 是否在 debug bubble 显示 FPS; 默认为 NO */
 @property (nonatomic, assign) BOOL isOpenFPS;
 /** 是否显示 touch 效果; 默认为 NO */

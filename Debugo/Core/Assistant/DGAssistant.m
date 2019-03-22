@@ -70,6 +70,8 @@ static DGAssistant *_instance;
     self.debugViewController.isFullScreen = self.configuration.isFullScreen;
     [DGCache.shared.settingPlister setBool:self.configuration.isFullScreen forKey:kDGSettingIsFullScreen];
 
+    [DGCache.shared.settingPlister setBool:self.configuration.isShowBottomBarWhenPushed forKey:kDGSettingIsShowBottomBarWhenPushed];
+    
     [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
     [DGCache.shared.settingPlister setBool:self.configuration.isOpenFPS forKey:kDGSettingIsOpenFPS];
     

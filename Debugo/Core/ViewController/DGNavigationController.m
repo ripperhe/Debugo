@@ -8,6 +8,7 @@
 //
 
 #import "DGNavigationController.h"
+#import "DGAssistant.h"
 
 @interface DGNavigationController ()
 
@@ -18,7 +19,7 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count > 0) {
-        viewController.hidesBottomBarWhenPushed = YES;
+        viewController.hidesBottomBarWhenPushed = !DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
     }
 
     [super pushViewController:viewController animated:animated];

@@ -19,6 +19,7 @@
     self = [super init];
     if (self) {
         _isFullScreen = [DGCache.shared.settingPlister boolForKey:kDGSettingIsFullScreen];
+        _isShowBottomBarWhenPushed = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowBottomBarWhenPushed];
         _isOpenFPS = [DGCache.shared.settingPlister boolForKey:kDGSettingIsOpenFPS];
         _isShowTouches = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowTouches];
         _accountEnvironmentIsBeta = YES;

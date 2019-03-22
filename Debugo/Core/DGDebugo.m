@@ -27,7 +27,7 @@ NSString * debugo_current_user() {
                 _currentUser = components[2];
             }
         }
-        NSLog(@"debugo_current_user: %@", _currentUser);
+        DGCLog(@"debugo_current_user: %@", _currentUser);
     });
     return _currentUser;
 }

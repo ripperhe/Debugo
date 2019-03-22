@@ -11,11 +11,11 @@
 #import "DGCache.h"
 
 typedef NS_ENUM(NSUInteger, DGSettingType) {
+    // general
+    DGSettingTypeTabBar,
     // monitor
     DGSettingTypeFPS,
     DGSettingTypeTouches,
-    DGSettingTypeNetwork,
-    DGSettingTypeLOG,
 };
 
 @interface DGSettingViewController ()
@@ -36,13 +36,17 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 - (NSArray<NSArray *> *)dataArray
 {
     if (!_dataArray) {
+        NSArray *generalArray = @[
+                                  @(DGSettingTypeTabBar),
+                                  ];
+        generalArray.dg_copyExtObj = @"General";
         NSArray *monitorArray = @[
                                   @(DGSettingTypeFPS),
                                   @(DGSettingTypeTouches),
                                   ];
         monitorArray.dg_copyExtObj = @"Monitor";
         
-        _dataArray = @[monitorArray];
+        _dataArray = @[generalArray, monitorArray];
     }
     return _dataArray;
 }
@@ -71,6 +75,11 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     NSIndexPath *indexPath = sender.dg_strongExtObj;
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
     switch (type) {
+        case DGSettingTypeTabBar: {
+            DGAssistant.shared.configuration.isShowBottomBarWhenPushed = value;
+            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowBottomBarWhenPushed];
+        }
+            break;
         case DGSettingTypeFPS: {
             DGAssistant.shared.configuration.isOpenFPS = value;
             [DGAssistant.shared refreshDebugBubbleWithIsOpenFPS:value];
@@ -81,12 +90,6 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
             DGAssistant.shared.configuration.isShowTouches = value;
             DGTouchMonitor.shared.shouldDisplayTouches = value;
             [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowTouches];
-        }
-            break;
-        case DGSettingTypeNetwork: {
-        }
-            break;
-        case DGSettingTypeLOG: {
         }
             break;
         default:
@@ -125,6 +128,12 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     switchView.dg_strongExtObj = indexPath;
 
     switch (type) {
+        case DGSettingTypeTabBar: {
+            cell.textLabel.text = @"TabBar";
+            cell.detailTextLabel.text = @"Show bottom bar when pushed";
+            switchView.on = DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
+        }
+            break;
         case DGSettingTypeFPS: {
             cell.textLabel.text = @"FPS";
             cell.detailTextLabel.text = @"Display FPS number on debug bubble";
@@ -135,17 +144,6 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
             cell.textLabel.text = @"Touches";
             cell.detailTextLabel.text = @"Display touches on screen";
             switchView.on = DGAssistant.shared.configuration.isShowTouches;
-        }
-            break;
-        case DGSettingTypeNetwork: {
-            cell.textLabel.text = @"Network";
-            cell.detailTextLabel.text = @"Monitor network requests";
-            
-        }
-            break;
-        case DGSettingTypeLOG: {
-            cell.textLabel.text = @"Log";
-            cell.detailTextLabel.text = @"View log in browser";
         }
             break;
         default:
