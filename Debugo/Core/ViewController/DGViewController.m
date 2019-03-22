@@ -84,7 +84,6 @@
 #pragma mark - notification
 - (void)debugWindowWillShow:(NSNotification *)sender
 {
-//    DGLogFuction;
     // Window 隐藏再显示，不会调用 viewWillAppear；为了保证调用子控制器的 viewWillAppear，window 显示的时候重新添加
     if (self.contentView && !self.contentView.superview) {
         [self.view addSubview:self.contentView];

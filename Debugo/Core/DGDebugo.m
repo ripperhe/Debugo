@@ -77,8 +77,7 @@ NSString *const DGDebugoDidLogoutSuccessNotification = @"DGDebugoDidLogoutSucces
 }
 
 static DGDebugo *_instance = nil;
-+ (instancetype)shared
-{
++ (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -88,8 +87,7 @@ static DGDebugo *_instance = nil;
     return _instance;
 }
 
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
@@ -108,8 +106,7 @@ static DGDebugo *_instance = nil;
 }
 
 #pragma mark -
-+ (void)fireWithConfiguration:(void (^)(DGConfiguration *configuration))configurationHandler
-{
++ (void)fireWithConfiguration:(void (^)(DGConfiguration *configuration))configurationHandler {
     debugo_exec_main_queue(^{
         if (DGDebugo.shared.isFire) return;
         
@@ -122,8 +119,7 @@ static DGDebugo *_instance = nil;
     });
 }
 
-+ (void)stop
-{
++ (void)stop {
     debugo_exec_main_queue(^{
         if (!DGDebugo.shared.isFire) return;
         
@@ -141,30 +137,26 @@ static DGDebugo *_instance = nil;
 
 #pragma mark - test action
 
-+ (void)addTestActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler
-{
++ (void)addTestActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
         [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:autoClose handler:handler];
     });
 }
 
-+ (void)addTestActionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler
-{
++ (void)addTestActionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
         [DGAssistant.shared addTestActionForUser:nil withTitle:title autoClose:autoClose handler:handler];
     });
 }
 
-+ (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler
-{
++ (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
         [DGAssistant.shared addTestActionForUser:nil withTitle:title autoClose:YES handler:handler];
     });
 }
 
 #pragma mark - notification
-- (void)loginSuccessNotification:(NSNotification *)notification
-{
+- (void)loginSuccessNotification:(NSNotification *)notification {
     debugo_exec_main_queue(^{
         if (!self.isFire) return;
         if (!DGAssistant.shared.configuration.needLoginBubble) return;
@@ -190,8 +182,7 @@ static DGDebugo *_instance = nil;
     });
 }
 
-- (void)logoutSuccessNotification:(NSNotification *)notification
-{
+- (void)logoutSuccessNotification:(NSNotification *)notification {
     debugo_exec_main_queue(^{
         if (!self.isFire) return;
         if (!DGAssistant.shared.configuration.needLoginBubble) return;

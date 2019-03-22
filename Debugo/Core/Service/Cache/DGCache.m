@@ -10,6 +10,10 @@
 #import "DGCache.h"
 #import "DGAssistant.h"
 
+NSString * const kDGSettingIsFullScreen = @"kDGSettingIsFullScreen";
+NSString * const kDGSettingIsOpenFPS = @"kDGSettingIsOpenFPS";
+NSString * const kDGSettingIsShowTouches = @"kDGSettingIsShowTouches";
+
 @interface DGCache()
 
 // sandbox

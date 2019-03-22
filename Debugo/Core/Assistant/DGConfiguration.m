@@ -9,12 +9,8 @@
 
 
 #import "DGConfiguration.h"
-#import "DGAssistant.h"
 #import "DGCache.h"
-
-@interface DGConfiguration ()
-@property (nonatomic, assign) BOOL isInternalConfiguration;
-@end
+#import "DGAssistant.h"
 
 @implementation DGConfiguration
 
@@ -22,9 +18,9 @@
 {
     self = [super init];
     if (self) {
-        _isFullScreen = [DGCache.shared.settingPlister boolForKey:@"isFullScreen"];
-        _isOpenFPS = [DGCache.shared.settingPlister boolForKey:@"isOpenFPS"];
-        _isShowTouches = [DGCache.shared.settingPlister boolForKey:@"isShowTouches"];
+        _isFullScreen = [DGCache.shared.settingPlister boolForKey:kDGSettingIsFullScreen];
+        _isOpenFPS = [DGCache.shared.settingPlister boolForKey:kDGSettingIsOpenFPS];
+        _isShowTouches = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowTouches];
         _accountEnvironmentIsBeta = YES;
         _shortcutForDatabaseURLs = @[DGFilePath.documentsDirectoryURL];
         _shortcutForAnyURLs = @[DGFilePath.userDefaultsPlistFileURL];
@@ -32,41 +28,29 @@
     return self;
 }
 
-#pragma mark - setting
-- (void)setIsFullScreen:(BOOL)isFullScreen
-{
-    _isFullScreen = isFullScreen;
-    
-    if (!self.isInternalConfiguration) return;
-    DGAssistant.shared.debugViewController.isFullScreen = isFullScreen;
-    [DGCache.shared.settingPlister setBool:isFullScreen forKey:@"isFullScreen"];
-}
-
-- (void)setIsOpenFPS:(BOOL)isOpenFPS
-{
-    _isOpenFPS = isOpenFPS;
-    
-    if (!self.isInternalConfiguration) return;
-    [DGAssistant.shared refreshDebugBubble];
-    [DGCache.shared.settingPlister setBool:isOpenFPS forKey:@"isOpenFPS"];
-}
-
-- (void)setIsShowTouches:(BOOL)isShowTouches
-{
-    _isShowTouches = isShowTouches;
-    
-    if (!self.isInternalConfiguration) return;
-    DGTouchMonitor.shared.shouldDisplayTouches = isShowTouches;
-    [DGCache.shared.settingPlister setBool:isShowTouches forKey:@"isShowTouches"];
+- (id)copyWithZone:(NSZone *)zone {
+    DGConfiguration *obj = [[DGConfiguration alloc] init];
+    if (obj) {
+        obj.commonTestActions = [self.commonTestActions copyWithZone:zone];
+        
+        obj.shortcutForDatabaseURLs = [self.shortcutForDatabaseURLs copyWithZone:zone];
+        obj.shortcutForAnyURLs = [self.shortcutForAnyURLs copyWithZone:zone];
+        
+        obj.isFullScreen = self.isFullScreen;
+        obj.isOpenFPS = self.isOpenFPS;
+        obj.isShowTouches = self.isShowTouches;
+        
+        obj.needLoginBubble = self.needLoginBubble;
+        obj.haveLoggedIn = self.haveLoggedIn;
+        obj.accountEnvironmentIsBeta = self.accountEnvironmentIsBeta;
+        obj.commonBetaAccounts = [self.commonBetaAccounts copyWithZone:zone];
+        obj.commonOfficialAccounts = [self.commonOfficialAccounts copyWithZone:zone];
+    }
+    return obj;
 }
 
 #pragma mark - test action
 - (void)setCommonTestActions:(NSArray<DGTestAction *> *)commonTestActions {
-    if (!self.isInternalConfiguration) {
-        _commonTestActions = commonTestActions;
-        return;
-    }
-    
     NSMutableArray *validArray = [NSMutableArray array];
     for (DGTestAction *action in commonTestActions) {
         if (action.isValid) {
@@ -79,13 +63,7 @@
 }
 
 #pragma mark - login accout
-- (void)setCommonBetaAccounts:(NSArray<DGAccount *> *)commonBetaAccounts
-{
-    if (!self.isInternalConfiguration) {
-        _commonBetaAccounts = commonBetaAccounts;
-        return;
-    }
-    
+- (void)setCommonBetaAccounts:(NSArray<DGAccount *> *)commonBetaAccounts {
     NSMutableArray *validArray = [NSMutableArray array];
     for (DGAccount *account in commonBetaAccounts) {
         if (account.isValid) {
@@ -97,13 +75,7 @@
     _commonBetaAccounts = validArray.copy;
 }
 
-- (void)setCommonOfficialAccounts:(NSArray<DGAccount *> *)commonOfficialAccounts
-{
-    if (!self.isInternalConfiguration) {
-        _commonOfficialAccounts = commonOfficialAccounts;
-        return;
-    }
-    
+- (void)setCommonOfficialAccounts:(NSArray<DGAccount *> *)commonOfficialAccounts {
     NSMutableArray *validArray = [NSMutableArray array];
     for (DGAccount *account in commonOfficialAccounts) {
         if (account.isValid) {

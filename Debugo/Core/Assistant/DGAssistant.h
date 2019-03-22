@@ -52,7 +52,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 - (void)removeDebugBubble;
 - (void)closeDebugViewControllerContainerWindow;
 - (void)removeDebugViewControllerContainerWindow;
-- (void)refreshDebugBubble;
+- (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS;
 
 ///------------------------------------------------
 /// Login Bubble

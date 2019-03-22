@@ -10,6 +10,10 @@
 #import <Foundation/Foundation.h>
 #import "DGPlister.h"
 
+extern NSString * const kDGSettingIsFullScreen;
+extern NSString * const kDGSettingIsOpenFPS;
+extern NSString * const kDGSettingIsShowTouches;
+
 @interface DGCache : NSObject
 
 /**
@@ -27,8 +31,14 @@
  * GitLastCommitTimestamp           最后一次提交的时间
  */
 @property (nonatomic, strong, readonly) DGPlister *buildInfoPlister;
-/** Setting plist */
+
+/** Setting plist:
+ * kDGSettingIsFullScreen
+ * kDGSettingIsOpenFPS
+ * kDGSettingIsShowTouches
+ */
 @property (nonatomic, strong, readonly) DGPlister *settingPlister;
+
 /** Account plist */
 @property (nonatomic, strong, readonly) DGPlister *accountPlister;
 

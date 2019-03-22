@@ -64,27 +64,18 @@ static DGAssistant *_instance;
 }
 
 #pragma mark -
-- (void)setupWithConfiguration:(DGConfiguration *)configuration;
-{
-    DGConfiguration *newConfiguration = [DGConfiguration new];
-    [newConfiguration setValue:@(YES) forKey:@"isInternalConfiguration"];
-    _instance->_configuration = newConfiguration;
+- (void)setupWithConfiguration:(DGConfiguration *)configuration {
+    _instance->_configuration = [configuration copy];
     
-    self.configuration.commonTestActions = configuration.commonTestActions;
-    
-    self.configuration.shortcutForDatabaseURLs = configuration.shortcutForDatabaseURLs;
-    self.configuration.shortcutForAnyURLs = configuration.shortcutForAnyURLs;
+    self.debugViewController.isFullScreen = self.configuration.isFullScreen;
+    [DGCache.shared.settingPlister setBool:self.configuration.isFullScreen forKey:kDGSettingIsFullScreen];
 
-    self.configuration.isFullScreen = configuration.isFullScreen;
-    self.configuration.isOpenFPS = configuration.isOpenFPS;
-    self.configuration.isShowTouches = configuration.isShowTouches;
+    [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
+    [DGCache.shared.settingPlister setBool:self.configuration.isOpenFPS forKey:kDGSettingIsOpenFPS];
     
-    self.configuration.needLoginBubble = configuration.needLoginBubble;
-    self.configuration.haveLoggedIn = configuration.haveLoggedIn;
-    self.configuration.accountEnvironmentIsBeta = configuration.accountEnvironmentIsBeta;
-    self.configuration.commonBetaAccounts = configuration.commonBetaAccounts;
-    self.configuration.commonOfficialAccounts = configuration.commonOfficialAccounts;
-    
+    DGTouchMonitor.shared.shouldDisplayTouches = self.configuration.isShowTouches;
+    [DGCache.shared.settingPlister setBool:self.configuration.isShowTouches forKey:kDGSettingIsShowTouches];
+
     if (self.configuration.accountEnvironmentIsBeta) {
         self.currentCommonAccountArray = self.configuration.commonBetaAccounts;
     }else{
@@ -97,10 +88,10 @@ static DGAssistant *_instance;
     [self showDebugBubble];
 }
 
-- (void)reset
-{
-    self.configuration.isOpenFPS = NO;
-    self.configuration.isShowTouches = NO;
+- (void)reset {
+    [self refreshDebugBubbleWithIsOpenFPS:NO];
+    DGTouchMonitor.shared.shouldDisplayTouches = NO;
+    
     // TODO: 检查一下置空是否有效
     self->_configuration = nil;
     self.currentCommonAccountArray = nil;
@@ -112,8 +103,7 @@ static DGAssistant *_instance;
     [self removeLoginViewControllerContainerWindow];
 }
 
-- (void)addTestActionForUser:(NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler
-{
+- (void)addTestActionForUser:(NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
     DGTestAction *action = [DGTestAction actionWithTitle:title autoClose:autoClose handler:handler];
     if (!action.isValid) {
         NSAssert(0, @"DGTestAction : titile 和 handler 不能为空!");
@@ -134,8 +124,7 @@ static DGAssistant *_instance;
     }
 }
 
-- (void)addAccountWithUsername:(NSString *)username password:(NSString *)password
-{
+- (void)addAccountWithUsername:(NSString *)username password:(NSString *)password {
     DGAccount *newAccount = [DGAccount accountWithUsername:username password:password];
     if (!newAccount.isValid) return;
     
@@ -222,11 +211,11 @@ static DGAssistant *_instance;
 }
 
 #pragma mark - debug bubble
-- (void)refreshDebugBubble
+- (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS
 {
     if (!self.debugBubble) return;
     
-    if (self.configuration.isOpenFPS) {
+    if (isOpenFPS) {
         if (!self.debugBubble.dg_weakExtObj) {
             // 添加 FPSLabel
             DGFPSLabel *label = [DGFPSLabel new];
@@ -267,7 +256,7 @@ static DGAssistant *_instance;
     [debugBubble.button setTintColor:[UIColor whiteColor]];
     [debugBubble show];
     self.debugBubble = debugBubble;
-    [self refreshDebugBubble];
+    [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
 }
 
 - (void)removeDebugBubble

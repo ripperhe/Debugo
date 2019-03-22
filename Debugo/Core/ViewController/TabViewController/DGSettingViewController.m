@@ -8,6 +8,7 @@
 //
 #import "DGSettingViewController.h"
 #import "DGAssistant.h"
+#import "DGCache.h"
 
 typedef NS_ENUM(NSUInteger, DGSettingType) {
     // monitor
@@ -46,15 +47,8 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     return _dataArray;
 }
 
-- (UIImage *)getZoomImage
-{
-    UIImage *image;
-    if (DGAssistant.shared.configuration.isFullScreen) {
-        image = [DGBundle imageNamed:@"zoom_smaller"];
-    }else{
-        image = [DGBundle imageNamed:@"zoom_bigger"];
-    }
-    return image;
+- (UIImage *)getZoomImage {
+    return [DGBundle imageNamed:DGAssistant.shared.configuration.isFullScreen ? @"zoom_smaller" : @"zoom_bigger"];
 }
 
 #pragma mark - event
@@ -64,34 +58,35 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
         UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
         [feedBackGenertor impactOccurred];
     }
-    DGAssistant.shared.configuration.isFullScreen = !DGAssistant.shared.configuration.isFullScreen;
+    BOOL value = !DGAssistant.shared.configuration.isFullScreen;
+    DGAssistant.shared.configuration.isFullScreen = value;
     self.navigationItem.rightBarButtonItem.image = [self getZoomImage];
+    DGAssistant.shared.debugViewController.isFullScreen = value;
+    [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsFullScreen];
 }
 
 - (void)swithValueChanged:(UISwitch *)sender
 {
-//    NSLog(@"%@\n%d", sender.dg_strongExtObj, sender.isOn);
+    BOOL value = sender.isOn;
     NSIndexPath *indexPath = sender.dg_strongExtObj;
-//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
-    
     switch (type) {
-        case DGSettingTypeFPS:
-        {
-            DGAssistant.shared.configuration.isOpenFPS = sender.isOn;
+        case DGSettingTypeFPS: {
+            DGAssistant.shared.configuration.isOpenFPS = value;
+            [DGAssistant.shared refreshDebugBubbleWithIsOpenFPS:value];
+            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsOpenFPS];
         }
             break;
-        case DGSettingTypeTouches:
-        {
-            DGAssistant.shared.configuration.isShowTouches = sender.isOn;
+        case DGSettingTypeTouches: {
+            DGAssistant.shared.configuration.isShowTouches = value;
+            DGTouchMonitor.shared.shouldDisplayTouches = value;
+            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowTouches];
         }
             break;
-        case DGSettingTypeNetwork:
-        {
+        case DGSettingTypeNetwork: {
         }
             break;
-        case DGSettingTypeLOG:
-        {
+        case DGSettingTypeLOG: {
         }
             break;
         default:
@@ -130,29 +125,25 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     switchView.dg_strongExtObj = indexPath;
 
     switch (type) {
-        case DGSettingTypeFPS:
-        {
+        case DGSettingTypeFPS: {
             cell.textLabel.text = @"FPS";
             cell.detailTextLabel.text = @"Display FPS number on debug bubble";
             switchView.on = DGAssistant.shared.configuration.isOpenFPS;
         }
             break;
-        case DGSettingTypeTouches:
-        {
+        case DGSettingTypeTouches: {
             cell.textLabel.text = @"Touches";
             cell.detailTextLabel.text = @"Display touches on screen";
             switchView.on = DGAssistant.shared.configuration.isShowTouches;
         }
             break;
-        case DGSettingTypeNetwork:
-        {
+        case DGSettingTypeNetwork: {
             cell.textLabel.text = @"Network";
             cell.detailTextLabel.text = @"Monitor network requests";
             
         }
             break;
-        case DGSettingTypeLOG:
-        {
+        case DGSettingTypeLOG: {
             cell.textLabel.text = @"Log";
             cell.detailTextLabel.text = @"View log in browser";
         }

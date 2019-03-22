@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGConfiguration : NSObject
+@interface DGConfiguration : NSObject<NSCopying>
 
 ///------------------------------------------------
 /// test action
