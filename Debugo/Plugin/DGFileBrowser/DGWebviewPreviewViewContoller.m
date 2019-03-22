@@ -82,6 +82,8 @@
         }else{
             NSString *plistDescription = plistObject.description;
             if (plistDescription.length) {
+                // 解决中文乱码
+                plistDescription = [NSString stringWithCString:[plistDescription cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding];
                 rawString = plistDescription;
             }
         }

@@ -90,7 +90,7 @@
         DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
     }];
     
-    [[NSUserDefaults standardUserDefaults] setObject:@"value..." forKey:@"Test UserDefaults"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"中文 中文 中文" forKey:@"Test UserDefaults"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
