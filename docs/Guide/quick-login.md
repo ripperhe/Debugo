@@ -9,13 +9,13 @@
 1. 遵守协议
 
 	```objectivec
-	@interface SomeClass ()<DebugoDelegate>
+	@interface SomeClass ()<DGDebugoDelegate>
 	```
 
 2. 设置代理
 
 	```objectivec
-	Debugo.shared.delegate = self;
+	DGDebugo.shared.delegate = self;
 	```
 
 3. 实现协议方法
@@ -30,45 +30,45 @@
 4. 在 Debugo 的 fire 方法里配置 configuration
 
 	```objectivec
-	[Debugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
-	// 启用快速登陆按钮，不开启则快速登陆相关设置均无意义
-	configuration.needLoginBubble = YES;
-	// 初始化 Debugo 时是否为登陆状态; 用于判断当前是否需要开启 login bubble
-	configuration.hasLogined = NO;
-	// 考虑到公司可能有测试环境和正式环境，所以两种环境的账号分开设置和存储的；这个参数代表当前是什么账号环境，默认为测试环境
-	configuration.accountEnvironmentIsBeta = YES;
-	// 永远显示在账号列表的测试环境账号（便于每次卸载重装都能有账号可以直接登录）
-	configuration.permanentBetaAccountArray = @[
-	                                            [DGAccount accountWithUsername:@"jintianyoudiantoutong@qq.com" password:@"dasinigewangbadan🤣"],
-	                                            [DGAccount accountWithUsername:@"wozhendeyoudianxinfan@qq.com" password:@"niyoubenshizaishuoyiju🧐"],
-	                                            ];
-	// 永远显示在账号列表的正式环境账号（同上）
-	configuration.permanentOfficialAccountArray = @[
-	                                                [DGAccount accountWithUsername:@"wolaile@gmail.com" password:@"😴wozouleoubuwoshuile"],
-	                                                [DGAccount accountWithUsername:@"xianshangdeniubiba@qq.com" password:@"😍hahahabixude"],
-	                                                ];
-}];
+	[DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
+        // 启用快速登陆按钮，不开启则快速登陆相关设置均无意义
+        configuration.needLoginBubble = YES;
+        // 初始化 Debugo 时是否为登陆状态; 用于判断当前是否需要开启 login bubble
+        configuration.haveLoggedIn = NO;
+        // 考虑到公司可能有测试环境和正式环境，所以两种环境的账号分开设置和存储的；这个参数代表当前是什么账号环境，默认为测试环境
+        configuration.accountEnvironmentIsBeta = YES;
+        // 公用的测试环境账号（便于每次卸载重装都能有账号可以直接登录）
+        configuration.commonBetaAccounts = @[
+                                             [DGAccount accountWithUsername:@"jintianyoudiantoutong@qq.com" password:@"dasinigewangbadan🤣"],
+                                             [DGAccount accountWithUsername:@"wozhendeyoudianxinfan@qq.com" password:@"niyoubenshizaishuoyiju🧐"],
+                                             ];
+        // 公用的正式环境账号（同上）
+        configuration.commonOfficialAccounts = @[
+                                                 [DGAccount accountWithUsername:@"wolaile@gmail.com" password:@"😴wozouleoubuwoshuile"],
+                                                 [DGAccount accountWithUsername:@"woshixianshangzhanghao@qq.com" password:@"😉wojiuwennipabupa"],
+                                                 ];
+    }];
 	```
 
-5. 登陆成功的时候发送通知 `DebugoLoginSuccessNotificationKey`，用于保存账号信息以及隐藏 Login Bubble
+5. 登陆成功的时候发送通知 `DGDebugoDidLoginSuccessNotification`，用于保存账号信息以及隐藏 Login Bubble
 
 	```objectivec
 	// e.g.
-	[[NSNotificationCenter defaultCenter] postNotificationName:DebugoLoginSuccessNotificationKey
+	[[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLoginSuccessNotification
 	                                                     object:@{@"username":@"password"}];
 	// OR
-	[[NSNotificationCenter defaultCenter] postNotificationName:DebugoLoginSuccessNotificationKey
+	[[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLoginSuccessNotification
 	                                                     object:[DGAccount accountWithUsername:@"username" password:@"password"]];
 	// 如果不想在登录页面导入 Debugo, 可以直接使用字符串
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"DebugoLoginSuccessNotificationKey"
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DGDebugoDidLoginSuccessNotification"
 	                                                     object:@{@"username":@"password"}];
 	```
 
-6. 退出登陆成功的时候发送通知 `DebugoLogoutSuccessNotificationKey`，用户重新显示 Login Bubble
+6. 退出登陆成功的时候发送通知 `DGDebugoDidLogoutSuccessNotification`，用户重新显示 Login Bubble
 
 	```objectivec
 	// e.g.
- 	[[NSNotificationCenter defaultCenter] postNotificationName:DebugoLogoutSuccessNotificationKey object:nil];
+ 	[[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLogoutSuccessNotification object:nil];
 
 	```
 
@@ -83,7 +83,7 @@
 Debugo 提供了一些方法辅助实现自动登录，例如直接获取某一 window 最上面的控制器，如下代码即可直接获取到 `[UIApplication sharedApplication].delegate.window` 最上面的控制器
 
 ```objectivec
-[Debugo topViewControllerForWindow:nil]
+[DGDebugo topViewControllerForWindow:nil]
 ```
 
 可以参考工程的 Example 项目
@@ -92,13 +92,13 @@ Debugo 提供了一些方法辅助实现自动登录，例如直接获取某一 
 
 第 4 步配置 configuration 的时候，`needLoginBubble` 需要设置为 `YES`，否者一切与登陆相关的设置都没有意义
 
-`hasLogined` 和 `accountEnvironmentIsBeta` 不要写死，我相信工程里一定有单例或者宏定义直接判断是否为登录状态以及是什么账号环境的参数；这样的好处是，切换环境的时候，这里配置的代码都不需要修改~
+`haveLoggedIn` 和 `accountEnvironmentIsBeta` 不要写死，我相信工程里一定有单例或者宏定义直接判断是否为登录状态以及是什么账号环境的参数；这样的好处是，切换环境的时候，这里配置的代码都不需要修改~
 
-另外值得一提的是，考虑到公司可能有测试环境和正式环境的区分，为了防止账号混淆，则设置了 `Beta` 和 `Official` 系列参数，默认是 `accountEnvironmentIsBeta` 参数就是 YES，所以如果你公司没有这些环境区分，那么直接设置 `permanentBetaAccountArray` 即可
+另外值得一提的是，考虑到公司可能有测试环境和正式环境的区分，为了防止账号混淆，则设置了 `Beta` 和 `Official` 系列参数，默认是 `accountEnvironmentIsBeta` 参数就是 YES，所以如果你公司没有这些环境区分，那么直接设置 `commonBetaAccounts` 即可
 
 ## 使用
 
-使用快速登陆主要看你 `- (void)debugoLoginAccount:(DGAccount *)account ` 方法中支持了哪些页面，点击 Login Bubble 调出账号列表，选中某一账号则会回调账号数据，进行登陆了~
+使用快速登陆主要看你 `- (void)debugoLoginAccount:(DGAccount *)account` 方法中支持了哪些页面，点击 Login Bubble 调出账号列表，选中某一账号则会回调账号数据，进行登陆了~
 
 另外该框架会存储手动登陆的所有账号到沙盒文件，在 `library/Caches/com.ripperhe.debugo/` 路径下面，可自行查看或删除
 

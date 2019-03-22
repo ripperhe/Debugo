@@ -2,7 +2,6 @@
 
 如果你想实现以下功能：
 
-* 自动根据当前运行工程的电脑自动只显示对应 user 的测试条目
 * 获取安装包 build 时间
 * 获取 build 安装包的电脑 hostname、UUID
 * 获取当前代码的 git 分支以及最后一次 commit 信息等
@@ -15,7 +14,7 @@
 4. 选中 New Run Script Phase
 
 	![](../_media/build-info-1.png)
-5. 将新建的 `Run Script` 更名为 `Debugo Build Info`
+5. 建议将新建的 `Run Script` 更名为 `Debugo Build Info`
 
 	![](../_media/build-info-2.png)
 6. 展开这个选项，将 shell 脚本粘贴到输入框，保存即可
