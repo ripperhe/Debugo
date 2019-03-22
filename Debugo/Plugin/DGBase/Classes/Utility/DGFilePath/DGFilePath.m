@@ -35,7 +35,7 @@
 }
 
 + (NSURL *)sandboxDirectoryURL {
-    return [NSURL URLWithString:NSHomeDirectory()];
+    return [NSURL fileURLWithPath:NSHomeDirectory() isDirectory:YES];
 }
 
 + (NSString *)documentsDirectory {
@@ -43,7 +43,7 @@
 }
 
 + (NSURL *)documentsDirectoryURL {
-    return [NSURL URLWithString:[self documentsDirectory]];
+    return [NSURL fileURLWithPath:[self documentsDirectory] isDirectory:YES];
 }
 
 + (NSString *)libraryDirectory {
@@ -51,7 +51,7 @@
 }
 
 + (NSURL *)libraryDirectoryURL {
-    return [NSURL URLWithString:[self libraryDirectory]];
+    return [NSURL fileURLWithPath:[self libraryDirectory] isDirectory:YES];
 }
 
 + (NSString *)cachesDirectory {
@@ -59,7 +59,15 @@
 }
 
 + (NSURL *)cachesDirectoryURL {
-    return [NSURL URLWithString:[self cachesDirectory]];
+    return [NSURL fileURLWithPath:[self cachesDirectory] isDirectory:YES];
+}
+
++ (NSString *)temporaryDirectory {
+    return NSTemporaryDirectory();
+}
+
++ (NSURL *)temporaryDirectoryURL {
+    return [NSURL fileURLWithPath:[self temporaryDirectory] isDirectory:YES];
 }
 
 + (NSString *)userDefaultsPlistFilePath {
@@ -68,7 +76,7 @@
 }
 
 + (NSURL *)userDefaultsPlistFileURL {
-    return [NSURL fileURLWithPath:[self userDefaultsPlistFilePath]];
+    return [NSURL fileURLWithPath:[self userDefaultsPlistFilePath] isDirectory:NO];
 }
 
 @end

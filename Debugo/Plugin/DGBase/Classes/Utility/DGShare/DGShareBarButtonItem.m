@@ -26,6 +26,7 @@
     if (!self.clickedShareURLsBlock) return;
     if (!self.viewController) return;
     
+    UIViewController *viewController = self.viewController;
     NSArray *items = self.clickedShareURLsBlock(self);
     if (!items.count) return;
     
@@ -34,7 +35,7 @@
         && [activityViewController respondsToSelector:@selector(popoverPresentationController)]) {
         activityViewController.popoverPresentationController.barButtonItem = sender;
     }
-    [self.viewController presentViewController:activityViewController animated:YES completion:nil];
+    [viewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 @end

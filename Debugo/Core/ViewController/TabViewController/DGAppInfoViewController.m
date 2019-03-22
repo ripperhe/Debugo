@@ -29,18 +29,25 @@ static NSString *kDGCellValue = @"kDGCellValue";
     
     // navigationItem
     __weak typeof(self) weakSelf = self;
-    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         if (!weakSelf) return nil;
         NSString *fileName = [NSString stringWithFormat:@"%@-info-%@.plist", [self getBundleInfo:@"CFBundleName"], [[NSDate date] dg_dateStringWithFormat:@"yyyy-MM-dd-HH-mm-ss"]];
-        NSURL *fileURL = [NSURL fileURLWithPath:[DGFilePath.cachesDirectory stringByAppendingPathComponent:fileName]];
-        // TODO: 优化内容
-        BOOL result = [weakSelf.dataArray writeToFile:fileURL.path atomically:YES];
+        NSURL *fileURL = [NSURL fileURLWithPath:[DGFilePath.temporaryDirectory stringByAppendingPathComponent:fileName]];
+        NSArray *dataArray = weakSelf.dataArray.copy;
+        NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
+        for (NSArray *sectionArray in dataArray) {
+            NSMutableDictionary *sectionDic = [NSMutableDictionary dictionary];
+            for (NSDictionary *row in sectionArray) {
+                [sectionDic setObject:row[kDGCellValue] forKey:row[kDGCellTitle]];
+            }
+            [plistContentDic setObject:sectionDic forKey:sectionArray.dg_copyExtObj];
+        }
+        BOOL result = [plistContentDic writeToFile:fileURL.path atomically:YES];
         if (result) {
             return @[fileURL];
         }
-        return @[];
+        return nil;
     }];
-    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
 }
 
 #pragma mark - data

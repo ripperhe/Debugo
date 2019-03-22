@@ -34,10 +34,9 @@
 
     // Add share button
     __weak typeof(self) weakSelf = self;
-    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         return @[weakSelf.file.fileURL];
     }];
-    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
 
     self.tableArray = [self.dbOperation queryAllTableInfo];
 }

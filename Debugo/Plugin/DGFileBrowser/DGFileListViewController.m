@@ -48,10 +48,9 @@
 
     // navigationItem
     __weak typeof(self) weakSelf = self;
-    DGShareBarButtonItem *shareBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         return @[weakSelf.file.fileURL];
     }];
-    self.navigationItem.rightBarButtonItem = shareBarButtonItem;
 
     // Set search controller
     if (@available(iOS 11.0, *)) {

@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)cachesDirectory;
 + (NSURL *)cachesDirectoryURL;
 
++ (NSString *)temporaryDirectory;
++ (NSURL *)temporaryDirectoryURL;
+
 + (NSString *)userDefaultsPlistFilePath;
 + (NSURL *)userDefaultsPlistFileURL;
 
