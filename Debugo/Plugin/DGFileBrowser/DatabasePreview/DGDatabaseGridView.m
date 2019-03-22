@@ -143,7 +143,21 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
         return headerView;
     } else {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kGridLeftWidth, kGridHeaderHeight)];
-        headerView.backgroundColor = [UIColor grayColor];
+        headerView.backgroundColor = UIColor.whiteColor;
+        CGFloat triangleW = 13;
+        CGFloat space = 4;
+        CGFloat need = triangleW + space;
+        if (kGridLeftWidth > need && kGridHeaderHeight > need) {
+            CAShapeLayer *layer = [CAShapeLayer layer];
+            UIBezierPath *path = [UIBezierPath bezierPath];
+            [path moveToPoint:CGPointMake(kGridLeftWidth - space - triangleW, kGridHeaderHeight - space)];
+            [path addLineToPoint:CGPointMake(kGridLeftWidth - space, kGridHeaderHeight - space)];
+            [path addLineToPoint:CGPointMake(kGridLeftWidth - space, kGridHeaderHeight - space - triangleW)];
+            [path closePath];
+            layer.path = path.CGPath;
+            layer.fillColor = [UIColor lightGrayColor].CGColor;
+            [headerView.layer addSublayer:layer];
+        }
         return headerView;
     }
 }
