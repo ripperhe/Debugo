@@ -51,7 +51,7 @@
             UILabel *label = [[UILabel alloc] init];
             label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
             label.textAlignment = NSTextAlignmentCenter;
-            label.lineBreakMode = NSLineBreakByTruncatingMiddle;
+//            label.lineBreakMode = NSLineBreakByTruncatingMiddle;
             label.font = [UIFont systemFontOfSize:14];
             label.userInteractionEnabled = YES;
             label.tag = 10000 + i;
