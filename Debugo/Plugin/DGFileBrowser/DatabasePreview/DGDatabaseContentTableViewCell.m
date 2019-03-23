@@ -51,6 +51,7 @@
             UILabel *label = [[UILabel alloc] init];
             label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
             label.textAlignment = NSTextAlignmentCenter;
+            label.lineBreakMode = NSLineBreakByTruncatingMiddle;
             label.font = [UIFont systemFontOfSize:14];
             label.userInteractionEnabled = YES;
             label.tag = 10000 + i;
@@ -82,7 +83,7 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-    self.contentView.backgroundColor = selected?[UIColor colorWithRed:0.83 green:0.83 blue:0.83 alpha:1.00]:UIColor.clearColor;
+    self.contentView.backgroundColor = selected?[UIColor colorWithRed:0.96 green:0.89 blue:0.89 alpha:1.00]:UIColor.clearColor;
 }
 
 @end

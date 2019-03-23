@@ -24,7 +24,7 @@
  ————————————————————————————————————————
  */
 
-static CGFloat kGridHeaderHeight = 30.f;
+static CGFloat kGridHeaderHeight = 40.f;
 static CGFloat kGridLeftWidth = 60.f;
 static CGFloat kGridContentCellWidth = 100.f;
 static CGFloat kGridContentCellHeight = 30.f;
@@ -122,22 +122,17 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
         NSInteger count = [self columnsCount];
         CGFloat width = 0;
         UIView *headerView = [[UIView alloc] init];
-        headerView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+        headerView.backgroundColor = UIColor.whiteColor;
         for (NSInteger i = 0; i < count; i++) {
             CGFloat contentCellWidth = [_columnWidths objectAtIndex:i].floatValue;
             UILabel *label = [[UILabel alloc] init];
             label.frame = CGRectMake(width, 0, contentCellWidth, kGridHeaderHeight);
             label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
             label.textAlignment = NSTextAlignmentCenter;
-            label.font = [UIFont systemFontOfSize:14];
+            label.font = [UIFont boldSystemFontOfSize:14];
             label.text = [self.dataSource columnNameInColumn:i];
             [headerView addSubview:label];
             width += contentCellWidth;
-            if (i < count - 1) {
-                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(width - 0.5, 0, 0.5, kGridHeaderHeight)];
-                line.backgroundColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
-                [headerView addSubview:line];
-            }
         }
         headerView.frame = CGRectMake(0, 0, width, kGridHeaderHeight);
         return headerView;
@@ -155,7 +150,7 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
             [path addLineToPoint:CGPointMake(kGridLeftWidth - space, kGridHeaderHeight - space - triangleW)];
             [path closePath];
             layer.path = path.CGPath;
-            layer.fillColor = [UIColor lightGrayColor].CGColor;
+            layer.fillColor = [UIColor colorWithRed:0.96 green:0.98 blue:0.99 alpha:1.00].CGColor;
             [headerView.layer addSublayer:layer];
         }
         return headerView;
@@ -178,15 +173,11 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BOOL isUnEvenRow = indexPath.row % 2 == 1;
+    BOOL isUnEvenRow = indexPath.row % 2 == 0;
     if (tableView == _leftTableView) {
         DGDatabaseLeftTableViewCell *cell = [_leftTableView dequeueReusableCellWithIdentifier:NSStringFromClass([DGDatabaseLeftTableViewCell class])];
         cell.label.text = [NSString stringWithFormat:@"%zd", (NSInteger)(indexPath.row + 1)];
-        if (isUnEvenRow) {
-            cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
-        } else {
-            cell.backgroundColor = [UIColor whiteColor];
-        }
+        cell.backgroundColor = [UIColor whiteColor];
         return cell;
     } else {
         DGDatabaseContentTableViewCell *cell = [_contentTableView dequeueReusableCellWithIdentifier:NSStringFromClass([DGDatabaseContentTableViewCell class])];
@@ -199,7 +190,7 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
             [weakSelf didClickContentLabel:label gridIndex:index];
         };
         if (isUnEvenRow) {
-            cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
+            cell.backgroundColor = [UIColor colorWithRed:0.96 green:0.98 blue:0.99 alpha:1.00];
         } else {
             cell.backgroundColor = [UIColor whiteColor];
         }

@@ -11,7 +11,7 @@
 #import "DGTouchFingerView.h"
 
 CGFloat const DGDefaultMaxFingerRadius = 22.0;
-CGFloat const DGDefaultForceTouchScale = 0.75;
+CGFloat const DGDefaultForceTouchScale = 4;
 
 @interface DGTouchFingerView ()
 
@@ -36,7 +36,7 @@ CGFloat const DGDefaultForceTouchScale = 0.75;
 {
     if ((self = [super initWithFrame:CGRectMake(point.x - DGDefaultMaxFingerRadius, point.y - DGDefaultMaxFingerRadius, 2 * DGDefaultMaxFingerRadius, 2 * DGDefaultMaxFingerRadius)])) {
         self.opaque = NO;
-        self.color = [UIColor colorWithRed:0.251f green:0.424f blue:0.502f alpha:1.0f];
+        self.color = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
         self.backgroundColor = [self.color colorWithAlphaComponent:0.4];
         self.layer.cornerRadius = DGDefaultMaxFingerRadius;
         self.layer.borderWidth = 2.0f;
@@ -56,16 +56,15 @@ CGFloat const DGDefaultForceTouchScale = 0.75;
     self.layer.borderColor = [color colorWithAlphaComponent:0.6f].CGColor;
 }
 
-
 - (void)updateWithTouch:(UITouch *)touch
 {
     CGPoint point = [touch locationInView:self.superview];
     self.center = point;
     if (@available(iOS 9.0, *)) {
-        self.lastScale = CGPointMake(MAX(1, touch.force * DGDefaultForceTouchScale), MAX(1, touch.force * DGDefaultForceTouchScale));
+        CGFloat force = touch.force / touch.maximumPossibleForce;
+        self.lastScale = CGPointMake(1 + force * DGDefaultForceTouchScale, 1 + force * DGDefaultForceTouchScale);
         self.transform = CGAffineTransformMakeScale(self.lastScale.x, self.lastScale.y);
-        CGFloat force = touch.maximumPossibleForce - touch.force;
-        UIColor *forceColor = [self interpolatedColorFromStartColor:[UIColor redColor] endColor:self.color fraction:force];
+        UIColor *forceColor = [self interpolatedColorFromStartColor:self.color endColor:UIColor.redColor fraction:force];
         self.backgroundColor = [forceColor colorWithAlphaComponent:0.4];
     }
 }
@@ -91,10 +90,6 @@ CGFloat const DGDefaultForceTouchScale = 0.75;
         self.alpha = 0.0f;
         self.layer.transform = self.touchEndTransform;
     } completion:^(BOOL finished) {
-        if (weakSelf == nil) {
-//            NSLog(@"💥💥💥💥💥💥💥💥💥💥 还好我机智");
-        }
-        // 如果恰巧这个时候关闭了 window， self 可能为空
         [weakSelf removeFromSuperview];
     }];
 }

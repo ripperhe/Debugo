@@ -122,7 +122,7 @@
     // 识别内容是否为时间戳
     NSString *contentTimeString = [DGDatabaseContentParser parseContentForTimestamp:content];
     if (contentTimeString.length) {
-        alertTitleString = [content stringByAppendingFormat:@"\n🧐 %@", contentTimeString];
+        alertTitleString = [content stringByAppendingFormat:@"\n\n🧐 %@", contentTimeString];
     }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitleString message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"copy" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
