@@ -61,7 +61,7 @@ CGFloat const DGDefaultForceTouchScale = 4;
     CGPoint point = [touch locationInView:self.superview];
     self.center = point;
     if (@available(iOS 9.0, *)) {
-        CGFloat force = touch.force / touch.maximumPossibleForce;
+        CGFloat force = touch.maximumPossibleForce <= 0 ? 0 : touch.force / touch.maximumPossibleForce;
         self.lastScale = CGPointMake(1 + force * DGDefaultForceTouchScale, 1 + force * DGDefaultForceTouchScale);
         self.transform = CGAffineTransformMakeScale(self.lastScale.x, self.lastScale.y);
         UIColor *forceColor = [self interpolatedColorFromStartColor:self.color endColor:UIColor.redColor fraction:force];
