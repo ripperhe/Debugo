@@ -17,5 +17,4 @@
 
 - (NSString *)dg_dateStringWithFormat:(NSString *)format;
 
-
 @end
