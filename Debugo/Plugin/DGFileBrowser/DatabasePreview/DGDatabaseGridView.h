@@ -21,7 +21,7 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row);
 @protocol DGDatabaseGridViewDelegate <NSObject>
 
 @optional
-- (void)gridView:(DGDatabaseGridView *)gridView didClickContentLabel:(UILabel *)label gridIndex:(DGGridIndex)gridIndex;
+- (void)gridView:(DGDatabaseGridView *)gridView didClickContentButton:(UIButton *)button gridIndex:(DGGridIndex)gridIndex;
 - (void)gridView:(DGDatabaseGridView *)gridView didSelectedRow:(NSInteger)row;
 - (void)gridView:(DGDatabaseGridView *)gridView didDeselectedRow:(NSInteger)row;
 

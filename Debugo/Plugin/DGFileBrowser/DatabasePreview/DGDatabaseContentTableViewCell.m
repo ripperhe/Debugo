@@ -10,7 +10,7 @@
 
 @interface DGDatabaseContentTableViewCell()
 
-@property (nonatomic, strong) NSArray <UILabel *>*labels;
+@property (nonatomic, strong) NSArray <UIButton *>*buttons;
 @property (nonatomic, strong) NSArray <NSNumber *>*columnWidths;
 
 @end
@@ -20,7 +20,6 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.labels = [NSArray array];
     }
     return self;
 }
@@ -28,55 +27,47 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat labelHeight = self.contentView.frame.size.height;
+    CGFloat height = self.contentView.frame.size.height;
     CGFloat currentLeft = 0;
-    for (NSInteger i = 0; i < _labels.count; i++) {
-        CGFloat labelWidth = [[self.columnWidths objectAtIndex:i] floatValue];
-        UILabel *label = _labels[i];
-        label.frame = CGRectMake(currentLeft + 5, 0, (labelWidth - 10), labelHeight);
-        currentLeft += labelWidth;
+    for (NSInteger i = 0; i < _buttons.count; i++) {
+        CGFloat width = [[self.columnWidths objectAtIndex:i] floatValue];
+        UIButton *button = _buttons[i];
+        button.frame = CGRectMake(currentLeft, 0, width, height);
+        currentLeft += width;
     }
 }
 
 - (void)loadContents:(NSArray *)contents columnWidths:(nonnull NSArray<NSNumber *> *)columnWidths {
     self.columnWidths = columnWidths;
-    if (contents.count != _labels.count) {
-        for (UIView *label in self.contentView.subviews) {
-            if ([label isKindOfClass:[UILabel class]]) {
-                [label removeFromSuperview];
+    if (contents.count != _buttons.count) {
+        for (UIView *v in self.contentView.subviews) {
+            if ([v isKindOfClass:[UIButton class]]) {
+                [v removeFromSuperview];
             }
         }
         NSMutableArray *array = [NSMutableArray array];
         for (NSInteger i = 0; i < contents.count; i++) {
-            UILabel *label = [[UILabel alloc] init];
-            label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-            label.textAlignment = NSTextAlignmentCenter;
-//            label.lineBreakMode = NSLineBreakByTruncatingMiddle;
-            label.font = [UIFont systemFontOfSize:14];
-            label.userInteractionEnabled = YES;
-            label.tag = 10000 + i;
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLabelAction:)];
-            [label addGestureRecognizer:tap];
-            [self.contentView addSubview:label];
-            [array addObject:label];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.tag = 10000 + i;
+            button.titleLabel.textAlignment = NSTextAlignmentCenter;
+            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            [button setContentEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+            [button setTitleColor:[UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1] forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+            [self.contentView addSubview:button];
+            [array addObject:button];
         }
-        self.labels = array;
+        self.buttons = array;
     }
     for (NSInteger i = 0; i < contents.count; i++) {
-        self.labels[i].text = contents[i];
+        [self.buttons[i] setTitle:contents[i] forState:UIControlStateNormal];
     }
 }
 
-- (void)tapLabelAction:(UITapGestureRecognizer *)gesture {
-    UILabel *label = (UILabel *)gesture.view;
-    if (self.clickLabel) {
-        self.clickLabel(label, label.tag - 10000);
+- (void)clickButton:(UIButton *)sender {
+    if (self.clickButton) {
+        self.clickButton(sender, sender.tag - 10000);
     }
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

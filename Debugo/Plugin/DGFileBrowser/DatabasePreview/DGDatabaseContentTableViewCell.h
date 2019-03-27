@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGDatabaseContentTableViewCell : UITableViewCell
 
-@property (nonatomic, copy) void(^clickLabel)(UILabel *label, NSInteger column);
+@property (nonatomic, copy) void(^clickButton)(UIButton *button, NSInteger column);
 
 - (void)loadContents:(NSArray *)contents columnWidths:(NSArray <NSNumber *>*)columnWidths;
 

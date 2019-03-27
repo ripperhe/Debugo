@@ -116,7 +116,7 @@
     return self.tablePreviewConfiguration.rowHeight;
 }
 
-- (void)gridView:(DGDatabaseGridView *)gridView didClickContentLabel:(nonnull UILabel *)label gridIndex:(DGGridIndex)gridIndex {
+- (void)gridView:(DGDatabaseGridView *)gridView didClickContentButton:(nonnull UIButton *)button gridIndex:(DGGridIndex)gridIndex {
     NSString *content = [self contentsAtRow:gridIndex.row][gridIndex.column];
     NSString *alertTitleString = content;
     // 识别内容是否为时间戳
@@ -142,8 +142,8 @@
         [alert setModalPresentationStyle:UIModalPresentationPopover];
         UIPopoverPresentationController *popPresenter = [alert
                                                          popoverPresentationController];
-        popPresenter.sourceView = label;
-        popPresenter.sourceRect = label.bounds;
+        popPresenter.sourceView = button;
+        popPresenter.sourceRect = button.bounds;
     }
     [self presentViewController:alert animated:YES completion:nil];
 }

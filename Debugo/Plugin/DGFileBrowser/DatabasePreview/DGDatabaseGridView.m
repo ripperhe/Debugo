@@ -185,10 +185,10 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
             [cell loadContents:[self.dataSource contentsAtRow:indexPath.row] columnWidths:_columnWidths.copy];
         }
         __weak typeof(self) weakSelf = self;
-        cell.clickLabel = ^(UILabel *label, NSInteger column) {
+        [cell setClickButton:^(UIButton * _Nonnull button, NSInteger column) {
             DGGridIndex index = DGGridIndexMake(column, indexPath.row);
-            [weakSelf didClickContentLabel:label gridIndex:index];
-        };
+            [weakSelf didClickContentButton:button gridIndex:index];
+        }];
         if (isUnEvenRow) {
             cell.backgroundColor = [UIColor colorWithRed:0.96 green:0.98 blue:0.99 alpha:1.00];
         } else {
@@ -231,9 +231,9 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row)
     }
 }
 
-- (void)didClickContentLabel:(UILabel *)label gridIndex:(DGGridIndex)gridIndex {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(gridView:didClickContentLabel:gridIndex:)]) {
-        [self.delegate gridView:self didClickContentLabel:label gridIndex:gridIndex];
+- (void)didClickContentButton:(UIButton *)button gridIndex:(DGGridIndex)gridIndex {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(gridView:didClickContentButton:gridIndex:)]) {
+        [self.delegate gridView:self didClickContentButton:button gridIndex:gridIndex];
     }
 }
 
