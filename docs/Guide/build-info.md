@@ -50,4 +50,4 @@ fi
 * **优点** 因为脚本2的内容就是真正要执行的，不引用其他脚本，直接粘贴到输入框肯定每次都能执行
 * **缺点** 如果后期本仓库升级脚本，需要手动重新复制粘贴
 
-[跳转到脚本文件链接 🚀](https://github.com/ripperhe/Debugo/blob/master/Debugo/Core/Assets/Debugo.bundle/com.ripperhe.debugo.build.info.sh)
+[跳转到脚本文件链接 🚀](https://github.com/ripperhe/Debugo/blob/master/Debugo/Plugin/DGBase/Assets/Debugo.bundle/com.ripperhe.debugo.build.info.sh)
