@@ -7,15 +7,9 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#if __has_include("DGPluginEnable.h")
-    #import "DGPluginEnable.h"
-#endif
-
-#ifndef DGSuspensionViewCanBeEnabled
-    #define DGSuspensionViewCanBeEnabled DEBUG
-#endif
 
 #import "DGSuspensionContainer.h"
+#import "DGSuspensionViewEnable.h"
 #import "DGSuspensionViewConfig.h"
 #import "DGSuspensionViewController.h"
 #import "DGSuspensionManager.h"

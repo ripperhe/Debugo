@@ -21,12 +21,15 @@
 
 @implementation DGTouchMonitor
 
-+ (void)load {
-//#if DGTouchMonitorCanBeEnabled
-//    printf("◦ DGTouchMonitorCanBeEnabled ✅\n");
-//#else
-//    printf("◦ DGTouchMonitorCanBeEnabled ❌\n");
-//#endif
++ (void)initialize {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+#if DGTouchMonitorCanBeEnabled
+        printf("◦ DGTouchMonitorCanBeEnabled ✅\n");
+#else
+        printf("◦ DGTouchMonitorCanBeEnabled ❌\n");
+#endif
+    });
 }
 
 static DGTouchMonitor *_instance;

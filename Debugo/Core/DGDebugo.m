@@ -50,30 +50,15 @@ NSString *const DGDebugoDidLogoutSuccessNotification = @"DGDebugoDidLogoutSucces
 
 @implementation DGDebugo
 
-+ (void)load {
++ (void)initialize {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
 #if DebugoCanBeEnabled
-    printf("☄️ DebugoCanBeEnabled ✅\n");
+        printf("☄️ DebugoCanBeEnabled ✅\n");
 #else
-    printf("☄️ DebugoCanBeEnabled ❌\n");
+        printf("☄️ DebugoCanBeEnabled ❌\n");
 #endif
-    
-//#if DGDebuggingOverlayCanBeEnabled
-//    printf("• DGDebuggingOverlayCanBeEnabled ✅\n");
-//#else
-//    printf("• DGDebuggingOverlayCanBeEnabled ❌\n");
-//#endif
-//
-//#if DGSuspensionViewCanBeEnabled
-//    printf("• DGSuspensionViewCanBeEnabled ✅\n");
-//#else
-//    printf("• DGSuspensionViewCanBeEnabled ❌\n");
-//#endif
-//
-//#if DGTouchMonitorCanBeEnabled
-//    printf("• DGTouchMonitorCanBeEnabled ✅\n");
-//#else
-//    printf("• DGTouchMonitorCanBeEnabled ❌\n");
-//#endif
+    });
 }
 
 static DGDebugo *_instance = nil;

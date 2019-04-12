@@ -6,6 +6,7 @@
 //  Copyright © 2019 ripper. All rights reserved.
 //
 
+#import "DGBaseEnable.h"
 #import "DGBundle.h"
 #import "DGLog.h"
 #import "DGConst.h"

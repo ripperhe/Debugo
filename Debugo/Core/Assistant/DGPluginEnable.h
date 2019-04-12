@@ -9,6 +9,7 @@
 
 #import "DebugoEnable.h"
 
+#define DGBaseCanBeEnabled DebugoCanBeEnabled
 #define DGDebuggingOverlayCanBeEnabled DebugoCanBeEnabled
 #define DGSuspensionViewCanBeEnabled DebugoCanBeEnabled
 #define DGTouchMonitorCanBeEnabled DebugoCanBeEnabled

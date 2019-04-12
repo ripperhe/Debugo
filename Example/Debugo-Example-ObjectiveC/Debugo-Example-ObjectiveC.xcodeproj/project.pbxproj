@@ -90,6 +90,9 @@
 		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFileConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileConfiguration.h; sourceTree = "<group>"; };
 		C934EDCC224369C400B6979C /* DGFileConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileConfiguration.m; sourceTree = "<group>"; };
+		C96BCF37226065EC00A51E90 /* DGSuspensionViewEnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSuspensionViewEnable.h; sourceTree = "<group>"; };
+		C96BCF382260671F00A51E90 /* DGTouchMonitorEnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchMonitorEnable.h; sourceTree = "<group>"; };
+		C96BCF39226069E700A51E90 /* DGBaseEnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGBaseEnable.h; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -448,6 +451,7 @@
 		C9B45692221D2B460098644E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C96BCF39226069E700A51E90 /* DGBaseEnable.h */,
 				C9B45698221D2B460098644E /* DGBase.h */,
 				C9B45699221D2B460098644E /* Bundle */,
 				C9B4569C221D2B460098644E /* Macro */,
@@ -567,6 +571,7 @@
 		C9B456B4221D2B460098644E /* DGSuspensionView */ = {
 			isa = PBXGroup;
 			children = (
+				C96BCF37226065EC00A51E90 /* DGSuspensionViewEnable.h */,
 				C9B456BB221D2B460098644E /* DGSuspensionView.h */,
 				C9B456B5221D2B460098644E /* DGSuspensionView.m */,
 				C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */,
@@ -650,6 +655,7 @@
 		C9B456EC221D2B460098644E /* DGTouchMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				C96BCF382260671F00A51E90 /* DGTouchMonitorEnable.h */,
 				C9B456EF221D2B460098644E /* DGTouchMonitor.h */,
 				C9B456F3221D2B460098644E /* DGTouchMonitor.m */,
 				C9B456F6221D2B460098644E /* DGTouchWindow.h */,

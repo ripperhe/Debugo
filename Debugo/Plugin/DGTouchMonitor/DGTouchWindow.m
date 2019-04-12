@@ -11,7 +11,6 @@
 #import "DGTouchWindow.h"
 #import <objc/runtime.h>
 #import "DGTouchFingerView.h"
-#import "DGTouchMonitor.h"
 
 static const void* kDGFingerViewAssociatedKey = &kDGFingerViewAssociatedKey;
 

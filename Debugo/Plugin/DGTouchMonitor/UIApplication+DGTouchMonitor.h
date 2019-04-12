@@ -9,6 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "DGTouchMonitorEnable.h"
 
 extern NSString* const DGTouchMonitorDidSendTouchEventNotification;
 

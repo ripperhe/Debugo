@@ -9,7 +9,6 @@
 
 
 #import "DGSuspensionContainer.h"
-#import "DGSuspensionView.h"
 
 #define BoolString(boolValue) (boolValue?@"YES":@"NO")
 

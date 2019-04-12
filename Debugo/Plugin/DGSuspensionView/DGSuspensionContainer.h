@@ -9,6 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "DGSuspensionViewEnable.h"
 
 @interface DGSuspensionContainer : UIWindow
 

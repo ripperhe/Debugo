@@ -7,16 +7,8 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#if __has_include("DGPluginEnable.h")
-    #import "DGPluginEnable.h"
-#endif
-
-#ifndef DGTouchMonitorCanBeEnabled
-    #define DGTouchMonitorCanBeEnabled DEBUG
-#endif
-
-
 #import <Foundation/Foundation.h>
+#import "DGTouchMonitorEnable.h"
 
 @interface DGTouchMonitor : NSObject
 
