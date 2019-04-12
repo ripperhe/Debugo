@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
     end
     pg.subspec 'DGSuspensionView' do |su|
       su.source_files = 'Debugo/Plugin/DGSuspensionView/**'
+      su.dependency 'Debugo/Plugin/DGBase'
     end
     pg.subspec 'DGFileBrowser' do |fb|
       fb.source_files = 'Debugo/Plugin/DGFileBrowser/**/*'
