@@ -26,6 +26,9 @@
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSArray <DGFBFile *>*filteredFiles;
 
+// Count Label
+@property (nonatomic, weak) UILabel *countLabel;
+
 @end
 
 @implementation DGFileListViewController
@@ -64,6 +67,12 @@
     self.searchController.searchBar.delegate = self;
     self.searchController.delegate = self;
 
+    // items count
+    UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+    countLabel.textAlignment = NSTextAlignmentCenter;
+    self.tableView.tableFooterView = countLabel;
+    self.countLabel = countLabel;
+    
     // Set tableView
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -98,6 +107,7 @@
         });
     }];
     [self indexFiles];
+    self.countLabel.text = [NSString stringWithFormat:@"%zd items", self.files.count];
 }
 
 - (void)indexFiles {
@@ -127,6 +137,7 @@
     }];
     self.filteredFiles = [self.files filteredArrayUsingPredicate:predicate];
     [self.tableView reloadData];
+    self.countLabel.text = [NSString stringWithFormat:@"%zd items", self.filteredFiles.count];
 }
 
 #pragma mark - setter

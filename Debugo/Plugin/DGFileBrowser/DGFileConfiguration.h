@@ -10,10 +10,10 @@
 #import "DGFBFile.h"
 #import "DGDatabasePreviewConfiguration.h"
 
-typedef void (^DGFBFileDidSelectFileBlock)(DGFBFile *file);
-typedef DGDatabasePreviewConfiguration * (^DGDatabaseFilePreviewConfigurationBlock)(DGFBFile *file);
-
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^DGFBFileDidSelectFileBlock)(DGFBFile *file);
+typedef DGDatabasePreviewConfiguration * _Nullable (^DGDatabaseFilePreviewConfigurationBlock)(DGFBFile *file);
 
 @interface DGFileConfiguration : NSObject
 

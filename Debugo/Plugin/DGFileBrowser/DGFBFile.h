@@ -23,11 +23,13 @@ typedef NS_ENUM(NSUInteger, DGFBFileType) {
     DGFBFileTypeDefault, // file
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DGFBFile : NSObject<QLPreviewItem>
 
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, assign) BOOL isDirectory;
-@property (nonatomic, copy) NSString *fileExtension;
+@property (nonatomic, copy, nullable) NSString *fileExtension;
 @property (nonatomic, strong) NSDictionary *fileAttributes;
 @property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign) DGFBFileType type;
@@ -38,3 +40,5 @@ typedef NS_ENUM(NSUInteger, DGFBFileType) {
 - (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END
