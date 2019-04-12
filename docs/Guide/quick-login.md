@@ -50,26 +50,18 @@
     }];
 	```
 
-5. 登陆成功的时候发送通知 `DGDebugoDidLoginSuccessNotification`，用于保存账号信息以及隐藏 Login Bubble
+5. 登陆成功的时调用 `loginSuccessWithAccount:` 方法，用于保存账号信息以及隐藏 Login Bubble
 
 	```objectivec
 	// e.g.
-	[[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLoginSuccessNotification
-	                                                     object:@{@"username":@"password"}];
-	// OR
-	[[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLoginSuccessNotification
-	                                                     object:[DGAccount accountWithUsername:@"username" password:@"password"]];
-	// 如果不想在登录页面导入 Debugo, 可以直接使用字符串
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"DGDebugoDidLoginSuccessNotification"
-	                                                     object:@{@"username":@"password"}];
+	[DGDebugo loginSuccessWithAccount:[DGAccount accountWithUsername:account password:password]]
 	```
 
-6. 退出登陆成功的时候发送通知 `DGDebugoDidLogoutSuccessNotification`，用户重新显示 Login Bubble
+6. 退出登陆成功的时调用 `logoutSuccess` 方法，用户重新显示 Login Bubble
 
 	```objectivec
 	// e.g.
- 	[[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLogoutSuccessNotification object:nil];
-
+ 	[DGDebugo logoutSuccess];
 	```
 
 ## 注意点 ❗️

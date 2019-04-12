@@ -24,7 +24,7 @@
 利用上面这个方法，点击之后则会调用对应代码，并且自动关闭 Debug Window。有的时候不想自动关闭，则可以使用这个方法：
 
 ```objectivec
-[DGDebugo addTestActionWithTitle:@"Xin Tian Di 👉" autoClose:NO handler:^(DGTestAction *action, UIViewController *actionViewController) {
+[DGDebugo addTestActionForUser:nil title:@"Xin Tian Di 👉" autoClose:NO handler:^(DGTestAction *action, UIViewController *actionViewController) {
     UIViewController *vc = [UIViewController new];
     [actionViewController.navigationController pushViewController:vc animated:YES];
 }];

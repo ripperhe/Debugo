@@ -44,10 +44,6 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
 }
 #endif
 
-
-NSString *const DGDebugoDidLoginSuccessNotification = @"DGDebugoDidLoginSuccessNotification";
-NSString *const DGDebugoDidLogoutSuccessNotification = @"DGDebugoDidLogoutSuccessNotification";
-
 @implementation DGDebugo
 
 + (void)initialize {
@@ -76,11 +72,6 @@ static DGDebugo *_instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
-#if DebugoCanBeEnabled
-        // notification
-        [[NSNotificationCenter defaultCenter] addObserver:_instance selector:@selector(loginSuccessNotification:) name:DGDebugoDidLoginSuccessNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:_instance selector:@selector(logoutSuccessNotification:) name:DGDebugoDidLogoutSuccessNotification object:nil];
-#endif
     });
     return _instance;
 }
@@ -116,23 +107,12 @@ static DGDebugo *_instance = nil;
 + (void)closeDebugWindow {
     debugo_exec_main_queue(^{
         if (!DGDebugo.shared.isFire) return;
+        
         [DGAssistant.shared closeDebugViewControllerContainerWindow];
     });
 }
 
 #pragma mark - test action
-
-+ (void)addTestActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
-    debugo_exec_main_queue(^{
-        [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:autoClose handler:handler];
-    });
-}
-
-+ (void)addTestActionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
-    debugo_exec_main_queue(^{
-        [DGAssistant.shared addTestActionForUser:nil withTitle:title autoClose:autoClose handler:handler];
-    });
-}
 
 + (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
@@ -140,36 +120,47 @@ static DGDebugo *_instance = nil;
     });
 }
 
-#pragma mark - notification
-- (void)loginSuccessNotification:(NSNotification *)notification {
++ (void)addTestActionForUser:(NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
-        if (!self.isFire) return;
+        [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:YES handler:handler];
+    });
+}
+
++ (void)addTestActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
+    debugo_exec_main_queue(^{
+        [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:autoClose handler:handler];
+    });
+}
+
++ (void)loginSuccessWithAccount:(DGAccount *)account {
+    debugo_exec_main_queue(^{
+        if (!DGDebugo.shared.isFire) return;
         if (!DGAssistant.shared.configuration.needLoginBubble) return;
         
-        NSObject *obj = notification.object;
-        if ([obj isKindOfClass:[NSDictionary class]]) {
+        if ([account isKindOfClass:[DGAccount class]] && account.isValid){
+            // DGAccount 类型
+            [DGAssistant.shared addAccountWithUsername:account.username password:account.password];
+        }else if ([account isKindOfClass:[NSDictionary class]]) {
             // 字典类型 {username:password}
-            NSDictionary *dic = (NSDictionary *)obj;
+            NSDictionary *dic = (NSDictionary *)account;
             if (dic.allKeys.count == 1) {
                 NSString *username = dic.allKeys.firstObject;
                 NSString *password = [dic objectForKey:username];
-                [DGAssistant.shared addAccountWithUsername:username password:password];
+                if ([password isKindOfClass:[NSString class]] && password.length) {
+                    [DGAssistant.shared addAccountWithUsername:username password:password];
+                }
             }
-        }else if ([obj isKindOfClass:[DGAccount class]]){
-            // DGAccount 类型
-            DGAccount *account = (DGAccount *)obj;
-            [DGAssistant.shared addAccountWithUsername:account.username password:account.password];
         }else{
-            NSLog(@"Debugo: 从通知获取到未知登陆数据");
+            DGLog(@"Debugo: 从通知获取到未知登陆数据 %@", account);
         }
         
         [DGAssistant.shared removeLoginBubble];
     });
 }
 
-- (void)logoutSuccessNotification:(NSNotification *)notification {
++ (void)logoutSuccess {
     debugo_exec_main_queue(^{
-        if (!self.isFire) return;
+        if (!DGDebugo.shared.isFire) return;
         if (!DGAssistant.shared.configuration.needLoginBubble) return;
         
         [DGAssistant.shared showLoginBubble];

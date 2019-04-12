@@ -30,14 +30,10 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     /**
-     💥 退出成功之后发送登陆成功的通知
+     💥 退出成功之后调用退出成功的方法
      * Debugo 会重新显示出 login bubble
      */
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugoDidLogoutSuccessNotification
-                                                        object:nil];
-    // 或者
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"DGDebugoDidLogoutSuccessNotification"
-//                                                        object:nil];
+    [DGDebugo logoutSuccess];
 }
 
 @end

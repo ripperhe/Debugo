@@ -16,7 +16,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #if DebugoCanBeEnabled
-// 仅在该 user 的电脑上执行 block 中的代码 (`$ whoami`)
+/** 仅在该 user 的电脑上执行 block 中的代码 (`$ whoami`) */
 void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 #else
 #define debugo_exec(...)
@@ -24,21 +24,10 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 
 
 ///------------------------------------------------
-/// Notification
-///------------------------------------------------
-
-// 如果使用 login bubble 快速登陆，在登陆成功时发送该通知；用于隐藏 login bubble 以及存储账号
-extern NSString *const DGDebugoDidLoginSuccessNotification;
-// 退出登陆成功时发送本通知；用于重新显示 login bubble
-extern NSString *const DGDebugoDidLogoutSuccessNotification;
-
-
-///------------------------------------------------
 /// DGDebugoDelegate
 ///------------------------------------------------
 
 @protocol DGDebugoDelegate <NSObject>
-
 @optional
 
 /** 自定义 test action viewController 的 tableHeaderView; 这是我特意留给你的一亩三分地，可用于显示当前账号等信息~ 🤩  */
@@ -59,7 +48,7 @@ extern NSString *const DGDebugoDidLogoutSuccessNotification;
 
 @property (nonatomic, weak, nullable) id<DGDebugoDelegate> delegate;
 @property (nonatomic, assign, readonly) BOOL isFire;
-@property (nonatomic, copy, readonly, nullable) NSString *currentUser;
+@property (nonatomic, readonly, nullable) NSString *currentUser;
 
 + (instancetype)shared;
 
@@ -70,11 +59,17 @@ extern NSString *const DGDebugoDidLogoutSuccessNotification;
 
 + (void)closeDebugWindow;
 
++ (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
+
++ (void)addTestActionForUser:(nullable NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
+
 + (void)addTestActionForUser:(nullable NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler;
 
-+ (void)addTestActionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler;
+/** 如果使用 login bubble 快速登陆，登陆成功时调用该方法；用于隐藏 login bubble 以及存储账号 */
++ (void)loginSuccessWithAccount:(DGAccount *)account;
 
-+ (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
+/** 如果使用 login bubble 快速登陆，退出登陆成功时调用该方法；用于重新显示 login bubble */
++ (void)logoutSuccess;
 
 @end
 
