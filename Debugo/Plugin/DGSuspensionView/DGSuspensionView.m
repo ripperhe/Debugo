@@ -28,16 +28,16 @@
 
 @implementation DGSuspensionView
 
-+ (void)initialize {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-#if DGSuspensionViewCanBeEnabled
-        printf("◦ DGSuspensionViewCanBeEnabled ✅\n");
-#else
-        printf("◦ DGSuspensionViewCanBeEnabled ❌\n");
-#endif
-    });
-}
+//+ (void)initialize {
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//#if DGSuspensionViewCanBeEnabled
+//        printf("◦ DGSuspensionViewCanBeEnabled ✅\n");
+//#else
+//        printf("◦ DGSuspensionViewCanBeEnabled ❌\n");
+//#endif
+//    });
+//}
 
 - (void)dealloc
 {

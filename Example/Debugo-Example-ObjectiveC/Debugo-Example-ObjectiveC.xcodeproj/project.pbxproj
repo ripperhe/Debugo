@@ -263,6 +263,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C92461CF2260776E0028F329 /* DGSuspensionContainer */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456BC221D2B460098644E /* DGSuspensionContainer.h */,
+				C9B456B8221D2B460098644E /* DGSuspensionContainer.m */,
+			);
+			path = DGSuspensionContainer;
+			sourceTree = "<group>";
+		};
 		C92F8C76221FA1AA0080C156 /* DGFilePath */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +511,7 @@
 				C9B456AC221D2B460098644E /* DGOrderedDictionary */,
 				C9B456A6221D2B460098644E /* DGDevice */,
 				C92F8C76221FA1AA0080C156 /* DGFilePath */,
+				C92461CF2260776E0028F329 /* DGSuspensionContainer */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -576,8 +586,6 @@
 				C9B456B5221D2B460098644E /* DGSuspensionView.m */,
 				C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */,
 				C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */,
-				C9B456BC221D2B460098644E /* DGSuspensionContainer.h */,
-				C9B456B8221D2B460098644E /* DGSuspensionContainer.m */,
 				C9B456B7221D2B460098644E /* DGSuspensionViewController.h */,
 				C9B456BD221D2B460098644E /* DGSuspensionViewController.m */,
 				C9B456B6221D2B460098644E /* DGSuspensionManager.h */,
