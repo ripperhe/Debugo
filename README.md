@@ -65,7 +65,7 @@ end
 ```
 
 启用
-****
+
 ```objectivec
 [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
     // 设置 configuration 的属性，定制你的需求
