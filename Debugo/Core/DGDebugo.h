@@ -59,11 +59,11 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 
 + (void)closeDebugWindow;
 
-+ (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
++ (void)addActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
 
-+ (void)addTestActionForUser:(nullable NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
++ (void)addActionForUser:(nullable NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler;
 
-+ (void)addTestActionForUser:(nullable NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler;
++ (void)addActionForUser:(nullable NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler;
 
 /** 如果使用 login bubble 快速登陆，登陆成功时调用该方法；用于隐藏 login bubble 以及存储账号 */
 + (void)loginSuccessWithAccount:(DGAccount *)account;

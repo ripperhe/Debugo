@@ -12,7 +12,7 @@
 原理就是利用 block 块儿存储测试代码，通过点击调用。下面就是直接添加一个测试条目的方法：
 
 ```objectivec
-[DGDebugo addTestActionWithTitle:@"Wo Shi Ce Shi" handler:^(DGTestAction *action, UIViewController *actionViewController) {
+[DGDebugo addActionWithTitle:@"Wo Shi Ce Shi" handler:^(DGTestAction *action, UIViewController *actionVC) {
 	NSLog(@"wo kan ni xie le duo shao bug!");
 }];
 ```
@@ -24,13 +24,13 @@
 利用上面这个方法，点击之后则会调用对应代码，并且自动关闭 Debug Window。有的时候不想自动关闭，则可以使用这个方法：
 
 ```objectivec
-[DGDebugo addTestActionForUser:nil title:@"Xin Tian Di 👉" autoClose:NO handler:^(DGTestAction *action, UIViewController *actionViewController) {
+[DGDebugo addActionForUser:nil title:@"Xin Tian Di 👉" autoClose:NO handler:^(DGTestAction *action, UIViewController *actionVC) {
     UIViewController *vc = [UIViewController new];
-    [actionViewController.navigationController pushViewController:vc animated:YES];
+    [actionVC.navigationController pushViewController:vc animated:YES];
 }];
 ```
 
-这个方法多了一个 `autoClose` 参数，传入 `NO` 即可不自动关闭。就像例子中的一样，可能有的时候需要 push 到一个页面，可以使用 block 的 `actionViewController` 的 `navigationController` 直接进行 push。
+这个方法多了一个 `autoClose` 参数，传入 `NO` 即可不自动关闭。就像例子中的一样，可能有的时候需要 push 到一个页面，可以使用 block 的 `actionVC` 的 `navigationController` 直接进行 push。
 
 ## 优先显示当前 User 测试条目
 
@@ -40,7 +40,7 @@
 
 
 ```objectivec
-[DGDebugo addTestActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+[DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
 	DGLog(@"不知道啊...");
 }];
 ```
@@ -53,11 +53,11 @@ Debugo 时的 fire 方法里面 configuration 有个参数为 `commonTestActions
 
 ```objectivec
 configuration.commonTestActions = @[
-                                            [DGTestAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGTestAction *action, UIViewController *actionViewController) {
+                                            [DGTestAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGTestAction *action, UIViewController *actionVC) {
                                                 UIViewController *vc = [DGDebugo topViewControllerForWindow:nil];
                                                 NSLog(@"%@", vc);
                                             }],
-                                            [DGTestAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGTestAction *action, UIViewController *actionViewController) {
+                                            [DGTestAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGTestAction *action, UIViewController *actionVC) {
                                                 NSArray *array = [DGDebugo getAllWindows];
                                                 NSLog(@"%@", array);
                                             }],

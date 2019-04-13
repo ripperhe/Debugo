@@ -114,23 +114,25 @@ static DGDebugo *_instance = nil;
 
 #pragma mark - test action
 
-+ (void)addTestActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
++ (void)addActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
         [DGAssistant.shared addTestActionForUser:nil withTitle:title autoClose:YES handler:handler];
     });
 }
 
-+ (void)addTestActionForUser:(NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
++ (void)addActionForUser:(NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
         [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:YES handler:handler];
     });
 }
 
-+ (void)addTestActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
++ (void)addActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
         [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:autoClose handler:handler];
     });
 }
+
+#pragma mark - quick login
 
 + (void)loginSuccessWithAccount:(DGAccount *)account {
     debugo_exec_main_queue(^{
