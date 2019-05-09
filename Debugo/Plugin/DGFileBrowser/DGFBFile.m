@@ -15,9 +15,7 @@
 - (instancetype)initWithURL:(NSURL *)URL {
     if (self = [super init]) {
         self.fileURL = URL;
-        BOOL isDirectory = [self checkDirectoryWithURL:URL];
-        self.isDirectory = isDirectory;
-        self.fileAttributes = [self getFileAttributesWithURL:URL];
+        self.isDirectory = [self checkDirectoryWithURL:URL];
         if (self.isDirectory) {
             self.fileExtension = nil;
             self.type = DGFBFileTypeDirectory;
@@ -55,12 +53,53 @@
     return isDirectory;
 }
 
-- (NSDictionary *)getFileAttributesWithURL:(NSURL *)fileURL {
-    NSString *path = fileURL.path;
+// 单个文件的大小
+- (long long)fileSizeAtPath:(NSString *)filePath {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:filePath]) return 0;
+    return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+}
+
+// 遍历文件夹获得文件夹大小，返回字节
+- (long long)folderSizeAtPath:(NSString *)folderPath {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    BOOL isDirectory = NO;
+    if (![manager fileExistsAtPath:folderPath isDirectory:&isDirectory]) return 0;
+    if (!isDirectory) return [self fileSizeAtPath:folderPath];
+    long long folderSize = 0;
+    NSArray *items = [manager contentsOfDirectoryAtPath:folderPath error:nil];
+    for (int i = 0; i < items.count; i++) {
+        BOOL subIsDir;
+        NSString *fileAbsolutePath = [folderPath stringByAppendingPathComponent:items[i]];
+        [manager fileExistsAtPath:fileAbsolutePath isDirectory:&subIsDir];
+        if (subIsDir == YES) {
+            // 文件夹就递归计算
+            folderSize += [self folderSizeAtPath:fileAbsolutePath];
+        } else {
+            // 文件直接计算
+            folderSize += [self fileSizeAtPath:fileAbsolutePath];
+        }
+    }
+    return folderSize;
+}
+
+- (NSDictionary *)fileAttributes {
+    if (!self.isExist) {
+        return nil;
+    }
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *path = self.fileURL.path;
     NSError *error;
-    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+    NSDictionary *attributes = [manager attributesOfItemAtPath:path error:&error];
     if (error) {
-        NSLog(@"%@ %s error:%@", self, __func__, error);
+        NSLog(@"%@<%p> %@ error:%@", [self class], self, NSStringFromSelector(_cmd), error);
+    }else {
+        if (self.isDirectory) {
+            long long folderSize = [self folderSizeAtPath:path];
+            NSMutableDictionary *newDic = [NSMutableDictionary dictionaryWithDictionary:attributes];
+            [newDic setObject:@(folderSize) forKey:NSFileSize];
+            attributes = newDic.copy;
+        }
     }
     return attributes;
 }

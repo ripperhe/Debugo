@@ -51,10 +51,12 @@
 
     // navigationItem
     __weak typeof(self) weakSelf = self;
-    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    UIBarButtonItem *item1 = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         return @[weakSelf.file.fileURL];
     }];
-
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(clickShowDirectoryInfoItem:)];
+    self.navigationItem.rightBarButtonItems = @[item1, item2];
+    
     // Set search controller
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = self.searchController;
@@ -137,6 +139,13 @@
     self.filteredFiles = [self.files filteredArrayUsingPredicate:predicate];
     [self.tableView reloadData];
     self.countLabel.text = [NSString stringWithFormat:@"%zd items", self.filteredFiles.count];
+}
+
+#pragma mark - event
+
+- (void)clickShowDirectoryInfoItem:(UIBarButtonItem *)sender {
+    DGFileInfoViewController *fileInfoVC = [[DGFileInfoViewController alloc] initWithFile:self.file];
+    [self.navigationController pushViewController:fileInfoVC animated:YES];
 }
 
 #pragma mark - setter

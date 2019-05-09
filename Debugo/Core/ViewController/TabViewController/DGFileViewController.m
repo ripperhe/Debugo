@@ -38,6 +38,12 @@ static NSString *kDGCellValue = @"kDGCellValue";
     [self.navigationController.navigationBar setShadowImage:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.dataArray = nil;
+    [self.tableView reloadData];
+}
+
 - (DGFileConfiguration *)configuration {
     if (!_configuration) {
         DGFileConfiguration *configuration = [DGFileConfiguration new];
@@ -50,13 +56,12 @@ static NSString *kDGCellValue = @"kDGCellValue";
             return config;
         }];
         _configuration = configuration;
-
     }
     return _configuration;
 }
+
 - (NSArray *)dataArray {
     if (!_dataArray) {
-        
         NSMutableArray *array = [NSMutableArray array];
         
         // genaral
@@ -152,7 +157,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     cell.textLabel.text = data[kDGCellTitle];
     cell.detailTextLabel.text = [data objectForKey:kDGCellSubtitle]?:file.simpleInfo;
     cell.imageView.image = file.image;
-    cell.accessoryType = file.isDirectory?UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryDetailButton;
+    cell.accessoryType = file.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryDetailButton;
     cell.accessoryView.userInteractionEnabled = !file.isDirectory;
     return cell;
 }

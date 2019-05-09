@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGFBFile : NSObject<QLPreviewItem>
 
+@property (nonatomic, strong) NSURL *fileURL;
+@property (nonatomic, copy, nullable) NSString *fileExtension;
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, assign) BOOL isDirectory;
-@property (nonatomic, copy, nullable) NSString *fileExtension;
-@property (nonatomic, strong) NSDictionary *fileAttributes;
-@property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign) DGFBFileType type;
 @property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly, nullable) NSString *simpleInfo;
-@property (nonatomic, assign, readonly) BOOL isExist;
 
 - (instancetype)initWithURL:(NSURL *)URL;
 - (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
+- (BOOL)isExist;
+- (NSDictionary *)fileAttributes;
 
 @end
 

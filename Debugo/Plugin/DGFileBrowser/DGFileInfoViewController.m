@@ -32,7 +32,8 @@ static NSString *kCellValue = @"value";
     [super viewDidLoad];
     
     self.title = self.file.displayName;
-
+    NSDictionary *fileAttributes = [self.file fileAttributes];
+    
     self.dataArray = @[
                        @[
                            @{kCellTitle:@"Name", kCellValue:self.file.displayName},
@@ -43,22 +44,22 @@ static NSString *kCellValue = @"value";
                            @{kCellTitle:@"Deletable", kCellValue:[NSFileManager.defaultManager isDeletableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
                            ],
                        @[
-                           @{kCellTitle:@"fileSize", kCellValue:[NSString stringWithFormat:@"%lld bytes (%@)", self.file.fileAttributes.fileSize, [@(self.file.fileAttributes.fileSize) dg_sizeString]]},
-                           @{kCellTitle:@"fileModificationDate", kCellValue:[self dateStringWithDate:self.file.fileAttributes.fileModificationDate]},
-                           @{kCellTitle:@"fileCreationDate", kCellValue:[self dateStringWithDate:self.file.fileAttributes.fileCreationDate]},
-                           @{kCellTitle:@"fileType", kCellValue:self.file.fileAttributes.fileType?:@"null"},
-                           @{kCellTitle:@"filePosixPermissions", kCellValue:@(self.file.fileAttributes.filePosixPermissions)},
-                           @{kCellTitle:@"fileOwnerAccountName", kCellValue:self.file.fileAttributes.fileOwnerAccountName?:@"null"},
-                           @{kCellTitle:@"fileGroupOwnerAccountName", kCellValue:self.file.fileAttributes.fileGroupOwnerAccountName?:@"null"},
-                           @{kCellTitle:@"fileSystemNumber", kCellValue:@(self.file.fileAttributes.fileSystemNumber)},
-                           @{kCellTitle:@"fileSystemFileNumber", kCellValue:@(self.file.fileAttributes.fileSystemFileNumber)},
-                           @{kCellTitle:@"fileExtensionHidden", kCellValue:self.file.fileAttributes.fileExtensionHidden?@"YES":@"NO"},
-                           @{kCellTitle:@"fileHFSCreatorCode", kCellValue:@(self.file.fileAttributes.fileHFSCreatorCode)},
-                           @{kCellTitle:@"fileHFSTypeCode", kCellValue:@(self.file.fileAttributes.fileHFSTypeCode)},
-                           @{kCellTitle:@"fileIsImmutable", kCellValue:self.file.fileAttributes.fileIsImmutable?@"YES":@"NO"},
-                           @{kCellTitle:@"fileIsAppendOnly", kCellValue:self.file.fileAttributes.fileIsAppendOnly?@"YES":@"NO"},
-                           @{kCellTitle:@"fileOwnerAccountID", kCellValue:self.file.fileAttributes.fileOwnerAccountID?:@"null"},
-                           @{kCellTitle:@"fileGroupOwnerAccountID", kCellValue:self.file.fileAttributes.fileGroupOwnerAccountID?:@"null"},
+                           @{kCellTitle:@"fileSize", kCellValue:[NSString stringWithFormat:@"%lld bytes (%@)", fileAttributes.fileSize, [@(fileAttributes.fileSize) dg_sizeString]]},
+                           @{kCellTitle:@"fileModificationDate", kCellValue:[self dateStringWithDate:fileAttributes.fileModificationDate]},
+                           @{kCellTitle:@"fileCreationDate", kCellValue:[self dateStringWithDate:fileAttributes.fileCreationDate]},
+                           @{kCellTitle:@"fileType", kCellValue:fileAttributes.fileType ?: @"null"},
+                           @{kCellTitle:@"filePosixPermissions", kCellValue:@(fileAttributes.filePosixPermissions)},
+                           @{kCellTitle:@"fileOwnerAccountName", kCellValue:fileAttributes.fileOwnerAccountName ?: @"null"},
+                           @{kCellTitle:@"fileGroupOwnerAccountName", kCellValue:fileAttributes.fileGroupOwnerAccountName ?: @"null"},
+                           @{kCellTitle:@"fileSystemNumber", kCellValue:@(fileAttributes.fileSystemNumber)},
+                           @{kCellTitle:@"fileSystemFileNumber", kCellValue:@(fileAttributes.fileSystemFileNumber)},
+                           @{kCellTitle:@"fileExtensionHidden", kCellValue:fileAttributes.fileExtensionHidden?@"YES":@"NO"},
+                           @{kCellTitle:@"fileHFSCreatorCode", kCellValue:@(fileAttributes.fileHFSCreatorCode)},
+                           @{kCellTitle:@"fileHFSTypeCode", kCellValue:@(fileAttributes.fileHFSTypeCode)},
+                           @{kCellTitle:@"fileIsImmutable", kCellValue:fileAttributes.fileIsImmutable ? @"YES" : @"NO"},
+                           @{kCellTitle:@"fileIsAppendOnly", kCellValue:fileAttributes.fileIsAppendOnly ? @"YES" : @"NO"},
+                           @{kCellTitle:@"fileOwnerAccountID", kCellValue:fileAttributes.fileOwnerAccountID ?: @"null"},
+                           @{kCellTitle:@"fileGroupOwnerAccountID", kCellValue:fileAttributes.fileGroupOwnerAccountID?:@"null"},
                            ],
                        ];
     
