@@ -34,7 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign) DGFBFileType type;
 @property (nonatomic, readonly) UIImage *image;
-@property (nullable, nonatomic, readonly) NSString *simpleInfo;
+@property (nonatomic, readonly, nullable) NSString *simpleInfo;
+@property (nonatomic, assign, readonly) BOOL isExist;
 
 - (instancetype)initWithURL:(NSURL *)URL;
 - (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;

@@ -24,7 +24,10 @@
 - (instancetype)initWithURL:(NSURL *)url
 {
     if (self = [super init]) {
-        self.queue = [FMDatabaseQueue databaseQueueWithURL:url];
+        // 防止在没有数据库文件的情况下，自动创建数据库
+        if ([[NSFileManager defaultManager] fileExistsAtPath:url.path]) {
+            self.queue = [FMDatabaseQueue databaseQueueWithURL:url];
+        }
     }
     return self;
 }

@@ -147,6 +147,10 @@
     return [dateInfo stringByAppendingFormat:@" - %@", sizeInfo];
 }
 
+- (BOOL)isExist {
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.fileURL.path];
+}
+
 #pragma mark - QLPreviewItem
 
 - (NSURL *)previewItemURL {

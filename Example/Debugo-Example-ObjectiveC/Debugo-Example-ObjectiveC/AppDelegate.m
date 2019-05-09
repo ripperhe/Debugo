@@ -52,6 +52,7 @@
         configuration.shortcutForDatabaseURLs = @[
                                                   [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject],
                                                   [NSURL URLWithString:[NSBundle mainBundle].bundlePath],
+                                                  [NSURL URLWithString:[DGFilePath.documentsDirectory stringByAppendingPathComponent:@"xx.sqlite"]],
                                                   ];
 
         configuration.shortcutForAnyURLs = @[
