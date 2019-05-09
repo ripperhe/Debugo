@@ -27,14 +27,12 @@
 
 @implementation DGViewController
 
-- (void)dealloc
-{
+- (void)dealloc {
     DGLogFunction;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(debugWindowWillShow:) name:DGDebugWindowWillShowNotificationKey object:nil];
@@ -59,8 +57,7 @@
     self.testTabBarController = tabBarVC;
 }
 
-- (void)viewDidLayoutSubviews
-{
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
     [self adjustcontentView];
@@ -69,8 +66,7 @@
     self.tapCloseView.frame = CGRectMake(0, self.view.frame.size.height - h, self.view.frame.size.width, h);
 }
 
-- (void)adjustcontentView
-{
+- (void)adjustcontentView {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     if (self.isFullScreen) {
         self.contentView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
@@ -82,16 +78,14 @@
 }
 
 #pragma mark - notification
-- (void)debugWindowWillShow:(NSNotification *)sender
-{
+- (void)debugWindowWillShow:(NSNotification *)sender {
     // Window 隐藏再显示，不会调用 viewWillAppear；为了保证调用子控制器的 viewWillAppear，window 显示的时候重新添加
     if (self.contentView && !self.contentView.superview) {
         [self.view addSubview:self.contentView];
     }
 }
 
-- (void)debugWindowDidHidden:(NSNotification *)sender
-{
+- (void)debugWindowDidHidden:(NSNotification *)sender {
 //    DGLogFuction;
     if (self.contentView) {
         [self.contentView removeFromSuperview];
@@ -99,8 +93,7 @@
 }
 
 #pragma mark - setter
-- (void)setIsFullScreen:(BOOL)isFullScreen
-{
+- (void)setIsFullScreen:(BOOL)isFullScreen {
     if (_isFullScreen != isFullScreen) {
         _isFullScreen = isFullScreen;
         
@@ -112,8 +105,7 @@
 }
 
 #pragma mark - getter
-- (UIView *)tapCloseView
-{
+- (UIView *)tapCloseView {
     if (!_tapCloseView) {
         UIView *tapCloseView = [[UIView alloc] init];
         tapCloseView.userInteractionEnabled = YES;
@@ -127,8 +119,7 @@
 }
 
 #pragma mark - event
-- (void)closeDebugViewController
-{
+- (void)closeDebugViewController {
     [DGAssistant.shared closeDebugViewControllerContainerWindow];
 }
 

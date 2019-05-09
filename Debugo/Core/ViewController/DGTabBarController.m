@@ -21,8 +21,7 @@
 
 @implementation DGTabBarController
 
-- (void)dealloc
-{
+- (void)dealloc {
     NSLog(@"%@ %@", self, NSStringFromSelector(_cmd));
 }
 

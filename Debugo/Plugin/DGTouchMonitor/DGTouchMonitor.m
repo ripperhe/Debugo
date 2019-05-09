@@ -33,8 +33,7 @@
 //}
 
 static DGTouchMonitor *_instance;
-+ (instancetype)shared
-{
++ (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -44,8 +43,7 @@ static DGTouchMonitor *_instance;
     return _instance;
 }
 
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
@@ -55,8 +53,7 @@ static DGTouchMonitor *_instance;
 }
 
 #pragma mark - setter
-- (void)setShouldDisplayTouches:(BOOL)shouldDisplayTouches
-{
+- (void)setShouldDisplayTouches:(BOOL)shouldDisplayTouches {
     _shouldDisplayTouches = shouldDisplayTouches;
     
     if (shouldDisplayTouches) {
@@ -69,8 +66,7 @@ static DGTouchMonitor *_instance;
 }
 
 #pragma mark - getter
-- (DGTouchWindow *)touchWindow
-{
+- (DGTouchWindow *)touchWindow {
     if (!_touchWindow) {
         _touchWindow = [[DGTouchWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         _touchWindow.rootViewController = [DGTouchViewController new];
@@ -79,8 +75,7 @@ static DGTouchMonitor *_instance;
 }
 
 #pragma mark - notification
-- (void)handleInterfaceEvent:(NSNotification *)notification
-{
+- (void)handleInterfaceEvent:(NSNotification *)notification {
     if (self.shouldDisplayTouches && [notification.object isKindOfClass:[UIEvent class]]) {
         UIEvent* event = notification.object;
         

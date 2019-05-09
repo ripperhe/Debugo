@@ -21,8 +21,7 @@ static NSString *kDGCellID = @"kDGCellID";
 
 @implementation DGTestActionViewController
 
-- (void)dealloc
-{
+- (void)dealloc {
     DGLogFunction;
 }
 
@@ -32,8 +31,7 @@ static NSString *kDGCellID = @"kDGCellID";
     //    [self configTableView];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if (_dataArray) {
@@ -44,8 +42,7 @@ static NSString *kDGCellID = @"kDGCellID";
     }
 }
 
-- (void)configTableView
-{
+- (void)configTableView {
     // table header
     if ([[DGDebugo shared].delegate respondsToSelector:@selector(debugoTestActionViewControllerTableHeaderView)]) {
         UIView *headerView = [[DGDebugo shared].delegate debugoTestActionViewControllerTableHeaderView];
@@ -68,8 +65,7 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 #pragma mark - getter
-- (NSMutableArray <NSArray <DGTestAction *>*>*)dataArray
-{
+- (NSMutableArray <NSArray <DGTestAction *>*>*)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
@@ -150,8 +146,7 @@ static NSString *kDGCellID = @"kDGCellID";
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataArray.count;
 }
 
@@ -168,8 +163,7 @@ static NSString *kDGCellID = @"kDGCellID";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     DGTestAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = action.title;
     if (action.dg_strongExtObj) {
@@ -179,8 +173,7 @@ static NSString *kDGCellID = @"kDGCellID";
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (@available(iOS 10.0, *)) {
         UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
         [feedBackGenertor impactOccurred];
@@ -193,8 +186,7 @@ static NSString *kDGCellID = @"kDGCellID";
     action.handler(action, self);
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.dataArray objectAtIndex:section].dg_copyExtObj;
 }
 

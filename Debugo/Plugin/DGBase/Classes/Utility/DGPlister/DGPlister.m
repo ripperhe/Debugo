@@ -17,8 +17,7 @@
 
 @implementation DGPlister
 
-- (instancetype)initWithFilePath:(NSString *)filePath readonly:(BOOL)readonly
-{
+- (instancetype)initWithFilePath:(NSString *)filePath readonly:(BOOL)readonly {
     if (![filePath hasSuffix:@".plist"]) {
         NSAssert(0, @"DGPlister: filePath error");
         return nil;
@@ -55,8 +54,7 @@
     return self;
 }
 
-- (NSMutableDictionary *)read
-{
+- (NSMutableDictionary *)read {
     NSData *data = [NSData dataWithContentsOfFile:self.filePath];
     if (!data) {
         // 读取数据错误
@@ -88,8 +86,7 @@
     }
 }
 
-- (BOOL)writeDictionary:(NSDictionary *)dictionary
-{
+- (BOOL)writeDictionary:(NSDictionary *)dictionary {
     if (!dictionary) return NO;
     if (self.isReadonly) return NO;
     
@@ -133,18 +130,15 @@
     }
 }
 
-- (BOOL)containsKey:(NSString *)key
-{
+- (BOOL)containsKey:(NSString *)key {
     return [self.read objectForKey:key] ? YES : NO;
 }
 
-- (BOOL)removeAllObjects
-{
+- (BOOL)removeAllObjects {
     return [self writeDictionary:[NSDictionary dictionary]];
 }
 
-- (BOOL)removeObjectForKey:(NSString *)key
-{
+- (BOOL)removeObjectForKey:(NSString *)key {
     NSMutableDictionary *dic = [self read];
     if (!dic) return NO;
     
@@ -153,8 +147,7 @@
 }
 
 #pragma mark - setter
-- (BOOL)setObject:(id)obj forKey:(NSString *)key
-{
+- (BOOL)setObject:(id)obj forKey:(NSString *)key {
     NSMutableDictionary *dic = [self read];
     if (!dic) return NO;
 
@@ -162,52 +155,43 @@
     return [self writeDictionary:dic];
 }
 
-- (BOOL)setDictionary:(NSDictionary *)dictionary forKey:(NSString *)key
-{
+- (BOOL)setDictionary:(NSDictionary *)dictionary forKey:(NSString *)key {
     return [self setObject:dictionary forKey:key];
 }
 
-- (BOOL)setArray:(NSArray *)value forKey:(NSString *)key
-{
+- (BOOL)setArray:(NSArray *)value forKey:(NSString *)key {
     return [self setObject:value forKey:key];
 }
 
-- (BOOL)setString:(NSString *)value forKey:(NSString *)key
-{
+- (BOOL)setString:(NSString *)value forKey:(NSString *)key {
     return [self setObject:value forKey:key];
 }
 
-- (BOOL)setBool:(BOOL)value forKey:(NSString *)key
-{
+- (BOOL)setBool:(BOOL)value forKey:(NSString *)key {
     return [self setObject:@(value) forKey:key];
 }
 
-- (BOOL)setInteger:(NSInteger)value forKey:(NSString *)key
-{
+- (BOOL)setInteger:(NSInteger)value forKey:(NSString *)key {
     return [self setObject:@(value) forKey:key];
 }
 
-- (BOOL)setFloat:(float)value forKey:(NSString *)key
-{
+- (BOOL)setFloat:(float)value forKey:(NSString *)key {
     return [self setObject:@(value) forKey:key];
 }
 
-- (BOOL)setDouble:(double)value forKey:(NSString *)key
-{
+- (BOOL)setDouble:(double)value forKey:(NSString *)key {
     return [self setObject:@(value) forKey:key];
 }
 
 #pragma mark - getter
 
-- (nullable id)objectForKey:(NSString *)key
-{
+- (nullable id)objectForKey:(NSString *)key {
     NSMutableDictionary *dic = [self read];
     if (!dic) return nil;
     return [dic objectForKey:key];
 }
 
-- (nullable id)objectForKey:(NSString *)key nilHandler:(nullable id (NS_NOESCAPE^)(void))nilHandler
-{
+- (nullable id)objectForKey:(NSString *)key nilHandler:(nullable id (NS_NOESCAPE^)(void))nilHandler {
     id obj = [self objectForKey:key];
     if (!obj) {
         // nil
@@ -218,8 +202,7 @@
     return obj;
 }
 
-- (nullable NSDictionary<NSString *, id> *)dictionaryForKey:(NSString *)key
-{
+- (nullable NSDictionary<NSString *, id> *)dictionaryForKey:(NSString *)key {
     NSDictionary *dic = [self objectForKey:key];
     if (dic != nil && ![dic isKindOfClass:[NSDictionary class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -228,8 +211,7 @@
     return dic;
 }
 
-- (nullable NSMutableDictionary<NSString *, id> *)mutableDictionaryForKey:(NSString *)key
-{
+- (nullable NSMutableDictionary<NSString *, id> *)mutableDictionaryForKey:(NSString *)key {
     NSDictionary *dic = [self objectForKey:key];
     if (dic != nil && ![dic isKindOfClass:[NSDictionary class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -238,8 +220,7 @@
     return [dic mutableCopy];
 }
 
-- (nullable NSArray *)arrayForKey:(NSString *)key
-{
+- (nullable NSArray *)arrayForKey:(NSString *)key {
     NSArray *arr = [self objectForKey:key];
     if (arr != nil && ![arr isKindOfClass:[NSArray class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -248,8 +229,7 @@
     return arr;
 }
 
-- (nullable NSMutableArray *)mutableArrayForKey:(NSString *)key
-{
+- (nullable NSMutableArray *)mutableArrayForKey:(NSString *)key {
     NSArray *arr = [self objectForKey:key];
     if (arr != nil && ![arr isKindOfClass:[NSArray class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -258,8 +238,7 @@
     return [arr mutableCopy];
 }
 
-- (nullable NSString *)stringForKey:(NSString *)key
-{
+- (nullable NSString *)stringForKey:(NSString *)key {
     NSString *str = [self objectForKey:key];
     if (str != nil && ![str isKindOfClass:[NSString class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -268,8 +247,7 @@
     return str;
 }
 
-- (nullable NSString *)stringForKey:(NSString *)key nilOrEmpty:(nullable NSString * (NS_NOESCAPE^)(void))nilOrEmptyHandler
-{
+- (nullable NSString *)stringForKey:(NSString *)key nilOrEmpty:(nullable NSString * (NS_NOESCAPE^)(void))nilOrEmptyHandler {
     NSString *str = [self stringForKey:key];
     if (!str.length) {
         // nil or empty
@@ -280,8 +258,7 @@
     return str;
 }
 
-- (BOOL)boolForKey:(NSString *)key
-{
+- (BOOL)boolForKey:(NSString *)key {
     NSNumber *number = [self objectForKey:key];
     if (number != nil && ![number isKindOfClass:[NSNumber class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -290,8 +267,7 @@
     return [number boolValue];
 }
 
-- (NSInteger)integerForKey:(NSString *)key
-{
+- (NSInteger)integerForKey:(NSString *)key {
     NSNumber *number = [self objectForKey:key];
     if (number != nil && ![number isKindOfClass:[NSNumber class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -300,8 +276,7 @@
     return [number integerValue];
 }
 
-- (float)floatForKey:(NSString *)key
-{
+- (float)floatForKey:(NSString *)key {
     NSNumber *number = [self objectForKey:key];
     if (number != nil && ![number isKindOfClass:[NSNumber class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -310,8 +285,7 @@
     return [number floatValue];
 }
 
-- (double)doubleForKey:(NSString *)key
-{
+- (double)doubleForKey:(NSString *)key {
     NSNumber *number = [self objectForKey:key];
     if (number != nil && ![number isKindOfClass:[NSNumber class]]) {
         NSLog(@"DGPlister: %@ %@ value type error", NSStringFromSelector(_cmd), key);
@@ -322,8 +296,7 @@
 
 #pragma mark -
 
-- (NSString *)description
-{
+- (NSString *)description {
     NSDictionary *dic = [self read];
     return [NSString stringWithFormat:@"%@ \nfilePath: %@, \ncontent: \n%@", [super description], self.filePath, dic.description];
 }

@@ -18,33 +18,27 @@ static const void *kDGCopyExtObjKey = &kDGCopyExtObjKey;
 @implementation NSObject (Debugo)
 
 
-- (void)setDg_strongExtObj:(id)dg_strongExtObj
-{
+- (void)setDg_strongExtObj:(id)dg_strongExtObj {
     objc_setAssociatedObject(self, kDGStrongExtObjKey, dg_strongExtObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)dg_strongExtObj
-{
+- (id)dg_strongExtObj {
     return objc_getAssociatedObject(self, kDGStrongExtObjKey);
 }
 
-- (void)setDg_weakExtObj:(id)dg_weakExtObj
-{
+- (void)setDg_weakExtObj:(id)dg_weakExtObj {
     objc_setAssociatedObject(self, kDGWeakExtObjKey, dg_weakExtObj, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (id)dg_weakExtObj
-{
+- (id)dg_weakExtObj {
     return objc_getAssociatedObject(self, kDGWeakExtObjKey);
 }
 
-- (void)setDg_copyExtObj:(id)dg_copyExtObj
-{
+- (void)setDg_copyExtObj:(id)dg_copyExtObj {
     objc_setAssociatedObject(self, kDGCopyExtObjKey, dg_copyExtObj, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (id)dg_copyExtObj
-{
+- (id)dg_copyExtObj {
     return objc_getAssociatedObject(self, kDGCopyExtObjKey);
 }
 

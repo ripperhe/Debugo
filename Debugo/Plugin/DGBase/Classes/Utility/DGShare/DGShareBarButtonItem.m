@@ -10,8 +10,7 @@
 
 @implementation DGShareBarButtonItem
 
-- (instancetype)initWithViewController:(UIViewController *)viewController clickedShareURLsBlock:(NSArray <NSURL *>* (^)(DGShareBarButtonItem *item))clickedShareURLsBlock
-{
+- (instancetype)initWithViewController:(UIViewController *)viewController clickedShareURLsBlock:(NSArray <NSURL *>* (^)(DGShareBarButtonItem *item))clickedShareURLsBlock {
     self = [super initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareFile:)];
     if (self) {
         self.viewController = viewController;
@@ -21,8 +20,7 @@
 }
 
 #pragma mark - share
-- (void)shareFile:(UIBarButtonItem *)sender
-{
+- (void)shareFile:(UIBarButtonItem *)sender {
     if (!self.clickedShareURLsBlock) return;
     if (!self.viewController) return;
     

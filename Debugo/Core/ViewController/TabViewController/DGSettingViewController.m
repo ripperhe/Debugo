@@ -33,8 +33,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 }
 
 #pragma mark - getter
-- (NSArray<NSArray *> *)dataArray
-{
+- (NSArray<NSArray *> *)dataArray {
     if (!_dataArray) {
         NSArray *generalArray = @[
                                   @(DGSettingTypeTabBar),
@@ -56,8 +55,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 }
 
 #pragma mark - event
-- (void)clickZoom:(UIBarButtonItem *)sender
-{
+- (void)clickZoom:(UIBarButtonItem *)sender {
     if (@available(iOS 10.0, *)) {
         UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
         [feedBackGenertor impactOccurred];
@@ -69,8 +67,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsFullScreen];
 }
 
-- (void)swithValueChanged:(UISwitch *)sender
-{
+- (void)swithValueChanged:(UISwitch *)sender {
     BOOL value = sender.isOn;
     NSIndexPath *indexPath = sender.dg_strongExtObj;
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
@@ -121,8 +118,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
     UISwitch *switchView = (UISwitch *)cell.accessoryView;
     switchView.dg_strongExtObj = indexPath;
@@ -151,13 +147,11 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.dataArray objectAtIndex:section].dg_copyExtObj;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 @end

@@ -43,8 +43,7 @@ typedef NS_ENUM(NSUInteger, DGShowWindowType) {
 @implementation DGAssistant
 
 static DGAssistant *_instance;
-+ (instancetype)shared
-{
++ (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -54,8 +53,7 @@ static DGAssistant *_instance;
     return _instance;
 }
 
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
@@ -159,8 +157,7 @@ static DGAssistant *_instance;
     return _anonymousTestActionDic;
 }
 
-- (DGOrderedDictionary<NSString *,DGAccount *> *)temporaryAccountDic
-{
+- (DGOrderedDictionary<NSString *,DGAccount *> *)temporaryAccountDic {
     if (!_temporaryAccountDic) {
         DGOrderedDictionary *accountDic = [DGOrderedDictionary dictionary];
         // 获取本地缓存
@@ -181,8 +178,7 @@ static DGAssistant *_instance;
 
 #pragma mark - UI
 
-- (void)showWindowWithType:(DGShowWindowType)type
-{
+- (void)showWindowWithType:(DGShowWindowType)type {
     switch (type) {
         case DGShowWindowTypeDebugoDebug:
         {
@@ -213,8 +209,7 @@ static DGAssistant *_instance;
 }
 
 #pragma mark - debug bubble
-- (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS
-{
+- (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS {
     if (!self.debugBubble) return;
     
     if (isOpenFPS) {
@@ -239,8 +234,7 @@ static DGAssistant *_instance;
     }
 }
 
-- (void)showDebugBubble
-{
+- (void)showDebugBubble {
     if (self.debugBubble) {
         [self.debugBubble setHidden:NO];
         return;
@@ -261,20 +255,17 @@ static DGAssistant *_instance;
     [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
 }
 
-- (void)removeDebugBubble
-{
+- (void)removeDebugBubble {
     [self.debugBubble removeFromScreen];
 }
 
 #pragma mark - debug view controller
-- (void)removeDebugViewControllerContainerWindow
-{
+- (void)removeDebugViewControllerContainerWindow {
     [self closeDebugViewControllerContainerWindow];
     [DGSuspensionManager.shared destroyWindowForKey:kDGDebugViewControllerWindowKey];
 }
 
-- (void)closeDebugViewControllerContainerWindow
-{
+- (void)closeDebugViewControllerContainerWindow {
     DGSuspensionContainer *containerWindow = self.debugViewControllerContainerWindow;
     containerWindow.dg_canBecomeKeyWindow = NO;
     if (containerWindow.isKeyWindow) {
@@ -285,8 +276,7 @@ static DGAssistant *_instance;
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowDidHiddenNotificationKey object:nil userInfo:nil];
 }
 
-- (void)openDebugViewControllerContainerWindow
-{
+- (void)openDebugViewControllerContainerWindow {
     DGSuspensionContainer *containerWindow = self.debugViewControllerContainerWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     containerWindow.dg_canBecomeKeyWindow = YES;
@@ -299,8 +289,7 @@ static DGAssistant *_instance;
 }
 
 #pragma mark - login bubble
-- (void)showLoginBubble
-{
+- (void)showLoginBubble {
     if (self.loginBubble) {
         if (!self.loginBubble.rootViewController) {
             NSLog(@"💥💥💥💥💥💥💥💥 woca 出大事儿了，一定是 UIDxxx 引用了我的 Window ！将就用吧，不就是多开辟一点内存嘛 🤣 ");
@@ -329,20 +318,17 @@ static DGAssistant *_instance;
     self.loginBubble = loginBubble;
 }
 
-- (void)removeLoginBubble
-{
+- (void)removeLoginBubble {
     [self.loginBubble removeFromScreen];
 }
 
 #pragma mark - login view controller
-- (void)removeLoginViewControllerContainerWindow
-{
+- (void)removeLoginViewControllerContainerWindow {
     [DGSuspensionManager.shared destroyWindowForKey:kDGLoginViewControllerWindowKey];
 }
 
 #pragma mark - DGSuspensionViewDelegate
-- (void)suspensionViewClick:(DGSuspensionView *)suspensionView
-{
+- (void)suspensionViewClick:(DGSuspensionView *)suspensionView {
     if (suspensionView.tag == DGDebugBubbleTag) {
         // debug
         if (self.debugViewControllerContainerWindow) {
@@ -390,8 +376,7 @@ static DGAssistant *_instance;
     }
 }
 
-- (void)suspensionViewLongPressStart:(DGSuspensionView *)suspensionView
-{
+- (void)suspensionViewLongPressStart:(DGSuspensionView *)suspensionView {
     if (suspensionView.tag == DGDebugBubbleTag) {
         if ([DGDebuggingOverlay isShowing]) {
             return;

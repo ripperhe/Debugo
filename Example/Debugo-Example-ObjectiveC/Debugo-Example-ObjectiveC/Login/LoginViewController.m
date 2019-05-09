@@ -34,8 +34,7 @@
     }
 }
 
-- (void)sendLoginRequestWithAccount:(NSString *)account password:(NSString *)password
-{
+- (void)sendLoginRequestWithAccount:(NSString *)account password:(NSString *)password {
     NSLog(@"LoginVC accout : %@   password : %@", account, password);
     
     // 模拟网络请求

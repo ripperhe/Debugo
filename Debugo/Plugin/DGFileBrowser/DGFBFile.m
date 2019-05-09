@@ -12,8 +12,7 @@
 
 @implementation DGFBFile
 
-- (instancetype)initWithURL:(NSURL *)URL
-{
+- (instancetype)initWithURL:(NSURL *)URL {
     if (self = [super init]) {
         self.fileURL = URL;
         BOOL isDirectory = [self checkDirectoryWithURL:URL];
@@ -31,8 +30,7 @@
     return self;
 }
 
-- (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler
-{
+- (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler {
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtURL:self.fileURL error:&error];
     if (error) {
@@ -41,8 +39,7 @@
     }
 }
 
-- (BOOL)checkDirectoryWithURL:(NSURL *)fileURL
-{
+- (BOOL)checkDirectoryWithURL:(NSURL *)fileURL {
     BOOL isDirectory = NO;
     [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDirectory];
 //    NSString *resourceValue;
@@ -58,8 +55,7 @@
     return isDirectory;
 }
 
-- (NSDictionary *)getFileAttributesWithURL:(NSURL *)fileURL
-{
+- (NSDictionary *)getFileAttributesWithURL:(NSURL *)fileURL {
     NSString *path = fileURL.path;
     NSError *error;
     NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
@@ -69,8 +65,7 @@
     return attributes;
 }
 
-- (DGFBFileType)typeForPathExtension:(NSString *)pathExtension
-{
+- (DGFBFileType)typeForPathExtension:(NSString *)pathExtension {
     if (!pathExtension.length) return DGFBFileTypeDefault;
     
     if ([pathExtension isEqualToString:@"gif"]) {
@@ -95,8 +90,7 @@
     return DGFBFileTypeDefault;
 }
 
-- (UIImage *)image
-{
+- (UIImage *)image {
     static NSMutableDictionary *_cachedImageDic;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

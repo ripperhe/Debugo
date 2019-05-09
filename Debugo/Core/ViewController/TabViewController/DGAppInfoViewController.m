@@ -52,8 +52,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 #pragma mark - data
 
-- (NSArray<NSArray *> *)dataArray
-{
+- (NSArray<NSArray *> *)dataArray {
     if (!_dataArray) {
         NSArray *budleArray = @[
                                 @{kDGCellTitle:@"Bundle Name", kDGCellValue:[self getBundleInfo:@"CFBundleName"]},
@@ -94,8 +93,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     return @"unknown";
 }
 
-- (NSArray *)getBuildInfoArray
-{
+- (NSArray *)getBuildInfoArray {
     DGLog(@"%@", DGCache.shared.buildInfoPlister);
 
     NSArray *buildInfoArray = nil;
@@ -198,8 +196,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    DGPopOverMenuConfiguration *config = [DGPopOverMenuConfiguration defaultConfiguration];
 //    config.textAlignment = NSTextAlignmentCenter;
@@ -216,8 +213,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
 //                    dismissBlock:nil];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.dataArray[section].dg_copyExtObj;
 }
 

@@ -9,8 +9,7 @@
 
 #import "DGOrderedDictionary.h"
 
-NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
-{
+NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent) {
     NSString *objectString;
     if ([object isKindOfClass:[NSString class]]) {
         objectString = (NSString *)object.copy;
@@ -33,23 +32,19 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 
 @implementation DGOrderedDictionary
 
-+ (instancetype)dictionary
-{
++ (instancetype)dictionary {
     return [[self alloc] initWithCapacity:0];
 }
 
-+ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems
-{
++ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems {
     return [[self alloc] initWithCapacity:numItems];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [self initWithCapacity:0];
 }
 
-- (instancetype)initWithCapacity:(NSUInteger)numItems
-{
+- (instancetype)initWithCapacity:(NSUInteger)numItems {
     self = [super init];
     if (self) {
         self.dictionary = [NSMutableDictionary dictionaryWithCapacity:numItems];
@@ -58,8 +53,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return self;
 }
 
-- (instancetype)initWithSortedKeys:(NSArray *)sortedKeys keysAndObjects:(NSDictionary *)keysAndObjects
-{
+- (instancetype)initWithSortedKeys:(NSArray *)sortedKeys keysAndObjects:(NSDictionary *)keysAndObjects {
     if (sortedKeys.count != keysAndObjects.allKeys.count) {
         NSAssert(0, @"DGOrderedDictionary: sortKeys 元素值必须和 dictionary 的 key 值一一对应!");
         return nil;
@@ -74,8 +68,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 }
 
 
-- (id)mutableCopyWithZone:(NSZone *)zone
-{
+- (id)mutableCopyWithZone:(NSZone *)zone {
     DGOrderedDictionary * copy = [[[self class] alloc] init];
     if (copy) {
         // 单层深拷贝
@@ -86,8 +79,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return copy;
 }
 
-- (id)copy
-{
+- (id)copy {
     NSString *reason = [NSString stringWithFormat:@"-[%@ %@] not supported, please use mutableCopy!", NSStringFromClass([self class]), NSStringFromSelector(_cmd)];
     NSLog(@"%@", reason);
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
@@ -97,8 +89,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 
 #pragma mark -
 
-- (void)setObject:(id)anObject forKey:(id)aKey
-{
+- (void)setObject:(id)anObject forKey:(id)aKey {
     NSAssert(self.array.count == self.dictionary.count, @"DGOrderedDictionary: 内部 dictionary 和 array 值数量不一致");
     if (![self.dictionary objectForKey:aKey]) {
         [self.array addObject:aKey];
@@ -113,15 +104,13 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     [self.dictionary setObject:anObject forKey:aKey];
 }
 
-- (void)setObject:(id)anObject atIndex:(NSUInteger)anIndex
-{
+- (void)setObject:(id)anObject atIndex:(NSUInteger)anIndex {
     NSAssert(self.array.count == self.dictionary.count, @"DGOrderedDictionary: 内部 dictionary 和 array 值数量不一致");
     id key = [self.array objectAtIndex:anIndex];
     [self.dictionary setObject:anObject forKey:key];
 }
 
-- (void)insertObject:(id)anObject forKey:(id)aKey atIndex:(NSUInteger)anIndex
-{
+- (void)insertObject:(id)anObject forKey:(id)aKey atIndex:(NSUInteger)anIndex {
     NSAssert(self.array.count == self.dictionary.count, @"DGOrderedDictionary: 内部 dictionary 和 array 值数量不一致");
     if ([self.dictionary objectForKey:aKey]) {
         [self removeObjectForKey:aKey];
@@ -131,68 +120,56 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     [self.dictionary setObject:anObject forKey:aKey];
 }
 
-- (void)removeObjectAtIndex:(NSUInteger)anIndex
-{
+- (void)removeObjectAtIndex:(NSUInteger)anIndex {
     id key = [self.array objectAtIndex:anIndex];
     [self.array removeObjectAtIndex:anIndex];
     [self.dictionary removeObjectForKey:key];
 }
 
-- (void)removeObjectForKey:(id)aKey
-{
+- (void)removeObjectForKey:(id)aKey {
     [self.array removeObject:aKey];
     [self.dictionary removeObjectForKey:aKey];
 }
 
-- (void)removeAllObjects
-{
+- (void)removeAllObjects {
     [self.array removeAllObjects];
     [self.dictionary removeAllObjects];
 }
 
-- (NSUInteger)count
-{
+- (NSUInteger)count {
     return self.array.count;
 }
 
-- (NSDictionary *)keysAndObjects
-{
+- (NSDictionary *)keysAndObjects {
     return self.dictionary.copy;
 }
 
-- (id)keyAtIndex:(NSUInteger)anIndex
-{
+- (id)keyAtIndex:(NSUInteger)anIndex {
     return [self.array objectAtIndex:anIndex];
 }
 
-- (id)objectForKey:(id)aKey
-{
+- (id)objectForKey:(id)aKey {
     return [self.dictionary objectForKey:aKey];
 }
 
-- (id)objectAtIndex:(NSUInteger)anIndex
-{
+- (id)objectAtIndex:(NSUInteger)anIndex {
     id key = [self keyAtIndex:anIndex];
     return [self.dictionary objectForKey:key];
 }
 
-- (NSArray *)allKeys
-{
+- (NSArray *)allKeys {
     return self.dictionary.allKeys;
 }
 
-- (NSArray *)allValues
-{
+- (NSArray *)allValues {
     return self.dictionary.allValues;
 }
 
-- (NSArray *)sortedKeys
-{
+- (NSArray *)sortedKeys {
     return self.array.copy;
 }
 
-- (NSArray *)reverseSortedKeys
-{
+- (NSArray *)reverseSortedKeys {
     NSMutableArray *reverseKeys = [NSMutableArray arrayWithCapacity:self.array.count];
     [self.array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [reverseKeys addObject:obj];
@@ -200,8 +177,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return reverseKeys;
 }
 
-- (NSArray *)sortedValues
-{
+- (NSArray *)sortedValues {
     NSMutableArray *values = [NSMutableArray arrayWithCapacity:self.array.count];
     [self.array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         id value = [self.dictionary objectForKey:obj];
@@ -210,8 +186,7 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return values;
 }
 
-- (NSArray *)reverseSortedValues
-{
+- (NSArray *)reverseSortedValues {
     NSMutableArray *reverseValues = [NSMutableArray arrayWithCapacity:self.array.count];
     [self.array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         id value = [self.dictionary objectForKey:obj];
@@ -220,26 +195,22 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return reverseValues;
 }
 
-- (NSEnumerator *)keyEnumerator
-{
+- (NSEnumerator *)keyEnumerator {
     return [self.array objectEnumerator];
 }
 
-- (NSEnumerator *)reverseKeyEnumerator
-{
+- (NSEnumerator *)reverseKeyEnumerator {
     return [self.array reverseObjectEnumerator];
 }
 
-- (void)enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, NSUInteger idx, BOOL *stop))block
-{
+- (void)enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, NSUInteger idx, BOOL *stop))block {
     [self.array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         id value = [self.dictionary objectForKey:obj];
         block(obj, value, idx, stop);
     }];
 }
 
-- (void)reverseEnumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, NSUInteger idx, BOOL *stop))block
-{
+- (void)reverseEnumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, NSUInteger idx, BOOL *stop))block {
     [self.array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         id value = [self.dictionary objectForKey:obj];
         block(obj, value, idx, stop);
@@ -247,20 +218,17 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 }
 
 // Xocde console -> po
-- (NSString *)description
-{
+- (NSString *)description {
     return [self descriptionWithLocale:nil];
 }
 
 // NSLog、Print
-- (NSString *)descriptionWithLocale:(nullable id)locale
-{
+- (NSString *)descriptionWithLocale:(nullable id)locale {
     return [self descriptionWithLocale:locale indent:0];
 }
 
 // Nested use DGOrderedDictionary
-- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level
-{
+- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level {
     NSMutableString *indentString = [NSMutableString string];
     NSUInteger i, count = level;
     for (i = 0; i < count; i++)

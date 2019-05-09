@@ -21,8 +21,7 @@
 
 @implementation DGDatabaseOperation
 
-- (instancetype)initWithURL:(NSURL *)url
-{
+- (instancetype)initWithURL:(NSURL *)url {
     if (self = [super init]) {
         // 防止在没有数据库文件的情况下，自动创建数据库
         if ([[NSFileManager defaultManager] fileExistsAtPath:url.path]) {
@@ -32,8 +31,7 @@
     return self;
 }
 
-- (instancetype)initWithDBQueue:(FMDatabaseQueue *)dbQueue
-{
+- (instancetype)initWithDBQueue:(FMDatabaseQueue *)dbQueue {
     if (self = [super init]) {
         self.queue = dbQueue;
     }

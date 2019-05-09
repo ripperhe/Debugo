@@ -16,8 +16,7 @@ static CGFloat kDefaultColumnWidth = 100.0;
 
 @implementation DGDatabasePreviewConfiguration
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.rowHeight = kDefaultRowHeight;
@@ -26,24 +25,21 @@ static CGFloat kDefaultColumnWidth = 100.0;
     return self;
 }
 
-- (void)setRowHeight:(CGFloat)rowHeight
-{
+- (void)setRowHeight:(CGFloat)rowHeight {
     NSAssert(isValidRowHeight(rowHeight), @"请给出合理的行高");
     if (!isValidRowHeight(rowHeight)) return;
     
     _rowHeight = rowHeight;
 }
 
-- (void)setColumnWidth:(CGFloat)columnWidth
-{
+- (void)setColumnWidth:(CGFloat)columnWidth {
     NSAssert(isValidColumnWidth(columnWidth), @"请给出合理的列宽");
     if (!isValidColumnWidth(columnWidth)) return;
     
     _columnWidth = columnWidth;
 }
 
-- (DGDatabaseTablePreviewConfiguration *)tablePreviewConfigurationForTableName:(NSString *)tableName
-{
+- (DGDatabaseTablePreviewConfiguration *)tablePreviewConfigurationForTableName:(NSString *)tableName {
     if (!tableName.length) return nil;
     
     DGDatabaseTablePreviewConfiguration *tablePreviewConfiguration = [self.specialConfigurationForTable objectForKey:tableName];
@@ -68,8 +64,7 @@ static CGFloat kDefaultColumnWidth = 100.0;
 @implementation DGDatabaseTablePreviewConfiguration
 
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.rowHeight = kDefaultRowHeight;
@@ -78,24 +73,21 @@ static CGFloat kDefaultColumnWidth = 100.0;
     return self;
 }
 
-- (void)setRowHeight:(CGFloat)rowHeight
-{
+- (void)setRowHeight:(CGFloat)rowHeight {
     NSAssert(isValidRowHeight(rowHeight), @"请给出合理的行高");
     if (!isValidRowHeight(rowHeight)) return;
     
     _rowHeight = rowHeight;
 }
 
-- (void)setColumnWidth:(CGFloat)columnWidth
-{
+- (void)setColumnWidth:(CGFloat)columnWidth {
     NSAssert(isValidColumnWidth(columnWidth), @"请给出合理的列宽");
     if (!isValidColumnWidth(columnWidth)) return;
     
     _columnWidth = columnWidth;
 }
 
-- (CGFloat)columnWidthForColumnName:(NSString *)columnName
-{
+- (CGFloat)columnWidthForColumnName:(NSString *)columnName {
     if (!columnName.length) return _columnWidth;
     
     NSNumber *columnW = [self.specialWidthForColumn objectForKey:columnName];

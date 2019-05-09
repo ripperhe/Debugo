@@ -10,14 +10,12 @@
 
 @implementation DGDatabaseContentParser
 
-+ (BOOL)checkString:(NSString *)string pattern:(NSString *)pattern
-{
++ (BOOL)checkString:(NSString *)string pattern:(NSString *)pattern {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
     return [predicate evaluateWithObject:string];
 }
 
-+ (NSString *)parseContentForTimestamp:(NSString *)content
-{
++ (NSString *)parseContentForTimestamp:(NSString *)content {
     if (!content.length) return nil;
 
     NSTimeInterval time = 0;

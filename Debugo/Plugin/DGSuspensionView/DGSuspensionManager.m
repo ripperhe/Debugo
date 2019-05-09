@@ -20,8 +20,7 @@
 
 static DGSuspensionManager *_instance;
 
-+ (instancetype)shared
-{
++ (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -31,8 +30,7 @@ static DGSuspensionManager *_instance;
     return _instance;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)zone
-{
++ (id)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
@@ -42,8 +40,7 @@ static DGSuspensionManager *_instance;
 
 
 #pragma mark - getter
-- (NSMutableDictionary *)windowDictionary
-{
+- (NSMutableDictionary *)windowDictionary {
     if (!_windowDictionary) {
         _windowDictionary = [NSMutableDictionary dictionary];
     }
@@ -52,8 +49,7 @@ static DGSuspensionManager *_instance;
 
 #pragma mark - public methods
 
-- (UIWindow *)windowForKey:(NSString *)key
-{
+- (UIWindow *)windowForKey:(NSString *)key {
     if (!key.length) {
         NSAssert(0, @"DGSuspensionManager: 传入的 key 值不对");
         return nil;
@@ -62,8 +58,7 @@ static DGSuspensionManager *_instance;
     return [self.windowDictionary objectForKey:key];
 }
 
-- (void)saveWindow:(UIWindow *)window forKey:(NSString *)key
-{
+- (void)saveWindow:(UIWindow *)window forKey:(NSString *)key {
     if (!key.length) {
         NSAssert(0, @"DGSuspensionManager: 传入的 key 值不对");
         return;
@@ -77,8 +72,7 @@ static DGSuspensionManager *_instance;
     [self.windowDictionary setObject:window forKey:key];
 }
 
-- (void)destroyWindowForKey:(NSString *)key
-{
+- (void)destroyWindowForKey:(NSString *)key {
     UIWindow *window = [self windowForKey:key];
     if (!window) return;
     
@@ -90,8 +84,7 @@ static DGSuspensionManager *_instance;
     [self.windowDictionary removeObjectForKey:key];
 }
 
-- (void)destroyAllWindow
-{
+- (void)destroyAllWindow {
     NSArray *allKeys = self.windowDictionary.allKeys.copy;
     for (NSString *key in allKeys) {
         [self destroyWindowForKey:key];

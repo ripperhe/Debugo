@@ -16,8 +16,7 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     DGDebugo.shared.delegate = self;
     [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
         
@@ -98,8 +97,7 @@
 }
 
 #pragma mark - DGDebugoDelegate
-- (void)debugoLoginAccount:(DGAccount *)account
-{
+- (void)debugoLoginAccount:(DGAccount *)account {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     
@@ -131,8 +129,7 @@
 }
 
 // 自定义 test action 页面 table header; 可以用来显示当前登陆的 App 用户 ID 等等~
-- (UIView *)debugoTestActionViewControllerTableHeaderView
-{
+- (UIView *)debugoTestActionViewControllerTableHeaderView {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 60)];
     label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
@@ -142,8 +139,7 @@
 }
 
 // 自定义显示数据库文件时的宽高
-- (DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL
-{
+- (DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL {
     if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
         DGDatabaseTablePreviewConfiguration *errorTableConfig = [DGDatabaseTablePreviewConfiguration new];
         errorTableConfig.specialWidthForColumn = @{

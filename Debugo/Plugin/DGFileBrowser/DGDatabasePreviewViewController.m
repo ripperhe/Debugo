@@ -21,8 +21,7 @@
 
 @implementation DGDatabasePreviewViewController
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
     }
@@ -80,15 +79,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     DGDatabaseTableInfo *tableInfo = [self.tableArray objectAtIndex:indexPath.row];
     DGDatabaseTableInfoViewController *tableInfoVC = [[DGDatabaseTableInfoViewController alloc] initWithTable:tableInfo];
     [self.navigationController pushViewController:tableInfoVC animated:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"table";
 }
 

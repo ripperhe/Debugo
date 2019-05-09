@@ -12,13 +12,11 @@
 
 @implementation DGTestAction
 
-+ (instancetype)actionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler
-{
++ (instancetype)actionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
     return [[self alloc] initWithTitle:title autoClose:autoClose handler:handler];
 }
 
-- (instancetype)initWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler
-{
+- (instancetype)initWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
     self = [super init];
     if (self) {
         NSAssert(title.length > 0 && handler != nil, @"DGTestAction: titile 和 handler 不能为空!");
@@ -29,16 +27,14 @@
     return self;
 }
 
-- (BOOL)isValid
-{
+- (BOOL)isValid {
     if (self.title.length > 0 && self.handler != nil) {
         return YES;
     }
     return NO;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p, user: %@, title: %@, autioClose: %@, handler: %@>", NSStringFromClass([self class]), self, self.user, self.title, self.autoClose?@"YES":@"NO", self.handler];
 }
 

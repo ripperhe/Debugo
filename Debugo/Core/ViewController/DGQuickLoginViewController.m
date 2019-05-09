@@ -44,8 +44,7 @@
     [self tapCloseView];
 }
 
-- (void)viewDidLayoutSubviews
-{
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
     self.contentView.frame = CGRectMake(kLeftMargin, kTopMargin, [UIScreen mainScreen].bounds.size.width - 2 * kLeftMargin, [UIScreen mainScreen].bounds.size.height - kTopMargin - kBottomMargin);
@@ -55,8 +54,7 @@
 }
 
 #pragma mark - getter
-- (UIView *)tapCloseView
-{
+- (UIView *)tapCloseView {
     if (!_tapCloseView) {
         UIView *tapCloseView = [[UIView alloc] init];
         tapCloseView.userInteractionEnabled = YES;
@@ -70,8 +68,7 @@
 }
 
 #pragma mark - event
-- (void)closeLoginViewController
-{
+- (void)closeLoginViewController {
     [DGAssistant.shared removeLoginViewControllerContainerWindow];
 }
 

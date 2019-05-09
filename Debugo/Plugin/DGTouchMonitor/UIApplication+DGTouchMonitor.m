@@ -15,8 +15,7 @@ NSString * const DGTouchMonitorDidSendTouchEventNotification = @"DGTouchMonitorD
 
 @implementation UIApplication (DGTouchMonitor)
 
-+ (void)load
-{
++ (void)load {
 #if DGTouchMonitorCanBeEnabled
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -25,8 +24,7 @@ NSString * const DGTouchMonitorDidSendTouchEventNotification = @"DGTouchMonitorD
 #endif
 }
 
-- (void)dg_sendEvent:(UIEvent *)event
-{
+- (void)dg_sendEvent:(UIEvent *)event {
     if (event.type == UIEventTypeTouches) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DGTouchMonitorDidSendTouchEventNotification object:event];
     }

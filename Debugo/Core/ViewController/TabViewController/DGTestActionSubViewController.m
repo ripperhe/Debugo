@@ -50,8 +50,7 @@ static NSString *kDGCellID = @"kDGCellID";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     DGTestAction *action = [self.actions objectAtIndex:indexPath.row];
     cell.textLabel.text = action.title;
 }

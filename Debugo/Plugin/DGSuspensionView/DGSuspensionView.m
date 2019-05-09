@@ -39,28 +39,23 @@
 //    });
 //}
 
-- (void)dealloc
-{
+- (void)dealloc {
     NSLog(@"%@ dealloc", self);
 }
 
-+ (instancetype)defaultSuspensionView
-{
++ (instancetype)defaultSuspensionView {
     return [self suspensionViewWithFrame:CGRectMake(0, 100, 55, 55) config:nil];
 }
 
-+ (instancetype)suspensionViewWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config
-{
++ (instancetype)suspensionViewWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config {
     return [[self alloc] initWithFrame:frame config:config];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame config:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config
-{
+- (instancetype)initWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config {
     // check w、h
     CGRect bounds = [UIScreen mainScreen].bounds;
     if (frame.size.width >= bounds.size.width || frame.size.height >= bounds.size.height) {
@@ -93,8 +88,7 @@
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     if (self.isDragging == NO) {
@@ -106,8 +100,7 @@
     }
 }
 
-- (void)setupBtn
-{
+- (void)setupBtn {
     UIButton *button = [UIButton buttonWithType:self.config.buttonType];
     button.userInteractionEnabled = YES;
     button.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -134,8 +127,7 @@
 }
 
 #pragma mark - setter
-- (void)setFrame:(CGRect)frame
-{
+- (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
     
     if (_button) {
@@ -147,19 +139,16 @@
 }
 
 #pragma mark - getter
-- (UIView *)contentView
-{
+- (UIView *)contentView {
     return self.rootViewController.view;
 }
 
-- (NSString *)memoryAddressKey
-{
+- (NSString *)memoryAddressKey {
     return [NSString stringWithFormat:@"%p", self];
 }
 
 #pragma mark - event response
-- (void)handlePanGesture:(UIPanGestureRecognizer*)p
-{
+- (void)handlePanGesture:(UIPanGestureRecognizer*)p {
     UIWindow *appWindow = [UIApplication sharedApplication].delegate.window;
     CGPoint panPoint = [p locationInView:appWindow];
     
@@ -190,8 +179,7 @@
     }
 }
 
-- (void)handleLongPressGesture:(UILongPressGestureRecognizer *)l
-{
+- (void)handleLongPressGesture:(UILongPressGestureRecognizer *)l {
     if (l.state == UIGestureRecognizerStateBegan) {
         if (@available(iOS 10.0, *)) {
             UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
@@ -226,8 +214,7 @@
     }
 }
 
-- (void)click
-{
+- (void)click {
     if (@available(iOS 10.0, *)) {
         UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
         [feedBackGenertor impactOccurred];
@@ -251,8 +238,7 @@
 }
 
 #pragma mark - private methods
-+ (CGPoint)checkNewCenterWithPoint:(CGPoint)point size:(CGSize)size
-{
++ (CGPoint)checkNewCenterWithPoint:(CGPoint)point size:(CGSize)size {
     CGFloat ballWidth = size.width;
     CGFloat ballHeight = size.height;
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
@@ -285,16 +271,14 @@
 }
 
 #pragma mark - public methods
-- (void)show
-{
+- (void)show {
     if ([DGSuspensionManager.shared windowForKey:self.memoryAddressKey]) return;
 
     [self setHidden:NO];
     [DGSuspensionManager.shared saveWindow:self forKey:self.memoryAddressKey];
 }
 
-- (void)removeFromScreen
-{
+- (void)removeFromScreen {
     [DGSuspensionManager.shared destroyWindowForKey:self.memoryAddressKey];
 }
 

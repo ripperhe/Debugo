@@ -11,8 +11,7 @@
 
 @implementation DGBundle
 
-+ (NSBundle *)bundle
-{
++ (NSBundle *)bundle {
     static NSBundle *_bundle = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -26,8 +25,7 @@
     return _bundle;
 }
 
-+ (UIImage *)imageNamed:(NSString *)name;
-{
++ (UIImage *)imageNamed:(NSString *)name; {
     NSBundle *bundle = self.bundle;
     UIImage *image = [UIImage imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
     NSAssert(image, @"DGBundle：name 为 %@ 的图片找不到", name);

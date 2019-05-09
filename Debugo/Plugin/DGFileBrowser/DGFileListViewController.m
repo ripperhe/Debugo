@@ -130,8 +130,7 @@
     return file;
 }
 
-- (void)filterContentForSearchText:(NSString *)searchText
-{
+- (void)filterContentForSearchText:(NSString *)searchText {
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(DGFBFile *  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         return [evaluatedObject.displayName.lowercaseString containsString:searchText.lowercaseString];
     }];
@@ -149,16 +148,14 @@
 
 #pragma mark - getter
 
-- (NSMutableArray<NSMutableArray<DGFBFile *> *> *)sections
-{
+- (NSMutableArray<NSMutableArray<DGFBFile *> *> *)sections {
     if (!_sections) {
         _sections = [NSMutableArray array];
     }
     return _sections;
 }
 
-- (UISearchController *)searchController
-{
+- (UISearchController *)searchController {
     if (!_searchController) {
         UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
@@ -170,24 +167,21 @@
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.searchController.isActive) {
         return 1;
     }
     return self.sections.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.searchController.isActive) {
         return self.filteredFiles.count;
     }
     return [self.sections objectAtIndex:section].count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"FileCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
@@ -204,15 +198,13 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
     DGFileInfoViewController *fileInfoVC = [[DGFileInfoViewController alloc] initWithFile:selectedFile];
     [self.navigationController pushViewController:fileInfoVC animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
@@ -242,8 +234,7 @@
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (self.searchController.isActive) {
         return nil;
     }
@@ -255,24 +246,21 @@
     }
 }
 
-- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (self.searchController.isActive) {
         return nil;
     }
     return nil;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     if (self.searchController.isActive) {
         return 0;
     }
     return 0;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
         __weak typeof(self) weakSelf = self;
@@ -292,15 +280,13 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.configuration.allowEditing;
 }
 
 #pragma mark - UIViewControllerPreviewingDelegate
 
-- (void)registerFor3DTouch
-{
+- (void)registerFor3DTouch {
     if (@available(iOS 9.0, *)) {
         if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
             [self registerForPreviewingWithDelegate:self sourceView:self.tableView];
@@ -308,8 +294,7 @@
     }
 }
 
-- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
-{
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
     if (@available(iOS 9.0, *)) {
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
         if (indexPath) {
@@ -323,29 +308,24 @@
     return nil;
 }
 
-- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
-{
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     [self.navigationController pushViewController:viewControllerToCommit animated:YES];
 }
 
 #pragma mark - UISearchControllerDelegate
-- (void)willPresentSearchController:(UISearchController *)searchController
-{
+- (void)willPresentSearchController:(UISearchController *)searchController {
 }
 
-- (void)willDismissSearchController:(UISearchController *)searchController
-{
+- (void)willDismissSearchController:(UISearchController *)searchController {
 }
 
 #pragma mark - UISearchBarDelegate
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self filterContentForSearchText:searchBar.text];
 }
 
 #pragma mark - UISearchResultsUpdating
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     [self filterContentForSearchText:searchController.searchBar.text];
 }
 

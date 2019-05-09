@@ -54,8 +54,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     }
     return _configuration;
 }
-- (NSArray *)dataArray
-{
+- (NSArray *)dataArray {
     if (!_dataArray) {
         
         NSMutableArray *array = [NSMutableArray array];
@@ -158,8 +157,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
@@ -168,16 +166,14 @@ static NSString *kDGCellValue = @"kDGCellValue";
     [self.navigationController pushViewController:previewViewController animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
     DGFBFile *file = [data objectForKey:kDGCellValue];
     DGFileInfoViewController *fileInfoVC = [[DGFileInfoViewController alloc] initWithFile:file];
     [self.navigationController pushViewController:fileInfoVC animated:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.dataArray[section].dg_copyExtObj;
 }
 

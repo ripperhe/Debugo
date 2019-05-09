@@ -33,8 +33,7 @@
     [self webView];
 }
 
-- (void)viewWillLayoutSubviews
-{
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
     self.webView.frame = self.view.bounds;
@@ -48,8 +47,7 @@
 }
 
 #pragma mark - getter
-- (WKWebView *)webView
-{
+- (WKWebView *)webView {
     if (!_webView) {
         WKWebView *webView = [[WKWebView alloc] init];
         [self.view addSubview:webView];
@@ -59,8 +57,7 @@
 }
 
 #pragma mark - processing
-- (void)processForDisplay
-{
+- (void)processForDisplay {
     if (!self.file) {
         return;
     }
@@ -127,8 +124,7 @@
 
 // Make sure we convert HTML special characters
 // Code from https://gist.github.com/mikesteele/70ae98d04fdc35cb1d5f
-- (NSString *)convertSpecialCharacters:(NSString *)string
-{
+- (NSString *)convertSpecialCharacters:(NSString *)string {
     if (!string.length) {
         return nil;
     }

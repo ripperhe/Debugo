@@ -46,8 +46,7 @@
 //    });
 //}
 
-+ (BOOL)isShowing
-{
++ (BOOL)isShowing {
     __block BOOL isShowing = NO;
     // private api
 #if DGDebuggingOverlayCanBeEnabled
@@ -66,15 +65,13 @@
     return isShowing;
 }
 
-+ (void)showDebuggingInformation
-{
++ (void)showDebuggingInformation {
     if ([self isShowing] == NO) {
         [self toggleOverlay];
     }
 }
 
-+ (NSArray <UIWindow *>*)allWindows
-{
++ (NSArray <UIWindow *>*)allWindows {
     __unsafe_unretained NSArray *windows = nil;
     // private api
 #if DGDebuggingOverlayCanBeEnabled
@@ -105,8 +102,7 @@
 // [[UIDebuggingInformationOverlayInvokeGestureHandler mainHandler] _handleActivationGesture:(UIGestureRecognizer *)]
 // to show the window, since that now adds the debugging view controllers, and calls
 // [overlay toggleVisibility] for us.
-+ (void)toggleOverlay
-{
++ (void)toggleOverlay {
     // private api
 #if DGDebuggingOverlayCanBeEnabled
 #pragma clang diagnostic push

@@ -1384,8 +1384,7 @@ int FMDBExecuteBulkSQLCallback(void *theBlockAsVoid, int columns, char **values,
     return _isInTransaction;
 }
 
-- (BOOL)interrupt
-{
+- (BOOL)interrupt {
     if (_db) {
         sqlite3_interrupt([self sqliteHandle]);
         return YES;
@@ -1479,8 +1478,7 @@ static NSString *FMDBEscapeSavePointName(NSString *savepointName) {
     return [self checkpoint:checkpointMode name:name logFrameCount:NULL checkpointCount:NULL error:error];
 }
 
-- (BOOL)checkpoint:(FMDBCheckpointMode)checkpointMode name:(NSString *)name logFrameCount:(int *)logFrameCount checkpointCount:(int *)checkpointCount error:(NSError * __autoreleasing *)error
-{
+- (BOOL)checkpoint:(FMDBCheckpointMode)checkpointMode name:(NSString *)name logFrameCount:(int *)logFrameCount checkpointCount:(int *)checkpointCount error:(NSError * __autoreleasing *)error {
     const char* dbName = [name UTF8String];
 #if SQLITE_VERSION_NUMBER >= 3007006
     int err = sqlite3_wal_checkpoint_v2(_db, dbName, checkpointMode, logFrameCount, checkpointCount);

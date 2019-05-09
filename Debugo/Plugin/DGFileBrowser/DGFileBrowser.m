@@ -13,13 +13,11 @@
 
 @implementation DGFileBrowser
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [self initWithInitialURL:nil configuration:[DGFileConfiguration new]];
 }
 
-- (instancetype)initWithInitialURL:(NSURL *)initialURL configuration:(DGFileConfiguration *)configuration
-{
+- (instancetype)initWithInitialURL:(NSURL *)initialURL configuration:(DGFileConfiguration *)configuration {
     
     NSURL * validInitialURL = initialURL ?: DGFilePath.sandboxDirectoryURL;
     DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:validInitialURL configuration:configuration];

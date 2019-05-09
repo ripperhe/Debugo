@@ -11,8 +11,7 @@
 
 @implementation DGFileParser
 
-+ (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler
-{
++ (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
     BOOL isDirectory = NO;
     BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:direcotryURL.path isDirectory:&isDirectory];
     if (!isExist || !isDirectory) {

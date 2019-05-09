@@ -31,8 +31,7 @@ static NSString * const kDGInchKey = @"kDGInchKey";
 @implementation DGDevice
 
 static DGDevice *_instance;
-+ (instancetype)currentDevice
-{
++ (instancetype)currentDevice {
     if (!_instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -43,8 +42,7 @@ static DGDevice *_instance;
 }
 
 
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
@@ -111,8 +109,7 @@ static DGDevice *_instance;
     return _instance;
 }
 
-+ (NSDictionary *)deviceModelDic
-{
++ (NSDictionary *)deviceModelDic {
     return @{
              @"i386":@{ kDGNameKey:@"Simulator",   kDGTypeKey:@(DGDeviceTypeSimulator) },
              @"x86_64":@{ kDGNameKey:@"Simulator", kDGTypeKey:@(DGDeviceTypeSimulator) },
@@ -152,13 +149,11 @@ static DGDevice *_instance;
              };
 }
 
-- (BOOL)isSimulator
-{
+- (BOOL)isSimulator {
     return self.type == DGDeviceTypeSimulator;
 }
 
-- (BOOL)isNotch
-{
+- (BOOL)isNotch {
     DGDeviceType type = DGDeviceTypeUnknown;
     if ([self isSimulator]) {
         type = self.simulatorType;
@@ -178,8 +173,7 @@ static DGDevice *_instance;
     }
 }
 
-- (BOOL)isNotchUI
-{
+- (BOOL)isNotchUI {
     // iPhone X/XS:     375pt * 812pt (@3x)
     // iPhone XS Max:   414pt * 896pt (@3x)
     // iPhone XR:       414pt * 896pt (@2x)

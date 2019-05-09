@@ -27,8 +27,7 @@ NSString * const kDGSettingIsShowTouches = @"kDGSettingIsShowTouches";
 @implementation DGCache
 
 static DGCache *_instance;
-+ (instancetype)shared
-{
++ (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -38,8 +37,7 @@ static DGCache *_instance;
     return _instance;
 }
 
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
@@ -54,8 +52,7 @@ static DGCache *_instance;
 }
 
 #pragma mark - getter
-- (NSString *)debugoPath
-{
+- (NSString *)debugoPath {
     if (!_debugoPath) {
         NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
         NSString *debugoPath = [cachePath stringByAppendingPathComponent:@"com.ripperhe.debugo"];
@@ -69,8 +66,7 @@ static DGCache *_instance;
     return _debugoPath;
 }
 
-- (DGPlister *)settingPlister
-{
+- (DGPlister *)settingPlister {
     if (!_settingPlister) {
         NSString *settingPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.setting.plist"];
         _settingPlister = [[DGPlister alloc] initWithFilePath:settingPath readonly:NO];
@@ -78,8 +74,7 @@ static DGCache *_instance;
     return _settingPlister;
 }
 
-- (DGPlister *)accountPlister
-{
+- (DGPlister *)accountPlister {
     if (!_accountPlister) {
         NSString *accountPath = nil;
         if (DGAssistant.shared.configuration.accountEnvironmentIsBeta) {

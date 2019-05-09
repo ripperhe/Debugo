@@ -14,8 +14,7 @@
 
 @implementation DGConfiguration
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _isFullScreen = [DGCache.shared.settingPlister boolForKey:kDGSettingIsFullScreen];

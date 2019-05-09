@@ -27,8 +27,7 @@
 
 @implementation DGDatabaseTableContentViewController
 
-- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tablePreviewConfiguration:(DGDatabaseTablePreviewConfiguration *)tablePreviewConfiguration
-{
+- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tablePreviewConfiguration:(DGDatabaseTablePreviewConfiguration *)tablePreviewConfiguration {
     if (self = [super init]) {
         self.dbOperation = operation;
         self.table = table;
@@ -60,8 +59,7 @@
     }
 }
 
-- (void)setupData
-{
+- (void)setupData {
     self.selectedRow = -1;
     self.columnArray = [self.dbOperation queryAllColumnInfoForTable:self.table];
     self.contentArray = [self.dbOperation queryAllContentForTable:self.table];

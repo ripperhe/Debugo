@@ -20,8 +20,7 @@ static NSString *kCellValue = @"value";
 
 @implementation DGDatabaseTableInfoViewController
 
-- (instancetype)initWithTable:(DGDatabaseTableInfo *)table
-{
+- (instancetype)initWithTable:(DGDatabaseTableInfo *)table {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.table = table;

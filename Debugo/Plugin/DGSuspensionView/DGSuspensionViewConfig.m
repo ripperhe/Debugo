@@ -12,13 +12,11 @@
 
 @implementation DGSuspensionViewConfig
 
-+ (instancetype)defaultConfig
-{
++ (instancetype)defaultConfig {
     return [[self alloc] init];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.buttonType = UIButtonTypeCustom;
@@ -29,8 +27,7 @@
     return self;
 }
 
-- (void)setLeanStateAlpha:(CGFloat)leanStateAlpha
-{
+- (void)setLeanStateAlpha:(CGFloat)leanStateAlpha {
     if(leanStateAlpha > 1.0) {
         _leanStateAlpha = 1.0;
     }else if (leanStateAlpha < 0) {

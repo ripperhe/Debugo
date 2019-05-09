@@ -11,8 +11,7 @@
 
 @implementation DGDebugo (Additional)
 
-+ (UIViewController *)topViewControllerForWindow:(UIWindow *)window
-{
++ (UIViewController *)topViewControllerForWindow:(UIWindow *)window {
     UIWindow *targetWindow = window ?: [UIApplication sharedApplication].delegate.window;
     if (!targetWindow) return nil;
     UIViewController* viewController = targetWindow.rootViewController;
@@ -23,8 +22,7 @@
  Reference:
  * http://stackoverflow.com/questions/24825123/get-the-current-view-controller-from-the-app-delegate%EF%BC%89
  */
-+ (UIViewController*)findBestViewController:(UIViewController*)vc
-{
++ (UIViewController*)findBestViewController:(UIViewController*)vc {
     if (vc.presentedViewController) {
         
         // Return presented view controller
@@ -65,8 +63,7 @@
     }
 }
 
-+ (UIWindow *)topVisibleFullScreenWindow
-{
++ (UIWindow *)topVisibleFullScreenWindow {
     NSArray *windows = [UIApplication sharedApplication].windows;
     for (UIWindow *window in windows.reverseObjectEnumerator) {
         if (window.hidden == YES || window.opaque == NO) {
@@ -97,8 +94,7 @@
     return nil;
 }
 
-+ (UIWindow *)keyboardWindow
-{
++ (UIWindow *)keyboardWindow {
     for (UIWindow *window in [[UIApplication sharedApplication].windows reverseObjectEnumerator]) {
         if ([window isKindOfClass:NSClassFromString(@"UITextEffectsWindow")] && window.hidden == NO && window.alpha > 0) {
             return window;
@@ -107,8 +103,7 @@
     return nil;
 }
 
-+ (NSArray <UIWindow *>*)getAllWindows
-{
++ (NSArray <UIWindow *>*)getAllWindows {
      __unsafe_unretained NSArray *windows = nil;
     // private api
 #if DebugoCanBeEnabled

@@ -25,15 +25,13 @@ CGFloat const DGDefaultForceTouchScale = 4;
 
 @implementation DGTouchFingerView
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"-[%@ %@] not supported", NSStringFromClass([self class]), NSStringFromSelector(_cmd)]
                                  userInfo:nil];
 }
 
-- (instancetype)initWithPoint:(CGPoint)point
-{
+- (instancetype)initWithPoint:(CGPoint)point {
     if ((self = [super initWithFrame:CGRectMake(point.x - DGDefaultMaxFingerRadius, point.y - DGDefaultMaxFingerRadius, 2 * DGDefaultMaxFingerRadius, 2 * DGDefaultMaxFingerRadius)])) {
         self.opaque = NO;
         self.color = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
@@ -50,14 +48,12 @@ CGFloat const DGDefaultForceTouchScale = 4;
 
 #pragma mark - setter
 
-- (void)setBackgroundColor:(UIColor *)color
-{
+- (void)setBackgroundColor:(UIColor *)color {
     [super setBackgroundColor:color];
     self.layer.borderColor = [color colorWithAlphaComponent:0.6f].CGColor;
 }
 
-- (void)updateWithTouch:(UITouch *)touch
-{
+- (void)updateWithTouch:(UITouch *)touch {
     CGPoint point = [touch locationInView:self.superview];
     self.center = point;
     if (@available(iOS 9.0, *)) {
@@ -69,8 +65,7 @@ CGFloat const DGDefaultForceTouchScale = 4;
     }
 }
 
-- (UIColor *)interpolatedColorFromStartColor:(UIColor *)startColor endColor:(UIColor *)endColor fraction:(CGFloat)fraction
-{
+- (UIColor *)interpolatedColorFromStartColor:(UIColor *)startColor endColor:(UIColor *)endColor fraction:(CGFloat)fraction {
     fraction = MIN(1, MAX(0, fraction));
     if (fraction == 0) return startColor;
     
@@ -84,8 +79,7 @@ CGFloat const DGDefaultForceTouchScale = 4;
     return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
 }
 
-- (void)removeFromSuperviewWithAnimation
-{
+- (void)removeFromSuperviewWithAnimation {
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:self.touchEndAnimationDuration animations:^{
         self.alpha = 0.0f;
