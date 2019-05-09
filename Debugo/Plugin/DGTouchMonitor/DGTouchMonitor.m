@@ -59,9 +59,10 @@ static DGTouchMonitor *_instance;
     if (shouldDisplayTouches) {
         self.touchWindow.hidden = NO;
     }else {
-        self.touchWindow.rootViewController = nil;
-        self.touchWindow.hidden = YES;
-        self.touchWindow = nil;
+        // 防止在不需要展示的时候也懒加载 touchWindow
+        _touchWindow.rootViewController = nil;
+        _touchWindow.hidden = YES;
+        _touchWindow = nil;
     }
 }
 
