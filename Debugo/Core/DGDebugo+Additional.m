@@ -11,6 +11,10 @@
 
 @implementation DGDebugo (Additional)
 
++ (UIViewController *)topViewController {
+    return [self topViewControllerForWindow:nil];
+}
+
 + (UIViewController *)topViewControllerForWindow:(UIWindow *)window {
     UIWindow *targetWindow = window ?: [UIApplication sharedApplication].delegate.window;
     if (!targetWindow) return nil;

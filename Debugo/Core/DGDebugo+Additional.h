@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGDebugo (Additional)
 
+/** 获取 [UIApplication sharedApplication].delegate.window 的顶部控制器 */
++ (nullable UIViewController *)topViewController;
+
 /** 获取一个 window 顶部的 viewController; 传 nil 则取 [UIApplication sharedApplication].delegate.window */
 + (nullable UIViewController *)topViewControllerForWindow:(nullable UIWindow *)window;
 

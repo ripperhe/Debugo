@@ -22,7 +22,7 @@
         
         configuration.commonTestActions = @[
                                             [DGTestAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGTestAction *action, UIViewController *actionVC) {
-                                                UIViewController *vc = [DGDebugo topViewControllerForWindow:nil];
+                                                UIViewController *vc = DGDebugo.topViewController;
                                                 NSLog(@"%@", vc);
                                             }],
                                             [DGTestAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGTestAction *action, UIViewController *actionVC) {
@@ -101,7 +101,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     
-    UIViewController *currentVC = [DGDebugo topViewControllerForWindow:nil];
+    UIViewController *currentVC = [DGDebugo topViewController];
     
     // 假设需要在这两个页面自动登录
     Class DebugoVCClass = NSClassFromString(@"ViewController");
@@ -113,7 +113,7 @@
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // run login method
-            UIViewController *vc = [DGDebugo topViewControllerForWindow:nil];
+            UIViewController *vc = [DGDebugo topViewController];
             if ([vc isKindOfClass:LoginVCClass]) {
                 [vc performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
             }
