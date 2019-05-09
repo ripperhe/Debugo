@@ -69,6 +69,7 @@ static NSString *kCellValue = @"value";
         self.tableView.tableHeaderView = label;
     }else {
         self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+        DGLog(@"%@", self.file.fileURL.path);
     }
 }
 
