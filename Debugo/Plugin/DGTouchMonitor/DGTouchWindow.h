@@ -9,9 +9,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "DGSuspensionContainer.h"
+#import "DGWindow.h"
 
-@interface DGTouchWindow : DGSuspensionContainer
+@interface DGTouchWindow : DGWindow
 
 - (void)displayEvent:(UIEvent *)event;
 

@@ -32,11 +32,11 @@ typedef NS_ENUM(NSUInteger, DGShowWindowType) {
 @interface DGAssistant ()<DGSuspensionViewDelegate>
 
 @property (nonatomic, weak) DGSuspensionView *debugBubble;
-@property (nonatomic, weak) DGSuspensionContainer *debugViewControllerContainerWindow;
+@property (nonatomic, weak) DGWindow *debugViewControllerContainerWindow;
 @property (nonatomic, weak, nullable) DGViewController *debugViewController;
 
 @property (nonatomic, weak) DGSuspensionView *loginBubble;
-@property (nonatomic, weak, nullable) DGSuspensionContainer *loginViewControllerContainerWindow;
+@property (nonatomic, weak, nullable) DGWindow *loginViewControllerContainerWindow;
 
 @end
 
@@ -266,7 +266,7 @@ static DGAssistant *_instance;
 }
 
 - (void)closeDebugViewControllerContainerWindow {
-    DGSuspensionContainer *containerWindow = self.debugViewControllerContainerWindow;
+    DGWindow *containerWindow = self.debugViewControllerContainerWindow;
     containerWindow.dg_canBecomeKeyWindow = NO;
     if (containerWindow.isKeyWindow) {
         [containerWindow.lastKeyWindow makeKeyWindow];
@@ -277,7 +277,7 @@ static DGAssistant *_instance;
 }
 
 - (void)openDebugViewControllerContainerWindow {
-    DGSuspensionContainer *containerWindow = self.debugViewControllerContainerWindow;
+    DGWindow *containerWindow = self.debugViewControllerContainerWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     containerWindow.dg_canBecomeKeyWindow = YES;
     if ([DGDebugo keyboardWindow]) {
@@ -342,7 +342,7 @@ static DGAssistant *_instance;
         }else{
             // create
             DGViewController *debugVC = [[DGViewController alloc] init];
-            DGSuspensionContainer *window = [[DGSuspensionContainer alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
             window.name = @"Debug Window";
             window.rootViewController = debugVC;
             window.windowLevel = DGContentWindowLevel;
@@ -362,7 +362,7 @@ static DGAssistant *_instance;
         }else{
             // create
             DGQuickLoginViewController *loginVC = [[DGQuickLoginViewController alloc] init];
-            DGSuspensionContainer *window = [[DGSuspensionContainer alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
             window.name = @"Login Window";
             window.rootViewController = loginVC;
             window.windowLevel = DGContentWindowLevel;

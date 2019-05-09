@@ -20,4 +20,4 @@
 #import "DGOrderedDictionary.h"
 #import "DGDevice.h"
 #import "DGFilePath.h"
-#import "DGSuspensionContainer.h"
+#import "DGWindow.h"

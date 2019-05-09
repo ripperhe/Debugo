@@ -1,5 +1,5 @@
 //
-//  DGSuspensionContainer.m
+//  DGWindow.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,11 +8,11 @@
 //
 
 
-#import "DGSuspensionContainer.h"
+#import "DGWindow.h"
 
 #define BoolString(boolValue) (boolValue?@"YES":@"NO")
 
-@implementation DGSuspensionContainer
+@implementation DGWindow
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

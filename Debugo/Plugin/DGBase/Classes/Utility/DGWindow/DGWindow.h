@@ -1,5 +1,5 @@
 //
-//  DGSuspensionContainer.h
+//  DGWindow.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGSuspensionContainer : UIWindow
+@interface DGWindow : UIWindow
 
 @property (nonatomic, copy, nullable) NSString *name;
 @property (nonatomic, weak, nullable) UIWindow *lastKeyWindow;

@@ -8,7 +8,7 @@
 //
 
 
-#import "DGSuspensionContainer.h"
+#import "DGWindow.h"
 #import "DGSuspensionViewEnable.h"
 #import "DGSuspensionViewConfig.h"
 #import "DGSuspensionViewController.h"
@@ -25,7 +25,7 @@
 
 @end
 
-@interface DGSuspensionView : DGSuspensionContainer
+@interface DGSuspensionView : DGWindow
 
 @property (nonatomic, weak) id<DGSuspensionViewDelegate> dg_delegate;
 @property (nonatomic, strong, readonly) DGSuspensionViewConfig *config;
