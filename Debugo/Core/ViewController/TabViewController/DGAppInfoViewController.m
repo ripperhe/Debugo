@@ -166,7 +166,6 @@ static NSString *kDGCellValue = @"kDGCellValue";
     pasteboard.string = [self.tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text;
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

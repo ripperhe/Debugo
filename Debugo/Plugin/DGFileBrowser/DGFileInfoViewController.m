@@ -77,6 +77,21 @@ static NSString *kCellValue = @"value";
     return [date dg_dateStringWithFormat:@"yyyy年MM月dd日 HH:mm:ss"];
 }
 
+#pragma mark - event
+
+- (void)clickedCopyBtn:(UIButton *)sender {
+    if (@available(iOS 10.0, *)) {
+        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+        [feedBackGenertor impactOccurred];
+    }
+    NSIndexPath *indexPath = sender.dg_strongExtObj;
+    
+    // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
+    // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.dataArray[indexPath.section][indexPath.row][kCellValue];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -93,10 +108,17 @@ static NSString *kCellValue = @"value";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        [btn setImage:[DGBundle imageNamed:@"copy"] forState:UIControlStateNormal];
+        [btn setFrame:CGRectMake(0, 0, 44, 44)];
+        [btn addTarget:self action:@selector(clickedCopyBtn:) forControlEvents:UIControlEventTouchUpInside];
+        cell.accessoryView = btn;
     }
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
     cell.textLabel.text = data[kCellTitle];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data[kCellValue]];
+    cell.accessoryView.hidden = ![data[kCellTitle] isEqualToString:@"Path"];
+    cell.accessoryView.dg_strongExtObj = indexPath;
     return cell;
 }
 
