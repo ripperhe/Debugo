@@ -32,13 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, assign) BOOL isDirectory;
 @property (nonatomic, assign) DGFBFileType type;
-@property (nonatomic, readonly) UIImage *image;
-@property (nonatomic, readonly, nullable) NSString *simpleInfo;
 
 - (instancetype)initWithURL:(NSURL *)URL;
 - (void)deleteWithErrorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
 - (BOOL)isExist;
 - (NSDictionary *)fileAttributes;
+- (void)calculateSize:(void (^)(long long size))completion;
+- (nullable NSString *)simpleInfo;
+- (UIImage *)image;
 
 @end
 

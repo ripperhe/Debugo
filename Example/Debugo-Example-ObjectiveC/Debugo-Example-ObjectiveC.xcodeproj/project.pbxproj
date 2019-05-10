@@ -80,6 +80,7 @@
 		C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */; };
 		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
 		C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */; };
+		C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E38B432285161500D46953 /* NSFileManager+Debugo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -236,6 +237,9 @@
 		C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Debugo.m"; sourceTree = "<group>"; };
 		C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGShareBarButtonItem.h; sourceTree = "<group>"; };
 		C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGShareBarButtonItem.m; sourceTree = "<group>"; };
+		C9E38B422285161500D46953 /* NSFileManager+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Debugo.h"; sourceTree = "<group>"; };
+		C9E38B432285161500D46953 /* NSFileManager+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Debugo.m"; sourceTree = "<group>"; };
+		C9E38B4522851FF400D46953 /* DGMetaMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGMetaMacro.h; sourceTree = "<group>"; };
 		C9E73FC3221D399000BA9149 /* Debugo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Debugo.podspec; path = ../../Debugo.podspec; sourceTree = "<group>"; };
 		C9E73FC4221D399000BA9149 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		C9E73FC5221D399000BA9149 /* README_EN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README_EN.md; path = ../../README_EN.md; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 				C9B45697221D2B460098644E /* NSDate+Debugo.m */,
 				C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */,
 				C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */,
+				C9E38B422285161500D46953 /* NSFileManager+Debugo.h */,
+				C9E38B432285161500D46953 /* NSFileManager+Debugo.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -495,8 +501,9 @@
 		C9B4569C221D2B460098644E /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				C9B4569D221D2B460098644E /* DGConst.h */,
 				C9B4569E221D2B460098644E /* DGLog.h */,
+				C9B4569D221D2B460098644E /* DGConst.h */,
+				C9E38B4522851FF400D46953 /* DGMetaMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -889,6 +896,7 @@
 				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
+				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,
 				C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

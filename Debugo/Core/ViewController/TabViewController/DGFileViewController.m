@@ -40,9 +40,12 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    // 进页面刷新
     self.dataArray = nil;
     [self.tableView reloadData];
 }
+
+#pragma mark - getter
 
 - (DGFileConfiguration *)configuration {
     if (!_configuration) {
@@ -99,7 +102,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
             [shortcutMixFiles addObject:@{kDGCellTitle:file.displayName, kDGCellValue:file}];
         }
         if (shortcutMixFiles.count) {
-            shortcutMixFiles.dg_copyExtObj = @"# shortcut";
+            shortcutMixFiles.dg_copyExtObj = @"# Shortcut";
             [array addObject:shortcutMixFiles];
         }
         

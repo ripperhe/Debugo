@@ -16,6 +16,7 @@ static NSString *kCellValue = @"value";
 @interface DGFileInfoViewController ()
 
 @property (nonatomic, strong) NSArray <NSArray *>*dataArray;
+@property (nonatomic, assign) long long size;
 
 @end
 
@@ -32,8 +33,41 @@ static NSString *kCellValue = @"value";
     [super viewDidLoad];
     
     self.title = self.file.displayName;
-    NSDictionary *fileAttributes = [self.file fileAttributes];
     
+    if (!self.file.isExist) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"❌ File or directory do not exist!";
+        self.tableView.tableHeaderView = label;
+        return;
+    }else {
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+        DGLog(@"%@", self.file.fileURL.path);
+    }
+    
+    if (self.file.isDirectory) {
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicatorView.color = [UIColor lightGrayColor];
+        indicatorView.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+        [indicatorView startAnimating];
+        [self.view addSubview:indicatorView];
+        dg_weakify(self)
+        dg_weakify(indicatorView)
+        [self.file calculateSize:^(long long size) {
+            dg_strongify(self)
+            dg_strongify(indicatorView)
+            [indicatorView removeFromSuperview];
+            self.size = size;
+            [self refresh];
+        }];
+    }else {
+        self.size = [[self.file fileAttributes] fileSize];
+        [self refresh];
+    }
+}
+
+- (void)refresh {
+    NSDictionary *fileAttributes = [self.file fileAttributes];
     self.dataArray = @[
                        @[
                            @{kCellTitle:@"Name", kCellValue:self.file.displayName},
@@ -44,7 +78,7 @@ static NSString *kCellValue = @"value";
                            @{kCellTitle:@"Deletable", kCellValue:[NSFileManager.defaultManager isDeletableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
                            ],
                        @[
-                           @{kCellTitle:@"fileSize", kCellValue:[NSString stringWithFormat:@"%lld bytes (%@)", fileAttributes.fileSize, [@(fileAttributes.fileSize) dg_sizeString]]},
+                           @{kCellTitle:@"fileSize", kCellValue:[NSString stringWithFormat:@"%lld bytes (%@)", self.size, [@(self.size) dg_sizeString]]},
                            @{kCellTitle:@"fileModificationDate", kCellValue:[self dateStringWithDate:fileAttributes.fileModificationDate]},
                            @{kCellTitle:@"fileCreationDate", kCellValue:[self dateStringWithDate:fileAttributes.fileCreationDate]},
                            @{kCellTitle:@"fileType", kCellValue:fileAttributes.fileType ?: @"null"},
@@ -62,17 +96,9 @@ static NSString *kCellValue = @"value";
                            @{kCellTitle:@"fileGroupOwnerAccountID", kCellValue:fileAttributes.fileGroupOwnerAccountID?:@"null"},
                            ],
                        ];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:self.file.fileURL.path]) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"❌ File or directory do not exist!";
-        self.tableView.tableHeaderView = label;
-    }else {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-        DGLog(@"%@", self.file.fileURL.path);
-    }
+    [self.tableView reloadData];
 }
+
 
 - (NSString *)dateStringWithDate:(NSDate *)date {
     if (!date) return @"null";

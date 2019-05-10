@@ -40,68 +40,37 @@
 - (BOOL)checkDirectoryWithURL:(NSURL *)fileURL {
     BOOL isDirectory = NO;
     [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDirectory];
-//    NSString *resourceValue;
-//    NSError *error;
-//    if ([fileURL getResourceValue:&resourceValue forKey:NSURLFileResourceTypeKey error:&error]) {
-//        if (!error && resourceValue == NSURLFileResourceTypeDirectory) {
-//            isDirectory = YES;
-//        }
-//    }
-//    if (error) {
-//        NSLog(@"%@ %s error:%@", self, __func__, error);
-//    }
     return isDirectory;
 }
 
-// 单个文件的大小
-- (long long)fileSizeAtPath:(NSString *)filePath {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    if (![manager fileExistsAtPath:filePath]) return 0;
-    return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
-}
-
-// 遍历文件夹获得文件夹大小，返回字节
-- (long long)folderSizeAtPath:(NSString *)folderPath {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    BOOL isDirectory = NO;
-    if (![manager fileExistsAtPath:folderPath isDirectory:&isDirectory]) return 0;
-    if (!isDirectory) return [self fileSizeAtPath:folderPath];
-    long long folderSize = 0;
-    NSArray *items = [manager contentsOfDirectoryAtPath:folderPath error:nil];
-    for (int i = 0; i < items.count; i++) {
-        BOOL subIsDir;
-        NSString *fileAbsolutePath = [folderPath stringByAppendingPathComponent:items[i]];
-        [manager fileExistsAtPath:fileAbsolutePath isDirectory:&subIsDir];
-        if (subIsDir == YES) {
-            // 文件夹就递归计算
-            folderSize += [self folderSizeAtPath:fileAbsolutePath];
-        } else {
-            // 文件直接计算
-            folderSize += [self fileSizeAtPath:fileAbsolutePath];
-        }
-    }
-    return folderSize;
-}
-
 - (NSDictionary *)fileAttributes {
-    if (!self.isExist) {
-        return nil;
-    }
+    if (!self.isExist) return nil;
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *path = self.fileURL.path;
     NSError *error;
     NSDictionary *attributes = [manager attributesOfItemAtPath:path error:&error];
     if (error) {
         NSLog(@"%@<%p> %@ error:%@", [self class], self, NSStringFromSelector(_cmd), error);
-    }else {
-        if (self.isDirectory) {
-            long long folderSize = [self folderSizeAtPath:path];
-            NSMutableDictionary *newDic = [NSMutableDictionary dictionaryWithDictionary:attributes];
-            [newDic setObject:@(folderSize) forKey:NSFileSize];
-            attributes = newDic.copy;
-        }
     }
     return attributes;
+}
+
+- (void)calculateSize:(void (^)(long long size))completion {
+    if (self.isDirectory) {
+        dg_weakify(self)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dg_strongify(self)
+            long long size = [[NSFileManager defaultManager] dg_folderSizeAtPath:self.fileURL.path];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) {
+                    completion(size);
+                }
+            });
+        });
+    }else {
+        long long size = [[NSFileManager defaultManager] dg_fileSizeAtPath:self.fileURL.path];
+        completion(size);
+    }
 }
 
 - (DGFBFileType)typeForPathExtension:(NSString *)pathExtension {
@@ -169,14 +138,15 @@
 }
 
 - (NSString *)simpleInfo {
-    if (!self.fileAttributes.fileModificationDate) return nil;
+    NSDictionary *fileAttributes = [self fileAttributes];
+    if (!fileAttributes.fileModificationDate) return nil;
     
-    NSString *dateInfo = [self.fileAttributes.fileModificationDate dg_dateStringWithFormat:@"yyyy/MM/dd"];
+    NSString *dateInfo = [fileAttributes.fileModificationDate dg_dateStringWithFormat:@"yyyy/MM/dd"];
     if ([dateInfo isEqualToString:@"1970/01/01"]) return @"Unknown";
     
     if (self.isDirectory) return dateInfo;
     
-    NSString *sizeInfo = [@(self.fileAttributes.fileSize) dg_sizeString];
+    NSString *sizeInfo = [@(fileAttributes.fileSize) dg_sizeString];
     return [dateInfo stringByAppendingFormat:@" - %@", sizeInfo];
 }
 

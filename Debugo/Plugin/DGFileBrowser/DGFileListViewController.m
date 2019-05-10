@@ -54,7 +54,10 @@
     UIBarButtonItem *item1 = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         return @[weakSelf.file.fileURL];
     }];
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(clickShowDirectoryInfoItem:)];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [btn addTarget:self action:@selector(clickShowDirectoryInfoBtn:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItems = @[item1, item2];
     
     // Set search controller
@@ -143,7 +146,7 @@
 
 #pragma mark - event
 
-- (void)clickShowDirectoryInfoItem:(UIBarButtonItem *)sender {
+- (void)clickShowDirectoryInfoBtn:(UIButton *)sender {
     DGFileInfoViewController *fileInfoVC = [[DGFileInfoViewController alloc] initWithFile:self.file];
     [self.navigationController pushViewController:fileInfoVC animated:YES];
 }
