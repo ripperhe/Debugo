@@ -46,20 +46,16 @@ static const void *kDGCopyExtObjKey = &kDGCopyExtObjKey;
     @synchronized (self) {
         Class class = [self class];
         
-        [[self class] dg_swizzleInstanceMethod:originalSelector newSelector:newSelector inClass:class];
-    }
-}
-
-+ (void)dg_swizzleInstanceMethod:(SEL)originalSelector newSelector:(SEL)newSelector inClass:(Class)class {
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
-    Method newMethod = class_getInstanceMethod(class, newSelector);
-    
-    BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
-    
-    if (didAddMethod) {
-        class_replaceMethod(class, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    } else {
-        method_exchangeImplementations(originalMethod, newMethod);
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method newMethod = class_getInstanceMethod(class, newSelector);
+        
+        BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+        
+        if (didAddMethod) {
+            class_replaceMethod(class, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, newMethod);
+        }
     }
 }
 
@@ -67,20 +63,16 @@ static const void *kDGCopyExtObjKey = &kDGCopyExtObjKey;
     @synchronized (self) {
         Class class = object_getClass((id)self);
         
-        [self dg_swizzleClassMethod:originalSelector newSelector:newSelector inClass:class];
-    }
-}
-
-+ (void)dg_swizzleClassMethod:(SEL)originalSelector newSelector:(SEL)newSelector inClass:(Class)class {
-    Method originalMethod = class_getClassMethod(class, originalSelector);
-    Method newMethod = class_getInstanceMethod(class, newSelector);
-    
-    BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
-    
-    if (didAddMethod) {
-        class_replaceMethod(class, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    } else {
-        method_exchangeImplementations(originalMethod, newMethod);
+        Method originalMethod = class_getClassMethod(class, originalSelector);
+        Method newMethod = class_getInstanceMethod(class, newSelector);
+        
+        BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+        
+        if (didAddMethod) {
+            class_replaceMethod(class, newSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, newMethod);
+        }
     }
 }
 

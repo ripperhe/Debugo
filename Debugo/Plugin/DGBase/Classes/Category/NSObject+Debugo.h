@@ -17,9 +17,7 @@
 @property (nonatomic, copy) id dg_copyExtObj;
 
 + (void)dg_swizzleInstanceMethod:(SEL)originalSelector newSelector:(SEL)newSelector;
-+ (void)dg_swizzleInstanceMethod:(SEL)originalSelector newSelector:(SEL)newSelector inClass:(Class)class;
 
 + (void)dg_swizzleClassMethod:(SEL)originalSelector newSelector:(SEL)newSelector;
-+ (void)dg_swizzleClassMethod:(SEL)originalSelector newSelector:(SEL)newSelector inClass:(Class)class;
 
 @end
