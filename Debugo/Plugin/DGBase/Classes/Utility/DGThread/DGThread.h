@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-void dg_dispatch_main_sync_safe(void(^block)(void));
-void dg_dispatch_main_async_safe(void(^block)(void));
+/** 当前主线程，同步执行；当前非主线程，异步执行 */
+void dg_dispatch_main_safe(void(^block)(void));
 

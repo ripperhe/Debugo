@@ -172,7 +172,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     DGFBFile *file = [data objectForKey:kDGCellValue];;
     UIViewController *previewViewController = [DGPreviewManager previewViewControllerForFile:file configuration:self.configuration];
     [self.navigationController pushViewController:previewViewController animated:YES];
-    DGLog(@"%@", file.fileURL.path);
+    DGLog(@"\n%@", file.fileURL.path);
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {

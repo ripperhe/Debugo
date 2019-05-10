@@ -12,7 +12,7 @@
 
 void debugo_exec_main_queue(void (^handler)(void)) {
 #if DebugoCanBeEnabled
-    dg_dispatch_main_async_safe(handler);
+    dg_dispatch_main_safe(handler);
 #endif
 }
 

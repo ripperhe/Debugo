@@ -32,6 +32,7 @@ static NSString *kCellValue = @"value";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    DGLog(@"\n%@", self.file.fileURL.path);
     self.title = self.file.displayName;
     
     if (!self.file.isExist) {
@@ -42,7 +43,6 @@ static NSString *kCellValue = @"value";
         return;
     }else {
         self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-        DGLog(@"%@", self.file.fileURL.path);
     }
     
     if (self.file.isDirectory) {

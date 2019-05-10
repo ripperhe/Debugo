@@ -92,7 +92,6 @@ static DGAssistant *_instance;
     [self refreshDebugBubbleWithIsOpenFPS:NO];
     DGTouchMonitor.shared.shouldDisplayTouches = NO;
     
-    // TODO: 检查一下置空是否有效
     self->_configuration = nil;
     self.currentCommonAccountArray = nil;
     
