@@ -7,24 +7,25 @@
 //
 
 #import "NSFileManager+Debugo.h"
+#import "DGMetaMacro.h"
 
 @implementation NSFileManager (Debugo)
 
-- (long long)dg_fileSizeAtPath:(NSString *)filePath {
-    if (![self fileExistsAtPath:filePath]) return 0;
-    return [[self attributesOfItemAtPath:filePath error:nil] fileSize];
+- (long long)dg_fileSizeAtPath:(NSString *)path {
+    if (![self fileExistsAtPath:path]) return 0;
+    return [[self attributesOfItemAtPath:path error:nil] fileSize];
 }
 
-- (long long)dg_folderSizeAtPath:(NSString *)folderPath {
+- (long long)dg_folderSizeAtPath:(NSString *)path {
     long long folderSize = 0;
     @try {
         BOOL isDirectory = NO;
-        if (![self fileExistsAtPath:folderPath isDirectory:&isDirectory]) return 0;
-        if (!isDirectory) return [self dg_fileSizeAtPath:folderPath];
-        NSArray *items = [self contentsOfDirectoryAtPath:folderPath error:nil];
+        if (![self fileExistsAtPath:path isDirectory:&isDirectory]) return 0;
+        if (!isDirectory) return [self dg_fileSizeAtPath:path];
+        NSArray *items = [self contentsOfDirectoryAtPath:path error:nil];
         for (int i = 0; i < items.count; i++) {
             BOOL subIsDir;
-            NSString *fileAbsolutePath = [folderPath stringByAppendingPathComponent:items[i]];
+            NSString *fileAbsolutePath = [path stringByAppendingPathComponent:items[i]];
             [self fileExistsAtPath:fileAbsolutePath isDirectory:&subIsDir];
             if (subIsDir == YES) {
                 // 文件夹就递归计算
@@ -39,6 +40,17 @@
     } @finally {
         return folderSize;
     }
+}
+
+- (void)dg_asyncCalculateFolderSizeAtPath:(NSString *)path completion:(void (^)(long long size))completion {
+    dg_weakify(self)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dg_strongify(self)
+        long long size = [self dg_folderSizeAtPath:path];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) completion(size);
+        });
+    });
 }
 
 @end

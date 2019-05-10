@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
       fb.source_files = 'Debugo/Plugin/DGFileBrowser/**/*'
       fb.frameworks = 'QuickLook', 'WebKit'
       fb.dependency 'Debugo/Plugin/DGBase'
-      fb.dependency 'FMDB'
+      fb.dependency 'FMDB', '>= 2.7.2'
     end
     pg.subspec 'DGTouchMonitor' do |tm|
       tm.source_files = 'Debugo/Plugin/DGTouchMonitor/**'

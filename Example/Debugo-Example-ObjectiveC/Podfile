@@ -6,6 +6,6 @@ target 'Debugo-Example-ObjectiveC' do
   # use_frameworks!
 
   # Pods for Debugo-Example-ObjectiveC
-  pod 'FMDB', '~> 2.7.5'
+  pod 'FMDB'
 
 end

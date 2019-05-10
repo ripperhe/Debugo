@@ -41,7 +41,7 @@ iOS 8.0+
 
 本框架内部借鉴了很多框架，但是真正依赖的只有一个框架：
 
-* [FMDB (2.7.5)](https://github.com/ccgus/fmdb)
+* [FMDB (>= 2.7.2)](https://github.com/ccgus/fmdb)
 
 ## Installation
 

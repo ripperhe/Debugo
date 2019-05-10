@@ -57,16 +57,7 @@
 
 - (void)calculateSize:(void (^)(long long size))completion {
     if (self.isDirectory) {
-        dg_weakify(self)
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            dg_strongify(self)
-            long long size = [[NSFileManager defaultManager] dg_folderSizeAtPath:self.fileURL.path];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (completion) {
-                    completion(size);
-                }
-            });
-        });
+        [[NSFileManager defaultManager] dg_asyncCalculateFolderSizeAtPath:self.fileURL.path completion:completion];
     }else {
         long long size = [[NSFileManager defaultManager] dg_fileSizeAtPath:self.fileURL.path];
         completion(size);
