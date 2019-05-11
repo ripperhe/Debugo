@@ -49,12 +49,19 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
 + (void)initialize {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-#if DebugoCanBeEnabled
-        printf("☄️ DebugoCanBeEnabled ✅\n");
-#else
-        printf("☄️ DebugoCanBeEnabled ❌\n");
-#endif
+        printf("☄️ Debugo canBeEnabled %s\n", [DGDebugo canBeEnabled] ? "✅" : "❌");
+        printf(" ◦ DGSuspensionView canBeEnabled %s\n", [DGSuspensionView canBeEnabled] ? "✅" : "❌");
+        printf(" ◦ DGTouchMonitor canBeEnabled %s\n", [DGTouchMonitor canBeEnabled] ? "✅" : "❌");
+        printf(" ◦ DGDebuggingOverlay canBeEnabled %s\n", [DGDebuggingOverlay canBeEnabled] ? "✅" : "❌");
     });
+}
+
++ (BOOL)canBeEnabled {
+#if DebugoCanBeEnabled
+    return YES;
+#else
+    return NO;
+#endif
 }
 
 static DGDebugo *_instance = nil;

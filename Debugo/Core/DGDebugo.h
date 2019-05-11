@@ -50,6 +50,8 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 @property (nonatomic, assign, readonly) BOOL isFire;
 @property (nonatomic, readonly, nullable) NSString *currentUser;
 
++ (BOOL)canBeEnabled;
+
 + (instancetype)shared;
 
 /** ☄️ 启动框架 可在 configuration block 中配置参数 */

@@ -35,16 +35,13 @@
 
 @implementation DGDebuggingOverlay
 
-//+ (void)initialize {
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//#if DGDebuggingOverlayCanBeEnabled
-//        printf("◦ DGDebuggingOverlayCanBeEnabled ✅\n");
-//#else
-//        printf("◦ DGDebuggingOverlayCanBeEnabled ❌\n");
-//#endif
-//    });
-//}
++ (BOOL)canBeEnabled {
+#if DGDebuggingOverlayCanBeEnabled
+    return YES;
+#else
+    return NO;
+#endif
+}
 
 + (BOOL)isShowing {
     __block BOOL isShowing = NO;

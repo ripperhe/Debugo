@@ -27,6 +27,7 @@
 
 @interface DGDebuggingOverlay : NSObject
 
++ (BOOL)canBeEnabled;
 + (BOOL)isShowing;
 + (void)showDebuggingInformation;
 

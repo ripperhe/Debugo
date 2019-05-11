@@ -14,6 +14,7 @@
 
 @property (nonatomic, assign) BOOL shouldDisplayTouches;
 
++ (BOOL)canBeEnabled;
 + (instancetype)shared;
 
 @end

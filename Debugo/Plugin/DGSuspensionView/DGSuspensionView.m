@@ -28,16 +28,13 @@
 
 @implementation DGSuspensionView
 
-//+ (void)initialize {
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//#if DGSuspensionViewCanBeEnabled
-//        printf("◦ DGSuspensionViewCanBeEnabled ✅\n");
-//#else
-//        printf("◦ DGSuspensionViewCanBeEnabled ❌\n");
-//#endif
-//    });
-//}
++ (BOOL)canBeEnabled {
+#if DGSuspensionViewCanBeEnabled
+    return YES;
+#else
+    return NO;
+#endif
+}
 
 - (void)dealloc {
     NSLog(@"%@ dealloc", self);
@@ -75,8 +72,7 @@
         config = [DGSuspensionViewConfig defaultConfig];
     }
 
-    if(self = [super initWithFrame:frame])
-    {
+    if(self = [super initWithFrame:frame]) {
         self.config = config;
         
         // rootViewController
@@ -103,8 +99,8 @@
 - (void)setupBtn {
     UIButton *button = [UIButton buttonWithType:self.config.buttonType];
     button.userInteractionEnabled = YES;
-    button.layer.borderColor = [UIColor whiteColor].CGColor;
-    button.layer.borderWidth = 1.0;
+//    button.layer.borderColor = [UIColor whiteColor].CGColor;
+//    button.layer.borderWidth = 1.0;
     button.clipsToBounds = YES;
     button.backgroundColor = [UIColor colorWithRed:0.21f green:0.45f blue:0.88f alpha:1.00f];
     

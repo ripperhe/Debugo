@@ -35,19 +35,12 @@
 /** Button view */
 @property (nonatomic, weak, readonly) UIButton *button;
 
++ (BOOL)canBeEnabled;
 + (instancetype)defaultSuspensionView;
 + (instancetype)suspensionViewWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config;
 
-//- (void)updateConfig:(void(^)(DGSuspensionViewConfig *config))configBlock;
-
-/**
- *  Show
- */
 - (void)show;
 
-/**
- *  Remove and dealloc
- */
 - (void)removeFromScreen;
 
 @end
