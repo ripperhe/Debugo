@@ -64,8 +64,6 @@
     self.columnArray = [self.dbOperation queryAllColumnInfoForTable:self.table];
     self.contentArray = [self.dbOperation queryAllContentForTable:self.table];
     [self.gridView reloadData];
-    
-    NSLog(@"!@#");
 }
 
 #pragma mark -- DatabaseGridViewDelegate, DatabaseGridViewDataSource
