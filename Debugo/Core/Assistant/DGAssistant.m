@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, DGShowWindowType) {
 
 @property (nonatomic, weak) DGSuspensionView *debugBubble;
 @property (nonatomic, weak) DGWindow *debugViewControllerContainerWindow;
-@property (nonatomic, weak, nullable) DGViewController *debugViewController;
+@property (nonatomic, weak, nullable) DGDebugViewController *debugViewController;
 
 @property (nonatomic, weak) DGSuspensionView *loginBubble;
 @property (nonatomic, weak, nullable) DGWindow *loginViewControllerContainerWindow;
@@ -65,9 +65,6 @@ static DGAssistant *_instance;
 - (void)setupWithConfiguration:(DGConfiguration *)configuration {
     _instance->_configuration = [configuration copy];
     
-    self.debugViewController.isFullScreen = self.configuration.isFullScreen;
-    [DGCache.shared.settingPlister setBool:self.configuration.isFullScreen forKey:kDGSettingIsFullScreen];
-
     [DGCache.shared.settingPlister setBool:self.configuration.isShowBottomBarWhenPushed forKey:kDGSettingIsShowBottomBarWhenPushed];
     
     [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
@@ -102,24 +99,24 @@ static DGAssistant *_instance;
     [self removeLoginViewControllerContainerWindow];
 }
 
-- (void)addTestActionForUser:(NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
-    DGTestAction *action = [DGTestAction actionWithTitle:title autoClose:autoClose handler:handler];
+- (void)addActionForUser:(NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler {
+    DGAction *action = [DGAction actionWithTitle:title autoClose:autoClose handler:handler];
     if (!action.isValid) {
-        NSAssert(0, @"DGTestAction : titile 和 handler 不能为空!");
+        NSAssert(0, @"DGAction : titile 和 handler 不能为空!");
         return;
     }
     
     if (user.length) {
         action.user = user;
-        DGOrderedDictionary <NSString *, DGTestAction *>*actionDic = [self.usersTestActionsDic objectForKey:user];
+        DGOrderedDictionary <NSString *, DGAction *>*actionDic = [self.usersActionsDic objectForKey:user];
         if (!actionDic) {
             actionDic = [DGOrderedDictionary dictionary];
             actionDic.moveToLastWhenUpdateValue = YES;
-            [self.usersTestActionsDic setObject:actionDic forKey:user];
+            [self.usersActionsDic setObject:actionDic forKey:user];
         }
         [actionDic setObject:action forKey:action.title];
     }else {
-        [self.anonymousTestActionDic setObject:action forKey:action.title];
+        [self.anonymousActionDic setObject:action forKey:action.title];
     }
 }
 
@@ -141,19 +138,19 @@ static DGAssistant *_instance;
 }
 
 #pragma mark - getter
-- (NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGTestAction *> *> *)usersTestActionsDic {
-    if (!_usersTestActionsDic) {
-        _usersTestActionsDic = [NSMutableDictionary dictionary];
+- (NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *)usersActionsDic {
+    if (!_usersActionsDic) {
+        _usersActionsDic = [NSMutableDictionary dictionary];
     }
-    return _usersTestActionsDic;
+    return _usersActionsDic;
 }
 
-- (DGOrderedDictionary<NSString *,DGTestAction *> *)anonymousTestActionDic {
-    if (!_anonymousTestActionDic) {
-        _anonymousTestActionDic = [DGOrderedDictionary dictionary];
-        _anonymousTestActionDic.moveToLastWhenUpdateValue = YES;
+- (DGOrderedDictionary<NSString *,DGAction *> *)anonymousActionDic {
+    if (!_anonymousActionDic) {
+        _anonymousActionDic = [DGOrderedDictionary dictionary];
+        _anonymousActionDic.moveToLastWhenUpdateValue = YES;
     }
-    return _anonymousTestActionDic;
+    return _anonymousActionDic;
 }
 
 - (DGOrderedDictionary<NSString *,DGAccount *> *)temporaryAccountDic {
@@ -243,7 +240,7 @@ static DGAssistant *_instance;
     config.buttonType = UIButtonTypeSystem;
     config.leanStateAlpha = .9;
     
-    DGSuspensionView *debugBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (self.configuration.isFullScreen?255:275 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGSuspensionView *debugBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     debugBubble.name = @"Debug Bubble";
     debugBubble.tag = DGDebugBubbleTag;
@@ -305,7 +302,7 @@ static DGAssistant *_instance;
     config.leanStateAlpha = .9;
     config.showLongPressAnimation = NO;
     
-    DGSuspensionView *loginBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (self.configuration.isFullScreen?165:185 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGSuspensionView *loginBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (165 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     loginBubble.name = @"Login Bubble";
     loginBubble.tag = DGLoginBubbleTag;
@@ -340,7 +337,7 @@ static DGAssistant *_instance;
             }
         }else{
             // create
-            DGViewController *debugVC = [[DGViewController alloc] init];
+            DGDebugViewController *debugVC = [[DGDebugViewController alloc] init];
             DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
             window.name = @"Debug Window";
             window.rootViewController = debugVC;

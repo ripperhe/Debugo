@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 #import "DGPlister.h"
 
-extern NSString * const kDGSettingIsFullScreen;
 extern NSString * const kDGSettingIsShowBottomBarWhenPushed;
 extern NSString * const kDGSettingIsOpenFPS;
 extern NSString * const kDGSettingIsShowTouches;
@@ -34,7 +33,6 @@ extern NSString * const kDGSettingIsShowTouches;
 @property (nonatomic, strong, readonly) DGPlister *buildInfoPlister;
 
 /** Setting plist:
- * kDGSettingIsFullScreen
  * kDGSettingIsShowBottomBarWhenPushed
  * kDGSettingIsOpenFPS
  * kDGSettingIsShowTouches

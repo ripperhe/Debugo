@@ -10,7 +10,6 @@
 #import "DGCache.h"
 #import "DGAssistant.h"
 
-NSString * const kDGSettingIsFullScreen = @"kDGSettingIsFullScreen";
 NSString * const kDGSettingIsShowBottomBarWhenPushed = @"kDGSettingIsShowBottomBarWhenPushed";
 NSString * const kDGSettingIsOpenFPS = @"kDGSettingIsOpenFPS";
 NSString * const kDGSettingIsShowTouches = @"kDGSettingIsShowTouches";

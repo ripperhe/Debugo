@@ -1,5 +1,5 @@
 //
-//  DGTestActionViewController.m
+//  DGActionViewController.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,19 +7,19 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGTestActionViewController.h"
+#import "DGActionViewController.h"
 #import "DGAssistant.h"
-#import "DGTestActionSubViewController.h"
+#import "DGActionSubViewController.h"
 
 static NSString *kDGCellID = @"kDGCellID";
 
-@interface DGTestActionViewController ()
+@interface DGActionViewController ()
 
-@property (nonatomic, strong) NSMutableArray <NSArray <DGTestAction *>*>*dataArray;
+@property (nonatomic, strong) NSMutableArray <NSArray <DGAction *>*>*dataArray;
 
 @end
 
-@implementation DGTestActionViewController
+@implementation DGActionViewController
 
 - (void)dealloc {
     DGLogFunction;
@@ -44,8 +44,8 @@ static NSString *kDGCellID = @"kDGCellID";
 
 - (void)configTableView {
     // table header
-    if ([[DGDebugo shared].delegate respondsToSelector:@selector(debugoTestActionViewControllerTableHeaderView)]) {
-        UIView *headerView = [[DGDebugo shared].delegate debugoTestActionViewControllerTableHeaderView];
+    if ([[DGDebugo shared].delegate respondsToSelector:@selector(debugoActionViewControllerTableHeaderView)]) {
+        UIView *headerView = [[DGDebugo shared].delegate debugoActionViewControllerTableHeaderView];
         if (headerView) {
             self.tableView.tableHeaderView = headerView;
         }else {
@@ -57,7 +57,7 @@ static NSString *kDGCellID = @"kDGCellID";
     if (!self.dataArray.count) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"Please add test actions.";
+        label.text = @"Please add actions.";
         self.tableView.tableFooterView = label;
     }else {
         self.tableView.tableFooterView = nil;
@@ -65,17 +65,17 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 #pragma mark - getter
-- (NSMutableArray <NSArray <DGTestAction *>*>*)dataArray {
+- (NSMutableArray <NSArray <DGAction *>*>*)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-        NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGTestAction *> *> *usersTestActionsDic = DGAssistant.shared.usersTestActionsDic.mutableCopy;
+        NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGAssistant.shared.usersActionsDic.mutableCopy;
         
         // current
-        __block NSArray <DGTestAction *>*currentActions =  nil;
+        __block NSArray <DGAction *>*currentActions =  nil;
         // #
-        __block NSMutableArray <DGTestAction *>*otherActions = [NSMutableArray array];
-        [usersTestActionsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGOrderedDictionary<NSString *,DGTestAction *> * _Nonnull obj, BOOL * _Nonnull stop) {
+        __block NSMutableArray <DGAction *>*otherActions = [NSMutableArray array];
+        [usersActionsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj, BOOL * _Nonnull stop) {
             if (DGDebugo.shared.currentUser.length && [key isEqualToString:DGDebugo.shared.currentUser]) {
                 // current
                 currentActions = obj.reverseSortedValues;
@@ -93,8 +93,8 @@ static NSString *kDGCellID = @"kDGCellID";
                     title = [_persons[arc4random()%_persons.count] stringByAppendingFormat:@" %@", key];
                     [_cachedPersonsDic setObject:title forKey:key];
                 }
-                DGTestAction *action = [DGTestAction actionWithTitle:title autoClose:NO handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
-                    DGTestActionSubViewController *subVC = [[DGTestActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
+                DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
                     subVC.title = action.title;
                     [actionVC.navigationController pushViewController:subVC animated:YES];
                 }];
@@ -104,9 +104,9 @@ static NSString *kDGCellID = @"kDGCellID";
         }];
         
         // common action
-        NSArray *commonActions = [DGAssistant shared].configuration.commonTestActions.copy;
+        NSArray *commonActions = [DGAssistant shared].configuration.commonActions.copy;
         // anonymous
-        NSArray *anonymousActions = [DGAssistant shared].anonymousTestActionDic.reverseSortedValues;
+        NSArray *anonymousActions = [DGAssistant shared].anonymousActionDic.reverseSortedValues;
         
         if (currentActions.count) {
             currentActions.dg_copyExtObj = DGDebugo.shared.currentUser;
@@ -125,8 +125,8 @@ static NSString *kDGCellID = @"kDGCellID";
             }
         }else {
             if (anonymousActions.count) {
-                DGTestAction *action = [DGTestAction actionWithTitle:@"🙈 anonymous" autoClose:NO handler:^(DGTestAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
-                    DGTestActionSubViewController *subVC = [[DGTestActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
+                DGAction *action = [DGAction actionWithTitle:@"🙈 anonymous" autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
                     subVC.title = action.title;
                     [actionVC.navigationController pushViewController:subVC animated:YES];
                 }];
@@ -164,7 +164,7 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    DGTestAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    DGAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = action.title;
     if (action.dg_strongExtObj) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -179,7 +179,7 @@ static NSString *kDGCellID = @"kDGCellID";
         [feedBackGenertor impactOccurred];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    DGTestAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    DGAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (action.autoClose) {
         [DGAssistant.shared closeDebugViewControllerContainerWindow];
     }

@@ -9,7 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "DGTestAction.h"
+#import "DGAction.h"
 #import "DGAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,11 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DGConfiguration : NSObject<NSCopying>
 
 ///------------------------------------------------
-/// test action
+/// action
 ///------------------------------------------------
 
-/** 公用 test action */
-@property (nullable, nonatomic, strong) NSArray <DGTestAction *>*commonTestActions;
+/** 公用 action */
+@property (nullable, nonatomic, strong) NSArray <DGAction *>*commonActions;
 
 
 ///------------------------------------------------
@@ -38,8 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// setting 以下设置均可在设置页面开启; 如需强制开启，可在代码中设置
 ///------------------------------------------------
 
-/** Debug 页面是否全屏显示; 默认为 NO */
-@property (nonatomic, assign) BOOL isFullScreen;
 /** 是否在 push 时显示 tabBar; 默认为 NO */
 @property (nonatomic, assign) BOOL isShowBottomBarWhenPushed;
 /** 是否在 debug bubble 显示 FPS; 默认为 NO */

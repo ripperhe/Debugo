@@ -1,5 +1,5 @@
 //
-//  DGTestActionSubViewController.h
+//  DGActionSubViewController.h
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/1/22.
@@ -7,18 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DGTestAction;
+@class DGAction;
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGTestActionSubViewController : UITableViewController
-
+@interface DGActionSubViewController : UITableViewController
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithActions:(NSArray <DGTestAction *>*)actions;
-
+- (instancetype)initWithActions:(NSArray <DGAction *>*)actions;
 
 @end
 

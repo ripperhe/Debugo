@@ -15,7 +15,7 @@
 #import "DGDebuggingOverlay.h"
 #import "DGBase.h"
 #import "DGConfiguration.h"
-#import "DGViewController.h"
+#import "DGDebugViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,8 +27,8 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 
 @property (nonatomic, strong, readonly) DGConfiguration *configuration;
 
-@property (nonatomic, strong, nullable) NSMutableDictionary <NSString *, DGOrderedDictionary <NSString *, DGTestAction *>*>*usersTestActionsDic;
-@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGTestAction *>*anonymousTestActionDic;
+@property (nonatomic, strong, nullable) NSMutableDictionary <NSString *, DGOrderedDictionary <NSString *, DGAction *>*>*usersActionsDic;
+@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAction *>*anonymousActionDic;
 @property (nonatomic, strong, nullable) NSArray <DGAccount *>*currentCommonAccountArray;
 @property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAccount *>*temporaryAccountDic;
 
@@ -37,7 +37,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 - (void)setupWithConfiguration:(DGConfiguration *)configuration;
 - (void)reset;
 
-- (void)addTestActionForUser:(nullable NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler;
+- (void)addActionForUser:(nullable NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler;
 - (void)addAccountWithUsername:(NSString *)username password:(NSString *)password;
 
 ///------------------------------------------------
@@ -46,7 +46,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 
 @property (nonatomic, weak, readonly) DGSuspensionView *debugBubble;
 @property (nonatomic, weak, readonly) DGWindow *debugViewControllerContainerWindow;
-@property (nonatomic, weak, readonly) DGViewController *debugViewController;
+@property (nonatomic, weak, readonly) DGDebugViewController *debugViewController;
 
 - (void)showDebugBubble;
 - (void)removeDebugBubble;

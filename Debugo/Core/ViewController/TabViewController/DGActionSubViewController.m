@@ -1,25 +1,25 @@
 //
-//  DGTestActionSubViewController.m
+//  DGActionSubViewController.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/1/22.
 //  Copyright © 2019 ripper. All rights reserved.
 //
 
-#import "DGTestActionSubViewController.h"
+#import "DGActionSubViewController.h"
 #import "DGAssistant.h"
 
 static NSString *kDGCellID = @"kDGCellID";
 
-@interface DGTestActionSubViewController ()
+@interface DGActionSubViewController ()
 
-@property (nonatomic, strong) NSArray <DGTestAction *>*actions;
+@property (nonatomic, strong) NSArray <DGAction *>*actions;
 
 @end
 
-@implementation DGTestActionSubViewController
+@implementation DGActionSubViewController
 
-- (instancetype)initWithActions:(NSArray<DGTestAction *> *)actions {
+- (instancetype)initWithActions:(NSArray<DGAction *> *)actions {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         self.actions = actions.copy;
     }
@@ -51,7 +51,7 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    DGTestAction *action = [self.actions objectAtIndex:indexPath.row];
+    DGAction *action = [self.actions objectAtIndex:indexPath.row];
     cell.textLabel.text = action.title;
 }
 
@@ -61,7 +61,7 @@ static NSString *kDGCellID = @"kDGCellID";
         [feedBackGenertor impactOccurred];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    DGTestAction *action = [self.actions objectAtIndex:indexPath.row];
+    DGAction *action = [self.actions objectAtIndex:indexPath.row];
     if (action.autoClose) {
         [DGAssistant.shared closeDebugViewControllerContainerWindow];
     }

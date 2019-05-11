@@ -28,8 +28,6 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[self getZoomImage] style:UIBarButtonItemStyleDone target:self action:@selector(clickZoom:)];
 }
 
 #pragma mark - getter
@@ -50,22 +48,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     return _dataArray;
 }
 
-- (UIImage *)getZoomImage {
-    return [DGBundle imageNamed:DGAssistant.shared.configuration.isFullScreen ? @"zoom_smaller" : @"zoom_bigger"];
-}
-
 #pragma mark - event
-- (void)clickZoom:(UIBarButtonItem *)sender {
-    if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [feedBackGenertor impactOccurred];
-    }
-    BOOL value = !DGAssistant.shared.configuration.isFullScreen;
-    DGAssistant.shared.configuration.isFullScreen = value;
-    self.navigationItem.rightBarButtonItem.image = [self getZoomImage];
-    DGAssistant.shared.debugViewController.isFullScreen = value;
-    [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsFullScreen];
-}
 
 - (void)swithValueChanged:(UISwitch *)sender {
     BOOL value = sender.isOn;

@@ -23,16 +23,16 @@
 		C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45667221D2B460098644E /* DGConfiguration.m */; };
 		C9B456F8221D2B460098644E /* DGAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566A221D2B460098644E /* DGAssistant.m */; };
 		C9B456F9221D2B460098644E /* DGDebugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566D221D2B460098644E /* DGDebugo.m */; };
-		C9B456FA221D2B460098644E /* DGTestAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGTestAction.m */; };
+		C9B456FA221D2B460098644E /* DGAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGAction.m */; };
 		C9B456FB221D2B460098644E /* DGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45670221D2B460098644E /* DGAccount.m */; };
 		C9B456FC221D2B460098644E /* DGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45676221D2B460098644E /* DGCache.m */; };
 		C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45678221D2B460098644E /* DGDebugo+Additional.m */; };
 		C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4567F221D2B460098644E /* DGTabBarController.m */; };
 		C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45680221D2B460098644E /* DGNavigationController.m */; };
-		C9B45700221D2B460098644E /* DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGViewController.m */; };
-		C9B45701221D2B460098644E /* DGTestActionSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45683221D2B460098644E /* DGTestActionSubViewController.m */; };
+		C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGDebugViewController.m */; };
+		C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45683221D2B460098644E /* DGActionSubViewController.m */; };
 		C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45684221D2B460098644E /* DGAccountViewController.m */; };
-		C9B45703221D2B460098644E /* DGTestActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45686221D2B460098644E /* DGTestActionViewController.m */; };
+		C9B45703221D2B460098644E /* DGActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45686221D2B460098644E /* DGActionViewController.m */; };
 		C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45687221D2B460098644E /* DGAppInfoViewController.m */; };
 		C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45689221D2B460098644E /* DGSettingViewController.m */; };
 		C9B45706221D2B460098644E /* DGFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568C221D2B460098644E /* DGFileViewController.m */; };
@@ -120,9 +120,9 @@
 		C9B4566B221D2B460098644E /* DebugoEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugoEnable.h; sourceTree = "<group>"; };
 		C9B4566C221D2B460098644E /* DGDebugo+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DGDebugo+Additional.h"; sourceTree = "<group>"; };
 		C9B4566D221D2B460098644E /* DGDebugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugo.m; sourceTree = "<group>"; };
-		C9B4566F221D2B460098644E /* DGTestAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTestAction.m; sourceTree = "<group>"; };
+		C9B4566F221D2B460098644E /* DGAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAction.m; sourceTree = "<group>"; };
 		C9B45670221D2B460098644E /* DGAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccount.m; sourceTree = "<group>"; };
-		C9B45671221D2B460098644E /* DGTestAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTestAction.h; sourceTree = "<group>"; };
+		C9B45671221D2B460098644E /* DGAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAction.h; sourceTree = "<group>"; };
 		C9B45672221D2B460098644E /* DGAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccount.h; sourceTree = "<group>"; };
 		C9B45673221D2B460098644E /* DGDebugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugo.h; sourceTree = "<group>"; };
 		C9B45676221D2B460098644E /* DGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCache.m; sourceTree = "<group>"; };
@@ -132,22 +132,22 @@
 		C9B4567B221D2B460098644E /* DGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTabBarController.h; sourceTree = "<group>"; };
 		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
 		C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGQuickLoginViewController.h; sourceTree = "<group>"; };
-		C9B4567E221D2B460098644E /* DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGViewController.h; sourceTree = "<group>"; };
+		C9B4567E221D2B460098644E /* DGDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugViewController.h; sourceTree = "<group>"; };
 		C9B4567F221D2B460098644E /* DGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTabBarController.m; sourceTree = "<group>"; };
 		C9B45680221D2B460098644E /* DGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNavigationController.m; sourceTree = "<group>"; };
-		C9B45681221D2B460098644E /* DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGViewController.m; sourceTree = "<group>"; };
-		C9B45683221D2B460098644E /* DGTestActionSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTestActionSubViewController.m; sourceTree = "<group>"; };
+		C9B45681221D2B460098644E /* DGDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugViewController.m; sourceTree = "<group>"; };
+		C9B45683221D2B460098644E /* DGActionSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionSubViewController.m; sourceTree = "<group>"; };
 		C9B45684221D2B460098644E /* DGAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountViewController.m; sourceTree = "<group>"; };
 		C9B45685221D2B460098644E /* DGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSettingViewController.h; sourceTree = "<group>"; };
-		C9B45686221D2B460098644E /* DGTestActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTestActionViewController.m; sourceTree = "<group>"; };
+		C9B45686221D2B460098644E /* DGActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionViewController.m; sourceTree = "<group>"; };
 		C9B45687221D2B460098644E /* DGAppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppInfoViewController.m; sourceTree = "<group>"; };
 		C9B45688221D2B460098644E /* DGFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileViewController.h; sourceTree = "<group>"; };
 		C9B45689221D2B460098644E /* DGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSettingViewController.m; sourceTree = "<group>"; };
 		C9B4568A221D2B460098644E /* DGAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountViewController.h; sourceTree = "<group>"; };
-		C9B4568B221D2B460098644E /* DGTestActionSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTestActionSubViewController.h; sourceTree = "<group>"; };
+		C9B4568B221D2B460098644E /* DGActionSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionSubViewController.h; sourceTree = "<group>"; };
 		C9B4568C221D2B460098644E /* DGFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileViewController.m; sourceTree = "<group>"; };
 		C9B4568D221D2B460098644E /* DGAppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppInfoViewController.h; sourceTree = "<group>"; };
-		C9B4568E221D2B460098644E /* DGTestActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTestActionViewController.h; sourceTree = "<group>"; };
+		C9B4568E221D2B460098644E /* DGActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionViewController.h; sourceTree = "<group>"; };
 		C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGQuickLoginViewController.m; sourceTree = "<group>"; };
 		C9B45694221D2B460098644E /* NSObject+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Debugo.m"; sourceTree = "<group>"; };
 		C9B45695221D2B460098644E /* NSDate+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Debugo.h"; sourceTree = "<group>"; };
@@ -379,8 +379,8 @@
 		C9B4566E221D2B460098644E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45671221D2B460098644E /* DGTestAction.h */,
-				C9B4566F221D2B460098644E /* DGTestAction.m */,
+				C9B45671221D2B460098644E /* DGAction.h */,
+				C9B4566F221D2B460098644E /* DGAction.m */,
 				C9B45672221D2B460098644E /* DGAccount.h */,
 				C9B45670221D2B460098644E /* DGAccount.m */,
 			);
@@ -411,8 +411,8 @@
 				C9B4567F221D2B460098644E /* DGTabBarController.m */,
 				C9B4567C221D2B460098644E /* DGNavigationController.h */,
 				C9B45680221D2B460098644E /* DGNavigationController.m */,
-				C9B4567E221D2B460098644E /* DGViewController.h */,
-				C9B45681221D2B460098644E /* DGViewController.m */,
+				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
+				C9B45681221D2B460098644E /* DGDebugViewController.m */,
 				C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */,
 				C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */,
 				C9B45682221D2B460098644E /* TabViewController */,
@@ -425,10 +425,10 @@
 			children = (
 				C9B4568A221D2B460098644E /* DGAccountViewController.h */,
 				C9B45684221D2B460098644E /* DGAccountViewController.m */,
-				C9B4568E221D2B460098644E /* DGTestActionViewController.h */,
-				C9B45686221D2B460098644E /* DGTestActionViewController.m */,
-				C9B4568B221D2B460098644E /* DGTestActionSubViewController.h */,
-				C9B45683221D2B460098644E /* DGTestActionSubViewController.m */,
+				C9B4568E221D2B460098644E /* DGActionViewController.h */,
+				C9B45686221D2B460098644E /* DGActionViewController.m */,
+				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
+				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
 				C9B45688221D2B460098644E /* DGFileViewController.h */,
 				C9B4568C221D2B460098644E /* DGFileViewController.m */,
 				C9B4568D221D2B460098644E /* DGAppInfoViewController.h */,
@@ -856,17 +856,17 @@
 				C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */,
 				C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */,
 				C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */,
-				C9B45701221D2B460098644E /* DGTestActionSubViewController.m in Sources */,
+				C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */,
 				C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */,
 				C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */,
 				C9B456FC221D2B460098644E /* DGCache.m in Sources */,
 				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
-				C9B45703221D2B460098644E /* DGTestActionViewController.m in Sources */,
+				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
 				C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */,
 				C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */,
 				C9B4570C221D2B460098644E /* DGThread.m in Sources */,
 				C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */,
-				C9B45700221D2B460098644E /* DGViewController.m in Sources */,
+				C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */,
 				C9B45650221D02A70098644E /* main.m in Sources */,
 				C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */,
 				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
@@ -891,7 +891,7 @@
 				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
 				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
-				C9B456FA221D2B460098644E /* DGTestAction.m in Sources */,
+				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
 				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,

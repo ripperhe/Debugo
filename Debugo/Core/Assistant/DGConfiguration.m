@@ -17,7 +17,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _isFullScreen = [DGCache.shared.settingPlister boolForKey:kDGSettingIsFullScreen];
         _isShowBottomBarWhenPushed = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowBottomBarWhenPushed];
         _isOpenFPS = [DGCache.shared.settingPlister boolForKey:kDGSettingIsOpenFPS];
         _isShowTouches = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowTouches];
@@ -31,12 +30,11 @@
 - (id)copyWithZone:(NSZone *)zone {
     DGConfiguration *obj = [[DGConfiguration alloc] init];
     if (obj) {
-        obj.commonTestActions = [self.commonTestActions copyWithZone:zone];
+        obj.commonActions = [self.commonActions copyWithZone:zone];
         
         obj.shortcutForDatabaseURLs = [self.shortcutForDatabaseURLs copyWithZone:zone];
         obj.shortcutForAnyURLs = [self.shortcutForAnyURLs copyWithZone:zone];
         
-        obj.isFullScreen = self.isFullScreen;
         obj.isOpenFPS = self.isOpenFPS;
         obj.isShowTouches = self.isShowTouches;
         
@@ -49,17 +47,17 @@
     return obj;
 }
 
-#pragma mark - test action
-- (void)setCommonTestActions:(NSArray<DGTestAction *> *)commonTestActions {
+#pragma mark - action
+- (void)setCommonActions:(NSArray<DGAction *> *)commonActions {
     NSMutableArray *validArray = [NSMutableArray array];
-    for (DGTestAction *action in commonTestActions) {
+    for (DGAction *action in commonActions) {
         if (action.isValid) {
             [validArray addObject:action];
         }else{
-            NSAssert(0, @"DGTestAction : titile 和 handler 不能为空!");
+            NSAssert(0, @"DGAction : titile 和 handler 不能为空!");
         }
     }
-    _commonTestActions = validArray.copy;
+    _commonActions = validArray.copy;
 }
 
 #pragma mark - login accout

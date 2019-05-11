@@ -119,23 +119,23 @@ static DGDebugo *_instance = nil;
     });
 }
 
-#pragma mark - test action
+#pragma mark - action
 
-+ (void)addActionWithTitle:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
++ (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
-        [DGAssistant.shared addTestActionForUser:nil withTitle:title autoClose:YES handler:handler];
+        [DGAssistant.shared addActionForUser:nil withTitle:title autoClose:YES handler:handler];
     });
 }
 
-+ (void)addActionForUser:(NSString *)user title:(NSString *)title handler:(DGTestActionHandlerBlock)handler {
++ (void)addActionForUser:(NSString *)user title:(NSString *)title handler:(DGActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
-        [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:YES handler:handler];
+        [DGAssistant.shared addActionForUser:user withTitle:title autoClose:YES handler:handler];
     });
 }
 
-+ (void)addActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGTestActionHandlerBlock)handler {
++ (void)addActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler {
     debugo_exec_main_queue(^{
-        [DGAssistant.shared addTestActionForUser:user withTitle:title autoClose:autoClose handler:handler];
+        [DGAssistant.shared addActionForUser:user withTitle:title autoClose:autoClose handler:handler];
     });
 }
 

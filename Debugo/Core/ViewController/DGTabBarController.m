@@ -9,7 +9,7 @@
 
 #import "DGTabBarController.h"
 #import "DGNavigationController.h"
-#import "DGTestActionViewController.h"
+#import "DGActionViewController.h"
 #import "DGFileViewController.h"
 #import "DGAppInfoViewController.h"
 #import "DGSettingViewController.h"
@@ -33,10 +33,10 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.tabBar.tintColor = kDGHighlightColor;
     
-    DGTestActionViewController *testVC = [[DGTestActionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    DGActionViewController *testVC = [[DGActionViewController alloc] initWithStyle:UITableViewStyleGrouped];
     testVC.navigationItem.title = @"Debugo";
     DGNavigationController *testNavigationVC = [[DGNavigationController alloc] initWithRootViewController:testVC];
-    testNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Test" image:[DGBundle imageNamed:@"test"] tag:0];
+    testNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Action" image:[DGBundle imageNamed:@"action"] tag:0];
     
     DGFileViewController *fileVC = [[DGFileViewController alloc] initWithStyle:UITableViewStyleGrouped];
     fileVC.navigationItem.title = @"File";
