@@ -31,6 +31,7 @@
     
     self.delegate = self;
     self.view.backgroundColor = [UIColor blackColor];
+    self.tabBar.tintColor = kDGHighlightColor;
     
     DGTestActionViewController *testVC = [[DGTestActionViewController alloc] initWithStyle:UITableViewStyleGrouped];
     testVC.navigationItem.title = @"Debugo";
@@ -53,6 +54,10 @@
     settingNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Setting" image:[DGBundle imageNamed:@"setting"] tag:0];
     
     self.viewControllers = @[testNavigationVC, fileNavigationVC, appInfoNavigationVC, settingNavigationVC];
+    [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:kDGHighlightColor} forState:UIControlStateSelected];
+        [obj.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.572549 green:0.572549 blue:0.572549 alpha:1.0]} forState:UIControlStateNormal];
+    }];
 }
 
 @end

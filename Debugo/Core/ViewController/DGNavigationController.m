@@ -16,6 +16,11 @@
 
 @implementation DGNavigationController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.navigationBar setTintColor:kDGHighlightColor];
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.viewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = !DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
