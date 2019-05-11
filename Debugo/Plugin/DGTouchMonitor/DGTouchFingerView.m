@@ -11,7 +11,7 @@
 #import "DGTouchFingerView.h"
 
 CGFloat const DGDefaultMaxFingerRadius = 22.0;
-CGFloat const DGDefaultForceTouchScale = 1.8;
+CGFloat const DGDefaultForceTouchScale = 1.5;
 
 @interface DGTouchFingerView ()
 
