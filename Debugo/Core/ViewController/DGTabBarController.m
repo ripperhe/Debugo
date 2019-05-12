@@ -41,12 +41,12 @@
     DGFileViewController *fileVC = [[DGFileViewController alloc] initWithStyle:UITableViewStyleGrouped];
     fileVC.navigationItem.title = @"File";
     DGNavigationController *fileNavigationVC = [[DGNavigationController alloc] initWithRootViewController:fileVC];
-    fileVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"File" image:[DGBundle imageNamed:@"finder"] tag:0];
+    fileVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"File" image:[DGBundle imageNamed:@"file"] tag:0];
 
     DGAppInfoViewController *appInfoVC = [[DGAppInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    appInfoVC.navigationItem.title = @"App";
+    appInfoVC.navigationItem.title = @"Info";
     DGNavigationController *appInfoNavigationVC = [[DGNavigationController alloc] initWithRootViewController:appInfoVC];
-    appInfoNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"App" image:[DGBundle imageNamed:@"app"] tag:0];
+    appInfoNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Info" image:[DGBundle imageNamed:@"app"] tag:0];
     
     DGSettingViewController *settingVC = [[DGSettingViewController alloc] initWithStyle:UITableViewStyleGrouped];
     settingVC.navigationItem.title = @"Setting";
