@@ -30,8 +30,6 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 @protocol DGDebugoDelegate <NSObject>
 @optional
 
-/** 自定义 action viewController 的 tableHeaderView; 这是我特意留给你的一亩三分地，可用于显示当前账号等信息~ 🤩  */
-- (nullable UIView *)debugoActionViewControllerTableHeaderView;
 /** 使用 login bubble 选中列表中的某个账号时，会调用这个代理方法，并传回账号信息，你需要在这个代理方法实现自动登录 */
 - (void)debugoLoginAccount:(DGAccount *)account;
 /** 需要自行控制显示数据库文件的表的行高、列宽的时候需要实现该代理方法 */

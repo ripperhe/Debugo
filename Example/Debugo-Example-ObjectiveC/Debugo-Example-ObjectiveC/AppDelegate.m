@@ -128,16 +128,6 @@
 #pragma clang diagnostic pop
 }
 
-// 自定义 action 页面 table header; 可以用来显示当前登陆的 App 用户 ID 等等~
-- (UIView *)debugoActionViewControllerTableHeaderView {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 60)];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
-    label.textColor = UIColor.whiteColor;
-    label.text = @"☄️ amor fati";
-    return label;
-}
-
 // 自定义显示数据库文件时的宽高
 - (DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL {
     if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {

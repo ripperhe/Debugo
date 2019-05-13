@@ -43,16 +43,6 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 - (void)configTableView {
-    // table header
-    if ([[DGDebugo shared].delegate respondsToSelector:@selector(debugoActionViewControllerTableHeaderView)]) {
-        UIView *headerView = [[DGDebugo shared].delegate debugoActionViewControllerTableHeaderView];
-        if (headerView) {
-            self.tableView.tableHeaderView = headerView;
-        }else {
-            self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-        }
-    }
-    
     // table footer
     if (!self.dataArray.count) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
