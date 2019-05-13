@@ -10,8 +10,6 @@ echo "build configuration: ${CONFIGURATION}"
 # computer info
 computerUser="$(whoami)"
 echo "computer user: ${computerUser}"
-computerHostname="$(hostname)"
-echo "computer hostname: ${computerHostname}"
 computerUUID="$(system_profiler SPHardwareDataType | awk '/UUID/{print $3;}')"
 echo "computer UUID: $(computerUUID)"
 # git info
@@ -54,7 +52,6 @@ fi
 /usr/libexec/PlistBuddy -c "Add :PlistUpdateTimestamp string ${plistUpdateTimestamp}" ${buildInfoPlist}
 /usr/libexec/PlistBuddy -c "Add :BuildConfiguration string ${buildConfiguration}" ${buildInfoPlist}
 /usr/libexec/PlistBuddy -c "Add :ComputerUser string ${computerUser}" ${buildInfoPlist}
-/usr/libexec/PlistBuddy -c "Add :ComputerHostname string ${computerHostname}" ${buildInfoPlist}
 /usr/libexec/PlistBuddy -c "Add :ComputerUUID string ${computerUUID}" ${buildInfoPlist}
 /usr/libexec/PlistBuddy -c "Add :GitEnable bool ${gitEnable}" ${buildInfoPlist}
 if [ "${gitEnable}"=true ]; then

@@ -89,6 +89,10 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 }
 
 - (void)buttonClicked:(UIButton *)sender {
+    if (@available(iOS 10.0, *)) {
+        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+        [feedBackGenertor impactOccurred];
+    }
     NSIndexPath *indexPath = sender.dg_strongExtObj;
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
 

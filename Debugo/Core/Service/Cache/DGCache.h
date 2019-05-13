@@ -22,7 +22,6 @@ extern NSString * const kDGSettingIsShowTouches;
  * PlistUpdateTimestamp             plist 文件更新时间（build 时间）
  * BuildConfiguration               编译配置
  * ComputerUser                     编译包的电脑 当前用户名
- * ComputerHostname                 编译包的电脑 hostname
  * ComputerUUID                     编译包的电脑 UUID
  * GitEnable                        编译包的电脑 是否安装 git
  * GitBranch                        当前 git 分支

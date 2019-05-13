@@ -78,7 +78,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
                                  @{kDGCellTitle:@"Local Timezone", kDGCellValue:[NSTimeZone localTimeZone].name},
                                  ];
         deviceArray.dg_copyExtObj = @"Device";
-
+        
         NSArray *buildArray = [self getBuildInfoArray];
         _dataArray = @[budleArray, deviceArray, buildArray];
     }
@@ -95,7 +95,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 - (NSArray *)getBuildInfoArray {
     DGLog(@"%@", DGCache.shared.buildInfoPlister);
-
+    
     NSArray *buildInfoArray = nil;
     DGPlister *plister = DGCache.shared.buildInfoPlister;
     if (plister){
@@ -110,7 +110,6 @@ static NSString *kDGCellValue = @"kDGCellValue";
         plistUpdateTimestamp = plistUpdateTimestamp?:@"unknown";
         NSString *buildConfiguration = [plister stringForKey:@"BuildConfiguration" nilOrEmpty:nilOrEmptyHandler];
         NSString *computerUser = [plister stringForKey:@"ComputerUser" nilOrEmpty:nilOrEmptyHandler];
-        NSString *computerHostname = [plister stringForKey:@"ComputerHostname" nilOrEmpty:nilOrEmptyHandler];
         NSString *computerUUID = [plister stringForKey:@"ComputerUUID" nilOrEmpty:nilOrEmptyHandler];
         
         BOOL gitEnable = [plister boolForKey:@"GitEnable"];
@@ -125,27 +124,27 @@ static NSString *kDGCellValue = @"kDGCellValue";
             gitLastCommitTimestamp = gitLastCommitTimestamp?:@"unknown";
             
             buildInfoArray = @[
-                             @{kDGCellTitle:@"Update Date", kDGCellValue:plistUpdateTimestamp },
-                             @{kDGCellTitle:@"Build Configuration", kDGCellValue:buildConfiguration},
-                             @{kDGCellTitle:@"Computer User", kDGCellValue:computerUser},
-                             @{kDGCellTitle:@"Computer Hostname", kDGCellValue:computerHostname },
-                             @{kDGCellTitle:@"Computer UUID", kDGCellValue:computerUUID },
-                             @{kDGCellTitle:@"Git Branch", kDGCellValue:gitBranch },
-                             @{kDGCellTitle:@"Git Last Commit Hash", kDGCellValue:gitLastCommitAbbreviatedHash },
-                             @{kDGCellTitle:@"Git Last Commit User", kDGCellValue:gitLastCommitUser },
-                             @{kDGCellTitle:@"Git Last Commit Date", kDGCellValue:gitLastCommitTimestamp },
-                             ];
+                               @{kDGCellTitle:@"Update Date", kDGCellValue:plistUpdateTimestamp },
+                               @{kDGCellTitle:@"Build Configuration", kDGCellValue:buildConfiguration},
+                               @{kDGCellTitle:@"Computer User", kDGCellValue:computerUser},
+                               @{kDGCellTitle:@"Computer UUID", kDGCellValue:computerUUID },
+                               @{kDGCellTitle:@"Git Branch", kDGCellValue:gitBranch },
+                               @{kDGCellTitle:@"Git Last Commit Hash", kDGCellValue:gitLastCommitAbbreviatedHash },
+                               @{kDGCellTitle:@"Git Last Commit User", kDGCellValue:gitLastCommitUser },
+                               @{kDGCellTitle:@"Git Last Commit Date", kDGCellValue:gitLastCommitTimestamp },
+                               ];
         }else{
             buildInfoArray = @[
-                             @{kDGCellTitle:@"Update Date", kDGCellValue:plistUpdateTimestamp },
-                             @{kDGCellTitle:@"Computer Hostname", kDGCellValue:computerHostname },
-                             @{kDGCellTitle:@"Computer UUID", kDGCellValue:computerUUID },
-                             ];
+                               @{kDGCellTitle:@"Update Date", kDGCellValue:plistUpdateTimestamp },
+                               @{kDGCellTitle:@"Build Configuration", kDGCellValue:buildConfiguration},
+                               @{kDGCellTitle:@"Computer User", kDGCellValue:computerUser},
+                               @{kDGCellTitle:@"Computer UUID", kDGCellValue:computerUUID },
+                               ];
         }
     }else{
         buildInfoArray = @[
-                         @{kDGCellTitle:@"Please visit the website for details.", kDGCellValue:@"https://ripperhe.com/Debugo/#/Guide/build-info"},
-                         ];
+                           @{kDGCellTitle:@"Please visit the website for details.", kDGCellValue:@"https://ripperhe.com/Debugo/#/Guide/build-info"},
+                           ];
     }
     buildInfoArray.dg_copyExtObj = @"Build Info";
     return buildInfoArray;
@@ -196,20 +195,6 @@ static NSString *kDGCellValue = @"kDGCellValue";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    DGPopOverMenuConfiguration *config = [DGPopOverMenuConfiguration defaultConfiguration];
-//    config.textAlignment = NSTextAlignmentCenter;
-//    [DGPopOverMenu showForSender:cell
-//                   withMenuArray:@[@"Copy"]
-//                      imageArray:nil
-//                   configuration:config
-//                       doneBlock:^(NSInteger selectedIndex) {
-//                           // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
-//                           // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
-//                           UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-//                           pasteboard.string = cell.detailTextLabel.text;
-//                       }
-//                    dismissBlock:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
