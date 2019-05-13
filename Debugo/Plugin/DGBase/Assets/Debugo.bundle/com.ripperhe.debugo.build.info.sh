@@ -1,5 +1,5 @@
 # script version
-scriptVersion="1.0"
+scriptVersion="1.1"
 echo "script version ${scriptVersion}"
 # update time
 plistUpdateTimestamp="$(date +%s)"
