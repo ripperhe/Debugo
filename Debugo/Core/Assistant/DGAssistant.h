@@ -45,13 +45,13 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 ///------------------------------------------------
 
 @property (nonatomic, weak, readonly) DGSuspensionView *debugBubble;
-@property (nonatomic, weak, readonly) DGWindow *debugViewControllerContainerWindow;
+@property (nonatomic, weak, readonly) DGWindow *debugWindow;
 @property (nonatomic, weak, readonly) DGDebugViewController *debugViewController;
 
 - (void)showDebugBubble;
 - (void)removeDebugBubble;
-- (void)closeDebugViewControllerContainerWindow;
-- (void)removeDebugViewControllerContainerWindow;
+- (void)closeDebugWindow;
+- (void)removeDebugWindow;
 - (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS;
 
 ///------------------------------------------------
@@ -59,11 +59,11 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 ///------------------------------------------------
 
 @property (nonatomic, weak, readonly) DGSuspensionView *loginBubble;
-@property (nonatomic, weak, readonly) DGWindow *loginViewControllerContainerWindow;
+@property (nonatomic, weak, readonly) DGWindow *loginWindow;
 
 - (void)showLoginBubble;
 - (void)removeLoginBubble;
-- (void)removeLoginViewControllerContainerWindow;
+- (void)removeLoginWindow;
 
 @end
 

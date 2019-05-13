@@ -181,7 +181,7 @@ static NSString *kDGCellID = @"kDGCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (action.autoClose) {
-        [DGAssistant.shared closeDebugViewControllerContainerWindow];
+        [DGAssistant.shared closeDebugWindow];
     }
     action.handler(action, self);
 }

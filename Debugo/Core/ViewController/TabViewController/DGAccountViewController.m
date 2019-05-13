@@ -85,7 +85,7 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [DGAssistant.shared removeLoginViewControllerContainerWindow];
+    [DGAssistant.shared removeLoginWindow];
     if ([DGDebugo.shared.delegate respondsToSelector:@selector(debugoLoginAccount:)]) {
         [DGDebugo.shared.delegate debugoLoginAccount:account];
     }

@@ -13,8 +13,8 @@
 #import "DGCache.h"
 #import "DGQuickLoginViewController.h"
 
-static NSString * const kDGDebugViewControllerWindowKey = @"kDGDebugViewControllerWindowKey";
-static NSString * const kDGLoginViewControllerWindowKey = @"kDGLoginViewControllerWindowKey";
+static NSString * const kDGDebugWindowKey = @"kDGDebugWindowKey";
+static NSString * const kDGLoginWindowKey = @"kDGLoginWindowKey";
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
@@ -23,20 +23,14 @@ NSInteger const DGDebugBubbleTag = 1;
 NSInteger const DGLoginBubbleTag = 2;
 UIWindowLevel const DGContentWindowLevel = 999999;
 
-typedef NS_ENUM(NSUInteger, DGShowWindowType) {
-    DGShowWindowTypeDebugoDebug,
-    DGShowWindowTypeDebugoLogin,
-    DGShowWindowTypeDebuggingOverlay,
-};
-
 @interface DGAssistant ()<DGSuspensionViewDelegate>
 
 @property (nonatomic, weak) DGSuspensionView *debugBubble;
-@property (nonatomic, weak) DGWindow *debugViewControllerContainerWindow;
+@property (nonatomic, weak) DGWindow *debugWindow;
 @property (nonatomic, weak, nullable) DGDebugViewController *debugViewController;
 
 @property (nonatomic, weak) DGSuspensionView *loginBubble;
-@property (nonatomic, weak, nullable) DGWindow *loginViewControllerContainerWindow;
+@property (nonatomic, weak, nullable) DGWindow *loginWindow;
 
 @end
 
@@ -93,10 +87,10 @@ static DGAssistant *_instance;
     self.currentCommonAccountArray = nil;
     
     [self removeDebugBubble];
-    [self removeDebugViewControllerContainerWindow];
+    [self removeDebugWindow];
     
     [self removeLoginBubble];
-    [self removeLoginViewControllerContainerWindow];
+    [self removeLoginWindow];
 }
 
 - (void)addActionForUser:(NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler {
@@ -172,38 +166,6 @@ static DGAssistant *_instance;
     return _temporaryAccountDic;
 }
 
-#pragma mark - UI
-
-- (void)showWindowWithType:(DGShowWindowType)type {
-    switch (type) {
-        case DGShowWindowTypeDebugoDebug:
-        {
-            [self removeLoginViewControllerContainerWindow];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
-            [self openDebugViewControllerContainerWindow];
-        }
-            break;
-        case DGShowWindowTypeDebugoLogin:
-        {
-            [self closeDebugViewControllerContainerWindow];
-            
-            [self.loginViewControllerContainerWindow setHidden:NO];
-        }
-            break;
-        case DGShowWindowTypeDebuggingOverlay:
-        {
-            [self closeDebugViewControllerContainerWindow];
-            [self removeLoginViewControllerContainerWindow];
-            
-            [DGDebuggingOverlay showDebuggingInformation];
-        }
-            break;
-        default:
-            break;
-    }
-}
-
 #pragma mark - debug bubble
 - (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS {
     if (!self.debugBubble) return;
@@ -256,13 +218,13 @@ static DGAssistant *_instance;
 }
 
 #pragma mark - debug view controller
-- (void)removeDebugViewControllerContainerWindow {
-    [self closeDebugViewControllerContainerWindow];
-    [DGSuspensionManager.shared destroyWindowForKey:kDGDebugViewControllerWindowKey];
+- (void)removeDebugWindow {
+    [self closeDebugWindow];
+    [DGSuspensionManager.shared destroyWindowForKey:kDGDebugWindowKey];
 }
 
-- (void)closeDebugViewControllerContainerWindow {
-    DGWindow *containerWindow = self.debugViewControllerContainerWindow;
+- (void)closeDebugWindow {
+    DGWindow *containerWindow = self.debugWindow;
     containerWindow.dg_canBecomeKeyWindow = NO;
     if (containerWindow.isKeyWindow) {
         [containerWindow.lastKeyWindow makeKeyWindow];
@@ -272,8 +234,9 @@ static DGAssistant *_instance;
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowDidHiddenNotificationKey object:nil userInfo:nil];
 }
 
-- (void)openDebugViewControllerContainerWindow {
-    DGWindow *containerWindow = self.debugViewControllerContainerWindow;
+- (void)openDebugWindow {
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
+    DGWindow *containerWindow = self.debugWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     containerWindow.dg_canBecomeKeyWindow = YES;
     if ([DGDebugo keyboardWindow]) {
@@ -319,21 +282,22 @@ static DGAssistant *_instance;
 }
 
 #pragma mark - login view controller
-- (void)removeLoginViewControllerContainerWindow {
-    [DGSuspensionManager.shared destroyWindowForKey:kDGLoginViewControllerWindowKey];
+- (void)removeLoginWindow {
+    [DGSuspensionManager.shared destroyWindowForKey:kDGLoginWindowKey];
 }
 
 #pragma mark - DGSuspensionViewDelegate
 - (void)suspensionViewClick:(DGSuspensionView *)suspensionView {
     if (suspensionView.tag == DGDebugBubbleTag) {
         // debug
-        if (self.debugViewControllerContainerWindow) {
-            if (self.debugViewControllerContainerWindow.isHidden == NO) {
+        if (self.debugWindow) {
+            if (self.debugWindow.isHidden == NO) {
                 // hidden
-                [self closeDebugViewControllerContainerWindow];
+                [self closeDebugWindow];
             }else {
                 // show
-                [self showWindowWithType:DGShowWindowTypeDebugoDebug];
+                [self removeLoginWindow];
+                [self openDebugWindow];
             }
         }else{
             // create
@@ -342,19 +306,20 @@ static DGAssistant *_instance;
             window.name = @"Debug Window";
             window.rootViewController = debugVC;
             window.windowLevel = DGContentWindowLevel;
-            [DGSuspensionManager.shared saveWindow:window forKey:kDGDebugViewControllerWindowKey];
+            [DGSuspensionManager.shared saveWindow:window forKey:kDGDebugWindowKey];
             
             self.debugViewController = debugVC;
-            self.debugViewControllerContainerWindow = window;
+            self.debugWindow = window;
             
             // show
-            [self showWindowWithType:DGShowWindowTypeDebugoDebug];
+            [self removeLoginWindow];
+            [self openDebugWindow];
         }
     }else{
         // login
-        if (self.loginViewControllerContainerWindow) {
+        if (self.loginWindow) {
             // remove
-            [self removeLoginViewControllerContainerWindow];
+            [self removeLoginWindow];
         }else{
             // create
             DGQuickLoginViewController *loginVC = [[DGQuickLoginViewController alloc] init];
@@ -363,21 +328,12 @@ static DGAssistant *_instance;
             window.rootViewController = loginVC;
             window.windowLevel = DGContentWindowLevel;
             
-            [DGSuspensionManager.shared saveWindow:window forKey:kDGLoginViewControllerWindowKey];
-            self.loginViewControllerContainerWindow = window;
+            [DGSuspensionManager.shared saveWindow:window forKey:kDGLoginWindowKey];
+            self.loginWindow = window;
             
             // show
-            [self showWindowWithType:DGShowWindowTypeDebugoLogin];
-        }
-    }
-}
-
-- (void)suspensionViewLongPressStart:(DGSuspensionView *)suspensionView {
-    if (suspensionView.tag == DGDebugBubbleTag) {
-        if ([DGDebuggingOverlay isShowing]) {
-            return;
-        }else{
-            [self showWindowWithType:DGShowWindowTypeDebuggingOverlay];
+            [self closeDebugWindow];
+            [self.loginWindow setHidden:NO];
         }
     }
 }

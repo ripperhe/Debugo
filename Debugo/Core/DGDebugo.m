@@ -115,7 +115,7 @@ static DGDebugo *_instance = nil;
     debugo_exec_main_queue(^{
         if (!DGDebugo.shared.isFire) return;
         
-        [DGAssistant.shared closeDebugViewControllerContainerWindow];
+        [DGAssistant.shared closeDebugWindow];
     });
 }
 

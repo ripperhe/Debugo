@@ -15,6 +15,7 @@
  Reference:
  * https://gist.github.com/IMcD23/1fda47126429df43cc989d02c1c5e4a0
  * http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/
+ * https://www.raywenderlich.com/295-swizzling-in-ios-11-with-uidebugginginformationoverlay
  */
 
 // Used for swizzling on iOS 11+. UIDebuggingInformationOverlay is a subclass of UIWindow

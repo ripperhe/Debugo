@@ -69,7 +69,7 @@
 
 #pragma mark - event
 - (void)closeLoginViewController {
-    [DGAssistant.shared removeLoginViewControllerContainerWindow];
+    [DGAssistant.shared removeLoginWindow];
 }
 
 @end
