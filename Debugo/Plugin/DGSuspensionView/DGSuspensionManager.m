@@ -11,7 +11,6 @@
 
 @interface DGSuspensionManager ()
 
-/** save windows dictionary */
 @property (nonatomic, strong) NSMutableDictionary *windowDictionary;
 
 @end

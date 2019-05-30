@@ -10,7 +10,6 @@
 
 #import "DGWindow.h"
 #import "DGSuspensionViewConfig.h"
-#import "DGSuspensionViewController.h"
 #import "DGSuspensionManager.h"
 
 @class DGSuspensionView;

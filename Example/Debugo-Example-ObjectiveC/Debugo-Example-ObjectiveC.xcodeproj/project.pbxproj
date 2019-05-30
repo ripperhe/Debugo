@@ -50,7 +50,6 @@
 		C9B45713221D2B460098644E /* DGWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGWindow.m */; };
 		C9B45714221D2B460098644E /* DGSuspensionViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */; };
 		C9B45715221D2B460098644E /* DGSuspensionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456BA221D2B460098644E /* DGSuspensionManager.m */; };
-		C9B45716221D2B460098644E /* DGSuspensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456BD221D2B460098644E /* DGSuspensionViewController.m */; };
 		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
 		C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C1221D2B460098644E /* DGFileBrowser.m */; };
 		C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C2221D2B460098644E /* DGFileInfoViewController.m */; };
@@ -72,7 +71,6 @@
 		C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */; };
 		C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E9221D2B460098644E /* DGFPSLabel.m */; };
 		C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EB221D2B460098644E /* DGWeakProxy.m */; };
-		C9B4572C221D2B460098644E /* DGTouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456ED221D2B460098644E /* DGTouchViewController.m */; };
 		C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EE221D2B460098644E /* DGTouchFingerView.m */; };
 		C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F0221D2B460098644E /* DGTouchWindow.m */; };
 		C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchMonitor.m */; };
@@ -166,13 +164,11 @@
 		C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebuggingOverlay.m; sourceTree = "<group>"; };
 		C9B456B5221D2B460098644E /* DGSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionView.m; sourceTree = "<group>"; };
 		C9B456B6221D2B460098644E /* DGSuspensionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionManager.h; sourceTree = "<group>"; };
-		C9B456B7221D2B460098644E /* DGSuspensionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionViewController.h; sourceTree = "<group>"; };
 		C9B456B8221D2B460098644E /* DGWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWindow.m; sourceTree = "<group>"; };
 		C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionViewConfig.m; sourceTree = "<group>"; };
 		C9B456BA221D2B460098644E /* DGSuspensionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionManager.m; sourceTree = "<group>"; };
 		C9B456BB221D2B460098644E /* DGSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionView.h; sourceTree = "<group>"; };
 		C9B456BC221D2B460098644E /* DGWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWindow.h; sourceTree = "<group>"; };
-		C9B456BD221D2B460098644E /* DGSuspensionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionViewController.m; sourceTree = "<group>"; };
 		C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionViewConfig.h; sourceTree = "<group>"; };
 		C9B456C0221D2B460098644E /* DGFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileParser.m; sourceTree = "<group>"; };
 		C9B456C1221D2B460098644E /* DGFileBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileBrowser.m; sourceTree = "<group>"; };
@@ -216,12 +212,10 @@
 		C9B456E9221D2B460098644E /* DGFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFPSLabel.m; sourceTree = "<group>"; };
 		C9B456EA221D2B460098644E /* DGFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFPSLabel.h; sourceTree = "<group>"; };
 		C9B456EB221D2B460098644E /* DGWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWeakProxy.m; sourceTree = "<group>"; };
-		C9B456ED221D2B460098644E /* DGTouchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchViewController.m; sourceTree = "<group>"; };
 		C9B456EE221D2B460098644E /* DGTouchFingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchFingerView.m; sourceTree = "<group>"; };
 		C9B456EF221D2B460098644E /* DGTouchMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchMonitor.h; sourceTree = "<group>"; };
 		C9B456F0221D2B460098644E /* DGTouchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchWindow.m; sourceTree = "<group>"; };
 		C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DGTouchMonitor.h"; sourceTree = "<group>"; };
-		C9B456F2221D2B460098644E /* DGTouchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchViewController.h; sourceTree = "<group>"; };
 		C9B456F3221D2B460098644E /* DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchMonitor.m; sourceTree = "<group>"; };
 		C9B456F4221D2B460098644E /* DGTouchFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchFingerView.h; sourceTree = "<group>"; };
 		C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DGTouchMonitor.m"; sourceTree = "<group>"; };
@@ -573,8 +567,6 @@
 				C9B456B5221D2B460098644E /* DGSuspensionView.m */,
 				C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */,
 				C9B456B9221D2B460098644E /* DGSuspensionViewConfig.m */,
-				C9B456B7221D2B460098644E /* DGSuspensionViewController.h */,
-				C9B456BD221D2B460098644E /* DGSuspensionViewController.m */,
 				C9B456B6221D2B460098644E /* DGSuspensionManager.h */,
 				C9B456BA221D2B460098644E /* DGSuspensionManager.m */,
 			);
@@ -654,8 +646,6 @@
 				C9B456F3221D2B460098644E /* DGTouchMonitor.m */,
 				C9B456F6221D2B460098644E /* DGTouchWindow.h */,
 				C9B456F0221D2B460098644E /* DGTouchWindow.m */,
-				C9B456F2221D2B460098644E /* DGTouchViewController.h */,
-				C9B456ED221D2B460098644E /* DGTouchViewController.m */,
 				C9B456F4221D2B460098644E /* DGTouchFingerView.h */,
 				C9B456EE221D2B460098644E /* DGTouchFingerView.m */,
 				C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */,
@@ -852,7 +842,6 @@
 				C9B456F9221D2B460098644E /* DGDebugo.m in Sources */,
 				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
 				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
-				C9B45716221D2B460098644E /* DGSuspensionViewController.m in Sources */,
 				C9B45714221D2B460098644E /* DGSuspensionViewConfig.m in Sources */,
 				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
 				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
@@ -865,7 +854,6 @@
 				C9B45712221D2B460098644E /* DGSuspensionView.m in Sources */,
 				C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */,
 				C9B456F8221D2B460098644E /* DGAssistant.m in Sources */,
-				C9B4572C221D2B460098644E /* DGTouchViewController.m in Sources */,
 				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
 				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,

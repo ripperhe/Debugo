@@ -69,7 +69,7 @@
         self.config = config;
         
         // rootViewController
-        self.rootViewController = [[DGSuspensionViewController alloc] init];
+        self.rootViewController = [[UIViewController alloc] init];
         self.contentView.alpha = self.config.leanStateAlpha;
         // button
         [self setupBtn];
@@ -92,8 +92,6 @@
 - (void)setupBtn {
     UIButton *button = [UIButton buttonWithType:self.config.buttonType];
     button.userInteractionEnabled = YES;
-//    button.layer.borderColor = [UIColor whiteColor].CGColor;
-//    button.layer.borderWidth = 1.0;
     button.clipsToBounds = YES;
     button.backgroundColor = [UIColor colorWithRed:0.21f green:0.45f blue:0.88f alpha:1.00f];
     
@@ -133,7 +131,7 @@
 }
 
 - (NSString *)memoryAddressKey {
-    return [NSString stringWithFormat:@"%p", self];
+    return [NSString stringWithFormat:@"%@_%p", NSStringFromClass([self class]), self];
 }
 
 #pragma mark - event response

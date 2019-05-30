@@ -10,7 +10,6 @@
 
 #import "DGTouchMonitor.h"
 #import "DGTouchWindow.h"
-#import "DGTouchViewController.h"
 #import "UIApplication+DGTouchMonitor.h"
 
 @interface DGTouchMonitor ()
@@ -59,7 +58,7 @@ static DGTouchMonitor *_instance;
 - (DGTouchWindow *)touchWindow {
     if (!_touchWindow) {
         _touchWindow = [[DGTouchWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        _touchWindow.rootViewController = [DGTouchViewController new];
+        _touchWindow.rootViewController = [UIViewController new];
     }
     return _touchWindow;
 }
