@@ -18,35 +18,39 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.default_subspec = 'Core'
 
-  s.subspec 'Core' do |cr|
-    cr.source_files = 'Debugo/Core/**/*'
-    cr.dependency 'Debugo/Plugin'
+  s.subspec 'Core' do |sb|
+    sb.source_files = 'Debugo/Core/**/*'
+    sb.dependency 'Debugo/Base'
+    sb.dependency 'Debugo/Plugin'
+  end
+
+  s.subspec 'Base' do |sb|
+    sb.source_files = 'Debugo/Base/Classes/**/*'
+    sb.resources = 'Debugo/Base/Assets/**'
   end
 
   s.subspec 'Plugin' do |pg|
-    pg.subspec 'DGBase' do |ba|
-      ba.source_files = 'Debugo/Plugin/DGBase/Classes/**/*'
-      ba.resources = 'Debugo/Plugin/DGBase/Assets/**'
+    pg.subspec 'DGDebuggingOverlay' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGDebuggingOverlay/**'
+      sb.dependency 'Debugo/Base'
     end
-    pg.subspec 'DGDebuggingOverlay' do |de|
-      de.source_files = 'Debugo/Plugin/DGDebuggingOverlay/**'
+    pg.subspec 'DGSuspensionView' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGSuspensionView/**'
+      sb.dependency 'Debugo/Base'
     end
-    pg.subspec 'DGSuspensionView' do |su|
-      su.source_files = 'Debugo/Plugin/DGSuspensionView/**'
-      su.dependency 'Debugo/Plugin/DGBase'
+    pg.subspec 'DGFileBrowser' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGFileBrowser/**/*'
+      sb.frameworks = 'QuickLook', 'WebKit'
+      sb.dependency 'Debugo/Base'
+      sb.dependency 'FMDB', '>= 2.7.2'
     end
-    pg.subspec 'DGFileBrowser' do |fb|
-      fb.source_files = 'Debugo/Plugin/DGFileBrowser/**/*'
-      fb.frameworks = 'QuickLook', 'WebKit'
-      fb.dependency 'Debugo/Plugin/DGBase'
-      fb.dependency 'FMDB', '>= 2.7.2'
+    pg.subspec 'DGTouchMonitor' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGTouchMonitor/**'
+      sb.dependency 'Debugo/Base'
     end
-    pg.subspec 'DGTouchMonitor' do |tm|
-      tm.source_files = 'Debugo/Plugin/DGTouchMonitor/**'
-      tm.dependency 'Debugo/Plugin/DGBase'
-    end
-    pg.subspec 'DGFPSLabel' do |fp|
-      fp.source_files = 'Debugo/Plugin/DGFPSLabel/**'
+    pg.subspec 'DGFPSLabel' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGFPSLabel/**'
+      sb.dependency 'Debugo/Base'
     end
   end
 end

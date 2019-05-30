@@ -9,6 +9,7 @@
 
 
 #import "DGWindow.h"
+#import "DebugoEnable.h"
 
 #define BoolString(boolValue) (boolValue?@"YES":@"NO")
 
@@ -35,7 +36,7 @@
 }
 
 #pragma mark - private api
-#if DGBaseCanBeEnabled
+#if DebugoCanBeEnabled
 // Prevent influence status bar
 - (bool)_canAffectStatusBarAppearance {
     return self.dg_canAffectStatusBarAppearance;

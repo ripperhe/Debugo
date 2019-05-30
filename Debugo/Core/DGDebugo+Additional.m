@@ -8,6 +8,7 @@
 //
 
 #import "DGDebugo+Additional.h"
+#import "DebugoEnable.h"
 
 @implementation DGDebugo (Additional)
 

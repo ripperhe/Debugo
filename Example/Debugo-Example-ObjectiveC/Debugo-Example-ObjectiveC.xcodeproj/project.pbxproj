@@ -40,7 +40,6 @@
 		C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45694221D2B460098644E /* NSObject+Debugo.m */; };
 		C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45697221D2B460098644E /* NSDate+Debugo.m */; };
 		C9B4570A221D2B460098644E /* DGBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4569B221D2B460098644E /* DGBundle.m */; };
-		C9B4570B221D2B460098644E /* DGPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A1221D2B460098644E /* DGPopOverMenu.m */; };
 		C9B4570C221D2B460098644E /* DGThread.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A4221D2B460098644E /* DGThread.m */; };
 		C9B4570D221D2B460098644E /* DGDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A8221D2B460098644E /* DGDevice.m */; };
 		C9B4570E221D2B460098644E /* DGPlister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AB221D2B460098644E /* DGPlister.m */; };
@@ -91,9 +90,6 @@
 		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFileConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileConfiguration.h; sourceTree = "<group>"; };
 		C934EDCC224369C400B6979C /* DGFileConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileConfiguration.m; sourceTree = "<group>"; };
-		C96BCF37226065EC00A51E90 /* DGSuspensionViewEnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSuspensionViewEnable.h; sourceTree = "<group>"; };
-		C96BCF382260671F00A51E90 /* DGTouchMonitorEnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchMonitorEnable.h; sourceTree = "<group>"; };
-		C96BCF39226069E700A51E90 /* DGBaseEnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGBaseEnable.h; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,7 +110,6 @@
 		C9B4565E221D29230098644E /* LoginSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSuccessViewController.h; sourceTree = "<group>"; };
 		C9B45666221D2B460098644E /* DGAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAssistant.h; sourceTree = "<group>"; };
 		C9B45667221D2B460098644E /* DGConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGConfiguration.m; sourceTree = "<group>"; };
-		C9B45668221D2B460098644E /* DGPluginEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPluginEnable.h; sourceTree = "<group>"; };
 		C9B45669221D2B460098644E /* DGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConfiguration.h; sourceTree = "<group>"; };
 		C9B4566A221D2B460098644E /* DGAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAssistant.m; sourceTree = "<group>"; };
 		C9B4566B221D2B460098644E /* DebugoEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugoEnable.h; sourceTree = "<group>"; };
@@ -158,8 +153,6 @@
 		C9B4569B221D2B460098644E /* DGBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBundle.m; sourceTree = "<group>"; };
 		C9B4569D221D2B460098644E /* DGConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConst.h; sourceTree = "<group>"; };
 		C9B4569E221D2B460098644E /* DGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLog.h; sourceTree = "<group>"; };
-		C9B456A1221D2B460098644E /* DGPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPopOverMenu.m; sourceTree = "<group>"; };
-		C9B456A2221D2B460098644E /* DGPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPopOverMenu.h; sourceTree = "<group>"; };
 		C9B456A4221D2B460098644E /* DGThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGThread.m; sourceTree = "<group>"; };
 		C9B456A5221D2B460098644E /* DGThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGThread.h; sourceTree = "<group>"; };
 		C9B456A7221D2B460098644E /* DGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDevice.h; sourceTree = "<group>"; };
@@ -341,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				C9B45664221D2B460098644E /* Core */,
+				C9B45691221D2B460098644E /* Base */,
 				C9B45690221D2B460098644E /* Plugin */,
 			);
 			name = Debugo;
@@ -351,7 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				C9B45679221D2B460098644E /* Debugo.h */,
-				C9B4566B221D2B460098644E /* DebugoEnable.h */,
 				C9B45673221D2B460098644E /* DGDebugo.h */,
 				C9B4566D221D2B460098644E /* DGDebugo.m */,
 				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
@@ -367,7 +360,6 @@
 		C9B45665221D2B460098644E /* Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45668221D2B460098644E /* DGPluginEnable.h */,
 				C9B45666221D2B460098644E /* DGAssistant.h */,
 				C9B4566A221D2B460098644E /* DGAssistant.m */,
 				C9B45669221D2B460098644E /* DGConfiguration.h */,
@@ -442,7 +434,6 @@
 		C9B45690221D2B460098644E /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45691221D2B460098644E /* DGBase */,
 				C9B456E7221D2B460098644E /* DGFPSLabel */,
 				C9B456B1221D2B460098644E /* DGDebuggingOverlay */,
 				C9B456B4221D2B460098644E /* DGSuspensionView */,
@@ -452,19 +443,19 @@
 			path = Plugin;
 			sourceTree = "<group>";
 		};
-		C9B45691221D2B460098644E /* DGBase */ = {
+		C9B45691221D2B460098644E /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				C9B45692221D2B460098644E /* Classes */,
 				C9B456AF221D2B460098644E /* Assets */,
 			);
-			path = DGBase;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		C9B45692221D2B460098644E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C96BCF39226069E700A51E90 /* DGBaseEnable.h */,
+				C9B4566B221D2B460098644E /* DebugoEnable.h */,
 				C9B45698221D2B460098644E /* DGBase.h */,
 				C9B45699221D2B460098644E /* Bundle */,
 				C9B4569C221D2B460098644E /* Macro */,
@@ -511,25 +502,15 @@
 		C9B4569F221D2B460098644E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				C9CEA533224250E300BD5AEB /* DGShare */,
 				C9B456A3221D2B460098644E /* DGThread */,
-				C9B456A0221D2B460098644E /* DGPopOverMenu */,
 				C9B456A9221D2B460098644E /* DGPlister */,
 				C9B456AC221D2B460098644E /* DGOrderedDictionary */,
 				C9B456A6221D2B460098644E /* DGDevice */,
 				C92F8C76221FA1AA0080C156 /* DGFilePath */,
 				C92461CF2260776E0028F329 /* DGWindow */,
+				C9CEA533224250E300BD5AEB /* DGShare */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		C9B456A0221D2B460098644E /* DGPopOverMenu */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456A2221D2B460098644E /* DGPopOverMenu.h */,
-				C9B456A1221D2B460098644E /* DGPopOverMenu.m */,
-			);
-			path = DGPopOverMenu;
 			sourceTree = "<group>";
 		};
 		C9B456A3221D2B460098644E /* DGThread */ = {
@@ -588,7 +569,6 @@
 		C9B456B4221D2B460098644E /* DGSuspensionView */ = {
 			isa = PBXGroup;
 			children = (
-				C96BCF37226065EC00A51E90 /* DGSuspensionViewEnable.h */,
 				C9B456BB221D2B460098644E /* DGSuspensionView.h */,
 				C9B456B5221D2B460098644E /* DGSuspensionView.m */,
 				C9B456BE221D2B460098644E /* DGSuspensionViewConfig.h */,
@@ -670,7 +650,6 @@
 		C9B456EC221D2B460098644E /* DGTouchMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				C96BCF382260671F00A51E90 /* DGTouchMonitorEnable.h */,
 				C9B456EF221D2B460098644E /* DGTouchMonitor.h */,
 				C9B456F3221D2B460098644E /* DGTouchMonitor.m */,
 				C9B456F6221D2B460098644E /* DGTouchWindow.h */,
@@ -886,7 +865,6 @@
 				C9B45712221D2B460098644E /* DGSuspensionView.m in Sources */,
 				C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */,
 				C9B456F8221D2B460098644E /* DGAssistant.m in Sources */,
-				C9B4570B221D2B460098644E /* DGPopOverMenu.m in Sources */,
 				C9B4572C221D2B460098644E /* DGTouchViewController.m in Sources */,
 				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,

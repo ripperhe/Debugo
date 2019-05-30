@@ -10,13 +10,14 @@
 
 #import "UIApplication+DGTouchMonitor.h"
 #import "DGBase.h"
+#import "DebugoEnable.h"
 
 NSString * const DGTouchMonitorDidSendTouchEventNotification = @"DGTouchMonitorDidSendTouchEventNotification";
 
 @implementation UIApplication (DGTouchMonitor)
 
 + (void)load {
-#if DGTouchMonitorCanBeEnabled
+#if DebugoCanBeEnabled
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [UIApplication dg_swizzleInstanceMethod:@selector(sendEvent:) newSelector:@selector(dg_sendEvent:)];

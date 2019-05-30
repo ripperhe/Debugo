@@ -10,6 +10,7 @@
 #import "DGDebuggingOverlay.h"
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import "DebugoEnable.h"
 
 /**
  Reference:
@@ -36,18 +37,10 @@
 
 @implementation DGDebuggingOverlay
 
-+ (BOOL)canBeEnabled {
-#if DGDebuggingOverlayCanBeEnabled
-    return YES;
-#else
-    return NO;
-#endif
-}
-
 + (BOOL)isShowing {
     __block BOOL isShowing = NO;
     // private api
-#if DGDebuggingOverlayCanBeEnabled
+#if DebugoCanBeEnabled
     NSArray *debugInfoComponents = @[@"U", @"IDe", @"bug", @"gin", @"gInfor", @"ma", @"ti", @"onO", @"ver", @"lay"];
     id debugInfoClass = NSClassFromString([debugInfoComponents componentsJoinedByString:@""]);
     
@@ -72,7 +65,7 @@
 + (NSArray <UIWindow *>*)allWindows {
     __unsafe_unretained NSArray *windows = nil;
     // private api
-#if DGDebuggingOverlayCanBeEnabled
+#if DebugoCanBeEnabled
     BOOL includeInternalWindows = YES;
     BOOL onlyVisibleWindows = NO;
     
@@ -102,7 +95,7 @@
 // [overlay toggleVisibility] for us.
 + (void)toggleOverlay {
     // private api
-#if DGDebuggingOverlayCanBeEnabled
+#if DebugoCanBeEnabled
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 

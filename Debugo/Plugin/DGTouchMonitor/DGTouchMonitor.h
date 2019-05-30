@@ -8,13 +8,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGTouchMonitorEnable.h"
 
 @interface DGTouchMonitor : NSObject
 
 @property (nonatomic, assign) BOOL shouldDisplayTouches;
 
-+ (BOOL)canBeEnabled;
 + (instancetype)shared;
 
 @end

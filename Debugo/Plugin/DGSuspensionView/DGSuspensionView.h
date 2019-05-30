@@ -9,7 +9,6 @@
 
 
 #import "DGWindow.h"
-#import "DGSuspensionViewEnable.h"
 #import "DGSuspensionViewConfig.h"
 #import "DGSuspensionViewController.h"
 #import "DGSuspensionManager.h"
@@ -35,7 +34,6 @@
 /** Button view */
 @property (nonatomic, weak, readonly) UIButton *button;
 
-+ (BOOL)canBeEnabled;
 + (instancetype)defaultSuspensionView;
 + (instancetype)suspensionViewWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config;
 

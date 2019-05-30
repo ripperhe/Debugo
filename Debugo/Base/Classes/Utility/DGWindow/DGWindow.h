@@ -9,7 +9,6 @@
 
 
 #import <UIKit/UIKit.h>
-#import "DGBaseEnable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

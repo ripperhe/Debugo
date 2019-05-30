@@ -7,15 +7,6 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#if __has_include("DGPluginEnable.h")
-    #import "DGPluginEnable.h"
-#endif
-
-#ifndef DGDebuggingOverlayCanBeEnabled
-    #define DGDebuggingOverlayCanBeEnabled DEBUG
-#endif
-
-
 #import <Foundation/Foundation.h>
 
 /**
@@ -27,7 +18,6 @@
 
 @interface DGDebuggingOverlay : NSObject
 
-+ (BOOL)canBeEnabled;
 + (BOOL)isShowing;
 + (void)showDebuggingInformation;
 

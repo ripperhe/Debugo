@@ -9,6 +9,7 @@
 
 
 #import "DGSuspensionView.h"
+#import "DGBase.h"
 
 #define kIsIPhoneX ([[UIScreen mainScreen] nativeBounds].size.height >= 2436.0)
 #define kTopMargin (kIsIPhoneX ? 88.0 : 64.0)
@@ -28,16 +29,8 @@
 
 @implementation DGSuspensionView
 
-+ (BOOL)canBeEnabled {
-#if DGSuspensionViewCanBeEnabled
-    return YES;
-#else
-    return NO;
-#endif
-}
-
 - (void)dealloc {
-    NSLog(@"%@ dealloc", self);
+    DGLogFunction;
 }
 
 + (instancetype)defaultSuspensionView {

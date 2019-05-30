@@ -6,7 +6,7 @@
 //  Copyright © 2019 ripper. All rights reserved.
 //
 
-#import "DGBaseEnable.h"
+#import "DebugoEnable.h"
 #import "DGBundle.h"
 #import "DGLog.h"
 #import "DGConst.h"
@@ -16,10 +16,9 @@
 #import "NSNumber+Debugo.h"
 #import "NSFileManager+Debugo.h"
 #import "DGThread.h"
-#import "DGPopOverMenu.h"
-#import "DGShareBarButtonItem.h"
 #import "DGPlister.h"
 #import "DGOrderedDictionary.h"
 #import "DGDevice.h"
 #import "DGFilePath.h"
 #import "DGWindow.h"
+#import "DGShareBarButtonItem.h"

@@ -21,14 +21,6 @@
 
 @implementation DGTouchMonitor
 
-+ (BOOL)canBeEnabled {
-#if DGTouchMonitorCanBeEnabled
-    return YES;
-#else
-    return NO;
-#endif
-}
-
 static DGTouchMonitor *_instance;
 + (instancetype)shared {
     if (!_instance) {

@@ -9,6 +9,7 @@
 
 #import "DGDebugo.h"
 #import "DGAssistant.h"
+#import "DebugoEnable.h"
 
 void debugo_exec_main_queue(void (^handler)(void)) {
 #if DebugoCanBeEnabled
@@ -50,9 +51,6 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         printf("☄️ Debugo canBeEnabled %s\n", [DGDebugo canBeEnabled] ? "✅" : "❌");
-        printf(" ◦ DGSuspensionView canBeEnabled %s\n", [DGSuspensionView canBeEnabled] ? "✅" : "❌");
-        printf(" ◦ DGTouchMonitor canBeEnabled %s\n", [DGTouchMonitor canBeEnabled] ? "✅" : "❌");
-        printf(" ◦ DGDebuggingOverlay canBeEnabled %s\n", [DGDebuggingOverlay canBeEnabled] ? "✅" : "❌");
     });
 }
 
