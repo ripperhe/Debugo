@@ -9,7 +9,7 @@
 #import "DebugoEnable.h"
 #import "DGBundle.h"
 #import "DGLog.h"
-#import "DGConst.h"
+#import "DGUIMacro.h"
 #import "DGMetaMacro.h"
 #import "NSObject+Debugo.h"
 #import "NSDate+Debugo.h"

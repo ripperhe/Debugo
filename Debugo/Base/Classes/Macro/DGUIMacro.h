@@ -1,12 +1,9 @@
 //
-//  DGConst.h
+//  DGUIMacro.h
 //  Pods
 //
 //  Created by ripper on 2018/9/30.
 //
-
-#ifndef DGConst_h
-#define DGConst_h
 
 #import <UIKit/UIKit.h>
 #import "DGDevice.h"
@@ -18,5 +15,3 @@
 #define kDGBottomSafeMargin (([DGDevice currentDevice].isNotchUI) ? 34.0 : 0.0)
 
 #define kDGHighlightColor [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0]
-
-#endif /* DGConst_h */

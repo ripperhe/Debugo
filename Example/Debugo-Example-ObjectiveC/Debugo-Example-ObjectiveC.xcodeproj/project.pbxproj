@@ -150,7 +150,7 @@
 		C9B45698221D2B460098644E /* DGBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBase.h; sourceTree = "<group>"; };
 		C9B4569A221D2B460098644E /* DGBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBundle.h; sourceTree = "<group>"; };
 		C9B4569B221D2B460098644E /* DGBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBundle.m; sourceTree = "<group>"; };
-		C9B4569D221D2B460098644E /* DGConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConst.h; sourceTree = "<group>"; };
+		C9B4569D221D2B460098644E /* DGUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUIMacro.h; sourceTree = "<group>"; };
 		C9B4569E221D2B460098644E /* DGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLog.h; sourceTree = "<group>"; };
 		C9B456A4221D2B460098644E /* DGThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGThread.m; sourceTree = "<group>"; };
 		C9B456A5221D2B460098644E /* DGThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGThread.h; sourceTree = "<group>"; };
@@ -488,8 +488,7 @@
 		C9B4569C221D2B460098644E /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				C9B4569E221D2B460098644E /* DGLog.h */,
-				C9B4569D221D2B460098644E /* DGConst.h */,
+				C9B4569D221D2B460098644E /* DGUIMacro.h */,
 				C9E38B4522851FF400D46953 /* DGMetaMacro.h */,
 			);
 			path = Macro;
@@ -498,6 +497,7 @@
 		C9B4569F221D2B460098644E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C9C2109E22A1031700D5EEDE /* DGLog */,
 				C9B456A3221D2B460098644E /* DGThread */,
 				C9B456A9221D2B460098644E /* DGPlister */,
 				C9B456AC221D2B460098644E /* DGOrderedDictionary */,
@@ -673,6 +673,14 @@
 				C9C2109C22A100A600D5EEDE /* DGUIMagic.m */,
 			);
 			path = DGUIMagic;
+			sourceTree = "<group>";
+		};
+		C9C2109E22A1031700D5EEDE /* DGLog */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4569E221D2B460098644E /* DGLog.h */,
+			);
+			path = DGLog;
 			sourceTree = "<group>";
 		};
 		C9CEA533224250E300BD5AEB /* DGShare */ = {
