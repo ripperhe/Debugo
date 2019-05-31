@@ -417,8 +417,6 @@
 				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
 				C9B45688221D2B460098644E /* DGFileViewController.h */,
 				C9B4568C221D2B460098644E /* DGFileViewController.m */,
-				C9B4568D221D2B460098644E /* DGAppInfoViewController.h */,
-				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
 				C9B45685221D2B460098644E /* DGSettingViewController.h */,
 				C9B45689221D2B460098644E /* DGSettingViewController.m */,
 			);
@@ -433,6 +431,7 @@
 				C9B456B4221D2B460098644E /* DGSuspensionBubble */,
 				C9B456EC221D2B460098644E /* DGTouchMonitor */,
 				C9B456BF221D2B460098644E /* DGFileBrowser */,
+				C9C2109822A0DB4200D5EEDE /* DGAppInfo */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -652,6 +651,15 @@
 				C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */,
 			);
 			path = DGTouchMonitor;
+			sourceTree = "<group>";
+		};
+		C9C2109822A0DB4200D5EEDE /* DGAppInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C9B4568D221D2B460098644E /* DGAppInfoViewController.h */,
+				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
+			);
+			path = DGAppInfo;
 			sourceTree = "<group>";
 		};
 		C9CEA533224250E300BD5AEB /* DGShare */ = {

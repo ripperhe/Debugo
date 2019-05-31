@@ -17,7 +17,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.windowLevel = 1000000;
+        self.windowLevel = 2000000;
         // 防止旋转时四周有黑边
         self.clipsToBounds = YES;
     }

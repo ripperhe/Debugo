@@ -9,8 +9,21 @@
 
 
 #import "DGAppInfoViewController.h"
-#import "DGCache.h"
-#import "DGAssistant.h"
+#import "DGBase.h"
+
+/**
+ Build info plist（存储在 bundle 中）以下为所有 key 值:
+ * ScriptVersion                    脚本版本
+ * PlistUpdateTimestamp             plist 文件更新时间（build 时间）
+ * BuildConfiguration               编译配置
+ * ComputerUser                     编译包的电脑 当前用户名
+ * ComputerUUID                     编译包的电脑 UUID
+ * GitEnable                        编译包的电脑 是否安装 git
+ * GitBranch                        当前 git 分支
+ * GitLastCommitAbbreviatedHash     最后一次提交的缩写 hash
+ * GitLastCommitUser                最后一次提交的用户
+ * GitLastCommitTimestamp           最后一次提交的时间
+ */
 
 static NSString *kDGCellID = @"kDGCellID";
 static NSString *kDGCellTitle = @"kDGCellTitle";
@@ -18,6 +31,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 @interface DGAppInfoViewController ()
 
+@property (nonatomic, strong) DGPlister *buildPlister;
 @property (nonatomic, strong) NSArray <NSArray *>*dataArray;
 
 @end
@@ -48,6 +62,12 @@ static NSString *kDGCellValue = @"kDGCellValue";
         }
         return nil;
     }];
+    
+    // build info plister (从 bundle 中获取)
+    NSString *buildInfoPlistPath = [[NSBundle mainBundle] pathForResource:@"com.ripperhe.debugo.build.info" ofType:@"plist"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:buildInfoPlistPath]) {
+        self.buildPlister = [[DGPlister alloc] initWithFilePath:buildInfoPlistPath readonly:YES];
+    }
 }
 
 #pragma mark - data
@@ -94,10 +114,8 @@ static NSString *kDGCellValue = @"kDGCellValue";
 }
 
 - (NSArray *)getBuildInfoArray {
-    DGLog(@"%@", DGCache.shared.buildInfoPlister);
-    
     NSArray *buildInfoArray = nil;
-    DGPlister *plister = DGCache.shared.buildInfoPlister;
+    DGPlister *plister = self.buildPlister;
     if (plister){
         NSString *(^nilOrEmptyHandler)(void) = ^(void) {
             return @"unknown";
@@ -192,9 +210,6 @@ static NSString *kDGCellValue = @"kDGCellValue";
     cell.detailTextLabel.text = data[kDGCellValue];
     cell.accessoryView.dg_strongExtObj = indexPath;
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

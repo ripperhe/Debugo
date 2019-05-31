@@ -39,13 +39,7 @@ static DGCache *_instance;
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
-        
-        // build info plister (从 bundle 中获取)
-        NSString *buildInfoPlistPath = [[NSBundle mainBundle] pathForResource:@"com.ripperhe.debugo.build.info" ofType:@"plist"];
-        if (buildInfoPlistPath.length) {
-            _instance->_buildInfoPlister = [[DGPlister alloc] initWithFilePath:buildInfoPlistPath readonly:YES];
-        }
+        _instance = [super allocWithZone:zone];        
     });
     return _instance;
 }

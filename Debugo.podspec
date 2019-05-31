@@ -52,5 +52,9 @@ Pod::Spec.new do |s|
       sb.source_files = 'Debugo/Plugin/DGFPSLabel/**'
       sb.dependency 'Debugo/Base'
     end
+    pg.subspec 'DGAppInfo' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGAppInfo/**'
+      sb.dependency 'Debugo/Base'
+    end
   end
 end
