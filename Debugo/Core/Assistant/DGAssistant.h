@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DGDebugo+Additional.h"
-#import "DGSuspensionView.h"
+#import "DGSuspensionBubble.h"
 #import "DGTouchMonitor.h"
 #import "DGDebuggingOverlay.h"
 #import "DGBase.h"
@@ -44,7 +44,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 /// Debug Bubble
 ///------------------------------------------------
 
-@property (nonatomic, weak, readonly) DGSuspensionView *debugBubble;
+@property (nonatomic, weak, readonly) DGSuspensionBubble *debugBubble;
 @property (nonatomic, weak, readonly) DGWindow *debugWindow;
 @property (nonatomic, weak, readonly) DGDebugViewController *debugViewController;
 
@@ -58,7 +58,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 /// Login Bubble
 ///------------------------------------------------
 
-@property (nonatomic, weak, readonly) DGSuspensionView *loginBubble;
+@property (nonatomic, weak, readonly) DGSuspensionBubble *loginBubble;
 @property (nonatomic, weak, readonly) DGWindow *loginWindow;
 
 - (void)showLoginBubble;

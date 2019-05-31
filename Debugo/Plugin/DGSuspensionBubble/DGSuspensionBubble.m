@@ -1,5 +1,5 @@
 //
-//  DGSuspensionView.m
+//  DGSuspensionBubble.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,7 +8,7 @@
 //
 
 
-#import "DGSuspensionView.h"
+#import "DGSuspensionBubble.h"
 #import "DGBase.h"
 
 #define kIsIPhoneX ([[UIScreen mainScreen] nativeBounds].size.height >= 2436.0)
@@ -16,53 +16,49 @@
 #define kBottomMargin (kIsIPhoneX ? 83.0 : 49.0)
 #define kHiddenProportion 0.14545455
 
-@interface DGSuspensionView()
+@interface DGSuspensionBubble()
 
-@property (nonatomic, strong) DGSuspensionViewConfig *config;
+@property (nonatomic, strong) DGSuspensionBubbleConfig *config;
 
 @property (nonatomic, weak) UIView *contentView;
 @property (nonatomic, weak) UIButton *button;
 
 @property (nonatomic, assign) BOOL isDragging;
 
+@property (nonatomic, copy) NSString *memoryAddressKey;
+
 @end
 
-@implementation DGSuspensionView
+@implementation DGSuspensionBubble
 
 - (void)dealloc {
     DGLogFunction;
-}
-
-+ (instancetype)defaultSuspensionView {
-    return [self suspensionViewWithFrame:CGRectMake(0, 100, 55, 55) config:nil];
-}
-
-+ (instancetype)suspensionViewWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config {
-    return [[self alloc] initWithFrame:frame config:config];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame config:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame config:(DGSuspensionViewConfig *)config {
+- (instancetype)initWithFrame:(CGRect)frame config:(DGSuspensionBubbleConfig *)config {
     // check w、h
     CGRect bounds = [UIScreen mainScreen].bounds;
     if (frame.size.width >= bounds.size.width || frame.size.height >= bounds.size.height) {
-        NSAssert(0, @"DGSuspensionView: 传入的 frame 值不对!");
+        NSAssert(0, @"DGSuspensionBubble: 传入的 frame 值不对!");
         return nil;
+    }else if (CGRectEqualToRect(frame, CGRectZero)) {
+        frame = CGRectMake(0, 100, 55, 55);
     }
     
     // update center
     CGPoint center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
-    CGPoint newCenter = [DGSuspensionView checkNewCenterWithPoint:center size:frame.size];
+    CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:center size:frame.size];
     CGFloat w = frame.size.width;
     CGFloat h = frame.size.height;
     frame = CGRectMake(newCenter.x - w * 0.5, newCenter.y - h * 0.5, w, h);
     
     // config
     if (!config) {
-        config = [DGSuspensionViewConfig defaultConfig];
+        config = [DGSuspensionBubbleConfig defaultConfig];
     }
 
     if(self = [super initWithFrame:frame]) {
@@ -82,7 +78,7 @@
     
     if (self.isDragging == NO) {
         // deal rotate
-        CGPoint newCenter = [DGSuspensionView checkNewCenterWithPoint:self.center size:self.frame.size];
+        CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:self.center size:self.frame.size];
         if (CGPointEqualToPoint(newCenter, self.center) == NO) {
             self.center = newCenter;
         }
@@ -93,7 +89,7 @@
     UIButton *button = [UIButton buttonWithType:self.config.buttonType];
     button.userInteractionEnabled = YES;
     button.clipsToBounds = YES;
-    button.backgroundColor = [UIColor colorWithRed:0.21f green:0.45f blue:0.88f alpha:1.00f];
+    button.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
     
     // click
     [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
@@ -131,7 +127,10 @@
 }
 
 - (NSString *)memoryAddressKey {
-    return [NSString stringWithFormat:@"%@_%p", NSStringFromClass([self class]), self];
+    if (!_memoryAddressKey) {
+        _memoryAddressKey = [NSString stringWithFormat:@"%@_%p", NSStringFromClass([self class]), self];
+    }
+    return _memoryAddressKey;
 }
 
 #pragma mark - event response
@@ -143,8 +142,8 @@
         self.isDragging = YES;
 //        NSLog(@"%@ pan began %@", self, NSStringFromCGPoint(panPoint));
         self.contentView.alpha = 1;
-        if ([self.dg_delegate respondsToSelector:(@selector(suspensionViewPanStart:))]) {
-            [self.dg_delegate suspensionViewPanStart:self];
+        if ([self.dg_delegate respondsToSelector:(@selector(suspensionBubblePanStart:))]) {
+            [self.dg_delegate suspensionBubblePanStart:self];
         }
     }else if(p.state == UIGestureRecognizerStateChanged) {
         self.center = CGPointMake(panPoint.x, panPoint.y);
@@ -152,14 +151,14 @@
              || p.state == UIGestureRecognizerStateCancelled) {
 //        NSLog(@"%@ pan end %@", self, NSStringFromCGPoint(panPoint));
         self.contentView.alpha = self.config.leanStateAlpha;
-        CGPoint newCenter = [DGSuspensionView checkNewCenterWithPoint:panPoint size:self.frame.size];
+        CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:panPoint size:self.frame.size];
         [UIView animateWithDuration:.25 animations:^{
             self.center = newCenter;
         } completion:^(BOOL finished) {
             self.isDragging = NO;
         }];
-        if ([self.dg_delegate respondsToSelector:@selector(suspensionViewPanEnd:)]) {
-            [self.dg_delegate suspensionViewPanEnd:self];
+        if ([self.dg_delegate respondsToSelector:@selector(suspensionBubblePanEnd:)]) {
+            [self.dg_delegate suspensionBubblePanEnd:self];
         }
     }else{
         NSLog(@"%@ pan state : %zd", self, p.state);
@@ -181,8 +180,8 @@
             bounceAnimation.fillMode = kCAFillModeForwards;
             [self.layer addAnimation:bounceAnimation forKey:@"longPressBigger"];
         }
-        if ([self.dg_delegate respondsToSelector:@selector(suspensionViewLongPressStart:)]) {
-            [self.dg_delegate suspensionViewLongPressStart:self];
+        if ([self.dg_delegate respondsToSelector:@selector(suspensionBubbleLongPressStart:)]) {
+            [self.dg_delegate suspensionBubbleLongPressStart:self];
         }
     }else if (l.state == UIGestureRecognizerStateEnded || l.state == UIGestureRecognizerStateCancelled){
         if (self.config.showLongPressAnimation) {
@@ -195,8 +194,8 @@
             bounceAnimation.removedOnCompletion = YES;
             [self.layer addAnimation:bounceAnimation forKey:@"sss"];
         }
-        if ([self.dg_delegate respondsToSelector:@selector(suspensionViewLongPressEnd:)]) {
-            [self.dg_delegate suspensionViewLongPressEnd:self];
+        if ([self.dg_delegate respondsToSelector:@selector(suspensionBubbleLongPressEnd:)]) {
+            [self.dg_delegate suspensionBubbleLongPressEnd:self];
         }
     }
 }
@@ -219,8 +218,8 @@
         [self.layer addAnimation:bounceAnimation forKey:nil];
     }
 
-    if([self.dg_delegate respondsToSelector:@selector(suspensionViewClick:)]) {
-        [self.dg_delegate suspensionViewClick:self];
+    if([self.dg_delegate respondsToSelector:@selector(suspensionBubbleClick:)]) {
+        [self.dg_delegate suspensionBubbleClick:self];
     }
 }
 
@@ -259,14 +258,14 @@
 
 #pragma mark - public methods
 - (void)show {
-    if ([DGSuspensionManager.shared windowForKey:self.memoryAddressKey]) return;
+    if ([DGSuspensionBubbleManager.shared windowForKey:self.memoryAddressKey]) return;
 
     [self setHidden:NO];
-    [DGSuspensionManager.shared saveWindow:self forKey:self.memoryAddressKey];
+    [DGSuspensionBubbleManager.shared saveWindow:self forKey:self.memoryAddressKey];
 }
 
 - (void)removeFromScreen {
-    [DGSuspensionManager.shared destroyWindowForKey:self.memoryAddressKey];
+    [DGSuspensionBubbleManager.shared destroyWindowForKey:self.memoryAddressKey];
 }
 
 @end

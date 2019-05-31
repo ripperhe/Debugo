@@ -1,5 +1,5 @@
 //
-//  DGSuspensionViewConfig.h
+//  DGSuspensionBubbleConfig.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DGSuspensionViewConfig : NSObject
+@interface DGSuspensionBubbleConfig : NSObject
 
 @property (nonatomic, assign) UIButtonType buttonType;
 @property (nonatomic, assign) CGFloat leanStateAlpha;

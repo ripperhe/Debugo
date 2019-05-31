@@ -1,5 +1,5 @@
 //
-//  DGSuspensionViewConfig.m
+//  DGSuspensionBubbleConfig.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,9 +8,9 @@
 //
 
 
-#import "DGSuspensionViewConfig.h"
+#import "DGSuspensionBubbleConfig.h"
 
-@implementation DGSuspensionViewConfig
+@implementation DGSuspensionBubbleConfig
 
 + (instancetype)defaultConfig {
     return [[self alloc] init];
@@ -20,7 +20,7 @@
     self = [super init];
     if (self) {
         self.buttonType = UIButtonTypeCustom;
-        self.leanStateAlpha = 0.7;
+        self.leanStateAlpha = 0.9;
         self.showClickAnimation = YES;
         self.showLongPressAnimation = YES;
     }

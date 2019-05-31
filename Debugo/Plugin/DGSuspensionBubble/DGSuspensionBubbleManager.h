@@ -1,5 +1,5 @@
 //
-//  DGSuspensionManager.h
+//  DGSuspensionBubbleManager.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface DGSuspensionManager : NSObject
+@interface DGSuspensionBubbleManager : NSObject
 
 + (instancetype)shared;
 

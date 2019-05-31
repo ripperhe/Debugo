@@ -1,5 +1,5 @@
 //
-//  DGSuspensionManager.m
+//  DGSuspensionBubbleManager.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,17 +7,17 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGSuspensionManager.h"
+#import "DGSuspensionBubbleManager.h"
 
-@interface DGSuspensionManager ()
+@interface DGSuspensionBubbleManager ()
 
 @property (nonatomic, strong) NSMutableDictionary *windowDictionary;
 
 @end
 
-@implementation DGSuspensionManager
+@implementation DGSuspensionBubbleManager
 
-static DGSuspensionManager *_instance;
+static DGSuspensionBubbleManager *_instance;
 
 + (instancetype)shared {
     if (!_instance) {
@@ -50,7 +50,7 @@ static DGSuspensionManager *_instance;
 
 - (UIWindow *)windowForKey:(NSString *)key {
     if (!key.length) {
-        NSAssert(0, @"DGSuspensionManager: 传入的 key 值不对");
+        NSAssert(0, @"DGSuspensionBubbleManager: 传入的 key 值不对");
         return nil;
     }
     
@@ -59,15 +59,15 @@ static DGSuspensionManager *_instance;
 
 - (void)saveWindow:(UIWindow *)window forKey:(NSString *)key {
     if (!key.length) {
-        NSAssert(0, @"DGSuspensionManager: 传入的 key 值不对");
+        NSAssert(0, @"DGSuspensionBubbleManager: 传入的 key 值不对");
         return;
     }
     if (!window) {
-        NSAssert(0, @"DGSuspensionManager: 不能传入空 window");
+        NSAssert(0, @"DGSuspensionBubbleManager: 不能传入空 window");
         return;
     }
     
-    NSAssert([self windowForKey:key] == nil, @"DGSuspensionManager: 已存在 key=\"%@\" 的 window", key);
+    NSAssert([self windowForKey:key] == nil, @"DGSuspensionBubbleManager: 已存在 key=\"%@\" 的 window", key);
     [self.windowDictionary setObject:window forKey:key];
 }
 

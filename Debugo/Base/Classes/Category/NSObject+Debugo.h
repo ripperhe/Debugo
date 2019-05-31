@@ -1,5 +1,5 @@
 //
-//  NSObject+DGSuspensionView.h
+//  NSObject+Debugo.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo

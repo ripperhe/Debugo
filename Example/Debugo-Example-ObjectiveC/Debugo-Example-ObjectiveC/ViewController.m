@@ -9,12 +9,17 @@
 #import "ViewController.h"
 #import "LoginViewController.h"
 #import "Debugo.h"
+#import "DGSuspensionBubble.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    DGSuspensionBubble *bubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [bubble show];
+    
 }
 
 

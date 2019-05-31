@@ -23,13 +23,13 @@ NSInteger const DGDebugBubbleTag = 1;
 NSInteger const DGLoginBubbleTag = 2;
 UIWindowLevel const DGContentWindowLevel = 999999;
 
-@interface DGAssistant ()<DGSuspensionViewDelegate>
+@interface DGAssistant ()<DGSuspensionBubbleDelegate>
 
-@property (nonatomic, weak) DGSuspensionView *debugBubble;
+@property (nonatomic, weak) DGSuspensionBubble *debugBubble;
 @property (nonatomic, weak) DGWindow *debugWindow;
 @property (nonatomic, weak, nullable) DGDebugViewController *debugViewController;
 
-@property (nonatomic, weak) DGSuspensionView *loginBubble;
+@property (nonatomic, weak) DGSuspensionBubble *loginBubble;
 @property (nonatomic, weak, nullable) DGWindow *loginWindow;
 
 @end
@@ -181,13 +181,11 @@ static DGAssistant *_instance;
             self.debugBubble.dg_weakExtObj = label;
         }
         self.debugBubble.button.backgroundColor = [UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1.00];
-        self.debugBubble.button.layer.borderColor = [UIColor clearColor].CGColor;
         [self.debugBubble.button setImage:nil forState:UIControlStateNormal];
     }else{
         [self.debugBubble.dg_weakExtObj removeFromSuperview];
         self.debugBubble.dg_weakExtObj = nil;
         self.debugBubble.button.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
-        self.debugBubble.button.layer.borderColor = [UIColor whiteColor].CGColor;
         [self.debugBubble.button setImage:[DGBundle imageNamed:@"debug_bubble"] forState:UIControlStateNormal];
     }
 }
@@ -198,11 +196,11 @@ static DGAssistant *_instance;
         return;
     }
     
-    DGSuspensionViewConfig *config = [DGSuspensionViewConfig new];
+    DGSuspensionBubbleConfig *config = [DGSuspensionBubbleConfig new];
     config.buttonType = UIButtonTypeSystem;
     config.leanStateAlpha = .9;
     
-    DGSuspensionView *debugBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGSuspensionBubble *debugBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     debugBubble.name = @"Debug Bubble";
     debugBubble.tag = DGDebugBubbleTag;
@@ -220,7 +218,7 @@ static DGAssistant *_instance;
 #pragma mark - debug view controller
 - (void)removeDebugWindow {
     [self closeDebugWindow];
-    [DGSuspensionManager.shared destroyWindowForKey:kDGDebugWindowKey];
+    [DGSuspensionBubbleManager.shared destroyWindowForKey:kDGDebugWindowKey];
 }
 
 - (void)closeDebugWindow {
@@ -260,12 +258,12 @@ static DGAssistant *_instance;
         }
     }
     
-    DGSuspensionViewConfig *config = [DGSuspensionViewConfig new];
+    DGSuspensionBubbleConfig *config = [DGSuspensionBubbleConfig new];
     config.buttonType = UIButtonTypeSystem;
     config.leanStateAlpha = .9;
     config.showLongPressAnimation = NO;
     
-    DGSuspensionView *loginBubble = [DGSuspensionView suspensionViewWithFrame:CGRectMake(400, kDGScreenH - (165 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGSuspensionBubble *loginBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (165 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     loginBubble.name = @"Login Bubble";
     loginBubble.tag = DGLoginBubbleTag;
@@ -283,12 +281,12 @@ static DGAssistant *_instance;
 
 #pragma mark - login view controller
 - (void)removeLoginWindow {
-    [DGSuspensionManager.shared destroyWindowForKey:kDGLoginWindowKey];
+    [DGSuspensionBubbleManager.shared destroyWindowForKey:kDGLoginWindowKey];
 }
 
-#pragma mark - DGSuspensionViewDelegate
-- (void)suspensionViewClick:(DGSuspensionView *)suspensionView {
-    if (suspensionView.tag == DGDebugBubbleTag) {
+#pragma mark - DGSuspensionBubbleDelegate
+- (void)suspensionBubbleClick:(DGSuspensionBubble *)suspensionBubble {
+    if (suspensionBubble.tag == DGDebugBubbleTag) {
         // debug
         if (self.debugWindow) {
             if (self.debugWindow.isHidden == NO) {
@@ -306,7 +304,7 @@ static DGAssistant *_instance;
             window.name = @"Debug Window";
             window.rootViewController = debugVC;
             window.windowLevel = DGContentWindowLevel;
-            [DGSuspensionManager.shared saveWindow:window forKey:kDGDebugWindowKey];
+            [DGSuspensionBubbleManager.shared saveWindow:window forKey:kDGDebugWindowKey];
             
             self.debugViewController = debugVC;
             self.debugWindow = window;
@@ -328,7 +326,7 @@ static DGAssistant *_instance;
             window.rootViewController = loginVC;
             window.windowLevel = DGContentWindowLevel;
             
-            [DGSuspensionManager.shared saveWindow:window forKey:kDGLoginWindowKey];
+            [DGSuspensionBubbleManager.shared saveWindow:window forKey:kDGLoginWindowKey];
             self.loginWindow = window;
             
             // show
