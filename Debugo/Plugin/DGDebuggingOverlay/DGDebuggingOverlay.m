@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import "DebugoEnable.h"
+#import "DGBase.h"
 
 /**
  Reference:
@@ -44,7 +45,7 @@
     NSArray *debugInfoComponents = @[@"U", @"IDe", @"bug", @"gin", @"gInfor", @"ma", @"ti", @"onO", @"ver", @"lay"];
     id debugInfoClass = NSClassFromString([debugInfoComponents componentsJoinedByString:@""]);
     
-    NSArray <UIWindow *>*allWindows = [self allWindows];
+    NSArray <UIWindow *>*allWindows = [DGUIMagic getAllWindows];
     [allWindows enumerateObjectsUsingBlock:^(UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:debugInfoClass]) {
             if (obj.isHidden == NO) {
@@ -60,30 +61,6 @@
     if ([self isShowing] == NO) {
         [self toggleOverlay];
     }
-}
-
-+ (NSArray <UIWindow *>*)allWindows {
-    __unsafe_unretained NSArray *windows = nil;
-    // private api
-#if DebugoCanBeEnabled
-    BOOL includeInternalWindows = YES;
-    BOOL onlyVisibleWindows = NO;
-    
-    NSArray *allWindowsComponents = @[@"al", @"lWindo", @"wsIncl", @"udingInt", @"ernalWin", @"dows:o", @"nlyVisi", @"bleWin", @"dows:"];
-    SEL allWindowsSelector = NSSelectorFromString([allWindowsComponents componentsJoinedByString:@""]);
-    
-    NSMethodSignature *methodSignature = [[UIWindow class] methodSignatureForSelector:allWindowsSelector];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-    
-    invocation.target = [UIWindow class];
-    invocation.selector = allWindowsSelector;
-    [invocation setArgument:&includeInternalWindows atIndex:2];
-    [invocation setArgument:&onlyVisibleWindows atIndex:3];
-    [invocation invoke];
-    
-    [invocation getReturnValue:&windows];
-#endif
-    return windows;
 }
 
 // In iOS 11, Apple added additional checks to disable this overlay unless the

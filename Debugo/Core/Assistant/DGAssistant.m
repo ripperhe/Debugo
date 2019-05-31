@@ -237,7 +237,7 @@ static DGAssistant *_instance;
     DGWindow *containerWindow = self.debugWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     containerWindow.dg_canBecomeKeyWindow = YES;
-    if ([DGDebugo keyboardWindow]) {
+    if ([DGUIMagic keyboardWindow]) {
         // 有键盘的时候，防止挡住视图；没有键盘的时候，尽量不改变 keyWindow
         [containerWindow makeKeyAndVisible];
     }else {

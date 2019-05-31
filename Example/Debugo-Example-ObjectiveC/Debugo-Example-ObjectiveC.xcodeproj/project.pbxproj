@@ -75,6 +75,7 @@
 		C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F0221D2B460098644E /* DGTouchWindow.m */; };
 		C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchMonitor.m */; };
 		C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */; };
+		C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C2109C22A100A600D5EEDE /* DGUIMagic.m */; };
 		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
 		C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */; };
 		C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E38B432285161500D46953 /* NSFileManager+Debugo.m */; };
@@ -220,6 +221,8 @@
 		C9B456F4221D2B460098644E /* DGTouchFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchFingerView.h; sourceTree = "<group>"; };
 		C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DGTouchMonitor.m"; sourceTree = "<group>"; };
 		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
+		C9C2109B22A100A600D5EEDE /* DGUIMagic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGUIMagic.h; sourceTree = "<group>"; };
+		C9C2109C22A100A600D5EEDE /* DGUIMagic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGUIMagic.m; sourceTree = "<group>"; };
 		C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Debugo.h"; sourceTree = "<group>"; };
 		C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Debugo.m"; sourceTree = "<group>"; };
 		C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGShareBarButtonItem.h; sourceTree = "<group>"; };
@@ -502,6 +505,7 @@
 				C92F8C76221FA1AA0080C156 /* DGFilePath */,
 				C92461CF2260776E0028F329 /* DGWindow */,
 				C9CEA533224250E300BD5AEB /* DGShare */,
+				C9C2109922A1006700D5EEDE /* DGUIMagic */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -660,6 +664,15 @@
 				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
 			);
 			path = DGAppInfo;
+			sourceTree = "<group>";
+		};
+		C9C2109922A1006700D5EEDE /* DGUIMagic */ = {
+			isa = PBXGroup;
+			children = (
+				C9C2109B22A100A600D5EEDE /* DGUIMagic.h */,
+				C9C2109C22A100A600D5EEDE /* DGUIMagic.m */,
+			);
+			path = DGUIMagic;
 			sourceTree = "<group>";
 		};
 		C9CEA533224250E300BD5AEB /* DGShare */ = {
@@ -865,6 +878,7 @@
 				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
 				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
+				C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */,
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
 				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
