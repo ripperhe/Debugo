@@ -27,6 +27,7 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray<DGCommonGridButton *> *gridButtons;
+@property (nonatomic, strong) CAShapeLayer *gridLayer;
 
 @end
 
@@ -44,9 +45,10 @@
     
     CGFloat gridWidth = CGRectGetWidth(self.scrollView.bounds) - (self.scrollView.dg_safeAreaInsets.left + self.scrollView.dg_safeAreaInsets.right);
     CGFloat gridX = self.scrollView.dg_safeAreaInsets.left;
+    
     NSInteger columnCount = 0;
     CGFloat itemWidth = 0;
-
+    
     if (CGRectGetWidth(self.scrollView.bounds) <= 414.0) {
         columnCount = 3;
         itemWidth = gridWidth / columnCount;
@@ -67,6 +69,9 @@
     
     __block CGFloat itemX = 0;
     __block CGFloat itemY = 0;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
     [self.gridButtons enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx % columnCount == 0) {
             // 第一列
@@ -80,9 +85,30 @@
             obj.frame = CGRectMake(itemX, itemY, itemWidth, itemWidth);
             itemX += itemWidth;
         }
+        
+        CGPoint topLeft = obj.frame.origin;
+        CGPoint topRight = CGPointMake(CGRectGetMaxX(obj.frame), CGRectGetMinY(obj.frame));
+        CGPoint bottomLeft = CGPointMake(CGRectGetMinX(obj.frame), CGRectGetMaxY(obj.frame));
+        CGPoint bottomRight = CGPointMake(CGRectGetMaxX(obj.frame), CGRectGetMaxY(obj.frame));
+        
+        if (idx % columnCount == 0) {
+            // 第一列
+            [path moveToPoint:bottomLeft];
+            [path addLineToPoint:topLeft];
+        }
+        if (idx < columnCount) {
+            // 第一行
+            [path moveToPoint:topLeft];
+            [path addLineToPoint:topRight];
+        }
+        [path moveToPoint:topRight];
+        [path addLineToPoint:bottomRight];
+        [path moveToPoint:bottomRight];
+        [path addLineToPoint:bottomLeft];
     }];
     
     self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.gridButtons.lastObject.frame));
+    self.gridLayer.path = path.CGPath;
 }
 
 #pragma mark -
@@ -103,6 +129,12 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
     
+    self.gridLayer = [CAShapeLayer dg_make:^(CAShapeLayer * layer) {
+        layer.strokeColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.00].CGColor;
+        layer.lineWidth = 0.5;
+    }];
+    [self.scrollView.layer addSublayer:self.gridLayer];
+    
     [self.dataArray enumerateObjectsUsingBlock:^(DGCommonGridConfiguration * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         DGCommonGridButton *button = [self generateButtonWithConfiguration:obj index:idx];
         [self.gridButtons addObject:button];
@@ -111,7 +143,6 @@
 }
 
 - (DGCommonGridButton *)generateButtonWithConfiguration:(DGCommonGridConfiguration *)configuration index:(NSInteger)index {
-    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.minimumLineHeight = 12;
     paragraphStyle.maximumLineHeight = 12;
@@ -124,29 +155,23 @@
     button.tag = index;
     [button setAttributedTitle:attributedString forState:UIControlStateNormal];
     [button setImage:[DGBundle imageNamed:configuration.imageName] forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector(handleGirdButtonEvent:) forControlEvents:UIControlEventTouchUpInside];
-    button.layer.borderColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.00].CGColor;
-    button.layer.borderWidth = 0.5;
-    dg_weakify(button)
+    dg_weakify(self)
+    dg_weakify(configuration)
     [button addAction:^{
-        dg_strongify(button)
-        [self handleGirdButtonEvent:button];
+        dg_strongify(self)
+        dg_strongify(configuration)
+        kDGImpactFeedback
+        if (configuration.selectedPushViewControllerClass) {
+            UIViewController *vc = [configuration.selectedPushViewControllerClass new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if (configuration.selectedPushViewControlerBlock) {
+            UIViewController *vc = configuration.selectedPushViewControlerBlock();
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if (configuration.selectedBlock) {
+            configuration.selectedBlock();
+        }
     }];
     return button;
-}
-
-- (void)handleGirdButtonEvent:(UIButton *)button {
-    kDGImpactFeedback
-    DGCommonGridConfiguration *configuration = [self.dataArray objectAtIndex:button.tag];
-    if (configuration.selectedPushViewControllerClass) {
-        UIViewController *vc = [configuration.selectedPushViewControllerClass new];
-        [self.navigationController pushViewController:vc animated:YES];
-    }else if (configuration.selectedPushViewControlerBlock) {
-        UIViewController *vc = configuration.selectedPushViewControlerBlock();
-        [self.navigationController pushViewController:vc animated:YES];
-    }else if (configuration.selectedBlock) {
-        configuration.selectedBlock();
-    }
 }
 
 #pragma mark - getter
