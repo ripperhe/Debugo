@@ -11,7 +11,7 @@
 #import "DGFileParser.h"
 #import "DGPreviewManager.h"
 #import "DGFileInfoViewController.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @interface DGFileListViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
 

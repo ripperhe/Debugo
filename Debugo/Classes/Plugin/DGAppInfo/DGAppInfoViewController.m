@@ -9,7 +9,7 @@
 
 
 #import "DGAppInfoViewController.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 /**
  Build info plist（存储在 bundle 中）以下为所有 key 值:

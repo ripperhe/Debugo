@@ -9,7 +9,7 @@
 
 
 #import "UIApplication+DGTouchMonitor.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 #import "DebugoEnable.h"
 
 NSString * const DGTouchMonitorDidSendTouchEventNotification = @"DGTouchMonitorDidSendTouchEventNotification";

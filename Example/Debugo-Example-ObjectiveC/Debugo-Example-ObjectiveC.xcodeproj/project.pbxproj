@@ -11,7 +11,7 @@
 		C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */; };
 		C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE92324ED5F003D8984 /* UIView+Debugo.m */; };
 		C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */; };
-		C916194722A11CB1009FF2A3 /* DGCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGCurrentUser.m */; };
+		C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGHelper.m */; };
 		C916194A22A1222C009FF2A3 /* DGAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountConfiguration.m */; };
 		C916194E22A12770009FF2A3 /* DGFileDisplayConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFileDisplayConfiguration.m */; };
 		C916195322A13C14009FF2A3 /* DGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFileManager.m */; };
@@ -47,7 +47,6 @@
 		C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45694221D2B460098644E /* NSObject+Debugo.m */; };
 		C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45697221D2B460098644E /* NSDate+Debugo.m */; };
 		C9B4570A221D2B460098644E /* DGBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4569B221D2B460098644E /* DGBundle.m */; };
-		C9B4570C221D2B460098644E /* DGThread.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A4221D2B460098644E /* DGThread.m */; };
 		C9B4570D221D2B460098644E /* DGDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A8221D2B460098644E /* DGDevice.m */; };
 		C9B4570E221D2B460098644E /* DGPlister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AB221D2B460098644E /* DGPlister.m */; };
 		C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AE221D2B460098644E /* DGOrderedDictionary.m */; };
@@ -100,8 +99,8 @@
 		C9034DE92324ED5F003D8984 /* UIView+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugo.m"; sourceTree = "<group>"; };
 		C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPluginViewController.h; sourceTree = "<group>"; };
 		C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPluginViewController.m; sourceTree = "<group>"; };
-		C916194522A11CB1009FF2A3 /* DGCurrentUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGCurrentUser.h; sourceTree = "<group>"; };
-		C916194622A11CB1009FF2A3 /* DGCurrentUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGCurrentUser.m; sourceTree = "<group>"; };
+		C916194522A11CB1009FF2A3 /* DGHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGHelper.h; sourceTree = "<group>"; };
+		C916194622A11CB1009FF2A3 /* DGHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGHelper.m; sourceTree = "<group>"; };
 		C916194822A1222C009FF2A3 /* DGAccountConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountConfiguration.h; sourceTree = "<group>"; };
 		C916194922A1222C009FF2A3 /* DGAccountConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountConfiguration.m; sourceTree = "<group>"; };
 		C916194C22A12770009FF2A3 /* DGFileDisplayConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileDisplayConfiguration.h; sourceTree = "<group>"; };
@@ -170,13 +169,10 @@
 		C9B45695221D2B460098644E /* NSDate+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Debugo.h"; sourceTree = "<group>"; };
 		C9B45696221D2B460098644E /* NSObject+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Debugo.h"; sourceTree = "<group>"; };
 		C9B45697221D2B460098644E /* NSDate+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Debugo.m"; sourceTree = "<group>"; };
-		C9B45698221D2B460098644E /* DGBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBase.h; sourceTree = "<group>"; };
+		C9B45698221D2B460098644E /* DGCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCommon.h; sourceTree = "<group>"; };
 		C9B4569A221D2B460098644E /* DGBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBundle.h; sourceTree = "<group>"; };
 		C9B4569B221D2B460098644E /* DGBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBundle.m; sourceTree = "<group>"; };
-		C9B4569D221D2B460098644E /* DGUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUIMacro.h; sourceTree = "<group>"; };
 		C9B4569E221D2B460098644E /* DGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLog.h; sourceTree = "<group>"; };
-		C9B456A4221D2B460098644E /* DGThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGThread.m; sourceTree = "<group>"; };
-		C9B456A5221D2B460098644E /* DGThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGThread.h; sourceTree = "<group>"; };
 		C9B456A7221D2B460098644E /* DGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDevice.h; sourceTree = "<group>"; };
 		C9B456A8221D2B460098644E /* DGDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDevice.m; sourceTree = "<group>"; };
 		C9B456AA221D2B460098644E /* DGPlister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPlister.h; sourceTree = "<group>"; };
@@ -256,7 +252,6 @@
 		C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGShareBarButtonItem.m; sourceTree = "<group>"; };
 		C9E38B422285161500D46953 /* NSFileManager+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Debugo.h"; sourceTree = "<group>"; };
 		C9E38B432285161500D46953 /* NSFileManager+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Debugo.m"; sourceTree = "<group>"; };
-		C9E38B4522851FF400D46953 /* DGMetaMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGMetaMacro.h; sourceTree = "<group>"; };
 		C9E73FC3221D399000BA9149 /* Debugo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Debugo.podspec; path = ../../Debugo.podspec; sourceTree = "<group>"; };
 		C9E73FC4221D399000BA9149 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		C9E73FC6221D399000BA9149 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = TODO.md; path = ../../TODO.md; sourceTree = "<group>"; };
@@ -309,6 +304,7 @@
 		C9034DE02324DCC1003D8984 /* DebugWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C916195422A13DFC009FF2A3 /* Setting */,
 				C9B45666221D2B460098644E /* DGAssistant.h */,
 				C9B4566A221D2B460098644E /* DGAssistant.m */,
 			);
@@ -348,7 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				C9034DDE2324DC7B003D8984 /* API */,
-				C9B45692221D2B460098644E /* Base */,
+				C9B45692221D2B460098644E /* Common */,
 				C9034DDF2324DC96003D8984 /* EntryWindow */,
 				C9034DE02324DCC1003D8984 /* DebugWindow */,
 				C9034DE12324DCE6003D8984 /* Action */,
@@ -358,15 +354,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		C916194422A11C8C009FF2A3 /* DGCurrentUser */ = {
-			isa = PBXGroup;
-			children = (
-				C916194522A11CB1009FF2A3 /* DGCurrentUser.h */,
-				C916194622A11CB1009FF2A3 /* DGCurrentUser.m */,
-			);
-			path = DGCurrentUser;
-			sourceTree = "<group>";
-		};
 		C916195422A13DFC009FF2A3 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,24 +361,6 @@
 				C9B45689221D2B460098644E /* DGSettingViewController.m */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		C92461CF2260776E0028F329 /* DGWindow */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456BC221D2B460098644E /* DGWindow.h */,
-				C9B456B8221D2B460098644E /* DGWindow.m */,
-			);
-			path = DGWindow;
-			sourceTree = "<group>";
-		};
-		C92F8C76221FA1AA0080C156 /* DGFilePath */ = {
-			isa = PBXGroup;
-			children = (
-				C92F8C78221FA1E00080C156 /* DGFilePath.h */,
-				C92F8C79221FA1E00080C156 /* DGFilePath.m */,
-			);
-			path = DGFilePath;
 			sourceTree = "<group>";
 		};
 		C9B45634221D02A50098644E = {
@@ -473,16 +442,7 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
-		C9B45675221D2B460098644E /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45677221D2B460098644E /* DGCache.h */,
-				C9B45676221D2B460098644E /* DGCache.m */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
-		C9B4567A221D2B460098644E /* ViewController */ = {
+		C9B4567A221D2B460098644E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
@@ -494,7 +454,7 @@
 				C9034DE52324E06D003D8984 /* DGCommonGridViewController.h */,
 				C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */,
 			);
-			path = ViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		C9B45690221D2B460098644E /* Plugin */ = {
@@ -511,19 +471,16 @@
 			path = Plugin;
 			sourceTree = "<group>";
 		};
-		C9B45692221D2B460098644E /* Base */ = {
+		C9B45692221D2B460098644E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45698221D2B460098644E /* DGBase.h */,
-				C9B45699221D2B460098644E /* Bundle */,
-				C9B4569C221D2B460098644E /* Macro */,
+				C9B45698221D2B460098644E /* DGCommon.h */,
+				C9B45699221D2B460098644E /* Source */,
 				C9B45693221D2B460098644E /* Category */,
 				C9B4569F221D2B460098644E /* Utility */,
-				C9B45675221D2B460098644E /* Cache */,
-				C916195422A13DFC009FF2A3 /* Setting */,
-				C9B4567A221D2B460098644E /* ViewController */,
+				C9B4567A221D2B460098644E /* Controller */,
 			);
-			path = Base;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		C9B45693221D2B460098644E /* Category */ = {
@@ -543,75 +500,39 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		C9B45699221D2B460098644E /* Bundle */ = {
+		C9B45699221D2B460098644E /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				C9B4569A221D2B460098644E /* DGBundle.h */,
 				C9B4569B221D2B460098644E /* DGBundle.m */,
+				C9B45677221D2B460098644E /* DGCache.h */,
+				C9B45676221D2B460098644E /* DGCache.m */,
 			);
-			path = Bundle;
-			sourceTree = "<group>";
-		};
-		C9B4569C221D2B460098644E /* Macro */ = {
-			isa = PBXGroup;
-			children = (
-				C9B4569D221D2B460098644E /* DGUIMacro.h */,
-				C9E38B4522851FF400D46953 /* DGMetaMacro.h */,
-			);
-			path = Macro;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		C9B4569F221D2B460098644E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				C9C2109E22A1031700D5EEDE /* DGLog */,
-				C916194422A11C8C009FF2A3 /* DGCurrentUser */,
-				C9B456A3221D2B460098644E /* DGThread */,
-				C9B456A9221D2B460098644E /* DGPlister */,
-				C9B456AC221D2B460098644E /* DGOrderedDictionary */,
-				C9B456A6221D2B460098644E /* DGDevice */,
-				C92F8C76221FA1AA0080C156 /* DGFilePath */,
-				C92461CF2260776E0028F329 /* DGWindow */,
-				C9CEA533224250E300BD5AEB /* DGShare */,
-				C9C2109922A1006700D5EEDE /* DGUIMagic */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		C9B456A3221D2B460098644E /* DGThread */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456A5221D2B460098644E /* DGThread.h */,
-				C9B456A4221D2B460098644E /* DGThread.m */,
-			);
-			path = DGThread;
-			sourceTree = "<group>";
-		};
-		C9B456A6221D2B460098644E /* DGDevice */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456A7221D2B460098644E /* DGDevice.h */,
-				C9B456A8221D2B460098644E /* DGDevice.m */,
-			);
-			path = DGDevice;
-			sourceTree = "<group>";
-		};
-		C9B456A9221D2B460098644E /* DGPlister */ = {
-			isa = PBXGroup;
-			children = (
+				C9B4569E221D2B460098644E /* DGLog.h */,
+				C916194522A11CB1009FF2A3 /* DGHelper.h */,
+				C916194622A11CB1009FF2A3 /* DGHelper.m */,
 				C9B456AA221D2B460098644E /* DGPlister.h */,
 				C9B456AB221D2B460098644E /* DGPlister.m */,
-			);
-			path = DGPlister;
-			sourceTree = "<group>";
-		};
-		C9B456AC221D2B460098644E /* DGOrderedDictionary */ = {
-			isa = PBXGroup;
-			children = (
 				C9B456AD221D2B460098644E /* DGOrderedDictionary.h */,
 				C9B456AE221D2B460098644E /* DGOrderedDictionary.m */,
+				C9B456A7221D2B460098644E /* DGDevice.h */,
+				C9B456A8221D2B460098644E /* DGDevice.m */,
+				C92F8C78221FA1E00080C156 /* DGFilePath.h */,
+				C92F8C79221FA1E00080C156 /* DGFilePath.m */,
+				C9B456BC221D2B460098644E /* DGWindow.h */,
+				C9B456B8221D2B460098644E /* DGWindow.m */,
+				C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */,
+				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
+				C9C2109B22A100A600D5EEDE /* DGUIMagic.h */,
+				C9C2109C22A100A600D5EEDE /* DGUIMagic.m */,
 			);
-			path = DGOrderedDictionary;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		C9B456AF221D2B460098644E /* Assets */ = {
@@ -732,32 +653,6 @@
 				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
 			);
 			path = DGAppInfo;
-			sourceTree = "<group>";
-		};
-		C9C2109922A1006700D5EEDE /* DGUIMagic */ = {
-			isa = PBXGroup;
-			children = (
-				C9C2109B22A100A600D5EEDE /* DGUIMagic.h */,
-				C9C2109C22A100A600D5EEDE /* DGUIMagic.m */,
-			);
-			path = DGUIMagic;
-			sourceTree = "<group>";
-		};
-		C9C2109E22A1031700D5EEDE /* DGLog */ = {
-			isa = PBXGroup;
-			children = (
-				C9B4569E221D2B460098644E /* DGLog.h */,
-			);
-			path = DGLog;
-			sourceTree = "<group>";
-		};
-		C9CEA533224250E300BD5AEB /* DGShare */ = {
-			isa = PBXGroup;
-			children = (
-				C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */,
-				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
-			);
-			path = DGShare;
 			sourceTree = "<group>";
 		};
 		C9E73FC2221D397200BA9149 /* Podspec Metadata */ = {
@@ -913,7 +808,7 @@
 				C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */,
 				C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */,
 				C916194A22A1222C009FF2A3 /* DGAccountConfiguration.m in Sources */,
-				C916194722A11CB1009FF2A3 /* DGCurrentUser.m in Sources */,
+				C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
 				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
 				C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */,
@@ -932,7 +827,6 @@
 				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
 				C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */,
 				C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */,
-				C9B4570C221D2B460098644E /* DGThread.m in Sources */,
 				C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */,
 				C9C210A822A110DE00D5EEDE /* DGAccountManager.m in Sources */,
 				C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */,

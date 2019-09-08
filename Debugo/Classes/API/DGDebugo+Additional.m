@@ -8,7 +8,7 @@
 //
 
 #import "DGDebugo+Additional.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @implementation DGDebugo (Additional)
 

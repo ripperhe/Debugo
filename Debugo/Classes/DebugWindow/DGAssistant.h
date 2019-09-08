@@ -13,7 +13,7 @@
 #import "DGSuspensionBubble.h"
 #import "DGTouchMonitor.h"
 #import "DGDebuggingOverlay.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 #import "DGConfiguration.h"
 #import "DGDebugViewController.h"
 

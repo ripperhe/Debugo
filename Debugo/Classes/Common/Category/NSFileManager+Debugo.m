@@ -7,7 +7,7 @@
 //
 
 #import "NSFileManager+Debugo.h"
-#import "DGMetaMacro.h"
+#import "DGHelper.h"
 
 @implementation NSFileManager (Debugo)
 

@@ -6,7 +6,7 @@
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGCurrentUser.h"
+#import "DGHelper.h"
 #import "DGLog.h"
 
 NSString * dg_current_user() {
@@ -23,4 +23,12 @@ NSString * dg_current_user() {
         DGCLog(@"dg_current_user: %@", _currentUser);
     });
     return _currentUser;
+}
+
+void dg_dispatch_main_safe(void(^block)(void)) {
+    if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue())) == 0) {
+        block();
+    }else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
 }

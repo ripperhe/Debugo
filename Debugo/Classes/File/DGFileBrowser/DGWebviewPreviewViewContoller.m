@@ -9,7 +9,7 @@
 
 #import "DGWebviewPreviewViewContoller.h"
 #import <WebKit/WebKit.h>
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @interface DGWebviewPreviewViewContoller ()
 

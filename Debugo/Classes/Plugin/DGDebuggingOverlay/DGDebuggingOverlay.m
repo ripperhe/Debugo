@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import "DebugoEnable.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 /**
  Reference:

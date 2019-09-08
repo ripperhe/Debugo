@@ -13,7 +13,7 @@
 #import "DGFileViewController.h"
 #import "DGAppInfoViewController.h"
 #import "DGSettingViewController.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @interface DGTabBarController ()<UITabBarControllerDelegate>
 

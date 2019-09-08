@@ -9,7 +9,7 @@
 
 
 #import "DGSuspensionBubble.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 #define kIsIPhoneX ([[UIScreen mainScreen] nativeBounds].size.height >= 2436.0)
 #define kTopMargin (kIsIPhoneX ? 88.0 : 64.0)

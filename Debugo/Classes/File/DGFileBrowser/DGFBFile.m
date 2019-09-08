@@ -8,7 +8,7 @@
 //
 
 #import "DGFBFile.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @implementation DGFBFile
 

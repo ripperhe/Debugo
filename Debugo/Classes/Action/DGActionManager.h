@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DGAction.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

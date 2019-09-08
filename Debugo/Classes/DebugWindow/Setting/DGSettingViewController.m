@@ -9,7 +9,7 @@
 #import "DGSettingViewController.h"
 #import "DGAssistant.h"
 #import "DGCache.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 typedef NS_ENUM(NSUInteger, DGSettingType) {
     // general

@@ -10,7 +10,7 @@
 #import "DGDatabaseOperation.h"
 #import "DGDatabaseTableContentViewController.h"
 #import "DGDatabaseTableInfoViewController.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @interface DGDatabasePreviewViewController ()<UITableViewDataSource, UITableViewDelegate>
 

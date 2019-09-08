@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGBase.h"
+#import "DGCommon.h"
 #import "DGSuspensionBubble.h"
 #import "DGAccountConfiguration.h"
 

@@ -7,7 +7,7 @@
 //
 
 #import "DGFileDisplayConfiguration.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @implementation DGFileDisplayConfiguration
 

@@ -8,7 +8,7 @@
 //
 
 #import "DGFileBrowser.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 #import "DGFileListViewController.h"
 
 @implementation DGFileBrowser

@@ -7,7 +7,7 @@
 //
 
 #import "DGCommonGridViewController.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 @interface DGCommonGridButton : UIButton <UIGestureRecognizerDelegate>
 

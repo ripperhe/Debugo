@@ -7,7 +7,7 @@
 //
 
 #import "DGFileInfoViewController.h"
-#import "DGBase.h"
+#import "DGCommon.h"
 
 static NSString *kCellID = @"cell";
 static NSString *kCellTitle = @"title";
