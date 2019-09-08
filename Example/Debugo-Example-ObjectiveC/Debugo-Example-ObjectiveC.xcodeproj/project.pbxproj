@@ -288,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				C9B45679221D2B460098644E /* Debugo.h */,
+				C9B4566B221D2B460098644E /* DebugoEnable.h */,
 				C9B45673221D2B460098644E /* DGDebugo.h */,
 				C9B4566D221D2B460098644E /* DGDebugo.m */,
 				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
@@ -514,7 +515,6 @@
 		C9B45692221D2B460098644E /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				C9B4566B221D2B460098644E /* DebugoEnable.h */,
 				C9B45698221D2B460098644E /* DGBase.h */,
 				C9B45699221D2B460098644E /* Bundle */,
 				C9B4569C221D2B460098644E /* Macro */,

@@ -40,7 +40,7 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
 + (void)initialize {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        printf("☄️ Debugo canBeEnabled %s\n", [DGDebugo canBeEnabled] ? "✅" : "❌");
+        printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:@"Debugo canBeEnabled %@\n", [DGDebugo canBeEnabled] ? @"✅" : @"❌"] UTF8String]);
     });
 }
 
