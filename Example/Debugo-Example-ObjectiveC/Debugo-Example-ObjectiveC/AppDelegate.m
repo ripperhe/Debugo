@@ -10,14 +10,13 @@
 #import "Debugo.h"
 #import "DGFilePath.h"
 
-@interface AppDelegate ()<DGDebugoDelegate>
+@interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    DGDebugo.shared.delegate = self;
     [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
         
         configuration.commonActions = @[
@@ -32,32 +31,85 @@
                                         ];
         
         
-        configuration.needLoginBubble = YES;
-        configuration.haveLoggedIn = NO;
-        configuration.accountEnvironmentIsBeta = YES;
-        configuration.commonBetaAccounts = @[
+        
+        configuration.accountConfiguration.needLoginBubble = YES;
+        configuration.accountConfiguration.haveLoggedIn = NO;
+        configuration.accountConfiguration.isProductionEnvironment = YES;
+        configuration.accountConfiguration.commonDevelopmentAccounts = @[
                                              [DGAccount accountWithUsername:@"jintianyoudiantoutong@qq.com" password:@"dasinigewangbadan🤣"],
                                              [DGAccount accountWithUsername:@"wozhendeyoudianxinfan@qq.com" password:@"niyoubenshizaishuoyiju🧐"],
                                              [DGAccount accountWithUsername:@"kanshenmekan@gmail.com" password:@"meijianguoma😉"],
                                              [DGAccount accountWithUsername:@"woshikaiwanxiaode@163.com" password:@"zhendezhende😨"],
                                              ];
-        configuration.commonOfficialAccounts = @[
+        configuration.accountConfiguration.commonProductionAccounts = @[
                                                  [DGAccount accountWithUsername:@"wolaile@gmail.com" password:@"😴wozouleoubuwoshuile"],
                                                  [DGAccount accountWithUsername:@"woshixianshangzhanghao@qq.com" password:@"😉wojiuwennipabupa"],
                                                  [DGAccount accountWithUsername:@"xianshangdeniubiba@qq.com" password:@"😍hahahabixude"],
                                                  ];
+        configuration.accountConfiguration.execLoginCallback = ^(DGAccount * _Nonnull account) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+            
+            UIViewController *currentVC = [DGDebugo topViewController];
+            
+            // 假设需要在这两个页面自动登录
+            Class DebugoVCClass = NSClassFromString(@"ViewController");
+            Class LoginVCClass = NSClassFromString(@"LoginViewController");
+            
+            if (DebugoVCClass && [currentVC isMemberOfClass:DebugoVCClass]) {
+                // go to login vc
+                [currentVC performSelector:@selector(clickGoToTestLogin) withObject:nil];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    // run login method
+                    UIViewController *vc = [DGDebugo topViewController];
+                    if ([vc isKindOfClass:LoginVCClass]) {
+                        [vc performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
+                    }
+                });
+            }else if (LoginVCClass && [currentVC isMemberOfClass:LoginVCClass]) {
+                // run login method
+                [currentVC performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
+            }else{
+                NSLog(@"Can't quick login at here.");
+            }
+            
+#pragma clang diagnostic pop
+        };
         
         
-        configuration.shortcutForDatabaseURLs = @[
+        configuration.fileConfiguration.shortcutForDatabaseURLs = @[
                                                   [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject],
                                                   [NSURL URLWithString:[NSBundle mainBundle].bundlePath],
                                                   [NSURL URLWithString:[DGFilePath.documentsDirectory stringByAppendingPathComponent:@"xx.sqlite"]],
                                                   ];
         
-        configuration.shortcutForAnyURLs = @[
+        configuration.fileConfiguration.shortcutForAnyURLs = @[
                                              [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject],
                                              DGFilePath.userDefaultsPlistFileURL,
                                              ];
+        
+        // 自定义显示数据库文件时的宽高
+        configuration.fileConfiguration.databasePreviewConfigurationFetcher = ^DGDatabasePreviewConfiguration * _Nullable(NSURL * _Nonnull databaseURL) {
+            if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
+                DGDatabaseTablePreviewConfiguration *errorTableConfig = [DGDatabaseTablePreviewConfiguration new];
+                errorTableConfig.specialWidthForColumn = @{
+                                                           @"pk_createTime":@(160.0),
+                                                           @"pk_updateTime":@(160.0),
+                                                           @"productWxSn":@(180.0),
+                                                           @"productMac":@(160.0),
+                                                           @"productSerialNum":@(180.0),
+                                                           @"productWxUrl":@(180.0),
+                                                           };
+                
+                DGDatabasePreviewConfiguration *config = [DGDatabasePreviewConfiguration new];
+                config.specialConfigurationForTable = @{
+                                                        @"error_info":errorTableConfig,
+                                                        };
+                return config;
+            }
+            return nil;
+        };
     }];
     
     [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
@@ -94,60 +146,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
-}
-
-#pragma mark - DGDebugoDelegate
-- (void)debugoLoginAccount:(DGAccount *)account {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    
-    UIViewController *currentVC = [DGDebugo topViewController];
-    
-    // 假设需要在这两个页面自动登录
-    Class DebugoVCClass = NSClassFromString(@"ViewController");
-    Class LoginVCClass = NSClassFromString(@"LoginViewController");
-    
-    if (DebugoVCClass && [currentVC isMemberOfClass:DebugoVCClass]) {
-        // go to login vc
-        [currentVC performSelector:@selector(clickGoToTestLogin) withObject:nil];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // run login method
-            UIViewController *vc = [DGDebugo topViewController];
-            if ([vc isKindOfClass:LoginVCClass]) {
-                [vc performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
-            }
-        });
-    }else if (LoginVCClass && [currentVC isMemberOfClass:LoginVCClass]) {
-        // run login method
-        [currentVC performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
-    }else{
-        NSLog(@"Can't quick login at here.");
-    }
-    
-#pragma clang diagnostic pop
-}
-
-// 自定义显示数据库文件时的宽高
-- (DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL {
-    if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
-        DGDatabaseTablePreviewConfiguration *errorTableConfig = [DGDatabaseTablePreviewConfiguration new];
-        errorTableConfig.specialWidthForColumn = @{
-                                                   @"pk_createTime":@(160.0),
-                                                   @"pk_updateTime":@(160.0),
-                                                   @"productWxSn":@(180.0),
-                                                   @"productMac":@(160.0),
-                                                   @"productSerialNum":@(180.0),
-                                                   @"productWxUrl":@(180.0),
-                                                   };
-        
-        DGDatabasePreviewConfiguration *config = [DGDatabasePreviewConfiguration new];
-        config.specialConfigurationForTable = @{
-                                                @"error_info":errorTableConfig,
-                                                };
-        return config;
-    }
-    return nil;
 }
 
 @end

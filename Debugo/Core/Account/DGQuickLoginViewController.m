@@ -10,7 +10,7 @@
 #import "DGQuickLoginViewController.h"
 #import "DGAccountViewController.h"
 #import "DGNavigationController.h"
-#import "DGAssistant.h"
+#import "DGAccountManager.h"
 
 #define kTopMargin kDGStatusBarHeight
 #define kBottomMargin (130.0 + kDGBottomSafeMargin)
@@ -69,7 +69,7 @@
 
 #pragma mark - event
 - (void)closeLoginViewController {
-    [DGAssistant.shared removeLoginWindow];
+    [DGAccountManager.shared removeLoginWindow];
 }
 
 @end

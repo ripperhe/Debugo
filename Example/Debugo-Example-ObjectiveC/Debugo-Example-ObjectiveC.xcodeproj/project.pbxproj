@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
+		C916194722A11CB1009FF2A3 /* DGCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGCurrentUser.m */; };
+		C916194A22A1222C009FF2A3 /* DGAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountConfiguration.m */; };
+		C916194E22A12770009FF2A3 /* DGFileDisplayConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFileDisplayConfiguration.m */; };
+		C916195322A13C14009FF2A3 /* DGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFileManager.m */; };
 		C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGFilePath.m */; };
 		C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFileConfiguration.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
@@ -76,6 +80,8 @@
 		C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchMonitor.m */; };
 		C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */; };
 		C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C2109C22A100A600D5EEDE /* DGUIMagic.m */; };
+		C9C210A222A10A8300D5EEDE /* DGActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A122A10A8300D5EEDE /* DGActionManager.m */; };
+		C9C210A822A110DE00D5EEDE /* DGAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A722A110DE00D5EEDE /* DGAccountManager.m */; };
 		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
 		C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */; };
 		C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E38B432285161500D46953 /* NSFileManager+Debugo.m */; };
@@ -85,6 +91,14 @@
 		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
 		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
 		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C916194522A11CB1009FF2A3 /* DGCurrentUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGCurrentUser.h; sourceTree = "<group>"; };
+		C916194622A11CB1009FF2A3 /* DGCurrentUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGCurrentUser.m; sourceTree = "<group>"; };
+		C916194822A1222C009FF2A3 /* DGAccountConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountConfiguration.h; sourceTree = "<group>"; };
+		C916194922A1222C009FF2A3 /* DGAccountConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountConfiguration.m; sourceTree = "<group>"; };
+		C916194C22A12770009FF2A3 /* DGFileDisplayConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileDisplayConfiguration.h; sourceTree = "<group>"; };
+		C916194D22A12770009FF2A3 /* DGFileDisplayConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileDisplayConfiguration.m; sourceTree = "<group>"; };
+		C916195122A13C14009FF2A3 /* DGFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileManager.h; sourceTree = "<group>"; };
+		C916195222A13C14009FF2A3 /* DGFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileManager.m; sourceTree = "<group>"; };
 		C92F8C78221FA1E00080C156 /* DGFilePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePath.h; sourceTree = "<group>"; };
 		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFileConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileConfiguration.h; sourceTree = "<group>"; };
@@ -223,6 +237,10 @@
 		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
 		C9C2109B22A100A600D5EEDE /* DGUIMagic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGUIMagic.h; sourceTree = "<group>"; };
 		C9C2109C22A100A600D5EEDE /* DGUIMagic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGUIMagic.m; sourceTree = "<group>"; };
+		C9C210A022A10A8300D5EEDE /* DGActionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionManager.h; sourceTree = "<group>"; };
+		C9C210A122A10A8300D5EEDE /* DGActionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionManager.m; sourceTree = "<group>"; };
+		C9C210A622A110DE00D5EEDE /* DGAccountManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountManager.h; sourceTree = "<group>"; };
+		C9C210A722A110DE00D5EEDE /* DGAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountManager.m; sourceTree = "<group>"; };
 		C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Debugo.h"; sourceTree = "<group>"; };
 		C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Debugo.m"; sourceTree = "<group>"; };
 		C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGShareBarButtonItem.h; sourceTree = "<group>"; };
@@ -255,6 +273,37 @@
 				5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C916194422A11C8C009FF2A3 /* DGCurrentUser */ = {
+			isa = PBXGroup;
+			children = (
+				C916194522A11CB1009FF2A3 /* DGCurrentUser.h */,
+				C916194622A11CB1009FF2A3 /* DGCurrentUser.m */,
+			);
+			path = DGCurrentUser;
+			sourceTree = "<group>";
+		};
+		C916194B22A12746009FF2A3 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				C916194C22A12770009FF2A3 /* DGFileDisplayConfiguration.h */,
+				C916194D22A12770009FF2A3 /* DGFileDisplayConfiguration.m */,
+				C9B45688221D2B460098644E /* DGFileViewController.h */,
+				C9B4568C221D2B460098644E /* DGFileViewController.m */,
+				C916195122A13C14009FF2A3 /* DGFileManager.h */,
+				C916195222A13C14009FF2A3 /* DGFileManager.m */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
+		C916195422A13DFC009FF2A3 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45685221D2B460098644E /* DGSettingViewController.h */,
+				C9B45689221D2B460098644E /* DGSettingViewController.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		C92461CF2260776E0028F329 /* DGWindow */ = {
@@ -347,9 +396,12 @@
 				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
 				C9B45678221D2B460098644E /* DGDebugo+Additional.m */,
 				C9B45665221D2B460098644E /* Assistant */,
-				C9B45674221D2B460098644E /* Service */,
-				C9B4566E221D2B460098644E /* Model */,
+				C9B45675221D2B460098644E /* Cache */,
 				C9B4567A221D2B460098644E /* ViewController */,
+				C9C2109F22A1095A00D5EEDE /* Action */,
+				C916194B22A12746009FF2A3 /* File */,
+				C9B4566E221D2B460098644E /* Account */,
+				C916195422A13DFC009FF2A3 /* Setting */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -365,23 +417,21 @@
 			path = Assistant;
 			sourceTree = "<group>";
 		};
-		C9B4566E221D2B460098644E /* Model */ = {
+		C9B4566E221D2B460098644E /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45671221D2B460098644E /* DGAction.h */,
-				C9B4566F221D2B460098644E /* DGAction.m */,
+				C916194822A1222C009FF2A3 /* DGAccountConfiguration.h */,
+				C916194922A1222C009FF2A3 /* DGAccountConfiguration.m */,
 				C9B45672221D2B460098644E /* DGAccount.h */,
 				C9B45670221D2B460098644E /* DGAccount.m */,
+				C9B4568A221D2B460098644E /* DGAccountViewController.h */,
+				C9B45684221D2B460098644E /* DGAccountViewController.m */,
+				C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */,
+				C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */,
+				C9C210A622A110DE00D5EEDE /* DGAccountManager.h */,
+				C9C210A722A110DE00D5EEDE /* DGAccountManager.m */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C9B45674221D2B460098644E /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45675221D2B460098644E /* Cache */,
-			);
-			path = Service;
+			path = Account;
 			sourceTree = "<group>";
 		};
 		C9B45675221D2B460098644E /* Cache */ = {
@@ -396,34 +446,14 @@
 		C9B4567A221D2B460098644E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
+				C9B45681221D2B460098644E /* DGDebugViewController.m */,
 				C9B4567B221D2B460098644E /* DGTabBarController.h */,
 				C9B4567F221D2B460098644E /* DGTabBarController.m */,
 				C9B4567C221D2B460098644E /* DGNavigationController.h */,
 				C9B45680221D2B460098644E /* DGNavigationController.m */,
-				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
-				C9B45681221D2B460098644E /* DGDebugViewController.m */,
-				C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */,
-				C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */,
-				C9B45682221D2B460098644E /* TabViewController */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		C9B45682221D2B460098644E /* TabViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C9B4568A221D2B460098644E /* DGAccountViewController.h */,
-				C9B45684221D2B460098644E /* DGAccountViewController.m */,
-				C9B4568E221D2B460098644E /* DGActionViewController.h */,
-				C9B45686221D2B460098644E /* DGActionViewController.m */,
-				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
-				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
-				C9B45688221D2B460098644E /* DGFileViewController.h */,
-				C9B4568C221D2B460098644E /* DGFileViewController.m */,
-				C9B45685221D2B460098644E /* DGSettingViewController.h */,
-				C9B45689221D2B460098644E /* DGSettingViewController.m */,
-			);
-			path = TabViewController;
 			sourceTree = "<group>";
 		};
 		C9B45690221D2B460098644E /* Plugin */ = {
@@ -498,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				C9C2109E22A1031700D5EEDE /* DGLog */,
+				C916194422A11C8C009FF2A3 /* DGCurrentUser */,
 				C9B456A3221D2B460098644E /* DGThread */,
 				C9B456A9221D2B460098644E /* DGPlister */,
 				C9B456AC221D2B460098644E /* DGOrderedDictionary */,
@@ -683,6 +714,21 @@
 			path = DGLog;
 			sourceTree = "<group>";
 		};
+		C9C2109F22A1095A00D5EEDE /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45671221D2B460098644E /* DGAction.h */,
+				C9B4566F221D2B460098644E /* DGAction.m */,
+				C9B4568E221D2B460098644E /* DGActionViewController.h */,
+				C9B45686221D2B460098644E /* DGActionViewController.m */,
+				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
+				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
+				C9C210A022A10A8300D5EEDE /* DGActionManager.h */,
+				C9C210A122A10A8300D5EEDE /* DGActionManager.m */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
 		C9CEA533224250E300BD5AEB /* DGShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +891,8 @@
 				C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */,
 				C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */,
 				C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */,
+				C916194A22A1222C009FF2A3 /* DGAccountConfiguration.m in Sources */,
+				C916194722A11CB1009FF2A3 /* DGCurrentUser.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
 				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
 				C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */,
@@ -858,17 +906,20 @@
 				C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */,
 				C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */,
 				C9B456FC221D2B460098644E /* DGCache.m in Sources */,
+				C916195322A13C14009FF2A3 /* DGFileManager.m in Sources */,
 				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
 				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
 				C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */,
 				C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */,
 				C9B4570C221D2B460098644E /* DGThread.m in Sources */,
 				C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */,
+				C9C210A822A110DE00D5EEDE /* DGAccountManager.m in Sources */,
 				C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */,
 				C9B45650221D02A70098644E /* main.m in Sources */,
 				C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */,
 				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
 				C9B456F9221D2B460098644E /* DGDebugo.m in Sources */,
+				C9C210A222A10A8300D5EEDE /* DGActionManager.m in Sources */,
 				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
 				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
 				C9B45714221D2B460098644E /* DGSuspensionBubbleConfig.m in Sources */,
@@ -892,6 +943,7 @@
 				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
+				C916194E22A12770009FF2A3 /* DGFileDisplayConfiguration.m in Sources */,
 				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,
 				C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */,
 			);

@@ -20,9 +20,9 @@
         _isShowBottomBarWhenPushed = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowBottomBarWhenPushed];
         _isOpenFPS = [DGCache.shared.settingPlister boolForKey:kDGSettingIsOpenFPS];
         _isShowTouches = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowTouches];
-        _accountEnvironmentIsBeta = YES;
-        _shortcutForDatabaseURLs = @[DGFilePath.documentsDirectoryURL];
-        _shortcutForAnyURLs = @[DGFilePath.userDefaultsPlistFileURL];
+
+        _fileConfiguration = [DGFileDisplayConfiguration new];
+        _accountConfiguration = [DGAccountConfiguration new];
     }
     return self;
 }
@@ -32,17 +32,20 @@
     if (obj) {
         obj.commonActions = [self.commonActions copyWithZone:zone];
         
-        obj.shortcutForDatabaseURLs = [self.shortcutForDatabaseURLs copyWithZone:zone];
-        obj.shortcutForAnyURLs = [self.shortcutForAnyURLs copyWithZone:zone];
+//        obj.shortcutForDatabaseURLs = [self.shortcutForDatabaseURLs copyWithZone:zone];
+//        obj.shortcutForAnyURLs = [self.shortcutForAnyURLs copyWithZone:zone];
         
         obj.isOpenFPS = self.isOpenFPS;
         obj.isShowTouches = self.isShowTouches;
         
-        obj.needLoginBubble = self.needLoginBubble;
-        obj.haveLoggedIn = self.haveLoggedIn;
-        obj.accountEnvironmentIsBeta = self.accountEnvironmentIsBeta;
-        obj.commonBetaAccounts = [self.commonBetaAccounts copyWithZone:zone];
-        obj.commonOfficialAccounts = [self.commonOfficialAccounts copyWithZone:zone];
+//        obj.needLoginBubble = self.needLoginBubble;
+//        obj.haveLoggedIn = self.haveLoggedIn;
+//        obj.isProductionEnvironment = self.isProductionEnvironment;
+//        obj.commonDevelopmentAccounts = [self.commonDevelopmentAccounts copyWithZone:zone];
+//        obj.commonProductionAccounts = [self.commonProductionAccounts copyWithZone:zone];
+        
+        [obj setValue:self.fileConfiguration forKey:@"fileConfiguration"];
+        [obj setValue:self.accountConfiguration forKey:@"accountConfiguration"];
     }
     return obj;
 }
@@ -61,28 +64,28 @@
 }
 
 #pragma mark - login accout
-- (void)setCommonBetaAccounts:(NSArray<DGAccount *> *)commonBetaAccounts {
-    NSMutableArray *validArray = [NSMutableArray array];
-    for (DGAccount *account in commonBetaAccounts) {
-        if (account.isValid) {
-            [validArray addObject:account];
-        }else{
-            NSAssert(0, @"DGAccount : account 和 password 不能为空!");
-        }
-    }
-    _commonBetaAccounts = validArray.copy;
-}
-
-- (void)setCommonOfficialAccounts:(NSArray<DGAccount *> *)commonOfficialAccounts {
-    NSMutableArray *validArray = [NSMutableArray array];
-    for (DGAccount *account in commonOfficialAccounts) {
-        if (account.isValid) {
-            [validArray addObject:account];
-        }else{
-            NSAssert(0, @"DGAccount : account 和 password 不能为空!");
-        }
-    }
-    _commonOfficialAccounts = validArray.copy;
-}
+//- (void)setcommonDevelopmentAccounts:(NSArray<DGAccount *> *)commonDevelopmentAccounts {
+//    NSMutableArray *validArray = [NSMutableArray array];
+//    for (DGAccount *account in commonDevelopmentAccounts) {
+//        if (account.isValid) {
+//            [validArray addObject:account];
+//        }else{
+//            NSAssert(0, @"DGAccount : account 和 password 不能为空!");
+//        }
+//    }
+//    _commonDevelopmentAccounts = validArray.copy;
+//}
+//
+//- (void)setcommonProductionAccounts:(NSArray<DGAccount *> *)commonProductionAccounts {
+//    NSMutableArray *validArray = [NSMutableArray array];
+//    for (DGAccount *account in commonProductionAccounts) {
+//        if (account.isValid) {
+//            [validArray addObject:account];
+//        }else{
+//            NSAssert(0, @"DGAccount : account 和 password 不能为空!");
+//        }
+//    }
+//    _commonProductionAccounts = validArray.copy;
+//}
 
 @end

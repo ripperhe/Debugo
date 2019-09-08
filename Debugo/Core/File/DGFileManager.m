@@ -1,0 +1,33 @@
+//
+//  DGFileManager.m
+//  Debugo-Example-ObjectiveC
+//
+//  Created by ripper on 2019/5/31.
+//  Copyright © 2019 ripperhe. All rights reserved.
+//
+
+#import "DGFileManager.h"
+
+@implementation DGFileManager
+
+static DGFileManager *_instance;
++ (instancetype)shared {
+    if (!_instance) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _instance = [[self alloc] init];
+        });
+    }
+    return _instance;
+}
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
+
+
+@end

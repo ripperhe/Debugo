@@ -53,8 +53,8 @@ static NSString *kDGCellValue = @"kDGCellValue";
         configuration.allowEditing = YES;
         [configuration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration *(DGFBFile *file) {
             DGDatabasePreviewConfiguration *config = nil;
-            if ([DGDebugo.shared.delegate respondsToSelector:@selector(debugoDatabasePreviewConfigurationForDatabaseURL:)]) {
-                config = [DGDebugo.shared.delegate debugoDatabasePreviewConfigurationForDatabaseURL:file.fileURL];
+            if (DGAssistant.shared.configuration.fileConfiguration.databasePreviewConfigurationFetcher) {
+                DGAssistant.shared.configuration.fileConfiguration.databasePreviewConfigurationFetcher(file.fileURL);
             }
             return config;
         }];
@@ -81,7 +81,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
         [array addObject:generalArray];
         
         // db shortcut
-        NSArray <NSURL *>*shortcutDBURLs = DGAssistant.shared.configuration.shortcutForDatabaseURLs.copy;
+        NSArray <NSURL *>*shortcutDBURLs = DGAssistant.shared.configuration.fileConfiguration.shortcutForDatabaseURLs.copy;
         NSMutableArray *shortcutDBFiles = [NSMutableArray array];
         for (NSURL *url in shortcutDBURLs) {
             NSArray *files = [self parseURL:url forType:DGFBFileTypeDB];
@@ -95,7 +95,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
         }
         
         // # shortcut
-        NSArray <NSURL *>*shortcutMixURLs = DGAssistant.shared.configuration.shortcutForAnyURLs.copy;
+        NSArray <NSURL *>*shortcutMixURLs = DGAssistant.shared.configuration.fileConfiguration.shortcutForAnyURLs.copy;
         NSMutableArray *shortcutMixFiles = [NSMutableArray array];
         for (NSURL *url in shortcutMixURLs) {
             DGFBFile *file = [[DGFBFile alloc] initWithURL:url];

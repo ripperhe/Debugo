@@ -10,6 +10,7 @@
 #import "DGActionViewController.h"
 #import "DGAssistant.h"
 #import "DGActionSubViewController.h"
+#import "DGActionManager.h"
 
 static NSString *kDGCellID = @"kDGCellID";
 
@@ -59,14 +60,14 @@ static NSString *kDGCellID = @"kDGCellID";
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-        NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGAssistant.shared.usersActionsDic.mutableCopy;
+        NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGActionManager.shared.usersActionsDic.mutableCopy;
         
         // current
         __block NSArray <DGAction *>*currentActions =  nil;
         // #
         __block NSMutableArray <DGAction *>*otherActions = [NSMutableArray array];
         [usersActionsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj, BOOL * _Nonnull stop) {
-            if (DGDebugo.shared.currentUser.length && [key isEqualToString:DGDebugo.shared.currentUser]) {
+            if (dg_current_user().length && [key isEqualToString:dg_current_user()]) {
                 // current
                 currentActions = obj.reverseSortedValues;
             }else {
@@ -94,12 +95,12 @@ static NSString *kDGCellID = @"kDGCellID";
         }];
         
         // common action
-        NSArray *commonActions = [DGAssistant shared].configuration.commonActions.copy;
+        NSArray *commonActions = [DGActionManager shared].commonActions.copy;
         // anonymous
-        NSArray *anonymousActions = [DGAssistant shared].anonymousActionDic.reverseSortedValues;
+        NSArray *anonymousActions = [DGActionManager shared].anonymousActionDic.reverseSortedValues;
         
         if (currentActions.count) {
-            currentActions.dg_copyExtObj = DGDebugo.shared.currentUser;
+            currentActions.dg_copyExtObj = dg_current_user();
             [_dataArray addObject:currentActions];
         }
         

@@ -27,18 +27,10 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 
 @property (nonatomic, strong, readonly) DGConfiguration *configuration;
 
-@property (nonatomic, strong, nullable) NSMutableDictionary <NSString *, DGOrderedDictionary <NSString *, DGAction *>*>*usersActionsDic;
-@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAction *>*anonymousActionDic;
-@property (nonatomic, strong, nullable) NSArray <DGAccount *>*currentCommonAccountArray;
-@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAccount *>*temporaryAccountDic;
-
 + (instancetype)shared;
 
 - (void)setupWithConfiguration:(DGConfiguration *)configuration;
 - (void)reset;
-
-- (void)addActionForUser:(nullable NSString *)user withTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler;
-- (void)addAccountWithUsername:(NSString *)username password:(NSString *)password;
 
 ///------------------------------------------------
 /// Debug Bubble
@@ -53,17 +45,6 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 - (void)closeDebugWindow;
 - (void)removeDebugWindow;
 - (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS;
-
-///------------------------------------------------
-/// Login Bubble
-///------------------------------------------------
-
-@property (nonatomic, weak, readonly) DGSuspensionBubble *loginBubble;
-@property (nonatomic, weak, readonly) DGWindow *loginWindow;
-
-- (void)showLoginBubble;
-- (void)removeLoginBubble;
-- (void)removeLoginWindow;
 
 @end
 

@@ -10,8 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "DebugoEnable.h"
 #import "DGConfiguration.h"
-#import "DGDatabasePreviewConfiguration.h"
-@class DGDebugo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,40 +20,12 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 #define debugo_exec(...)
 #endif
 
-
-///------------------------------------------------
-/// DGDebugoDelegate
-///------------------------------------------------
-
-@protocol DGDebugoDelegate <NSObject>
-@optional
-
-/** 使用 login bubble 选中列表中的某个账号时，会调用这个代理方法，并传回账号信息，你需要在这个代理方法实现自动登录 */
-- (void)debugoLoginAccount:(DGAccount *)account;
-/** 需要自行控制显示数据库文件的表的行高、列宽的时候需要实现该代理方法 */
-- (nullable DGDatabasePreviewConfiguration *)debugoDatabasePreviewConfigurationForDatabaseURL:(NSURL *)databaseURL;
-
-@end
-
-
-///------------------------------------------------
-/// DGDebugo
-///------------------------------------------------
-
 @interface DGDebugo : NSObject
-
-@property (nonatomic, weak, nullable) id<DGDebugoDelegate> delegate;
-@property (nonatomic, assign, readonly) BOOL isFire;
-@property (nonatomic, readonly, nullable) NSString *currentUser;
 
 + (BOOL)canBeEnabled;
 
-+ (instancetype)shared;
-
 /** ☄️ 启动框架 可在 configuration block 中配置参数 */
 + (void)fireWithConfiguration:(nullable void (^)(DGConfiguration *configuration))configuration;
-/** 💥 停用框架 */
-+ (void)stop;
 
 + (void)closeDebugWindow;
 

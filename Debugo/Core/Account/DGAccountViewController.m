@@ -8,7 +8,7 @@
 //
 
 #import "DGAccountViewController.h"
-#import "DGAssistant.h"
+#import "DGAccountManager.h"
 
 @interface DGAccountViewController ()
 
@@ -21,10 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (DGAssistant.shared.configuration.accountEnvironmentIsBeta) {
-        self.title = @"Login (beta)";
+    if (DGAccountManager.shared.configuration.isProductionEnvironment) {
+        self.title = @"快速登陆 (开发环境)";
     }else{
-        self.title = @"Login (official)";
+        self.title = @"快速登陆 (生产环境)";
     }
     
     // table footer
@@ -43,13 +43,13 @@
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-        NSArray *temporaryArray = DGAssistant.shared.temporaryAccountDic.reverseSortedValues;
+        NSArray *temporaryArray = DGAccountManager.shared.temporaryAccountDic.reverseSortedValues;
         if (temporaryArray.count) {
             temporaryArray.dg_copyExtObj = @"Temporary";
             [_dataArray addObject:temporaryArray];
         }
         
-        NSArray *commonArray = DGAssistant.shared.currentCommonAccountArray.copy;
+        NSArray *commonArray = DGAccountManager.shared.currentCommonAccountArray.copy;
         if (commonArray.count) {
             commonArray.dg_copyExtObj = @"Common";
             [_dataArray addObject:commonArray];
@@ -85,9 +85,9 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [DGAssistant.shared removeLoginWindow];
-    if ([DGDebugo.shared.delegate respondsToSelector:@selector(debugoLoginAccount:)]) {
-        [DGDebugo.shared.delegate debugoLoginAccount:account];
+    [DGAccountManager.shared removeLoginWindow];
+    if (DGAccountManager.shared.configuration.execLoginCallback) {
+        DGAccountManager.shared.configuration.execLoginCallback(account);
     }
 }
 
