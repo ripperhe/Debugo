@@ -15,6 +15,7 @@
 #import "NSDate+Debugo.h"
 #import "NSNumber+Debugo.h"
 #import "NSFileManager+Debugo.h"
+#import "UIView+Debugo.h"
 #import "DGCurrentUser.h"
 #import "DGThread.h"
 #import "DGPlister.h"

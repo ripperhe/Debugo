@@ -167,10 +167,7 @@
 
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)l {
     if (l.state == UIGestureRecognizerStateBegan) {
-        if (@available(iOS 10.0, *)) {
-            UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-            [feedBackGenertor impactOccurred];
-        }
+        kDGImpactFeedback
         if (self.config.showLongPressAnimation) {
             CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
             bounceAnimation.fromValue = @1.0;
@@ -201,11 +198,8 @@
 }
 
 - (void)click {
-    if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [feedBackGenertor impactOccurred];
-    }
-
+    kDGImpactFeedback
+    
     if (self.config.showClickAnimation) {
         CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
         bounceAnimation.values = [NSArray arrayWithObjects:

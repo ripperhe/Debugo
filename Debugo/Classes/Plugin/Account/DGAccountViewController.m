@@ -79,10 +79,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [feedBackGenertor impactOccurred];
-    }
+    kDGImpactFeedback
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     [DGAccountManager.shared removeLoginWindow];

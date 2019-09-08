@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
+		C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */; };
+		C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE92324ED5F003D8984 /* UIView+Debugo.m */; };
+		C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */; };
 		C916194722A11CB1009FF2A3 /* DGCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGCurrentUser.m */; };
 		C916194A22A1222C009FF2A3 /* DGAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountConfiguration.m */; };
 		C916194E22A12770009FF2A3 /* DGFileDisplayConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFileDisplayConfiguration.m */; };
@@ -91,6 +94,12 @@
 		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
 		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
 		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9034DE52324E06D003D8984 /* DGCommonGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGCommonGridViewController.h; sourceTree = "<group>"; };
+		C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGCommonGridViewController.m; sourceTree = "<group>"; };
+		C9034DE82324ED5F003D8984 /* UIView+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Debugo.h"; sourceTree = "<group>"; };
+		C9034DE92324ED5F003D8984 /* UIView+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugo.m"; sourceTree = "<group>"; };
+		C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPluginViewController.h; sourceTree = "<group>"; };
+		C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPluginViewController.m; sourceTree = "<group>"; };
 		C916194522A11CB1009FF2A3 /* DGCurrentUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGCurrentUser.h; sourceTree = "<group>"; };
 		C916194622A11CB1009FF2A3 /* DGCurrentUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGCurrentUser.m; sourceTree = "<group>"; };
 		C916194822A1222C009FF2A3 /* DGAccountConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountConfiguration.h; sourceTree = "<group>"; };
@@ -275,16 +284,53 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C916194422A11C8C009FF2A3 /* DGCurrentUser */ = {
+		C9034DDE2324DC7B003D8984 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				C916194522A11CB1009FF2A3 /* DGCurrentUser.h */,
-				C916194622A11CB1009FF2A3 /* DGCurrentUser.m */,
+				C9B45679221D2B460098644E /* Debugo.h */,
+				C9B45673221D2B460098644E /* DGDebugo.h */,
+				C9B4566D221D2B460098644E /* DGDebugo.m */,
+				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
+				C9B45678221D2B460098644E /* DGDebugo+Additional.m */,
+				C9B45669221D2B460098644E /* DGConfiguration.h */,
+				C9B45667221D2B460098644E /* DGConfiguration.m */,
 			);
-			path = DGCurrentUser;
+			path = API;
 			sourceTree = "<group>";
 		};
-		C916194B22A12746009FF2A3 /* File */ = {
+		C9034DDF2324DC96003D8984 /* EntryWindow */ = {
+			isa = PBXGroup;
+			children = (
+				C9B456B4221D2B460098644E /* DGSuspensionBubble */,
+			);
+			path = EntryWindow;
+			sourceTree = "<group>";
+		};
+		C9034DE02324DCC1003D8984 /* DebugWindow */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45666221D2B460098644E /* DGAssistant.h */,
+				C9B4566A221D2B460098644E /* DGAssistant.m */,
+			);
+			path = DebugWindow;
+			sourceTree = "<group>";
+		};
+		C9034DE12324DCE6003D8984 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				C9B45671221D2B460098644E /* DGAction.h */,
+				C9B4566F221D2B460098644E /* DGAction.m */,
+				C9B4568E221D2B460098644E /* DGActionViewController.h */,
+				C9B45686221D2B460098644E /* DGActionViewController.m */,
+				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
+				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
+				C9C210A022A10A8300D5EEDE /* DGActionManager.h */,
+				C9C210A122A10A8300D5EEDE /* DGActionManager.m */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		C9034DE22324DD12003D8984 /* File */ = {
 			isa = PBXGroup;
 			children = (
 				C916194C22A12770009FF2A3 /* DGFileDisplayConfiguration.h */,
@@ -293,8 +339,32 @@
 				C9B4568C221D2B460098644E /* DGFileViewController.m */,
 				C916195122A13C14009FF2A3 /* DGFileManager.h */,
 				C916195222A13C14009FF2A3 /* DGFileManager.m */,
+				C9B456BF221D2B460098644E /* DGFileBrowser */,
 			);
 			path = File;
+			sourceTree = "<group>";
+		};
+		C9034DE42324DD41003D8984 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C9034DDE2324DC7B003D8984 /* API */,
+				C9B45692221D2B460098644E /* Base */,
+				C9034DDF2324DC96003D8984 /* EntryWindow */,
+				C9034DE02324DCC1003D8984 /* DebugWindow */,
+				C9034DE12324DCE6003D8984 /* Action */,
+				C9034DE22324DD12003D8984 /* File */,
+				C9B45690221D2B460098644E /* Plugin */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C916194422A11C8C009FF2A3 /* DGCurrentUser */ = {
+			isa = PBXGroup;
+			children = (
+				C916194522A11CB1009FF2A3 /* DGCurrentUser.h */,
+				C916194622A11CB1009FF2A3 /* DGCurrentUser.m */,
+			);
+			path = DGCurrentUser;
 			sourceTree = "<group>";
 		};
 		C916195422A13DFC009FF2A3 /* Setting */ = {
@@ -379,42 +449,11 @@
 		C9B45663221D2B460098644E /* Debugo */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45664221D2B460098644E /* Core */,
-				C9B45691221D2B460098644E /* Base */,
-				C9B45690221D2B460098644E /* Plugin */,
+				C9034DE42324DD41003D8984 /* Classes */,
+				C9B456AF221D2B460098644E /* Assets */,
 			);
 			name = Debugo;
 			path = ../../Debugo;
-			sourceTree = "<group>";
-		};
-		C9B45664221D2B460098644E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45679221D2B460098644E /* Debugo.h */,
-				C9B45673221D2B460098644E /* DGDebugo.h */,
-				C9B4566D221D2B460098644E /* DGDebugo.m */,
-				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
-				C9B45678221D2B460098644E /* DGDebugo+Additional.m */,
-				C9B45665221D2B460098644E /* Assistant */,
-				C9B45675221D2B460098644E /* Cache */,
-				C9B4567A221D2B460098644E /* ViewController */,
-				C9C2109F22A1095A00D5EEDE /* Action */,
-				C916194B22A12746009FF2A3 /* File */,
-				C9B4566E221D2B460098644E /* Account */,
-				C916195422A13DFC009FF2A3 /* Setting */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		C9B45665221D2B460098644E /* Assistant */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45666221D2B460098644E /* DGAssistant.h */,
-				C9B4566A221D2B460098644E /* DGAssistant.m */,
-				C9B45669221D2B460098644E /* DGConfiguration.h */,
-				C9B45667221D2B460098644E /* DGConfiguration.m */,
-			);
-			path = Assistant;
 			sourceTree = "<group>";
 		};
 		C9B4566E221D2B460098644E /* Account */ = {
@@ -452,6 +491,8 @@
 				C9B4567F221D2B460098644E /* DGTabBarController.m */,
 				C9B4567C221D2B460098644E /* DGNavigationController.h */,
 				C9B45680221D2B460098644E /* DGNavigationController.m */,
+				C9034DE52324E06D003D8984 /* DGCommonGridViewController.h */,
+				C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -459,26 +500,18 @@
 		C9B45690221D2B460098644E /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */,
+				C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */,
+				C9B4566E221D2B460098644E /* Account */,
 				C9B456E7221D2B460098644E /* DGFPSLabel */,
 				C9B456B1221D2B460098644E /* DGDebuggingOverlay */,
-				C9B456B4221D2B460098644E /* DGSuspensionBubble */,
 				C9B456EC221D2B460098644E /* DGTouchMonitor */,
-				C9B456BF221D2B460098644E /* DGFileBrowser */,
 				C9C2109822A0DB4200D5EEDE /* DGAppInfo */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
 		};
-		C9B45691221D2B460098644E /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45692221D2B460098644E /* Classes */,
-				C9B456AF221D2B460098644E /* Assets */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		C9B45692221D2B460098644E /* Classes */ = {
+		C9B45692221D2B460098644E /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				C9B4566B221D2B460098644E /* DebugoEnable.h */,
@@ -487,8 +520,11 @@
 				C9B4569C221D2B460098644E /* Macro */,
 				C9B45693221D2B460098644E /* Category */,
 				C9B4569F221D2B460098644E /* Utility */,
+				C9B45675221D2B460098644E /* Cache */,
+				C916195422A13DFC009FF2A3 /* Setting */,
+				C9B4567A221D2B460098644E /* ViewController */,
 			);
-			path = Classes;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		C9B45693221D2B460098644E /* Category */ = {
@@ -502,6 +538,8 @@
 				C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */,
 				C9E38B422285161500D46953 /* NSFileManager+Debugo.h */,
 				C9E38B432285161500D46953 /* NSFileManager+Debugo.m */,
+				C9034DE82324ED5F003D8984 /* UIView+Debugo.h */,
+				C9034DE92324ED5F003D8984 /* UIView+Debugo.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -714,21 +752,6 @@
 			path = DGLog;
 			sourceTree = "<group>";
 		};
-		C9C2109F22A1095A00D5EEDE /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45671221D2B460098644E /* DGAction.h */,
-				C9B4566F221D2B460098644E /* DGAction.m */,
-				C9B4568E221D2B460098644E /* DGActionViewController.h */,
-				C9B45686221D2B460098644E /* DGActionViewController.m */,
-				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
-				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
-				C9C210A022A10A8300D5EEDE /* DGActionManager.h */,
-				C9C210A122A10A8300D5EEDE /* DGActionManager.m */,
-			);
-			path = Action;
-			sourceTree = "<group>";
-		};
 		C9CEA533224250E300BD5AEB /* DGShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,12 +960,15 @@
 				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
 				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
+				C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */,
 				C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */,
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
 				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
+				C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
+				C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */,
 				C916194E22A12770009FF2A3 /* DGFileDisplayConfiguration.m in Sources */,
 				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,
 				C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */,

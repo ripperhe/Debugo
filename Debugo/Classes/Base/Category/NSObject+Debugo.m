@@ -11,36 +11,38 @@
 #import "NSObject+Debugo.h"
 #import <objc/runtime.h>
 
-static const void *kDGStrongExtObjKey = &kDGStrongExtObjKey;
-static const void *kDGWeakExtObjKey = &kDGWeakExtObjKey;
-static const void *kDGCopyExtObjKey = &kDGCopyExtObjKey;
-
 @implementation NSObject (Debugo)
 
-
+static const void *kAssociatedObjectKey_strongExtObj = &kAssociatedObjectKey_strongExtObj;
 - (void)setDg_strongExtObj:(id)dg_strongExtObj {
-    objc_setAssociatedObject(self, kDGStrongExtObjKey, dg_strongExtObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kAssociatedObjectKey_strongExtObj, dg_strongExtObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id)dg_strongExtObj {
-    return objc_getAssociatedObject(self, kDGStrongExtObjKey);
+    return objc_getAssociatedObject(self, kAssociatedObjectKey_strongExtObj);
 }
 
+static const void *kAssociatedObjectKey_weakExtObj = &kAssociatedObjectKey_weakExtObj;
 - (void)setDg_weakExtObj:(id)dg_weakExtObj {
-    objc_setAssociatedObject(self, kDGWeakExtObjKey, dg_weakExtObj, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, kAssociatedObjectKey_weakExtObj, dg_weakExtObj, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (id)dg_weakExtObj {
-    return objc_getAssociatedObject(self, kDGWeakExtObjKey);
+    return objc_getAssociatedObject(self, kAssociatedObjectKey_weakExtObj);
 }
 
+static const void *kAssociatedObjectKey_copyExtObj = &kAssociatedObjectKey_copyExtObj;
 - (void)setDg_copyExtObj:(id)dg_copyExtObj {
-    objc_setAssociatedObject(self, kDGCopyExtObjKey, dg_copyExtObj, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, kAssociatedObjectKey_copyExtObj, dg_copyExtObj, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (id)dg_copyExtObj {
-    return objc_getAssociatedObject(self, kDGCopyExtObjKey);
+    return objc_getAssociatedObject(self, kAssociatedObjectKey_copyExtObj);
 }
+
+@end
+
+@implementation NSObject (Debugo_Runtime)
 
 + (void)dg_swizzleInstanceMethod:(SEL)originalSelector newSelector:(SEL)newSelector {
     @synchronized (self) {
@@ -74,6 +76,21 @@ static const void *kDGCopyExtObjKey = &kDGCopyExtObjKey;
             method_exchangeImplementations(originalMethod, newMethod);
         }
     }
+}
+
+@end
+
+@implementation NSObject (Debugo_Make)
+
++ (instancetype)dg_make:(void (^)(id))block {
+    NSObject *obj = [self new];
+    block(obj);
+    return obj;
+}
+
+- (id)dg_put:(void (^)(id))block {
+    block(self);
+    return self;
 }
 
 @end

@@ -38,6 +38,12 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 @implementation DGAppInfoViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -171,10 +177,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
 #pragma mark - event
 
 - (void)clickedCopyBtn:(UIButton *)sender {
-    if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [feedBackGenertor impactOccurred];
-    }
+    kDGImpactFeedback
     NSIndexPath *indexPath = sender.dg_strongExtObj;
     
     // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator

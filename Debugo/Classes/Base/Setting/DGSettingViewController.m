@@ -9,6 +9,7 @@
 #import "DGSettingViewController.h"
 #import "DGAssistant.h"
 #import "DGCache.h"
+#import "DGBase.h"
 
 typedef NS_ENUM(NSUInteger, DGSettingType) {
     // general
@@ -89,10 +90,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
 }
 
 - (void)buttonClicked:(UIButton *)sender {
-    if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [feedBackGenertor impactOccurred];
-    }
+    kDGImpactFeedback
     NSIndexPath *indexPath = sender.dg_strongExtObj;
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
 

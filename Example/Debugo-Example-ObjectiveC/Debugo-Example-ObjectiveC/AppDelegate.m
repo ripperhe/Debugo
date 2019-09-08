@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Debugo.h"
 #import "DGFilePath.h"
+#import "DGPluginViewController.h"
 
 @interface AppDelegate ()
 
@@ -145,7 +146,17 @@
     [[NSUserDefaults standardUserDefaults] setObject:@"中文 中文 中文" forKey:@"Test UserDefaults"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [self internalDevelop];
+    
     return YES;
 }
+
+- (void)internalDevelop {
+    [DGDebugo addActionForUser:@"ripper" title:@"网格视图" autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+        UIViewController *vc = [DGPluginViewController new];
+        [actionVC.navigationController pushViewController:vc animated:YES];
+    }];
+}
+
 
 @end

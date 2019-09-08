@@ -165,10 +165,7 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [feedBackGenertor impactOccurred];
-    }
+    kDGImpactFeedback
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (action.autoClose) {
