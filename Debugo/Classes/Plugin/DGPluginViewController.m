@@ -11,6 +11,7 @@
 #import "DGAssistant.h"
 #import "DGAppInfoViewController.h"
 #import "DGAccountManager.h"
+#import "DGDebuggingOverlay.h"
 
 @interface DGPluginViewController ()
 
@@ -34,6 +35,15 @@
         }];
     }];
     
+    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
+        configuration.title = @"Apple内部神器";
+        configuration.imageName = @"app";
+        [configuration setSelectedBlock:^{
+            [DGAssistant.shared closeDebugWindow];
+            [DGDebuggingOverlay showDebuggingInformation];
+        }];
+    }];
+
 }
 
 @end
