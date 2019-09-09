@@ -19,10 +19,9 @@
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
 
-NSInteger const DGDebugBubbleTag = 1;
 UIWindowLevel const DGContentWindowLevel = 999999;
 
-@interface DGAssistant ()<DGSuspensionBubbleDelegate>
+@interface DGAssistant ()
 
 @property (nonatomic, weak) DGSuspensionBubble *debugBubble;
 @property (nonatomic, strong) DGWindow *debugWindow;
@@ -126,9 +125,33 @@ static DGAssistant *_instance;
     DGSuspensionBubble *debugBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     debugBubble.name = @"Debug Bubble";
-    debugBubble.tag = DGDebugBubbleTag;
-    debugBubble.dg_delegate = self;
     [debugBubble.button setTintColor:[UIColor whiteColor]];
+    dg_weakify(self)
+    [debugBubble setClickBlock:^(DGSuspensionBubble *bubble) {
+        dg_strongify(self)
+        // debug
+        if (self.debugWindow) {
+            if (self.debugWindow.isHidden == NO) {
+                // hidden
+                [self closeDebugWindow];
+            }else {
+                // show
+                [self openDebugWindow];
+            }
+        }else{
+            // create
+            DGDebugViewController *debugVC = [[DGDebugViewController alloc] init];
+            DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            window.name = @"Debug Window";
+            window.rootViewController = debugVC;
+            window.windowLevel = DGContentWindowLevel;
+            self.debugViewController = debugVC;
+            self.debugWindow = window;
+            
+            // show
+            [self openDebugWindow];
+        }
+    }];
     [debugBubble show];
     self.debugBubble = debugBubble;
     [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
@@ -166,35 +189,6 @@ static DGAssistant *_instance;
         [containerWindow makeKeyAndVisible];
     }else {
         [containerWindow setHidden:NO];
-    }
-}
-
-
-#pragma mark - DGSuspensionBubbleDelegate
-- (void)suspensionBubbleClick:(DGSuspensionBubble *)suspensionBubble {
-    // debug
-    if (self.debugWindow) {
-        if (self.debugWindow.isHidden == NO) {
-            // hidden
-            [self closeDebugWindow];
-        }else {
-            // show
-//            [self removeLoginWindow];
-            [self openDebugWindow];
-        }
-    }else{
-        // create
-        DGDebugViewController *debugVC = [[DGDebugViewController alloc] init];
-        DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        window.name = @"Debug Window";
-        window.rootViewController = debugVC;
-        window.windowLevel = DGContentWindowLevel;
-        self.debugViewController = debugVC;
-        self.debugWindow = window;
-        
-        // show
-//        [self removeLoginWindow];
-        [self openDebugWindow];
     }
 }
 

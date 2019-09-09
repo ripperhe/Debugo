@@ -10,7 +10,7 @@
 #import "DGCache.h"
 #import "DGQuickLoginViewController.h"
 
-@interface DGAccountManager()<DGSuspensionBubbleDelegate>
+@interface DGAccountManager()
 
 @property (nonatomic, weak) DGSuspensionBubble *loginBubble;
 @property (nonatomic, strong, nullable) DGWindow *loginWindow;
@@ -118,10 +118,28 @@ static DGAccountManager *_instance;
     DGSuspensionBubble *loginBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (165 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                          config:config];
     loginBubble.name = @"Login Bubble";
-    loginBubble.dg_delegate = self;
     [loginBubble.button setTintColor:[UIColor whiteColor]];
     loginBubble.button.backgroundColor = [UIColor colorWithRed:0.15 green:0.74 blue:0.30 alpha:1.00];
     [loginBubble.button setImage:[DGBundle imageNamed:@"login_bubble"] forState:UIControlStateNormal];
+    dg_weakify(self)
+    [loginBubble setClickBlock:^(DGSuspensionBubble *bubble) {
+        dg_strongify(self);
+        if (self.loginWindow) {
+            // remove
+            [self removeLoginWindow];
+        }else{
+            // create
+            DGQuickLoginViewController *loginVC = [[DGQuickLoginViewController alloc] init];
+            DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            window.name = @"Login Window";
+            window.rootViewController = loginVC;
+            window.windowLevel = 1000000;
+            self.loginWindow = window;
+            
+            // show
+            [self.loginWindow setHidden:NO];
+        }
+    }];
     [loginBubble show];
     self.loginBubble = loginBubble;
 }
@@ -135,26 +153,5 @@ static DGAccountManager *_instance;
     [self.loginWindow destroy];
     self.loginWindow = nil;
 }
-
-#pragma mark - DGSuspensionBubbleDelegate
-- (void)suspensionBubbleClick:(DGSuspensionBubble *)suspensionBubble {
-    if (self.loginWindow) {
-        // remove
-        [self removeLoginWindow];
-    }else{
-        // create
-        DGQuickLoginViewController *loginVC = [[DGQuickLoginViewController alloc] init];
-        DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        window.name = @"Login Window";
-        window.rootViewController = loginVC;
-        window.windowLevel = 1000000;
-        self.loginWindow = window;
-        
-        // show
-//        [self closeDebugWindow];
-        [self.loginWindow setHidden:NO];
-    }
-}
-
 
 @end

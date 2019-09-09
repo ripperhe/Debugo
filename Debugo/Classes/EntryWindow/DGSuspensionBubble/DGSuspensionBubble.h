@@ -11,21 +11,15 @@
 #import "DGWindow.h"
 #import "DGSuspensionBubbleConfig.h"
 
-@class DGSuspensionBubble;
-@protocol DGSuspensionBubbleDelegate <NSObject>
-@optional
-- (void)suspensionBubbleClick:(DGSuspensionBubble *)suspensionBubble;
-- (void)suspensionBubbleLongPressStart:(DGSuspensionBubble *)suspensionBubble;
-- (void)suspensionBubbleLongPressEnd:(DGSuspensionBubble *)suspensionBubble;
-- (void)suspensionBubblePanStart:(DGSuspensionBubble *)suspensionBubble;
-- (void)suspensionBubblePanEnd:(DGSuspensionBubble *)suspensionBubble;
-
-@end
-
 @interface DGSuspensionBubble : DGWindow
 
-@property (nonatomic, weak) id<DGSuspensionBubbleDelegate> dg_delegate;
 @property (nonatomic, strong, readonly) DGSuspensionBubbleConfig *config;
+
+@property (nonatomic, copy) void(^clickBlock)(DGSuspensionBubble *bubble);
+@property (nonatomic, copy) void(^longPressStartBlock)(DGSuspensionBubble *bubble);
+@property (nonatomic, copy) void(^longPressEndBlock)(DGSuspensionBubble *bubble);
+@property (nonatomic, copy) void(^panStartBlock)(DGSuspensionBubble *bubble);
+@property (nonatomic, copy) void(^panEndBlock)(DGSuspensionBubble *bubble);
 
 /** Backgouround view. Add subview to this view */
 @property (nonatomic, weak, readonly) UIView *contentView;

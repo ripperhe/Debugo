@@ -19,12 +19,9 @@
 @interface DGSuspensionBubble()
 
 @property (nonatomic, strong) DGSuspensionBubbleConfig *config;
-
 @property (nonatomic, weak) UIView *contentView;
 @property (nonatomic, weak) UIButton *button;
-
 @property (nonatomic, assign) BOOL isDragging;
-
 @property (nonatomic, copy) NSString *memoryAddressKey;
 
 @end
@@ -135,16 +132,14 @@
     
     if(p.state == UIGestureRecognizerStateBegan) {
         self.isDragging = YES;
-//        NSLog(@"%@ pan began %@", self, NSStringFromCGPoint(panPoint));
         self.contentView.alpha = 1;
-        if ([self.dg_delegate respondsToSelector:(@selector(suspensionBubblePanStart:))]) {
-            [self.dg_delegate suspensionBubblePanStart:self];
+        if (self.panStartBlock) {
+            self.panStartBlock(self);
         }
     }else if(p.state == UIGestureRecognizerStateChanged) {
         self.center = CGPointMake(panPoint.x, panPoint.y);
     }else if(p.state == UIGestureRecognizerStateEnded
              || p.state == UIGestureRecognizerStateCancelled) {
-//        NSLog(@"%@ pan end %@", self, NSStringFromCGPoint(panPoint));
         self.contentView.alpha = self.config.leanStateAlpha;
         CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:panPoint size:self.frame.size];
         [UIView animateWithDuration:.25 animations:^{
@@ -152,11 +147,11 @@
         } completion:^(BOOL finished) {
             self.isDragging = NO;
         }];
-        if ([self.dg_delegate respondsToSelector:@selector(suspensionBubblePanEnd:)]) {
-            [self.dg_delegate suspensionBubblePanEnd:self];
+        if (self.panEndBlock) {
+            self.panEndBlock(self);
         }
     }else{
-        NSLog(@"%@ pan state : %zd", self, p.state);
+        DGLog(@"%@ pan state : %zd", self, p.state);
     }
 }
 
@@ -172,8 +167,8 @@
             bounceAnimation.fillMode = kCAFillModeForwards;
             [self.layer addAnimation:bounceAnimation forKey:@"longPressBigger"];
         }
-        if ([self.dg_delegate respondsToSelector:@selector(suspensionBubbleLongPressStart:)]) {
-            [self.dg_delegate suspensionBubbleLongPressStart:self];
+        if (self.longPressStartBlock) {
+            self.longPressStartBlock(self);
         }
     }else if (l.state == UIGestureRecognizerStateEnded || l.state == UIGestureRecognizerStateCancelled){
         if (self.config.showLongPressAnimation) {
@@ -186,8 +181,8 @@
             bounceAnimation.removedOnCompletion = YES;
             [self.layer addAnimation:bounceAnimation forKey:@"sss"];
         }
-        if ([self.dg_delegate respondsToSelector:@selector(suspensionBubbleLongPressEnd:)]) {
-            [self.dg_delegate suspensionBubbleLongPressEnd:self];
+        if (self.longPressEndBlock) {
+            self.longPressEndBlock(self);
         }
     }
 }
@@ -207,8 +202,8 @@
         [self.layer addAnimation:bounceAnimation forKey:nil];
     }
 
-    if([self.dg_delegate respondsToSelector:@selector(suspensionBubbleClick:)]) {
-        [self.dg_delegate suspensionBubbleClick:self];
+    if (self.clickBlock) {
+        self.clickBlock(self);
     }
 }
 
