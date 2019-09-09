@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DGCommon.h"
-#import "DGSuspensionBubble.h"
+#import "DGBubble.h"
 #import "DGAccountConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -30,12 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addAccount:(DGAccount *)account;
 
 
-@property (nonatomic, weak, readonly) DGSuspensionBubble *loginBubble;
+@property (nonatomic, weak, readonly) DGBubble *loginBubble;
 @property (nonatomic, strong, readonly) DGWindow *loginWindow;
 
 - (void)showLoginBubble;
-
 - (void)removeLoginBubble;
+
+- (void)showLoginWindow;
 - (void)removeLoginWindow;
 @end
 

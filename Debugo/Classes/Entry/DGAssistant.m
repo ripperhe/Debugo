@@ -19,11 +19,11 @@
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
 
-UIWindowLevel const DGContentWindowLevel = 999999;
+UIWindowLevel const DGContentWindowLevel = 1999999;
 
 @interface DGAssistant ()
 
-@property (nonatomic, weak) DGSuspensionBubble *debugBubble;
+@property (nonatomic, weak) DGBubble *debugBubble;
 @property (nonatomic, strong) DGWindow *debugWindow;
 @property (nonatomic, weak, nullable) DGDebugViewController *debugViewController;
 
@@ -118,16 +118,17 @@ static DGAssistant *_instance;
         return;
     }
     
-    DGSuspensionBubbleConfig *config = [DGSuspensionBubbleConfig new];
+    DGBubbleConfig *config = [DGBubbleConfig new];
     config.buttonType = UIButtonTypeSystem;
     
-    DGSuspensionBubble *debugBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGBubble *debugBubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];
     debugBubble.name = @"Debug Bubble";
     [debugBubble.button setTintColor:[UIColor whiteColor]];
     dg_weakify(self)
-    [debugBubble setClickBlock:^(DGSuspensionBubble *bubble) {
+    [debugBubble setClickBlock:^(DGBubble *bubble) {
         dg_strongify(self)
+        DGLog(@"start");
         // debug
         if (self.debugWindow) {
             if (self.debugWindow.isHidden == NO) {
@@ -150,6 +151,7 @@ static DGAssistant *_instance;
             // show
             [self openDebugWindow];
         }
+        DGLog(@"end");
     }];
     [debugBubble show];
     self.debugBubble = debugBubble;

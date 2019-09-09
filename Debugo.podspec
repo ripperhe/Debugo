@@ -34,8 +34,8 @@ Pod::Spec.new do |s|
       sb.source_files = 'Debugo/Plugin/DGDebuggingOverlay/**'
       sb.dependency 'Debugo/Base'
     end
-    pg.subspec 'DGSuspensionBubble' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGSuspensionBubble/**'
+    pg.subspec 'DGBubble' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGBubble/**'
       sb.dependency 'Debugo/Base'
     end
     pg.subspec 'DGFileBrowser' do |sb|

@@ -1,5 +1,5 @@
 //
-//  DGSuspensionBubble.m
+//  DGBubble.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,7 +8,7 @@
 //
 
 
-#import "DGSuspensionBubble.h"
+#import "DGBubble.h"
 #import "DGCommon.h"
 
 #define kIsIPhoneX ([[UIScreen mainScreen] nativeBounds].size.height >= 2436.0)
@@ -16,7 +16,7 @@
 #define kBottomMargin (kIsIPhoneX ? 83.0 : 49.0)
 #define kHiddenProportion 0.14545455
 
-@implementation DGSuspensionBubbleConfig
+@implementation DGBubbleConfig
 
 - (instancetype)init {
     self = [super init];
@@ -30,9 +30,9 @@
 
 @end
 
-@interface DGSuspensionBubble()
+@interface DGBubble()
 
-@property (nonatomic, strong) DGSuspensionBubbleConfig *config;
+@property (nonatomic, strong) DGBubbleConfig *config;
 @property (nonatomic, weak) UIView *contentView;
 @property (nonatomic, weak) UIButton *button;
 @property (nonatomic, assign) BOOL isDragging;
@@ -40,7 +40,7 @@
 
 @end
 
-@implementation DGSuspensionBubble
+@implementation DGBubble
 
 - (void)dealloc {
     DGLogFunction;
@@ -50,11 +50,11 @@
     return [self initWithFrame:frame config:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame config:(DGSuspensionBubbleConfig *)config {
+- (instancetype)initWithFrame:(CGRect)frame config:(DGBubbleConfig *)config {
     // check w、h
     CGRect bounds = [UIScreen mainScreen].bounds;
     if (frame.size.width >= bounds.size.width || frame.size.height >= bounds.size.height) {
-        NSAssert(0, @"DGSuspensionBubble: 传入的 frame 值不对!");
+        NSAssert(0, @"DGBubble: 传入的 frame 值不对!");
         return nil;
     }else if (CGRectEqualToRect(frame, CGRectZero)) {
         frame = CGRectMake(0, 100, 55, 55);
@@ -62,13 +62,13 @@
     
     // update center
     CGPoint center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
-    CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:center size:frame.size];
+    CGPoint newCenter = [DGBubble checkNewCenterWithPoint:center size:frame.size];
     CGFloat w = frame.size.width;
     CGFloat h = frame.size.height;
     frame = CGRectMake(newCenter.x - w * 0.5, newCenter.y - h * 0.5, w, h);
     
     if(self = [super initWithFrame:frame]) {
-        self.config = config ?: [DGSuspensionBubbleConfig new];
+        self.config = config ?: [DGBubbleConfig new];
         self.windowLevel = 2000000;
         // rootViewController
         self.rootViewController = [[UIViewController alloc] init];
@@ -83,7 +83,7 @@
     
     if (self.isDragging == NO) {
         // deal rotate
-        CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:self.center size:self.frame.size];
+        CGPoint newCenter = [DGBubble checkNewCenterWithPoint:self.center size:self.frame.size];
         if (CGPointEqualToPoint(newCenter, self.center) == NO) {
             self.center = newCenter;
         }
@@ -153,7 +153,7 @@
         self.center = CGPointMake(panPoint.x, panPoint.y);
     }else if(p.state == UIGestureRecognizerStateEnded
              || p.state == UIGestureRecognizerStateCancelled) {
-        CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:panPoint size:self.frame.size];
+        CGPoint newCenter = [DGBubble checkNewCenterWithPoint:panPoint size:self.frame.size];
         [UIView animateWithDuration:.25 animations:^{
             self.center = newCenter;
         } completion:^(BOOL finished) {
@@ -253,7 +253,7 @@
 }
 
 #pragma mark - public methods
-static NSMutableDictionary<NSString *, DGSuspensionBubble *> *_bubbleManager = nil;
+static NSMutableDictionary<NSString *, DGBubble *> *_bubbleManager = nil;
 - (void)show {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

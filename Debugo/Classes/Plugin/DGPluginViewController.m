@@ -8,7 +8,9 @@
 //
 
 #import "DGPluginViewController.h"
+#import "DGAssistant.h"
 #import "DGAppInfoViewController.h"
+#import "DGAccountManager.h"
 
 @interface DGPluginViewController ()
 
@@ -24,102 +26,14 @@
     }];
     
     [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
+        configuration.title = @"快速登录";
         configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
+        [configuration setSelectedBlock:^{
+            [DGAssistant.shared closeDebugWindow];
+            [DGAccountManager.shared showLoginWindow];
+        }];
     }];
     
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-    
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
-
-
 }
 
 @end
