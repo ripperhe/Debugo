@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DGAction.h"
-#import "DGAccountConfiguration.h"
+#import "DGAccountPluginConfiguration.h"
 #import "DGFileDisplayConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 文件模块配置 */
 @property (nonatomic, strong, readonly) DGFileDisplayConfiguration *fileConfiguration;
 /** 登陆模块配置 */
-@property (nonatomic, strong, readonly) DGAccountConfiguration *accountConfiguration;
+@property (nonatomic, strong, readonly) DGAccountPluginConfiguration *accountConfiguration;
 
 ///------------------------------------------------
 /// setting 以下设置均可在设置页面开启; 如需强制开启，可在代码中设置

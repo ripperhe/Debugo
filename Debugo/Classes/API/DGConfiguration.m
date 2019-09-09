@@ -22,7 +22,7 @@
         _isShowTouches = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowTouches];
 
         _fileConfiguration = [DGFileDisplayConfiguration new];
-        _accountConfiguration = [DGAccountConfiguration new];
+        _accountConfiguration = [DGAccountPluginConfiguration new];
     }
     return self;
 }

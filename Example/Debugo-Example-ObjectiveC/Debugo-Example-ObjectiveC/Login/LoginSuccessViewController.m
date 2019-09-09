@@ -26,14 +26,7 @@
 }
 
 - (IBAction)clickLogout:(id)sender {
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
-    /**
-     💥 退出成功之后调用退出成功的方法
-     * Debugo 会重新显示出 login bubble
-     */
-    [DGDebugo logoutSuccess];
 }
 
 @end

@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DGCommonGridConfiguration : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) NSString *imageName;
+@property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) Class selectedPushViewControllerClass;
 @property (nonatomic, copy) UIViewController *(^selectedPushViewControlerBlock)(void);
 @property (nonatomic, copy) void(^selectedBlock)(void);

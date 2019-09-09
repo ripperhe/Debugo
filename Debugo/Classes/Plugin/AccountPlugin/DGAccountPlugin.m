@@ -1,25 +1,24 @@
 //
-//  DGAccountManager.m
+//  DGAccountPlugin.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/5/31.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGAccountManager.h"
+#import "DGAccountPlugin.h"
 #import "DGCache.h"
 #import "DGQuickLoginViewController.h"
 
-@interface DGAccountManager()
+@interface DGAccountPlugin()
 
-@property (nonatomic, weak) DGBubble *loginBubble;
 @property (nonatomic, strong, nullable) DGWindow *loginWindow;
 
 @end
 
-@implementation DGAccountManager
+@implementation DGAccountPlugin
 
-static DGAccountManager *_instance;
+static DGAccountPlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
@@ -38,22 +37,17 @@ static DGAccountManager *_instance;
     return _instance;
 }
 
-- (void)setupWithConfiguration:(DGAccountConfiguration *)configuration {
+- (void)setupWithConfiguration:(DGAccountPluginConfiguration *)configuration {
     self.configuration = configuration;
     if (self.configuration.isProductionEnvironment) {
         self.currentCommonAccountArray = self.configuration.commonProductionAccounts;
     }else{
         self.currentCommonAccountArray = self.configuration.commonDevelopmentAccounts;
     }
-    
-    if (self.configuration.needLoginBubble && (self.configuration.haveLoggedIn == NO)) {
-        [self showLoginBubble];
-    }
 }
 
 - (void)reset {
     self.currentCommonAccountArray = nil;
-    [self removeLoginBubble];
     [self removeLoginWindow];
 }
 
@@ -95,48 +89,6 @@ static DGAccountManager *_instance;
     [self.temporaryAccountDic setObject:newAccount forKey:newAccount.username];
     // 缓存到本地
     [DGCache.shared.accountPlister setObject:newAccount.password forKey:newAccount.username];
-}
-
-#pragma mark - login bubble
-- (void)showLoginBubble {
-    if (self.loginBubble) {
-        if (!self.loginBubble.rootViewController) {
-            NSLog(@"💥💥💥💥💥💥💥💥 woca 出大事儿了，一定是 UIDxxx 引用了我的 Window ！将就用吧，不就是多开辟一点内存嘛 🤣 ");
-            [self.loginBubble setHidden:YES];
-            self.loginBubble = nil;
-        }else{
-            [self.loginBubble setHidden:NO];
-            return;
-        }
-    }
-    
-    DGBubbleConfig *config = [DGBubbleConfig new];
-    config.buttonType = UIButtonTypeSystem;
-    config.showLongPressAnimation = NO;
-    
-    DGBubble *loginBubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (165 + 55 + kDGBottomSafeMargin), 55, 55)
-                                                                         config:config];
-    loginBubble.name = @"Login Bubble";
-    [loginBubble.button setTintColor:[UIColor whiteColor]];
-    loginBubble.button.backgroundColor = [UIColor colorWithRed:0.15 green:0.74 blue:0.30 alpha:1.00];
-    [loginBubble.button setImage:[DGBundle imageNamed:@"login_bubble"] forState:UIControlStateNormal];
-    dg_weakify(self)
-    [loginBubble setClickBlock:^(DGBubble *bubble) {
-        dg_strongify(self);
-        if (self.loginWindow) {
-            // remove
-            [self removeLoginWindow];
-        }else{
-            // show
-            [self showLoginWindow];
-        }
-    }];
-    [loginBubble show];
-    self.loginBubble = loginBubble;
-}
-
-- (void)removeLoginBubble {
-    [self.loginBubble removeFromScreen];
 }
 
 #pragma mark - login view controller

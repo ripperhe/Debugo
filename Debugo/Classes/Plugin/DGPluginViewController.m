@@ -10,8 +10,9 @@
 #import "DGPluginViewController.h"
 #import "DGAssistant.h"
 #import "DGAppInfoViewController.h"
-#import "DGAccountManager.h"
+#import "DGAccountPlugin.h"
 #import "DGDebuggingOverlay.h"
+#import "DGAppInfoPlugin.h"
 
 @interface DGPluginViewController ()
 
@@ -20,18 +21,19 @@
 @implementation DGPluginViewController
 
 - (void)setupDatasouce {
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"APP信息";
-        configuration.imageName = @"app";
-        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-    }];
+    [self addPlugin:DGAppInfoPlugin.class];
+//    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
+//        configuration.title = @"APP信息";
+//        configuration.imageName = @"app";
+//        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
+//    }];
     
     [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
         configuration.title = @"快速登录";
         configuration.imageName = @"app";
         [configuration setSelectedBlock:^{
             [DGAssistant.shared closeDebugWindow];
-            [DGAccountManager.shared showLoginWindow];
+            [DGAccountPlugin.shared showLoginWindow];
         }];
     }];
     
@@ -43,7 +45,29 @@
             [DGDebuggingOverlay showDebuggingInformation];
         }];
     }];
+}
 
+- (void)addPlugin:(Class<DGPluginProtocol>)pluginClass {
+    if (![pluginClass.class isSubclassOfClass:[DGPlugin class]]) {
+        return;
+    }
+    if (![pluginClass performSelector:@selector(pluginCanFire)]) {
+        return;
+    }
+    
+    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
+        configuration.title = [pluginClass performSelector:@selector(pluginName)];
+        configuration.image = [pluginClass performSelector:@selector(pluginImage)];
+        Class vcClass = [pluginClass performSelector:@selector(pluginViewControllerClass)];
+        if (vcClass) {
+            configuration.selectedPushViewControllerClass = vcClass;
+        }else {
+            [configuration setSelectedBlock:^{
+                [DGAssistant.shared closeDebugWindow];
+                [pluginClass performSelector:@selector(pluginFire)];
+            }];
+        }
+    }];
 }
 
 @end

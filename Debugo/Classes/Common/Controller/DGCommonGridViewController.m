@@ -154,7 +154,11 @@
     DGCommonGridButton *button = [[DGCommonGridButton alloc] init];
     button.tag = index;
     [button setAttributedTitle:attributedString forState:UIControlStateNormal];
-    [button setImage:[DGBundle imageNamed:configuration.imageName] forState:UIControlStateNormal];
+    if (configuration.imageName.length) {
+        [button setImage:[DGBundle imageNamed:configuration.imageName] forState:UIControlStateNormal];
+    }else if (configuration.image) {
+        [button setImage:configuration.image forState:UIControlStateNormal];
+    }
     dg_weakify(self)
     dg_weakify(configuration)
     [button addAction:^{

@@ -30,10 +30,6 @@
                                         }],
                                         ];
         
-        
-        
-        configuration.accountConfiguration.needLoginBubble = YES;
-        configuration.accountConfiguration.haveLoggedIn = NO;
         configuration.accountConfiguration.isProductionEnvironment = YES;
         configuration.accountConfiguration.commonDevelopmentAccounts = @[
                                              [DGAccount accountWithUsername:@"jintianyoudiantoutong@qq.com" password:@"dasinigewangbadan🤣"],

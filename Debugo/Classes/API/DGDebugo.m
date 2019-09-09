@@ -11,7 +11,7 @@
 #import "DGAssistant.h"
 #import "DebugoEnable.h"
 #import "DGActionManager.h"
-#import "DGAccountManager.h"
+#import "DGAccountPlugin.h"
 
 void debugo_exec_main_queue(void (^handler)(void)) {
 #if DebugoCanBeEnabled
@@ -122,29 +122,17 @@ static DGDebugo *_instance = nil;
     });
 }
 
-#pragma mark - quick login
+#pragma mark - account plugin
 
-+ (void)loginSuccessWithAccount:(DGAccount *)account {
++ (void)accountPluginAddAccount:(DGAccount *)account {
     debugo_exec_main_queue(^{
         if (!DGDebugo.shared.isFire) return;
-        if (!DGAccountManager.shared.configuration.needLoginBubble) return;
         
         if ([account isKindOfClass:[DGAccount class]] && account.isValid){
-            [DGAccountManager.shared addAccount:account];
+            [DGAccountPlugin.shared addAccount:account];
         }else{
-            DGLog(@"Debugo: 从通知获取到未知登陆数据 %@", account);
+            DGLog(@"获取到未知登陆数据 %@", account);
         }
-        
-        [DGAccountManager.shared removeLoginBubble];
-    });
-}
-
-+ (void)logoutSuccess {
-    debugo_exec_main_queue(^{
-        if (!DGDebugo.shared.isFire) return;
-        if (!DGAccountManager.shared.configuration.needLoginBubble) return;
-        
-        [DGAccountManager.shared showLoginBubble];
     });
 }
 

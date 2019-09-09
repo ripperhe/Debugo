@@ -35,11 +35,7 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 
 + (void)addActionForUser:(nullable NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler;
 
-/** 如果使用 login bubble 快速登陆，登陆成功时调用该方法；用于隐藏 login bubble 以及存储账号 */
-+ (void)loginSuccessWithAccount:(DGAccount *)account;
-
-/** 如果使用 login bubble 快速登陆，退出登陆成功时调用该方法；用于重新显示 login bubble */
-+ (void)logoutSuccess;
++ (void)accountPluginAddAccount:(DGAccount *)account;
 
 @end
 

@@ -59,11 +59,9 @@
         
         
         /**
-         ☄️ 登陆成功之后调用登陆成功的方法，携带上账号信息
-         * 1. Debugo 会关闭 login bubble
-         * 2. 保存账号数据到沙盒 Library/Caches/com.ripperhe.debugo/ 内
+         ☄️ 登陆成功之后调用登陆成功的方法，携带上账号信息，Debugo 会保存账号数据到沙盒 Library/Caches/com.ripperhe.debugo/ 内
          */
-        [DGDebugo loginSuccessWithAccount:[DGAccount accountWithUsername:account password:password]];
+        [DGDebugo accountPluginAddAccount:[DGAccount accountWithUsername:account password:password]];
     });
     
 }

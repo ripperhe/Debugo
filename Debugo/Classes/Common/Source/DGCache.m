@@ -9,7 +9,7 @@
 
 #import "DGCache.h"
 #import "DGAssistant.h"
-#import "DGAccountManager.h"
+#import "DGAccountPlugin.h"
 
 NSString * const kDGSettingIsShowBottomBarWhenPushed = @"kDGSettingIsShowBottomBarWhenPushed";
 NSString * const kDGSettingIsOpenFPS = @"kDGSettingIsOpenFPS";
@@ -71,7 +71,7 @@ static DGCache *_instance;
 - (DGPlister *)accountPlister {
     if (!_accountPlister) {
         NSString *accountPath = nil;
-        if (DGAccountManager.shared.configuration.isProductionEnvironment) {
+        if (DGAccountPlugin.shared.configuration.isProductionEnvironment) {
             accountPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.account.beta.plist"];
         }else{
             accountPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.account.official.plist"];

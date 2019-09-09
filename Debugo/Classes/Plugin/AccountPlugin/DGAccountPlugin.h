@@ -1,5 +1,5 @@
 //
-//  DGAccountManager.h
+//  DGAccountPlugin.h
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/5/31.
@@ -9,34 +9,28 @@
 #import <Foundation/Foundation.h>
 #import "DGCommon.h"
 #import "DGBubble.h"
-#import "DGAccountConfiguration.h"
+#import "DGAccountPluginConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGAccountManager : NSObject
+@interface DGAccountPlugin : NSObject
 
-@property (nonatomic, strong) DGAccountConfiguration *configuration;
-
+@property (nonatomic, strong) DGAccountPluginConfiguration *configuration;
 @property (nonatomic, strong, nullable) NSArray <DGAccount *>*currentCommonAccountArray;
 @property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAccount *>*temporaryAccountDic;
 
+@property (nonatomic, strong, readonly) DGWindow *loginWindow;
 
 + (instancetype)shared;
 
-- (void)setupWithConfiguration:(DGAccountConfiguration *)configuration;
+- (void)setupWithConfiguration:(DGAccountPluginConfiguration *)configuration;
 
 - (void)reset;
 
 - (void)addAccount:(DGAccount *)account;
 
-
-@property (nonatomic, weak, readonly) DGBubble *loginBubble;
-@property (nonatomic, strong, readonly) DGWindow *loginWindow;
-
-- (void)showLoginBubble;
-- (void)removeLoginBubble;
-
 - (void)showLoginWindow;
+
 - (void)removeLoginWindow;
 @end
 

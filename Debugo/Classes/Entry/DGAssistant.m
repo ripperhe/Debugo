@@ -12,7 +12,7 @@
 #import "DGFPSLabel.h"
 #import "DGCache.h"
 #import "DGQuickLoginViewController.h"
-#import "DGAccountManager.h"
+#import "DGAccountPlugin.h"
 #import "DGActionManager.h"
 #import "DGFileManager.h"
 
@@ -67,7 +67,7 @@ static DGAssistant *_instance;
     DGFileManager.shared.configuration = configuration.fileConfiguration;
     
     // account
-    [DGAccountManager.shared setupWithConfiguration:configuration.accountConfiguration];
+    [DGAccountPlugin.shared setupWithConfiguration:configuration.accountConfiguration];
 
     // action
     DGActionManager.shared.commonActions = configuration.commonActions;
@@ -84,7 +84,7 @@ static DGAssistant *_instance;
     [self removeDebugBubble];
     [self removeDebugWindow];
     
-    [DGAccountManager.shared reset];
+    [DGAccountPlugin.shared reset];
 }
 
 

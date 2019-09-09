@@ -8,7 +8,7 @@
 //
 
 #import "DGAccountViewController.h"
-#import "DGAccountManager.h"
+#import "DGAccountPlugin.h"
 
 @interface DGAccountViewController ()
 
@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (DGAccountManager.shared.configuration.isProductionEnvironment) {
+    if (DGAccountPlugin.shared.configuration.isProductionEnvironment) {
         self.title = @"快速登陆 (开发环境)";
     }else{
         self.title = @"快速登陆 (生产环境)";
@@ -43,13 +43,13 @@
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-        NSArray *temporaryArray = DGAccountManager.shared.temporaryAccountDic.reverseSortedValues;
+        NSArray *temporaryArray = DGAccountPlugin.shared.temporaryAccountDic.reverseSortedValues;
         if (temporaryArray.count) {
             temporaryArray.dg_copyExtObj = @"Temporary";
             [_dataArray addObject:temporaryArray];
         }
         
-        NSArray *commonArray = DGAccountManager.shared.currentCommonAccountArray.copy;
+        NSArray *commonArray = DGAccountPlugin.shared.currentCommonAccountArray.copy;
         if (commonArray.count) {
             commonArray.dg_copyExtObj = @"Common";
             [_dataArray addObject:commonArray];
@@ -82,9 +82,9 @@
     kDGImpactFeedback
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [DGAccountManager.shared removeLoginWindow];
-    if (DGAccountManager.shared.configuration.execLoginCallback) {
-        DGAccountManager.shared.configuration.execLoginCallback(account);
+    [DGAccountPlugin.shared removeLoginWindow];
+    if (DGAccountPlugin.shared.configuration.execLoginCallback) {
+        DGAccountPlugin.shared.configuration.execLoginCallback(account);
     }
 }
 
