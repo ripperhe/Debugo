@@ -16,6 +16,20 @@
 #define kBottomMargin (kIsIPhoneX ? 83.0 : 49.0)
 #define kHiddenProportion 0.14545455
 
+@implementation DGSuspensionBubbleConfig
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.buttonType = UIButtonTypeCustom;
+        self.showClickAnimation = YES;
+        self.showLongPressAnimation = YES;
+    }
+    return self;
+}
+
+@end
+
 @interface DGSuspensionBubble()
 
 @property (nonatomic, strong) DGSuspensionBubbleConfig *config;
@@ -58,7 +72,6 @@
         self.windowLevel = 2000000;
         // rootViewController
         self.rootViewController = [[UIViewController alloc] init];
-        self.contentView.alpha = self.config.leanStateAlpha;
         // button
         [self setupBtn];
     }
@@ -140,7 +153,6 @@
         self.center = CGPointMake(panPoint.x, panPoint.y);
     }else if(p.state == UIGestureRecognizerStateEnded
              || p.state == UIGestureRecognizerStateCancelled) {
-        self.contentView.alpha = self.config.leanStateAlpha;
         CGPoint newCenter = [DGSuspensionBubble checkNewCenterWithPoint:panPoint size:self.frame.size];
         [UIView animateWithDuration:.25 animations:^{
             self.center = newCenter;

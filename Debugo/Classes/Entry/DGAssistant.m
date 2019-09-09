@@ -120,7 +120,6 @@ static DGAssistant *_instance;
     
     DGSuspensionBubbleConfig *config = [DGSuspensionBubbleConfig new];
     config.buttonType = UIButtonTypeSystem;
-    config.leanStateAlpha = .9;
     
     DGSuspensionBubble *debugBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:config];

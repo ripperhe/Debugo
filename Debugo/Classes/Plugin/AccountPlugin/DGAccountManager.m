@@ -112,7 +112,6 @@ static DGAccountManager *_instance;
     
     DGSuspensionBubbleConfig *config = [DGSuspensionBubbleConfig new];
     config.buttonType = UIButtonTypeSystem;
-    config.leanStateAlpha = .9;
     config.showLongPressAnimation = NO;
     
     DGSuspensionBubble *loginBubble = [[DGSuspensionBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (165 + 55 + kDGBottomSafeMargin), 55, 55)

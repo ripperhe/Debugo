@@ -9,11 +9,22 @@
 
 
 #import "DGWindow.h"
-#import "DGSuspensionBubbleConfig.h"
+
+@interface DGSuspensionBubbleConfig : NSObject
+
+@property (nonatomic, assign) UIButtonType buttonType;
+@property (nonatomic, assign) BOOL showClickAnimation;
+@property (nonatomic, assign) BOOL showLongPressAnimation;
+
+@end
 
 @interface DGSuspensionBubble : DGWindow
 
 @property (nonatomic, strong, readonly) DGSuspensionBubbleConfig *config;
+/// 内容视图
+@property (nonatomic, weak, readonly) UIView *contentView;
+/// 默认 button
+@property (nonatomic, weak, readonly) UIButton *button;
 
 @property (nonatomic, copy) void(^clickBlock)(DGSuspensionBubble *bubble);
 @property (nonatomic, copy) void(^longPressStartBlock)(DGSuspensionBubble *bubble);
@@ -21,15 +32,12 @@
 @property (nonatomic, copy) void(^panStartBlock)(DGSuspensionBubble *bubble);
 @property (nonatomic, copy) void(^panEndBlock)(DGSuspensionBubble *bubble);
 
-/** Backgouround view. Add subview to this view */
-@property (nonatomic, weak, readonly) UIView *contentView;
-/** Button view */
-@property (nonatomic, weak, readonly) UIButton *button;
-
 - (instancetype)initWithFrame:(CGRect)frame config:(DGSuspensionBubbleConfig *)config;
 
+/// 显示
 - (void)show;
 
+/// 销毁
 - (void)removeFromScreen;
 
 @end

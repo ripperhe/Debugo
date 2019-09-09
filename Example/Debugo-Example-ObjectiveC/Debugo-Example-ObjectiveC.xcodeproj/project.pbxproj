@@ -54,7 +54,6 @@
 		C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */; };
 		C9B45712221D2B460098644E /* DGSuspensionBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B5221D2B460098644E /* DGSuspensionBubble.m */; };
 		C9B45713221D2B460098644E /* DGWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGWindow.m */; };
-		C9B45714221D2B460098644E /* DGSuspensionBubbleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B9221D2B460098644E /* DGSuspensionBubbleConfig.m */; };
 		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
 		C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C1221D2B460098644E /* DGFileBrowser.m */; };
 		C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C2221D2B460098644E /* DGFileInfoViewController.m */; };
@@ -183,10 +182,8 @@
 		C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebuggingOverlay.m; sourceTree = "<group>"; };
 		C9B456B5221D2B460098644E /* DGSuspensionBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionBubble.m; sourceTree = "<group>"; };
 		C9B456B8221D2B460098644E /* DGWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWindow.m; sourceTree = "<group>"; };
-		C9B456B9221D2B460098644E /* DGSuspensionBubbleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionBubbleConfig.m; sourceTree = "<group>"; };
 		C9B456BB221D2B460098644E /* DGSuspensionBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionBubble.h; sourceTree = "<group>"; };
 		C9B456BC221D2B460098644E /* DGWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWindow.h; sourceTree = "<group>"; };
-		C9B456BE221D2B460098644E /* DGSuspensionBubbleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionBubbleConfig.h; sourceTree = "<group>"; };
 		C9B456C0221D2B460098644E /* DGFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileParser.m; sourceTree = "<group>"; };
 		C9B456C1221D2B460098644E /* DGFileBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileBrowser.m; sourceTree = "<group>"; };
 		C9B456C2221D2B460098644E /* DGFileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileInfoViewController.m; sourceTree = "<group>"; };
@@ -290,22 +287,17 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		C9034DDF2324DC96003D8984 /* EntryWindow */ = {
+		C9034DDF2324DC96003D8984 /* Entry */ = {
 			isa = PBXGroup;
 			children = (
-				C9B456B4221D2B460098644E /* DGSuspensionBubble */,
-			);
-			path = EntryWindow;
-			sourceTree = "<group>";
-		};
-		C9034DE02324DCC1003D8984 /* DebugWindow */ = {
-			isa = PBXGroup;
-			children = (
-				C916195422A13DFC009FF2A3 /* Setting */,
 				C9B45666221D2B460098644E /* DGAssistant.h */,
 				C9B4566A221D2B460098644E /* DGAssistant.m */,
+				C9B456BB221D2B460098644E /* DGSuspensionBubble.h */,
+				C9B456B5221D2B460098644E /* DGSuspensionBubble.m */,
+				C9B45685221D2B460098644E /* DGSettingViewController.h */,
+				C9B45689221D2B460098644E /* DGSettingViewController.m */,
 			);
-			path = DebugWindow;
+			path = Entry;
 			sourceTree = "<group>";
 		};
 		C9034DE12324DCE6003D8984 /* Action */ = {
@@ -342,22 +334,12 @@
 			children = (
 				C9034DDE2324DC7B003D8984 /* API */,
 				C9B45692221D2B460098644E /* Common */,
-				C9034DDF2324DC96003D8984 /* EntryWindow */,
-				C9034DE02324DCC1003D8984 /* DebugWindow */,
+				C9034DDF2324DC96003D8984 /* Entry */,
 				C9034DE12324DCE6003D8984 /* Action */,
 				C9034DE22324DD12003D8984 /* File */,
 				C9B45690221D2B460098644E /* Plugin */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		C916195422A13DFC009FF2A3 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45685221D2B460098644E /* DGSettingViewController.h */,
-				C9B45689221D2B460098644E /* DGSettingViewController.m */,
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		C9B45634221D02A50098644E = {
@@ -422,7 +404,7 @@
 			path = ../../Debugo;
 			sourceTree = "<group>";
 		};
-		C9B4566E221D2B460098644E /* Account */ = {
+		C9B4566E221D2B460098644E /* AccountPlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C916194822A1222C009FF2A3 /* DGAccountConfiguration.h */,
@@ -436,7 +418,7 @@
 				C9C210A622A110DE00D5EEDE /* DGAccountManager.h */,
 				C9C210A722A110DE00D5EEDE /* DGAccountManager.m */,
 			);
-			path = Account;
+			path = AccountPlugin;
 			sourceTree = "<group>";
 		};
 		C9B4567A221D2B460098644E /* Controller */ = {
@@ -459,11 +441,11 @@
 			children = (
 				C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */,
 				C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */,
-				C9B4566E221D2B460098644E /* Account */,
-				C9B456E7221D2B460098644E /* DGFPSLabel */,
-				C9B456B1221D2B460098644E /* DGDebuggingOverlay */,
-				C9B456EC221D2B460098644E /* DGTouchMonitor */,
-				C9C2109822A0DB4200D5EEDE /* DGAppInfo */,
+				C9B4566E221D2B460098644E /* AccountPlugin */,
+				C9B456E7221D2B460098644E /* FPSPlugin */,
+				C9B456B1221D2B460098644E /* ApplePlugin */,
+				C9B456EC221D2B460098644E /* TouchPlugin */,
+				C9C2109822A0DB4200D5EEDE /* AppInfoPlugin */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -540,24 +522,13 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		C9B456B1221D2B460098644E /* DGDebuggingOverlay */ = {
+		C9B456B1221D2B460098644E /* ApplePlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C9B456B2221D2B460098644E /* DGDebuggingOverlay.h */,
 				C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */,
 			);
-			path = DGDebuggingOverlay;
-			sourceTree = "<group>";
-		};
-		C9B456B4221D2B460098644E /* DGSuspensionBubble */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456BB221D2B460098644E /* DGSuspensionBubble.h */,
-				C9B456B5221D2B460098644E /* DGSuspensionBubble.m */,
-				C9B456BE221D2B460098644E /* DGSuspensionBubbleConfig.h */,
-				C9B456B9221D2B460098644E /* DGSuspensionBubbleConfig.m */,
-			);
-			path = DGSuspensionBubble;
+			path = ApplePlugin;
 			sourceTree = "<group>";
 		};
 		C9B456BF221D2B460098644E /* DGFileBrowser */ = {
@@ -615,7 +586,7 @@
 			path = DatabasePreview;
 			sourceTree = "<group>";
 		};
-		C9B456E7221D2B460098644E /* DGFPSLabel */ = {
+		C9B456E7221D2B460098644E /* FPSPlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C9B456E8221D2B460098644E /* DGWeakProxy.h */,
@@ -623,10 +594,10 @@
 				C9B456EA221D2B460098644E /* DGFPSLabel.h */,
 				C9B456E9221D2B460098644E /* DGFPSLabel.m */,
 			);
-			path = DGFPSLabel;
+			path = FPSPlugin;
 			sourceTree = "<group>";
 		};
-		C9B456EC221D2B460098644E /* DGTouchMonitor */ = {
+		C9B456EC221D2B460098644E /* TouchPlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C9B456EF221D2B460098644E /* DGTouchMonitor.h */,
@@ -638,16 +609,16 @@
 				C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */,
 				C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */,
 			);
-			path = DGTouchMonitor;
+			path = TouchPlugin;
 			sourceTree = "<group>";
 		};
-		C9C2109822A0DB4200D5EEDE /* DGAppInfo */ = {
+		C9C2109822A0DB4200D5EEDE /* AppInfoPlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C9B4568D221D2B460098644E /* DGAppInfoViewController.h */,
 				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
 			);
-			path = DGAppInfo;
+			path = AppInfoPlugin;
 			sourceTree = "<group>";
 		};
 		C9E73FC2221D397200BA9149 /* Podspec Metadata */ = {
@@ -831,7 +802,6 @@
 				C9C210A222A10A8300D5EEDE /* DGActionManager.m in Sources */,
 				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
 				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
-				C9B45714221D2B460098644E /* DGSuspensionBubbleConfig.m in Sources */,
 				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
 				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
 				C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */,
