@@ -17,6 +17,4 @@
 @property (nonatomic, assign) BOOL showClickAnimation;
 @property (nonatomic, assign) BOOL showLongPressAnimation;
 
-+ (instancetype)defaultConfig;
-
 @end

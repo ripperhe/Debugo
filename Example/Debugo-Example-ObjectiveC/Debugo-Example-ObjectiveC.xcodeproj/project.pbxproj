@@ -55,7 +55,6 @@
 		C9B45712221D2B460098644E /* DGSuspensionBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B5221D2B460098644E /* DGSuspensionBubble.m */; };
 		C9B45713221D2B460098644E /* DGWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGWindow.m */; };
 		C9B45714221D2B460098644E /* DGSuspensionBubbleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B9221D2B460098644E /* DGSuspensionBubbleConfig.m */; };
-		C9B45715221D2B460098644E /* DGSuspensionBubbleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456BA221D2B460098644E /* DGSuspensionBubbleManager.m */; };
 		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
 		C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C1221D2B460098644E /* DGFileBrowser.m */; };
 		C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C2221D2B460098644E /* DGFileInfoViewController.m */; };
@@ -183,10 +182,8 @@
 		C9B456B2221D2B460098644E /* DGDebuggingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebuggingOverlay.h; sourceTree = "<group>"; };
 		C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebuggingOverlay.m; sourceTree = "<group>"; };
 		C9B456B5221D2B460098644E /* DGSuspensionBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionBubble.m; sourceTree = "<group>"; };
-		C9B456B6221D2B460098644E /* DGSuspensionBubbleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionBubbleManager.h; sourceTree = "<group>"; };
 		C9B456B8221D2B460098644E /* DGWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWindow.m; sourceTree = "<group>"; };
 		C9B456B9221D2B460098644E /* DGSuspensionBubbleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionBubbleConfig.m; sourceTree = "<group>"; };
-		C9B456BA221D2B460098644E /* DGSuspensionBubbleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSuspensionBubbleManager.m; sourceTree = "<group>"; };
 		C9B456BB221D2B460098644E /* DGSuspensionBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionBubble.h; sourceTree = "<group>"; };
 		C9B456BC221D2B460098644E /* DGWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWindow.h; sourceTree = "<group>"; };
 		C9B456BE221D2B460098644E /* DGSuspensionBubbleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSuspensionBubbleConfig.h; sourceTree = "<group>"; };
@@ -559,8 +556,6 @@
 				C9B456B5221D2B460098644E /* DGSuspensionBubble.m */,
 				C9B456BE221D2B460098644E /* DGSuspensionBubbleConfig.h */,
 				C9B456B9221D2B460098644E /* DGSuspensionBubbleConfig.m */,
-				C9B456B6221D2B460098644E /* DGSuspensionBubbleManager.h */,
-				C9B456BA221D2B460098644E /* DGSuspensionBubbleManager.m */,
 			);
 			path = DGSuspensionBubble;
 			sourceTree = "<group>";
@@ -792,7 +787,6 @@
 			files = (
 				C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */,
 				C9B45717221D2B460098644E /* DGFileParser.m in Sources */,
-				C9B45715221D2B460098644E /* DGSuspensionBubbleManager.m in Sources */,
 				C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */,
 				C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */,
 				C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */,

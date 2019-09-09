@@ -10,12 +10,10 @@
 #import "DGCache.h"
 #import "DGQuickLoginViewController.h"
 
-NSString * const kDGLoginWindowKey = @"kDGLoginWindowKey";
-
 @interface DGAccountManager()<DGSuspensionBubbleDelegate>
 
 @property (nonatomic, weak) DGSuspensionBubble *loginBubble;
-@property (nonatomic, weak, nullable) DGWindow *loginWindow;
+@property (nonatomic, strong, nullable) DGWindow *loginWindow;
 
 @end
 
@@ -134,7 +132,8 @@ static DGAccountManager *_instance;
 
 #pragma mark - login view controller
 - (void)removeLoginWindow {
-    [DGSuspensionBubbleManager.shared destroyWindowForKey:kDGLoginWindowKey];
+    [self.loginWindow destroy];
+    self.loginWindow = nil;
 }
 
 #pragma mark - DGSuspensionBubbleDelegate
@@ -149,8 +148,6 @@ static DGAccountManager *_instance;
         window.name = @"Login Window";
         window.rootViewController = loginVC;
         window.windowLevel = 1000000;
-        
-        [DGSuspensionBubbleManager.shared saveWindow:window forKey:kDGLoginWindowKey];
         self.loginWindow = window;
         
         // show

@@ -37,7 +37,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 ///------------------------------------------------
 
 @property (nonatomic, weak, readonly) DGSuspensionBubble *debugBubble;
-@property (nonatomic, weak, readonly) DGWindow *debugWindow;
+@property (nonatomic, strong, readonly) DGWindow *debugWindow;
 @property (nonatomic, weak, readonly) DGDebugViewController *debugViewController;
 
 - (void)showDebugBubble;

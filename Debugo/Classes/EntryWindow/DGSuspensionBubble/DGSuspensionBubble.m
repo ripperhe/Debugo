@@ -56,14 +56,9 @@
     CGFloat h = frame.size.height;
     frame = CGRectMake(newCenter.x - w * 0.5, newCenter.y - h * 0.5, w, h);
     
-    // config
-    if (!config) {
-        config = [DGSuspensionBubbleConfig defaultConfig];
-    }
-
     if(self = [super initWithFrame:frame]) {
-        self.config = config;
-        
+        self.config = config ?: [DGSuspensionBubbleConfig new];
+        self.windowLevel = 2000000;
         // rootViewController
         self.rootViewController = [[UIViewController alloc] init];
         self.contentView.alpha = self.config.leanStateAlpha;
@@ -251,15 +246,21 @@
 }
 
 #pragma mark - public methods
+static NSMutableDictionary<NSString *, DGSuspensionBubble *> *_bubbleManager = nil;
 - (void)show {
-    if ([DGSuspensionBubbleManager.shared windowForKey:self.memoryAddressKey]) return;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _bubbleManager = [NSMutableDictionary dictionary];
+    });
+    if ([_bubbleManager objectForKey:self.memoryAddressKey]) return;
 
     [self setHidden:NO];
-    [DGSuspensionBubbleManager.shared saveWindow:self forKey:self.memoryAddressKey];
+    [_bubbleManager setObject:self forKey:self.memoryAddressKey];
 }
 
 - (void)removeFromScreen {
-    [DGSuspensionBubbleManager.shared destroyWindowForKey:self.memoryAddressKey];
+    [self destroy];
+    [_bubbleManager removeObjectForKey:self.memoryAddressKey];
 }
 
 @end

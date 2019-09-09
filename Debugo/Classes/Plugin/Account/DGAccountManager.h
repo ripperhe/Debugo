@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic, weak, readonly) DGSuspensionBubble *loginBubble;
-@property (nonatomic, weak, readonly) DGWindow *loginWindow;
+@property (nonatomic, strong, readonly) DGWindow *loginWindow;
 
 - (void)showLoginBubble;
 

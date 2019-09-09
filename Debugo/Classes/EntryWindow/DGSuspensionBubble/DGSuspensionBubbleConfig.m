@@ -12,10 +12,6 @@
 
 @implementation DGSuspensionBubbleConfig
 
-+ (instancetype)defaultConfig {
-    return [[self alloc] init];
-}
-
 - (instancetype)init {
     self = [super init];
     if (self) {

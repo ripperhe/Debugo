@@ -16,8 +16,6 @@
 #import "DGActionManager.h"
 #import "DGFileManager.h"
 
-static NSString * const kDGDebugWindowKey = @"kDGDebugWindowKey";
-
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
 
@@ -27,7 +25,7 @@ UIWindowLevel const DGContentWindowLevel = 999999;
 @interface DGAssistant ()<DGSuspensionBubbleDelegate>
 
 @property (nonatomic, weak) DGSuspensionBubble *debugBubble;
-@property (nonatomic, weak) DGWindow *debugWindow;
+@property (nonatomic, strong) DGWindow *debugWindow;
 @property (nonatomic, weak, nullable) DGDebugViewController *debugViewController;
 
 @end
@@ -143,7 +141,8 @@ static DGAssistant *_instance;
 #pragma mark - debug view controller
 - (void)removeDebugWindow {
     [self closeDebugWindow];
-    [DGSuspensionBubbleManager.shared destroyWindowForKey:kDGDebugWindowKey];
+    [self.debugWindow destroy];
+    self.debugWindow = nil;
 }
 
 - (void)closeDebugWindow {
@@ -190,8 +189,6 @@ static DGAssistant *_instance;
         window.name = @"Debug Window";
         window.rootViewController = debugVC;
         window.windowLevel = DGContentWindowLevel;
-        [DGSuspensionBubbleManager.shared saveWindow:window forKey:kDGDebugWindowKey];
-        
         self.debugViewController = debugVC;
         self.debugWindow = window;
         

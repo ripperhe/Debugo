@@ -10,7 +10,6 @@
 
 #import "DGWindow.h"
 #import "DGSuspensionBubbleConfig.h"
-#import "DGSuspensionBubbleManager.h"
 
 @class DGSuspensionBubble;
 @protocol DGSuspensionBubbleDelegate <NSObject>

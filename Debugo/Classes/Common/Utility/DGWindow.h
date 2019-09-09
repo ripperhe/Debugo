@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL dg_canBecomeKeyWindow;
 @property (nonatomic, assign) BOOL dg_isInternalWindow;
 
+- (void)destroy;
+
 @end
 
 NS_ASSUME_NONNULL_END

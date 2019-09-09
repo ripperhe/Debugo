@@ -17,11 +17,18 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.windowLevel = 2000000;
         // 防止旋转时四周有黑边
         self.clipsToBounds = YES;
     }
     return self;
+}
+
+- (void)destroy {
+    self.hidden = YES;
+    if (self.rootViewController.presentedViewController) {
+        [self.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    self.rootViewController = nil;
 }
 
 - (NSString *)description {
