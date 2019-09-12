@@ -17,7 +17,7 @@
 }
 
 + (UIImage *)pluginImage {
-    return [DGBundle imageNamed:@"app"];
+    return [DGBundle imageNamed:@"plugin_app"];
 }
 
 + (Class)pluginViewControllerClass {

@@ -43,7 +43,7 @@
 }
 
 + (UIImage *)pluginImage {
-    return [DGBundle imageNamed:@"app"];
+    return [DGBundle imageNamed:@"plugin_apple"];
 }
 
 + (BOOL)pluginSwitch {

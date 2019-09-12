@@ -23,7 +23,7 @@
 }
 
 + (UIImage *)pluginImage {
-    return [DGBundle imageNamed:@"app"];
+    return [DGBundle imageNamed:@"plugin_account"];
 }
 
 + (BOOL)pluginSwitch {

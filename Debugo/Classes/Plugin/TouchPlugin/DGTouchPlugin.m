@@ -23,7 +23,7 @@ static DGTouchWindow *_touchWindow = nil;
 }
 
 + (UIImage *)pluginImage {
-    return [DGBundle imageNamed:@"app"];
+    return [DGBundle imageNamed:@"plugin_touch"];
 }
 
 + (Class)pluginViewControllerClass {

@@ -37,17 +37,17 @@
     DGActionViewController *testVC = [[DGActionViewController alloc] initWithStyle:UITableViewStyleGrouped];
     testVC.navigationItem.title = @"指令";
     DGNavigationController *testNavigationVC = [[DGNavigationController alloc] initWithRootViewController:testVC];
-    testNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"指令" image:[DGBundle imageNamed:@"action"] tag:0];
+    testNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"指令" image:[[DGBundle imageNamed:@"tab_action_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_action_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     DGFileViewController *fileVC = [[DGFileViewController alloc] initWithStyle:UITableViewStyleGrouped];
     fileVC.navigationItem.title = @"文件";
     DGNavigationController *fileNavigationVC = [[DGNavigationController alloc] initWithRootViewController:fileVC];
-    fileVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文件" image:[DGBundle imageNamed:@"file"] tag:0];
+    fileVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文件" image:[[DGBundle imageNamed:@"tab_file_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_file_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     DGPluginViewController *pluginVC = [DGPluginViewController new];
     pluginVC.navigationItem.title = @"工具";
     DGNavigationController *pluginNavigationVC = [[DGNavigationController alloc] initWithRootViewController:pluginVC];
-    pluginVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"工具" image:[DGBundle imageNamed:@"file"] tag:0];
+    pluginVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"工具" image:[[DGBundle imageNamed:@"tab_plugin_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_plugin_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     self.viewControllers = @[testNavigationVC, fileNavigationVC, pluginNavigationVC];
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
