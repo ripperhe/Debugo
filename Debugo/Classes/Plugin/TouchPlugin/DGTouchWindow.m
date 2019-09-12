@@ -24,7 +24,7 @@ static const void* kDGFingerViewAssociatedKey = &kDGFingerViewAssociatedKey;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.name = @"Touch Window";
+        self.name = @"DGTouchPlugin Window";
         
         // Lets place this window above everything
         self.windowLevel = CGFLOAT_MAX;

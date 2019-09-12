@@ -12,6 +12,7 @@
 #import "DGCommon.h"
 #import "DGTouchWindow.h"
 #import "UIApplication+DGTouchPlugin.h"
+#import "DGTouchPluginViewController.h"
 
 @interface DGTouchPlugin ()
 
@@ -28,6 +29,10 @@
 
 + (UIImage *)pluginImage {
     return [DGBundle imageNamed:@"app"];
+}
+
++ (Class)pluginViewControllerClass {
+    return [DGTouchPluginViewController class];
 }
 
 + (BOOL)pluginSwitch {

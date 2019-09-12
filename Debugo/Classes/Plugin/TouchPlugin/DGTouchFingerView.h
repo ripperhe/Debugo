@@ -8,11 +8,8 @@
 //
 
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
-/*!
- *  Represents a single view on screen.
- */
 @interface DGTouchFingerView : UIView
 
 - (id)initWithPoint:(CGPoint)point;

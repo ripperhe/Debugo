@@ -26,6 +26,7 @@
 @interface DGCommonGridViewController ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) NSMutableArray<DGCommonGridButton *> *gridButtons;
 @property (nonatomic, strong) CAShapeLayer *gridLayer;
 
@@ -108,6 +109,7 @@
     }];
     
     self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.gridButtons.lastObject.frame));
+    self.separatorView.dg_size = self.scrollView.contentSize;
     self.gridLayer.path = path.CGPath;
 }
 
@@ -124,22 +126,26 @@
 }
 
 - (void)setupViews {
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = kDGBackgroundColor;
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
-    
-    self.gridLayer = [CAShapeLayer dg_make:^(CAShapeLayer * layer) {
-        layer.strokeColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.00].CGColor;
-        layer.lineWidth = 0.5;
-    }];
-    [self.scrollView.layer addSublayer:self.gridLayer];
     
     [self.dataArray enumerateObjectsUsingBlock:^(DGCommonGridConfiguration * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         DGCommonGridButton *button = [self generateButtonWithConfiguration:obj index:idx];
         [self.gridButtons addObject:button];
         [self.scrollView addSubview:button];
     }];
+    
+    self.separatorView = [UIView dg_make:^(UIView *view) {
+        view.backgroundColor = [UIColor clearColor];
+        self.gridLayer = [CAShapeLayer dg_make:^(CAShapeLayer * layer) {
+            layer.strokeColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.00].CGColor;
+            layer.lineWidth = 0.5;
+        }];
+        [view.layer addSublayer:self.gridLayer];
+    }];
+    [self.scrollView addSubview:self.separatorView];
 }
 
 - (DGCommonGridButton *)generateButtonWithConfiguration:(DGCommonGridConfiguration *)configuration index:(NSInteger)index {
@@ -153,6 +159,7 @@
     
     DGCommonGridButton *button = [[DGCommonGridButton alloc] init];
     button.tag = index;
+    [button setBackgroundColor:[UIColor whiteColor]];
     [button setAttributedTitle:attributedString forState:UIControlStateNormal];
     if (configuration.imageName.length) {
         [button setImage:[DGBundle imageNamed:configuration.imageName] forState:UIControlStateNormal];

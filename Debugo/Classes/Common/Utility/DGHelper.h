@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define kDGStatusBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height)
 #define kDGBottomSafeMargin (([DGDevice currentDevice].isNotchUI) ? 34.0 : 0.0)
+#define kDGNavigationTotalHeight (self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height)
 
+#define kDGBackgroundColor [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1.00]
 #define kDGHighlightColor [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0]
 
 #define kDGImpactFeedback \

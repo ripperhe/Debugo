@@ -9,6 +9,7 @@
 
 
 #import "DGTouchFingerView.h"
+#import "DGCommon.h"
 
 CGFloat const DGDefaultMaxFingerRadius = 22.0;
 CGFloat const DGDefaultForceTouchScale = 1.5;
@@ -80,12 +81,14 @@ CGFloat const DGDefaultForceTouchScale = 1.5;
 }
 
 - (void)removeFromSuperviewWithAnimation {
-    __weak typeof(self) weakSelf = self;
+    dg_weakify(self)
     [UIView animateWithDuration:self.touchEndAnimationDuration animations:^{
+        dg_strongify(self)
         self.alpha = 0.0f;
         self.layer.transform = self.touchEndTransform;
     } completion:^(BOOL finished) {
-        [weakSelf removeFromSuperview];
+        dg_strongify(self)
+        [self removeFromSuperview];
     }];
 }
 
