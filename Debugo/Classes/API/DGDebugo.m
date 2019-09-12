@@ -13,12 +13,6 @@
 #import "DGActionManager.h"
 #import "DGAccountPlugin.h"
 
-void debugo_exec_main_queue(void (^handler)(void)) {
-#if DebugoCanBeEnabled
-    dg_dispatch_main_safe(handler);
-#endif
-}
-
 #if DebugoCanBeEnabled
 void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
     NSString *currentUser = dg_current_user();
@@ -73,7 +67,7 @@ static DGDebugo *_instance = nil;
 
 #pragma mark -
 + (void)fireWithConfiguration:(void (^)(DGConfiguration *configuration))configurationHandler {
-    debugo_exec_main_queue(^{
+    dg_exec_main_queue_only_can_be_enabled(^{
         if (DGDebugo.shared.isFire) return;
         
         DGDebugo.shared->_isFire = YES;
@@ -86,7 +80,7 @@ static DGDebugo *_instance = nil;
 }
 
 //+ (void)stop {
-//    debugo_exec_main_queue(^{
+//    dg_exec_main_queue_only_can_be_enabled(^{
 //        if (!DGDebugo.shared.isFire) return;
 //
 //        DGDebugo.shared->_isFire = NO;
@@ -95,7 +89,7 @@ static DGDebugo *_instance = nil;
 //}
 
 + (void)closeDebugWindow {
-    debugo_exec_main_queue(^{
+    dg_exec_main_queue_only_can_be_enabled(^{
         if (!DGDebugo.shared.isFire) return;
         
         [DGAssistant.shared closeDebugWindow];
@@ -105,19 +99,19 @@ static DGDebugo *_instance = nil;
 #pragma mark - action
 
 + (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler {
-    debugo_exec_main_queue(^{
+    dg_exec_main_queue_only_can_be_enabled(^{
         [DGActionManager.shared addActionForUser:nil withTitle:title autoClose:YES handler:handler];
     });
 }
 
 + (void)addActionForUser:(NSString *)user title:(NSString *)title handler:(DGActionHandlerBlock)handler {
-    debugo_exec_main_queue(^{
+    dg_exec_main_queue_only_can_be_enabled(^{
         [DGActionManager.shared addActionForUser:user withTitle:title autoClose:YES handler:handler];
     });
 }
 
 + (void)addActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler {
-    debugo_exec_main_queue(^{
+    dg_exec_main_queue_only_can_be_enabled(^{
         [DGActionManager.shared addActionForUser:user withTitle:title autoClose:autoClose handler:handler];
     });
 }
@@ -125,7 +119,7 @@ static DGDebugo *_instance = nil;
 #pragma mark - account plugin
 
 + (void)accountPluginAddAccount:(DGAccount *)account {
-    debugo_exec_main_queue(^{
+    dg_exec_main_queue_only_can_be_enabled(^{
         if (!DGDebugo.shared.isFire) return;
         
         if ([account isKindOfClass:[DGAccount class]] && account.isValid){

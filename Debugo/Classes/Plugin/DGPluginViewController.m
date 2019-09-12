@@ -9,10 +9,10 @@
 
 #import "DGPluginViewController.h"
 #import "DGAssistant.h"
-#import "DGAppInfoViewController.h"
-#import "DGAccountPlugin.h"
-#import "DGDebuggingOverlay.h"
 #import "DGAppInfoPlugin.h"
+#import "DGAccountPlugin.h"
+#import "DGApplePlugin.h"
+#import "DGTouchPlugin.h"
 
 @interface DGPluginViewController ()
 
@@ -22,49 +22,29 @@
 
 - (void)setupDatasouce {
     [self addPlugin:DGAppInfoPlugin.class];
-//    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-//        configuration.title = @"APP信息";
-//        configuration.imageName = @"app";
-//        configuration.selectedPushViewControllerClass = DGAppInfoViewController.class;
-//    }];
-    
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"快速登录";
-        configuration.imageName = @"app";
-        [configuration setSelectedBlock:^{
-            [DGAssistant.shared closeDebugWindow];
-            [DGAccountPlugin.shared showLoginWindow];
-        }];
-    }];
-    
-    [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = @"Apple内部神器";
-        configuration.imageName = @"app";
-        [configuration setSelectedBlock:^{
-            [DGAssistant.shared closeDebugWindow];
-            [DGDebuggingOverlay showDebuggingInformation];
-        }];
-    }];
+    [self addPlugin:DGAccountPlugin.class];
+    [self addPlugin:DGApplePlugin.class];
+    [self addPlugin:DGTouchPlugin.class];
 }
 
-- (void)addPlugin:(Class<DGPluginProtocol>)pluginClass {
-    if (![pluginClass.class isSubclassOfClass:[DGPlugin class]]) {
-        return;
-    }
-    if (![pluginClass performSelector:@selector(pluginCanFire)]) {
+- (void)addPlugin:(id)plugin {
+    if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
+        NSAssert(0, @"Debugo: 只能添加组件");
         return;
     }
     
     [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
-        configuration.title = [pluginClass performSelector:@selector(pluginName)];
-        configuration.image = [pluginClass performSelector:@selector(pluginImage)];
-        Class vcClass = [pluginClass performSelector:@selector(pluginViewControllerClass)];
+        configuration.title = dg_invoke(plugin, @selector(pluginName), nil) ?: NSStringFromClass([plugin class]);
+        configuration.image = dg_invoke(plugin, @selector(pluginImage), nil) ?: [DGBundle imageNamed:@"app"];
+        Class vcClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
         if (vcClass) {
+            // 有控制器，跳转到控制器
             configuration.selectedPushViewControllerClass = vcClass;
         }else {
+            // 无控制器，直接启用
             [configuration setSelectedBlock:^{
                 [DGAssistant.shared closeDebugWindow];
-                [pluginClass performSelector:@selector(pluginFire)];
+                dg_invoke(plugin, @selector(setPluginSwitch:), @[@YES]);
             }];
         }
     }];

@@ -60,7 +60,7 @@ static DGAssistant *_instance;
     [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
     [DGCache.shared.settingPlister setBool:self.configuration.isOpenFPS forKey:kDGSettingIsOpenFPS];
     
-    DGTouchMonitor.shared.shouldDisplayTouches = self.configuration.isShowTouches;
+    [DGTouchPlugin setPluginSwitch:self.configuration.isShowTouches];
     [DGCache.shared.settingPlister setBool:self.configuration.isShowTouches forKey:kDGSettingIsShowTouches];
 
     // file
@@ -77,14 +77,14 @@ static DGAssistant *_instance;
 
 - (void)reset {
     [self refreshDebugBubbleWithIsOpenFPS:NO];
-    DGTouchMonitor.shared.shouldDisplayTouches = NO;
+    [DGTouchPlugin setPluginSwitch:NO];
     
     self->_configuration = nil;
     
     [self removeDebugBubble];
     [self removeDebugWindow];
     
-    [DGAccountPlugin.shared reset];
+    [DGAccountPlugin setPluginSwitch:NO];
 }
 
 

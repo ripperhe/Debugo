@@ -18,6 +18,31 @@
 
 @implementation DGAccountPlugin
 
++ (NSString *)pluginName {
+    return @"快速登陆";
+}
+
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"app"];
+}
+
++ (BOOL)pluginSwitch {
+    if ([[self shared] loginWindow] && [[self shared] loginWindow].hidden == NO) {
+        return YES;
+    }
+    return NO;
+}
+
++ (void)setPluginSwitch:(BOOL)pluginSwitch {
+    if (pluginSwitch) {
+        [[self shared] showLoginWindow];
+    }else {
+        [[self shared] removeLoginWindow];
+    }
+}
+
+#pragma mark -
+
 static DGAccountPlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {
@@ -44,11 +69,6 @@ static DGAccountPlugin *_instance;
     }else{
         self.currentCommonAccountArray = self.configuration.commonDevelopmentAccounts;
     }
-}
-
-- (void)reset {
-    self.currentCommonAccountArray = nil;
-    [self removeLoginWindow];
 }
 
 #pragma mark - getter

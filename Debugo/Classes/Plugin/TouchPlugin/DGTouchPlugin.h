@@ -1,5 +1,5 @@
 //
-//  UIApplication+Event.h
+//  DGTouchPlugin.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,11 +7,8 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
+#import "DGPlugin.h"
 
-#import <UIKit/UIKit.h>
-
-extern NSString* const DGTouchMonitorDidSendTouchEventNotification;
-
-@interface UIApplication (DGTouchMonitor)
+@interface DGTouchPlugin : DGPlugin
 
 @end

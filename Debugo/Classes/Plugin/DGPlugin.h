@@ -18,26 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 图像
 + (UIImage *)pluginImage;
 
-/// 初始配置配置
-+ (void)pluginSetupWithConfiguration:(id)configuration;
-
 /// 组件对应控制器
 + (Class)pluginViewControllerClass;
 
-/// 是否可以启用
-+ (BOOL)pluginCanFire;
-
-/// 是否已经启用
-+ (BOOL)pluginIsFire;
-
-/// 触发
-+ (void)pluginFire;
-
-/// 停用
-+ (void)pluginStop;
-
-/// 关闭组件相关window
-+ (void)pluginCloseWindow;
+/// 开关
+@property (class, nonatomic, assign) BOOL pluginSwitch;
 
 @end
 

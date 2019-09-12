@@ -30,8 +30,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Plugin' do |pg|
-    pg.subspec 'DGDebuggingOverlay' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGDebuggingOverlay/**'
+    pg.subspec 'DGApplePlugin' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGApplePlugin/**'
       sb.dependency 'Debugo/Base'
     end
     pg.subspec 'DGBubble' do |sb|
@@ -44,8 +44,8 @@ Pod::Spec.new do |s|
       sb.dependency 'Debugo/Base'
       sb.dependency 'FMDB', '>= 2.7.2'
     end
-    pg.subspec 'DGTouchMonitor' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGTouchMonitor/**'
+    pg.subspec 'DGTouchPlugin' do |sb|
+      sb.source_files = 'Debugo/Plugin/DGTouchPlugin/**'
       sb.dependency 'Debugo/Base'
     end
     pg.subspec 'DGFPSLabel' do |sb|

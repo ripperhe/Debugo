@@ -1,5 +1,5 @@
 //
-//  DGDebuggingOverlay.m
+//  DGApplePlugin.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,7 +7,7 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGDebuggingOverlay.h"
+#import "DGApplePlugin.h"
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import "DebugoEnable.h"
@@ -36,10 +36,18 @@
 @end
 
 
-@implementation DGDebuggingOverlay
+@implementation DGApplePlugin
 
-+ (BOOL)isShowing {
-    __block BOOL isShowing = NO;
++ (NSString *)pluginName {
+    return @"Apple内部神器";
+}
+
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"app"];
+}
+
++ (BOOL)pluginSwitch {
+    __block BOOL pluginIsFire = NO;
     // private api
 #if DebugoCanBeEnabled
     NSArray *debugInfoComponents = @[@"U", @"IDe", @"bug", @"gin", @"gInfor", @"ma", @"ti", @"onO", @"ver", @"lay"];
@@ -49,17 +57,21 @@
     [allWindows enumerateObjectsUsingBlock:^(UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:debugInfoClass]) {
             if (obj.isHidden == NO) {
-                isShowing = YES;
+                pluginIsFire = YES;
             }
         }
     }];
 #endif
-    return isShowing;
+    return pluginIsFire;
 }
 
-+ (void)showDebuggingInformation {
-    if ([self isShowing] == NO) {
-        [self toggleOverlay];
++ (void)setPluginSwitch:(BOOL)pluginSwitch {
+    if (pluginSwitch) {
+        if ([self pluginSwitch] == NO) {
+            [self toggleOverlay];
+        }
+    }else {
+        DGLog(@"DGApplePlugin: 只能点击dismiss进行关闭");
     }
 }
 
@@ -104,7 +116,7 @@
         NSArray *toggleComponents = @[@"to", @"ggle", @"Visi", @"bili", @"ty"];
         [debugOverlayInstance performSelector:NSSelectorFromString([toggleComponents componentsJoinedByString:@""])];
     }else{
-        NSLog(@"DGDebuggingOverlay: 系统版本不支持");
+        NSLog(@"DGApplePlugin: 系统版本不支持");
     }
     
 #pragma clang diagnostic pop

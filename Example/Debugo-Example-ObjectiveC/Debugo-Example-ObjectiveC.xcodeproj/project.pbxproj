@@ -51,7 +51,7 @@
 		C9B4570E221D2B460098644E /* DGPlister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AB221D2B460098644E /* DGPlister.m */; };
 		C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AE221D2B460098644E /* DGOrderedDictionary.m */; };
 		C9B45710221D2B460098644E /* Debugo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B456B0221D2B460098644E /* Debugo.bundle */; };
-		C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */; };
+		C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B3221D2B460098644E /* DGApplePlugin.m */; };
 		C9B45712221D2B460098644E /* DGBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B5221D2B460098644E /* DGBubble.m */; };
 		C9B45713221D2B460098644E /* DGWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGWindow.m */; };
 		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
@@ -77,8 +77,8 @@
 		C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EB221D2B460098644E /* DGWeakProxy.m */; };
 		C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EE221D2B460098644E /* DGTouchFingerView.m */; };
 		C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F0221D2B460098644E /* DGTouchWindow.m */; };
-		C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchMonitor.m */; };
-		C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */; };
+		C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchPlugin.m */; };
+		C9B45730221D2B460098644E /* UIApplication+DGTouchPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F5221D2B460098644E /* UIApplication+DGTouchPlugin.m */; };
 		C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C2109C22A100A600D5EEDE /* DGUIMagic.m */; };
 		C9C210A222A10A8300D5EEDE /* DGActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A122A10A8300D5EEDE /* DGActionManager.m */; };
 		C9C210A822A110DE00D5EEDE /* DGAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */; };
@@ -180,8 +180,8 @@
 		C9B456AD221D2B460098644E /* DGOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOrderedDictionary.h; sourceTree = "<group>"; };
 		C9B456AE221D2B460098644E /* DGOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOrderedDictionary.m; sourceTree = "<group>"; };
 		C9B456B0221D2B460098644E /* Debugo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Debugo.bundle; sourceTree = "<group>"; };
-		C9B456B2221D2B460098644E /* DGDebuggingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebuggingOverlay.h; sourceTree = "<group>"; };
-		C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebuggingOverlay.m; sourceTree = "<group>"; };
+		C9B456B2221D2B460098644E /* DGApplePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGApplePlugin.h; sourceTree = "<group>"; };
+		C9B456B3221D2B460098644E /* DGApplePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGApplePlugin.m; sourceTree = "<group>"; };
 		C9B456B5221D2B460098644E /* DGBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBubble.m; sourceTree = "<group>"; };
 		C9B456B8221D2B460098644E /* DGWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWindow.m; sourceTree = "<group>"; };
 		C9B456BB221D2B460098644E /* DGBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBubble.h; sourceTree = "<group>"; };
@@ -229,12 +229,12 @@
 		C9B456EA221D2B460098644E /* DGFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFPSLabel.h; sourceTree = "<group>"; };
 		C9B456EB221D2B460098644E /* DGWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWeakProxy.m; sourceTree = "<group>"; };
 		C9B456EE221D2B460098644E /* DGTouchFingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchFingerView.m; sourceTree = "<group>"; };
-		C9B456EF221D2B460098644E /* DGTouchMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchMonitor.h; sourceTree = "<group>"; };
+		C9B456EF221D2B460098644E /* DGTouchPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchPlugin.h; sourceTree = "<group>"; };
 		C9B456F0221D2B460098644E /* DGTouchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchWindow.m; sourceTree = "<group>"; };
-		C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DGTouchMonitor.h"; sourceTree = "<group>"; };
-		C9B456F3221D2B460098644E /* DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchMonitor.m; sourceTree = "<group>"; };
+		C9B456F1221D2B460098644E /* UIApplication+DGTouchPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DGTouchPlugin.h"; sourceTree = "<group>"; };
+		C9B456F3221D2B460098644E /* DGTouchPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchPlugin.m; sourceTree = "<group>"; };
 		C9B456F4221D2B460098644E /* DGTouchFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchFingerView.h; sourceTree = "<group>"; };
-		C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DGTouchMonitor.m"; sourceTree = "<group>"; };
+		C9B456F5221D2B460098644E /* UIApplication+DGTouchPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DGTouchPlugin.m"; sourceTree = "<group>"; };
 		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
 		C9C2109B22A100A600D5EEDE /* DGUIMagic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGUIMagic.h; sourceTree = "<group>"; };
 		C9C2109C22A100A600D5EEDE /* DGUIMagic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGUIMagic.m; sourceTree = "<group>"; };
@@ -533,8 +533,8 @@
 		C9B456B1221D2B460098644E /* ApplePlugin */ = {
 			isa = PBXGroup;
 			children = (
-				C9B456B2221D2B460098644E /* DGDebuggingOverlay.h */,
-				C9B456B3221D2B460098644E /* DGDebuggingOverlay.m */,
+				C9B456B2221D2B460098644E /* DGApplePlugin.h */,
+				C9B456B3221D2B460098644E /* DGApplePlugin.m */,
 			);
 			path = ApplePlugin;
 			sourceTree = "<group>";
@@ -608,14 +608,14 @@
 		C9B456EC221D2B460098644E /* TouchPlugin */ = {
 			isa = PBXGroup;
 			children = (
-				C9B456EF221D2B460098644E /* DGTouchMonitor.h */,
-				C9B456F3221D2B460098644E /* DGTouchMonitor.m */,
+				C9B456EF221D2B460098644E /* DGTouchPlugin.h */,
+				C9B456F3221D2B460098644E /* DGTouchPlugin.m */,
 				C9B456F6221D2B460098644E /* DGTouchWindow.h */,
 				C9B456F0221D2B460098644E /* DGTouchWindow.m */,
 				C9B456F4221D2B460098644E /* DGTouchFingerView.h */,
 				C9B456EE221D2B460098644E /* DGTouchFingerView.m */,
-				C9B456F1221D2B460098644E /* UIApplication+DGTouchMonitor.h */,
-				C9B456F5221D2B460098644E /* UIApplication+DGTouchMonitor.m */,
+				C9B456F1221D2B460098644E /* UIApplication+DGTouchPlugin.h */,
+				C9B456F5221D2B460098644E /* UIApplication+DGTouchPlugin.m */,
 			);
 			path = TouchPlugin;
 			sourceTree = "<group>";
@@ -779,14 +779,14 @@
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
 				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
 				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
-				C9B4572F221D2B460098644E /* DGTouchMonitor.m in Sources */,
-				C9B45730221D2B460098644E /* UIApplication+DGTouchMonitor.m in Sources */,
+				C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */,
+				C9B45730221D2B460098644E /* UIApplication+DGTouchPlugin.m in Sources */,
 				C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */,
 				C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */,
 				C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
 				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
-				C9B45711221D2B460098644E /* DGDebuggingOverlay.m in Sources */,
+				C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */,
 				C9B45713221D2B460098644E /* DGWindow.m in Sources */,
 				C9B4570D221D2B460098644E /* DGDevice.m in Sources */,
 				C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */,

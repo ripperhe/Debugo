@@ -11,8 +11,8 @@
 #import <Foundation/Foundation.h>
 #import "DGDebugo+Additional.h"
 #import "DGBubble.h"
-#import "DGTouchMonitor.h"
-#import "DGDebuggingOverlay.h"
+#import "DGTouchPlugin.h"
+#import "DGApplePlugin.h"
 #import "DGCommon.h"
 #import "DGConfiguration.h"
 #import "DGDebugViewController.h"

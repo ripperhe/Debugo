@@ -8,13 +8,13 @@
 //
 
 
-#import "UIApplication+DGTouchMonitor.h"
+#import "UIApplication+DGTouchPlugin.h"
 #import "DGCommon.h"
 #import "DebugoEnable.h"
 
-NSString * const DGTouchMonitorDidSendTouchEventNotification = @"DGTouchMonitorDidSendTouchEventNotification";
+NSString * const DGTouchPluginDidSendTouchEventNotification = @"DGTouchPluginDidSendTouchEventNotification";
 
-@implementation UIApplication (DGTouchMonitor)
+@implementation UIApplication (DGTouchPlugin)
 
 + (void)load {
 #if DebugoCanBeEnabled
@@ -27,7 +27,7 @@ NSString * const DGTouchMonitorDidSendTouchEventNotification = @"DGTouchMonitorD
 
 - (void)dg_sendEvent:(UIEvent *)event {
     if (event.type == UIEventTypeTouches) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGTouchMonitorDidSendTouchEventNotification object:event];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGTouchPluginDidSendTouchEventNotification object:event];
     }
     
     [self dg_sendEvent:event];

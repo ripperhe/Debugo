@@ -69,7 +69,7 @@
 
 #pragma mark - event
 - (void)closeLoginViewController {
-    [DGAccountPlugin.shared removeLoginWindow];
+    [DGAccountPlugin setPluginSwitch:NO];
 }
 
 @end

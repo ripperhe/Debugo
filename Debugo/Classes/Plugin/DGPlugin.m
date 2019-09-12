@@ -19,28 +19,15 @@
     return [DGBundle imageNamed:@"app"];
 }
 
-+ (void)pluginSetupWithConfiguration:(id)configuration {
-}
-
 + (Class)pluginViewControllerClass {
     return nil;
 }
 
-+ (BOOL)pluginCanFire {
-    return YES;
++ (void)setPluginSwitch:(BOOL)pluginSwitch {
 }
 
-+ (BOOL)pluginIsFire {
++ (BOOL)pluginSwitch {
     return NO;
-}
-
-+ (void)pluginFire {
-}
-
-+ (void)pluginStop {
-}
-
-+ (void)pluginCloseWindow {
 }
 
 @end

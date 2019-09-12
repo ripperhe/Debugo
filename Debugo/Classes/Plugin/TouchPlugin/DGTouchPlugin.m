@@ -1,5 +1,5 @@
 //
-//  DGTouchMonitor.m
+//  DGTouchPlugin.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,19 +8,39 @@
 //
 
 
-#import "DGTouchMonitor.h"
+#import "DGTouchPlugin.h"
+#import "DGCommon.h"
 #import "DGTouchWindow.h"
-#import "UIApplication+DGTouchMonitor.h"
+#import "UIApplication+DGTouchPlugin.h"
 
-@interface DGTouchMonitor ()
+@interface DGTouchPlugin ()
 
+@property (nonatomic, assign) BOOL shouldDisplayTouches;
 @property (nonatomic, strong) DGTouchWindow *touchWindow;
 
 @end
 
-@implementation DGTouchMonitor
+@implementation DGTouchPlugin
 
-static DGTouchMonitor *_instance;
++ (NSString *)pluginName {
+    return @"触摸监听";
+}
+
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"app"];
+}
+
++ (BOOL)pluginSwitch {
+    return [[self shared] shouldDisplayTouches];
+}
+
++ (void)setPluginSwitch:(BOOL)pluginSwitch {
+    [[self shared] setShouldDisplayTouches:pluginSwitch];
+}
+
+#pragma mark -
+
+static DGTouchPlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
@@ -35,7 +55,7 @@ static DGTouchMonitor *_instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [super allocWithZone:zone];
-        [[NSNotificationCenter defaultCenter] addObserver:_instance selector:@selector(handleInterfaceEvent:) name:DGTouchMonitorDidSendTouchEventNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:_instance selector:@selector(handleInterfaceEvent:) name:DGTouchPluginDidSendTouchEventNotification object:nil];
     });
     return _instance;
 }

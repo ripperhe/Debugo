@@ -80,7 +80,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
             break;
         case DGSettingTypeTouches: {
             DGAssistant.shared.configuration.isShowTouches = value;
-            DGTouchMonitor.shared.shouldDisplayTouches = value;
+//            DGTouchPlugin.shared.shouldDisplayTouches = value;
             [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowTouches];
         }
             break;
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
             [sender sizeToFit];
             sender.enabled = NO;
             [DGAssistant.shared closeDebugWindow];
-            [DGDebuggingOverlay showDebuggingInformation];
+            [DGApplePlugin setPluginSwitch:YES];
             break;
         }
         default:
@@ -178,7 +178,7 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
             cell.textLabel.text = [debugInfoComponents componentsJoinedByString:@""];
             cell.detailTextLabel.text = @"Apple 内部的调试工具";
             UIButton *button = (UIButton *)cell.accessoryView;
-            if ([DGDebuggingOverlay isShowing]) {
+            if ([DGApplePlugin pluginSwitch]) {
                 [button setTitle:@"已开启" forState:UIControlStateNormal];
                 button.enabled = NO;
             }else {

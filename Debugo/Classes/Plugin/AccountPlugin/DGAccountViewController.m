@@ -82,7 +82,7 @@
     kDGImpactFeedback
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [DGAccountPlugin.shared removeLoginWindow];
+    [DGAccountPlugin setPluginSwitch:NO];
     if (DGAccountPlugin.shared.configuration.execLoginCallback) {
         DGAccountPlugin.shared.configuration.execLoginCallback(account);
     }
