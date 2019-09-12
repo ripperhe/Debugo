@@ -11,15 +11,10 @@
 #import "DGTouchPlugin.h"
 #import "DGCommon.h"
 #import "DGTouchWindow.h"
-#import "UIApplication+DGTouchPlugin.h"
 #import "DGTouchPluginViewController.h"
 
-@interface DGTouchPlugin ()
-
-@property (nonatomic, assign) BOOL shouldDisplayTouches;
-@property (nonatomic, strong) DGTouchWindow *touchWindow;
-
-@end
+static BOOL _showTouch = NO;
+static DGTouchWindow *_touchWindow = nil;
 
 @implementation DGTouchPlugin
 
@@ -36,67 +31,49 @@
 }
 
 + (BOOL)pluginSwitch {
-    return [[self shared] shouldDisplayTouches];
+    return _showTouch;
 }
 
 + (void)setPluginSwitch:(BOOL)pluginSwitch {
-    [[self shared] setShouldDisplayTouches:pluginSwitch];
-}
-
-#pragma mark -
-
-static DGTouchPlugin *_instance;
-+ (instancetype)shared {
-    if (!_instance) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            _instance = [[self alloc] init];
-        });
-    }
-    return _instance;
-}
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
-        [[NSNotificationCenter defaultCenter] addObserver:_instance selector:@selector(handleInterfaceEvent:) name:DGTouchPluginDidSendTouchEventNotification object:nil];
-    });
-    return _instance;
-}
-
-#pragma mark - setter
-- (void)setShouldDisplayTouches:(BOOL)shouldDisplayTouches {
-    _shouldDisplayTouches = shouldDisplayTouches;
-    
-    if (shouldDisplayTouches) {
-        self.touchWindow.hidden = NO;
+    _showTouch = pluginSwitch;
+    if (pluginSwitch) {
+        if (!_touchWindow) {
+            _touchWindow = [[DGTouchWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        _touchWindow.hidden = NO;
     }else {
-        // 防止在不需要展示的时候也懒加载 touchWindow
-        _touchWindow.rootViewController = nil;
-        _touchWindow.hidden = YES;
+        [_touchWindow destroy];
         _touchWindow = nil;
     }
 }
 
-#pragma mark - getter
-- (DGTouchWindow *)touchWindow {
-    if (!_touchWindow) {
-        _touchWindow = [[DGTouchWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        _touchWindow.rootViewController = [UIViewController new];
++ (void)handleToucheEvent:(UIEvent *)event {
+    if (_showTouch) {
+        [_touchWindow displayEvent:event];
     }
-    return _touchWindow;
+}
+@end
+
+@interface UIApplication (DGTouchPlugin)
+
+@end
+
+@implementation UIApplication (DGTouchPlugin)
+
++ (void)load {
+#if DebugoCanBeEnabled
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [UIApplication dg_swizzleInstanceMethod:@selector(sendEvent:) newSelector:@selector(dg_sendEvent:)];
+    });
+#endif
 }
 
-#pragma mark - notification
-- (void)handleInterfaceEvent:(NSNotification *)notification {
-    if (self.shouldDisplayTouches && [notification.object isKindOfClass:[UIEvent class]]) {
-        UIEvent* event = notification.object;
-        
-        if (event.type == UIEventTypeTouches) {
-            [self.touchWindow displayEvent:event];
-        }
+- (void)dg_sendEvent:(UIEvent *)event {
+    if (event.type == UIEventTypeTouches) {
+        [DGTouchPlugin handleToucheEvent:event];
     }
+    [self dg_sendEvent:event];
 }
 
 @end

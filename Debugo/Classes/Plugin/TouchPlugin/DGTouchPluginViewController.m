@@ -24,10 +24,10 @@
     
     self.view.backgroundColor = kDGBackgroundColor;
     
-    self.switchCellView = [DGSwitchCellView dg_make:^(DGSwitchCellView * cellView) {
-        cellView.label.text = @"是否开启触摸监听";
-        [cellView.switchView setOn:[DGTouchPlugin pluginSwitch]];
-        [cellView setSwitchValueChangedBlock:^(UISwitch * _Nonnull switchView) {
+    self.switchCellView = [DGSwitchCellView dg_make:^(DGSwitchCellView * switchCellView) {
+        switchCellView.label.text = @"是否开启触摸监听";
+        [switchCellView.switchView setOn:[DGTouchPlugin pluginSwitch]];
+        [switchCellView setSwitchValueChangedBlock:^(UISwitch * _Nonnull switchView) {
             [DGTouchPlugin setPluginSwitch:switchView.isOn];
         }];
     }];

@@ -16,7 +16,7 @@ static const void* kDGFingerViewAssociatedKey = &kDGFingerViewAssociatedKey;
 
 @interface DGTouchWindow ()
 
-@property (nonatomic, weak) UIView* touchesView;
+@property (nonatomic, weak) UIView *touchesView;
 
 @end
 
@@ -25,15 +25,11 @@ static const void* kDGFingerViewAssociatedKey = &kDGFingerViewAssociatedKey;
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.name = @"DGTouchPlugin Window";
-        
-        // Lets place this window above everything
         self.windowLevel = CGFLOAT_MAX;
         self.userInteractionEnabled = NO;
-
-        UIView *touchesView = [[UIView alloc] initWithFrame:frame];
-        touchesView.userInteractionEnabled = NO;
-        [self addSubview:touchesView];
-        self.touchesView = touchesView;
+        self.rootViewController = [UIViewController new];
+        self.rootViewController.view.userInteractionEnabled = NO;
+        self.touchesView = self.rootViewController.view;
     }
     return self;
 }
