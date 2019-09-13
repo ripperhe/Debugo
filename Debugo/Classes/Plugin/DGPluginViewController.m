@@ -35,7 +35,7 @@
     
     [self addGrid:^(DGCommonGridConfiguration * _Nonnull configuration) {
         configuration.title = dg_invoke(plugin, @selector(pluginName), nil) ?: NSStringFromClass([plugin class]);
-        configuration.image = dg_invoke(plugin, @selector(pluginImage), nil) ?: [DGBundle imageNamed:@"app"];
+        configuration.image = dg_invoke(plugin, @selector(pluginImage), nil) ?: [DGBundle imageNamed:@"plugin_default"];
         Class vcClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
         if (vcClass) {
             // 有控制器，跳转到控制器
