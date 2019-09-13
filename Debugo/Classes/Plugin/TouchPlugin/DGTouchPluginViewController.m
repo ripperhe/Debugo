@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = [DGTouchPlugin pluginName];
     self.view.backgroundColor = kDGBackgroundColor;
     
     self.switchCellView = [DGSwitchCellView dg_make:^(DGSwitchCellView * switchCellView) {

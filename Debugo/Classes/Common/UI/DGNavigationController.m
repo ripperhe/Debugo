@@ -25,6 +25,12 @@
     if (self.viewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = !DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
     }
+    
+    // 去掉返回按钮文字
+    UIViewController *currentViewController = self.topViewController;
+    if (currentViewController) {
+        currentViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:NULL];
+    }
 
     [super pushViewController:viewController animated:animated];
 }

@@ -9,6 +9,7 @@
 #import "DGDatabaseGridView.h"
 #import "DGDatabaseLeftTableViewCell.h"
 #import "DGDatabaseContentTableViewCell.h"
+#import "DGCommon.h"
 
 /*
  ————————————————————————————————————————
@@ -183,10 +184,11 @@ DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row) {
         if (self.dataSource && [self.dataSource respondsToSelector:@selector(contentsAtRow:)]) {
             [cell loadContents:[self.dataSource contentsAtRow:indexPath.row] columnWidths:_columnWidths.copy];
         }
-        __weak typeof(self) weakSelf = self;
+        dg_weakify(self)
         [cell setClickButton:^(UIButton * _Nonnull button, NSInteger column) {
+            dg_strongify(self)
             DGGridIndex index = DGGridIndexMake(column, indexPath.row);
-            [weakSelf didClickContentButton:button gridIndex:index];
+            [self didClickContentButton:button gridIndex:index];
         }];
         if (isUnEvenRow) {
             cell.backgroundColor = [UIColor colorWithRed:0.96 green:0.98 blue:0.99 alpha:1.00];

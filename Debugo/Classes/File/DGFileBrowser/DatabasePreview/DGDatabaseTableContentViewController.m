@@ -9,6 +9,7 @@
 #import "DGDatabaseTableContentViewController.h"
 #import "DGDatabaseGridView.h"
 #import "DGDatabaseContentParser.h"
+#import "DGCommon.h"
 
 @interface DGDatabaseTableContentViewController ()<DGDatabaseGridViewDelegate, DGDatabaseGridViewDataSource>
 
@@ -127,9 +128,10 @@
             pastboard.string = content;
         }
     }]];
-//    __weak typeof(self)weakSelf = self;
+//    dg_weakify(self)
 //    [alert addAction:[UIAlertAction actionWithTitle:@"modify" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        [weakSelf jumpmToModifyViewControllerWithContent:content gridIndex:gridIndex];
+//        dg_strongify(self)
+//        [self jumpmToModifyViewControllerWithContent:content gridIndex:gridIndex];
 //    }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil]];
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {

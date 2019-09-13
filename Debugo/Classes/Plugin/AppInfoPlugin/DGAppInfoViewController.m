@@ -10,6 +10,7 @@
 
 #import "DGAppInfoViewController.h"
 #import "DGCommon.h"
+#import "DGAppInfoPlugin.h"
 
 /**
  Build info plist（存储在 bundle 中）以下为所有 key 值:
@@ -47,13 +48,16 @@ static NSString *kDGCellValue = @"kDGCellValue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = [DGAppInfoPlugin pluginName];
+    
     // navigationItem
-    __weak typeof(self) weakSelf = self;
+    dg_weakify(self)
     self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
-        if (!weakSelf) return nil;
+        dg_strongify(self)
+        if (!self) return nil;
         NSString *fileName = [NSString stringWithFormat:@"%@-info-%@.plist", [self getBundleInfo:@"CFBundleName"], [[NSDate date] dg_dateStringWithFormat:@"yyyy-MM-dd-HH-mm-ss"]];
         NSURL *fileURL = [NSURL fileURLWithPath:[DGFilePath.temporaryDirectory stringByAppendingPathComponent:fileName]];
-        NSArray *dataArray = weakSelf.dataArray.copy;
+        NSArray *dataArray = self.dataArray.copy;
         NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
         for (NSArray *sectionArray in dataArray) {
             NSMutableDictionary *sectionDic = [NSMutableDictionary dictionary];

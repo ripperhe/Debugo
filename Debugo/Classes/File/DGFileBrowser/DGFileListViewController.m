@@ -50,9 +50,10 @@
     self.definesPresentationContext = YES;
 
     // navigationItem
-    __weak typeof(self) weakSelf = self;
+    dg_weakify(self)
     UIBarButtonItem *item1 = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
-        return @[weakSelf.file.fileURL];
+        dg_strongify(self)
+        return @[self.file.fileURL];
     }];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -101,14 +102,15 @@
 - (void)prepareData {
     if (!self.file.fileURL) return;
     
-    __weak typeof(self) weakSelf = self;
+    dg_weakify(self)
     self.files = [DGFileParser filesForDirectory:self.file.fileURL configuration:self.configuration errorHandler:^(NSError *error) {
+        dg_strongify(self)
         if (!error) return;
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
             [alertController addAction:OKAction];
-            [weakSelf presentViewController:alertController animated:YES completion:nil];
+            [self presentViewController:alertController animated:YES completion:nil];
         });
     }];
     [self indexFiles];
@@ -275,14 +277,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
-        __weak typeof(self) weakSelf = self;
+        dg_weakify(self)
         [selectedFile deleteWithErrorHandler:^(NSError *error) {
+            dg_strongify(self)
             if (!error) return;
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
                 [alertController addAction:OKAction];
-                [weakSelf presentViewController:alertController animated:YES completion:nil];
+                [self presentViewController:alertController animated:YES completion:nil];
             });
         }];
         
