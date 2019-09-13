@@ -16,14 +16,13 @@ extern NSString * const kDGSettingIsShowTouches;
 
 @interface DGCache : NSObject
 
-/** Setting plist:
- * kDGSettingIsShowBottomBarWhenPushed
- * kDGSettingIsOpenFPS
- * kDGSettingIsShowTouches
- */
+/// 缓存文件夹
+@property (nonatomic, copy) NSString *debugoPath;
+
+/// 设置的plist文件
 @property (nonatomic, strong, readonly) DGPlister *settingPlister;
 
-/** Account plist */
+/// 缓存账号的plist文件
 @property (nonatomic, strong, readonly) DGPlister *accountPlister;
 
 + (instancetype)shared;

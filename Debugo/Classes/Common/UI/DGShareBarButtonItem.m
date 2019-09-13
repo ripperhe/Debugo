@@ -7,6 +7,7 @@
 //
 
 #import "DGShareBarButtonItem.h"
+#import "DGCommon.h"
 
 @implementation DGShareBarButtonItem
 

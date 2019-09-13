@@ -17,8 +17,6 @@ NSString * const kDGSettingIsShowTouches = @"kDGSettingIsShowTouches";
 
 @interface DGCache()
 
-// sandbox
-@property (nonatomic, copy) NSString *debugoPath;
 @property (nonatomic, strong) DGPlister *settingPlister;
 @property (nonatomic, strong) DGPlister *accountPlister;
 
@@ -72,9 +70,9 @@ static DGCache *_instance;
     if (!_accountPlister) {
         NSString *accountPath = nil;
         if (DGAccountPlugin.shared.configuration.isProductionEnvironment) {
-            accountPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.account.beta.plist"];
+            accountPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.account.production.plist"];
         }else{
-            accountPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.account.official.plist"];
+            accountPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.account.development.plist"];
         }
         
         _accountPlister = [[DGPlister alloc] initWithFilePath:accountPath readonly:NO];

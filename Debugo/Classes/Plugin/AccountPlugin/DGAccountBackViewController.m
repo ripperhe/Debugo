@@ -40,7 +40,7 @@
     [self.view addSubview:navVC.view];
     self.contentView = navVC.view;
     
-    [UIView animateWithDuration:.15 animations:^{
+    [UIView animateWithDuration:.25 animations:^{
         self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5];
         self.contentView.dg_y = kDGStatusBarHeight + 10;
     }];
@@ -56,7 +56,7 @@
 }
 
 - (void)dismissWithAnimation:(void (^)(void))completion {
-    [UIView animateWithDuration:.15 animations:^{
+    [UIView animateWithDuration:.25 animations:^{
         self.view.backgroundColor = [UIColor clearColor];
         self.contentView.dg_y = kDGScreenH;
     } completion:^(BOOL finished) {

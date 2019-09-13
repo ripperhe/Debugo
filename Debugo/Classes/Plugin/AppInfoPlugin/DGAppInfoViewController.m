@@ -12,23 +12,8 @@
 #import "DGCommon.h"
 #import "DGAppInfoPlugin.h"
 
-/**
- Build info plist（存储在 bundle 中）以下为所有 key 值:
- * ScriptVersion                    脚本版本
- * PlistUpdateTimestamp             plist 文件更新时间（build 时间）
- * BuildConfiguration               编译配置
- * ComputerUser                     编译包的电脑 当前用户名
- * ComputerUUID                     编译包的电脑 UUID
- * GitEnable                        编译包的电脑 是否安装 git
- * GitBranch                        当前 git 分支
- * GitLastCommitAbbreviatedHash     最后一次提交的缩写 hash
- * GitLastCommitUser                最后一次提交的用户
- * GitLastCommitTimestamp           最后一次提交的时间
- */
-
 @interface DGAppInfoViewController ()
 
-@property (nonatomic, strong) DGPlister *buildPlister;
 @property (nonatomic, strong) NSArray<DGOrderedDictionary *> *dataArray;
 
 @end
@@ -45,32 +30,16 @@
     [super viewDidLoad];
     
     self.title = [DGAppInfoPlugin pluginName];
-    
-    // navigationItem
     dg_weakify(self)
     self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         dg_strongify(self)
         if (!self) return nil;
-        NSString *fileName = [NSString stringWithFormat:@"%@-info-%@.plist", [self getBundleInfo:@"CFBundleName"], [[NSDate date] dg_dateStringWithFormat:@"yyyy-MM-dd-HH-mm-ss"]];
-        NSURL *fileURL = [NSURL fileURLWithPath:[DGFilePath.temporaryDirectory stringByAppendingPathComponent:fileName]];
-        NSArray<DGOrderedDictionary *> *dataArray = self.dataArray.copy;
-        NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
-        [dataArray enumerateObjectsUsingBlock:^(DGOrderedDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [plistContentDic setObject:obj.keysAndObjects forKey:obj.dg_copyExtObj];
-        }];
-        BOOL result = [plistContentDic writeToFile:fileURL.path atomically:YES];
-        if (result) {
-            return @[fileURL];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[self plistCachePath]]) {
+            return @[[NSURL fileURLWithPath:[self plistCachePath]]];
+        }else {
+            return nil;
         }
-        return nil;
     }];
-    
-    // build info plister (从 bundle 中获取)
-    NSString *buildInfoPlistPath = [[NSBundle mainBundle] pathForResource:@"com.ripperhe.debugo.build.info" ofType:@"plist"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:buildInfoPlistPath]) {
-        self.buildPlister = [[DGPlister alloc] initWithFilePath:buildInfoPlistPath readonly:YES];
-    }
-    
     [self setupDatasource];
     [self.tableView reloadData];
 }
@@ -104,6 +73,14 @@
     DGOrderedDictionary *buildDictionary = [self getBuildInfoDictionary];
     
     self.dataArray = @[bundleDictionary, deviceDictionary, buildDictionary];
+    
+    // 缓存到本地
+    [[NSFileManager defaultManager] removeItemAtPath:[self plistCachePath] error:nil];
+    NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
+    [self.dataArray enumerateObjectsUsingBlock:^(DGOrderedDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [plistContentDic setObject:obj.keysAndObjects forKey:obj.dg_copyExtObj];
+    }];
+    [plistContentDic writeToFile:[self plistCachePath] atomically:YES];
 }
 
 - (NSString *)getBundleInfo:(NSString *)key {
@@ -115,8 +92,27 @@
 }
 
 - (DGOrderedDictionary *)getBuildInfoDictionary {
+    /**
+     Build info plist（存储在 bundle 中）以下为所有 key 值:
+     * ScriptVersion                    脚本版本
+     * PlistUpdateTimestamp             plist 文件更新时间（build 时间）
+     * BuildConfiguration               编译配置
+     * ComputerUser                     编译包的电脑 当前用户名
+     * ComputerUUID                     编译包的电脑 UUID
+     * GitEnable                        编译包的电脑 是否安装 git
+     * GitBranch                        当前 git 分支
+     * GitLastCommitAbbreviatedHash     最后一次提交的缩写 hash
+     * GitLastCommitUser                最后一次提交的用户
+     * GitLastCommitTimestamp           最后一次提交的时间
+     */
+
     DGOrderedDictionary *buildInfoDictionary = nil;
-    DGPlister *plister = self.buildPlister;
+    DGPlister *plister = nil;
+    // build info plister (从 bundle 中获取)
+    NSString *buildInfoPlistPath = [[NSBundle mainBundle] pathForResource:@"com.ripperhe.debugo.build.info" ofType:@"plist"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:buildInfoPlistPath]) {
+        plister = [[DGPlister alloc] initWithFilePath:buildInfoPlistPath readonly:YES];
+    }
     if (plister){
         NSString *(^nilOrEmptyHandler)(void) = ^(void) {
             return @"unknown";
@@ -151,6 +147,7 @@
                                    @"Git Last Commit Hash", gitLastCommitAbbreviatedHash,
                                    @"Git Last Commit User", gitLastCommitUser,
                                    @"Git Last Commit Date", gitLastCommitTimestamp,
+
                                    nil];
         }else{
             buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
@@ -169,16 +166,14 @@
     return buildInfoDictionary;
 }
 
-#pragma mark - event
-
-- (void)clickedCopyBtn:(UIButton *)sender {
-    kDGImpactFeedback
-    NSIndexPath *indexPath = sender.dg_strongExtObj;
-    
-    // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
-    // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = [self.tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text;
+- (NSString *)plistCachePath {
+    static NSString *_path = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *fileName = [NSString stringWithFormat:@"%@-app-info.plist", [self getBundleInfo:@"CFBundleName"]];
+        _path = [DGCache.shared.debugoPath stringByAppendingPathComponent:fileName];
+    });
+    return _path;
 }
 
 #pragma mark - Table view data source
@@ -194,19 +189,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [btn setImage:[DGBundle imageNamed:@"copy"] forState:UIControlStateNormal];
-        [btn setFrame:CGRectMake(0, 0, 44, 44)];
-        [btn addTarget:self action:@selector(clickedCopyBtn:) forControlEvents:UIControlEventTouchUpInside];
-        cell.accessoryView = btn;
     }
     DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
     cell.textLabel.text = [sectionDictionary keyAtIndex:indexPath.row];
     cell.detailTextLabel.text = [sectionDictionary objectAtIndex:indexPath.row];
-    cell.accessoryView.dg_strongExtObj = indexPath;
     return cell;
 }
 

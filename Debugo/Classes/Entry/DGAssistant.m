@@ -108,7 +108,7 @@ static DGAssistant *_instance;
         [self.debugBubble.dg_weakExtObj removeFromSuperview];
         self.debugBubble.dg_weakExtObj = nil;
         self.debugBubble.button.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
-        [self.debugBubble.button setImage:[DGBundle imageNamed:@"debug_bubble"] forState:UIControlStateNormal];
+        [self.debugBubble.button setImage:[DGBundle imageNamed:@"bubble"] forState:UIControlStateNormal];
     }
 }
 

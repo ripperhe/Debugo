@@ -155,7 +155,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
     paragraphStyle.alignment = NSTextAlignmentCenter;
 
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:configuration.title attributes:@{NSForegroundColorAttributeName: UIColor.blackColor, NSFontAttributeName: [UIFont systemFontOfSize:11], NSParagraphStyleAttributeName: paragraphStyle}];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:configuration.title attributes:@{NSForegroundColorAttributeName: UIColor.blackColor, NSFontAttributeName: [UIFont systemFontOfSize:12], NSParagraphStyleAttributeName: paragraphStyle}];
     
     DGCommonGridButton *button = [DGCommonGridButton buttonWithType:UIButtonTypeCustom];
     button.tag = index;
@@ -210,6 +210,8 @@
         self.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
         self.imageView.contentMode = UIViewContentModeCenter;
         self.titleLabel.numberOfLines = 2;
+        self.adjustsImageWhenDisabled = NO;
+        self.adjustsImageWhenHighlighted = NO;
         // 处理高亮
         self.highlightedBackgroundColor = [UIColor colorWithRed:238/255.0 green:239/255.0 blue:241/255.0 alpha:1];
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)]];
