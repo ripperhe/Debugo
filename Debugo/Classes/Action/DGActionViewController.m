@@ -48,7 +48,7 @@ static NSString *kDGCellID = @"kDGCellID";
     if (!self.dataArray.count) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"Please add actions.";
+        label.text = @"现在还没有指令，请添加指令~";
         self.tableView.tableFooterView = label;
     }else {
         self.tableView.tableFooterView = nil;
@@ -105,18 +105,18 @@ static NSString *kDGCellID = @"kDGCellID";
         }
         
         if (commonActions.count) {
-            commonActions.dg_copyExtObj = @"Common";
+            commonActions.dg_copyExtObj = @"共享指令";
             [_dataArray addObject:commonActions];
         }
         
         if (!_dataArray.count) {
             if (anonymousActions.count) {
-                anonymousActions.dg_copyExtObj = @"🙈 anonymous";
+                anonymousActions.dg_copyExtObj = @"👨🏿‍💻 匿名用户指令";
                 [_dataArray addObject:anonymousActions];
             }
         }else {
             if (anonymousActions.count) {
-                DGAction *action = [DGAction actionWithTitle:@"🙈 anonymous" autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+                DGAction *action = [DGAction actionWithTitle:@"👨🏿‍💻 匿名用户指令" autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
                     DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
                     subVC.title = action.title;
                     [actionVC.navigationController pushViewController:subVC animated:YES];

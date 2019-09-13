@@ -20,6 +20,7 @@
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
 		C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */; };
 		C9A09F20232A3CA800C7983F /* DGSwitchCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */; };
+		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
 		C9B45648221D02A60098644E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B45646221D02A60098644E /* Main.storyboard */; };
@@ -40,12 +41,12 @@
 		C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45680221D2B460098644E /* DGNavigationController.m */; };
 		C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGDebugViewController.m */; };
 		C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45683221D2B460098644E /* DGActionSubViewController.m */; };
-		C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45684221D2B460098644E /* DGAccountViewController.m */; };
+		C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45684221D2B460098644E /* DGAccountListViewController.m */; };
 		C9B45703221D2B460098644E /* DGActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45686221D2B460098644E /* DGActionViewController.m */; };
 		C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45687221D2B460098644E /* DGAppInfoViewController.m */; };
 		C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45689221D2B460098644E /* DGSettingViewController.m */; };
 		C9B45706221D2B460098644E /* DGFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568C221D2B460098644E /* DGFileViewController.m */; };
-		C9B45707221D2B460098644E /* DGQuickLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */; };
+		C9B45707221D2B460098644E /* DGAccountBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568F221D2B460098644E /* DGAccountBackViewController.m */; };
 		C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45694221D2B460098644E /* NSObject+Debugo.m */; };
 		C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45697221D2B460098644E /* NSDate+Debugo.m */; };
 		C9B4570A221D2B460098644E /* DGBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4569B221D2B460098644E /* DGBundle.m */; };
@@ -117,6 +118,8 @@
 		C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTouchPluginViewController.m; sourceTree = "<group>"; };
 		C9A09F1E232A3CA800C7983F /* DGSwitchCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSwitchCellView.h; sourceTree = "<group>"; };
 		C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGSwitchCellView.m; sourceTree = "<group>"; };
+		C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAnimationDelegate.h; sourceTree = "<group>"; };
+		C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAnimationDelegate.m; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9B45641221D02A60098644E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -152,24 +155,24 @@
 		C9B45679221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
 		C9B4567B221D2B460098644E /* DGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTabBarController.h; sourceTree = "<group>"; };
 		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
-		C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGQuickLoginViewController.h; sourceTree = "<group>"; };
+		C9B4567D221D2B460098644E /* DGAccountBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountBackViewController.h; sourceTree = "<group>"; };
 		C9B4567E221D2B460098644E /* DGDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugViewController.h; sourceTree = "<group>"; };
 		C9B4567F221D2B460098644E /* DGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTabBarController.m; sourceTree = "<group>"; };
 		C9B45680221D2B460098644E /* DGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNavigationController.m; sourceTree = "<group>"; };
 		C9B45681221D2B460098644E /* DGDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugViewController.m; sourceTree = "<group>"; };
 		C9B45683221D2B460098644E /* DGActionSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionSubViewController.m; sourceTree = "<group>"; };
-		C9B45684221D2B460098644E /* DGAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountViewController.m; sourceTree = "<group>"; };
+		C9B45684221D2B460098644E /* DGAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountListViewController.m; sourceTree = "<group>"; };
 		C9B45685221D2B460098644E /* DGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSettingViewController.h; sourceTree = "<group>"; };
 		C9B45686221D2B460098644E /* DGActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionViewController.m; sourceTree = "<group>"; };
 		C9B45687221D2B460098644E /* DGAppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppInfoViewController.m; sourceTree = "<group>"; };
 		C9B45688221D2B460098644E /* DGFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileViewController.h; sourceTree = "<group>"; };
 		C9B45689221D2B460098644E /* DGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSettingViewController.m; sourceTree = "<group>"; };
-		C9B4568A221D2B460098644E /* DGAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountViewController.h; sourceTree = "<group>"; };
+		C9B4568A221D2B460098644E /* DGAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountListViewController.h; sourceTree = "<group>"; };
 		C9B4568B221D2B460098644E /* DGActionSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionSubViewController.h; sourceTree = "<group>"; };
 		C9B4568C221D2B460098644E /* DGFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileViewController.m; sourceTree = "<group>"; };
 		C9B4568D221D2B460098644E /* DGAppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppInfoViewController.h; sourceTree = "<group>"; };
 		C9B4568E221D2B460098644E /* DGActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionViewController.h; sourceTree = "<group>"; };
-		C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGQuickLoginViewController.m; sourceTree = "<group>"; };
+		C9B4568F221D2B460098644E /* DGAccountBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountBackViewController.m; sourceTree = "<group>"; };
 		C9B45694221D2B460098644E /* NSObject+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Debugo.m"; sourceTree = "<group>"; };
 		C9B45695221D2B460098644E /* NSDate+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Debugo.h"; sourceTree = "<group>"; };
 		C9B45696221D2B460098644E /* NSObject+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Debugo.h"; sourceTree = "<group>"; };
@@ -426,10 +429,10 @@
 				C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */,
 				C9B45672221D2B460098644E /* DGAccount.h */,
 				C9B45670221D2B460098644E /* DGAccount.m */,
-				C9B4568A221D2B460098644E /* DGAccountViewController.h */,
-				C9B45684221D2B460098644E /* DGAccountViewController.m */,
-				C9B4567D221D2B460098644E /* DGQuickLoginViewController.h */,
-				C9B4568F221D2B460098644E /* DGQuickLoginViewController.m */,
+				C9B4567D221D2B460098644E /* DGAccountBackViewController.h */,
+				C9B4568F221D2B460098644E /* DGAccountBackViewController.m */,
+				C9B4568A221D2B460098644E /* DGAccountListViewController.h */,
+				C9B45684221D2B460098644E /* DGAccountListViewController.m */,
 			);
 			path = AccountPlugin;
 			sourceTree = "<group>";
@@ -447,6 +450,8 @@
 				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
 				C9A09F1E232A3CA800C7983F /* DGSwitchCellView.h */,
 				C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */,
+				C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */,
+				C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -773,6 +778,7 @@
 			files = (
 				C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */,
 				C9B45717221D2B460098644E /* DGFileParser.m in Sources */,
+				C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */,
 				C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */,
 				C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */,
 				C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */,
@@ -826,7 +832,7 @@
 				C9B45642221D02A60098644E /* AppDelegate.m in Sources */,
 				C9B45706221D2B460098644E /* DGFileViewController.m in Sources */,
 				C9B4571A221D2B460098644E /* DGFBFile.m in Sources */,
-				C9B45707221D2B460098644E /* DGQuickLoginViewController.m in Sources */,
+				C9B45707221D2B460098644E /* DGAccountBackViewController.m in Sources */,
 				C9B45712221D2B460098644E /* DGBubble.m in Sources */,
 				C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */,
 				C9B456F8221D2B460098644E /* DGAssistant.m in Sources */,
@@ -838,7 +844,7 @@
 				C9F92C6F2326672A00B8F882 /* DGAppInfoPlugin.m in Sources */,
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
-				C9B45702221D2B460098644E /* DGAccountViewController.m in Sources */,
+				C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
 				C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  DGAccountViewController.m
+//  DGAccountListViewController.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,19 +7,25 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGAccountViewController.h"
+#import "DGAccountListViewController.h"
 #import "DGAccountPlugin.h"
 
-@interface DGAccountViewController ()
+@interface DGAccountListViewController ()
 
 @property (nonatomic, strong) NSMutableArray <NSArray <DGAccount *>*>*dataArray;
 
 @end
 
-@implementation DGAccountViewController
+@implementation DGAccountListViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    return [super initWithStyle:UITableViewStyleGrouped];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     
     if (DGAccountPlugin.shared.configuration.isProductionEnvironment) {
         self.title = @"快速登陆 (开发环境)";
@@ -27,15 +33,18 @@
         self.title = @"快速登陆 (生产环境)";
     }
     
-    // table footer
     if (!self.dataArray.count) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"Please add account information.";
+        label.text = @"现在还没有账号，请添加账号~";
         self.tableView.tableFooterView = label;
     }else {
         self.tableView.tableFooterView = nil;
     }
+}
+
+- (void)close {
+    [DGAccountPlugin setPluginSwitch:NO];
 }
 
 #pragma mark - data
@@ -43,15 +52,15 @@
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-        NSArray *temporaryArray = DGAccountPlugin.shared.temporaryAccountDic.reverseSortedValues;
+        NSArray *temporaryArray = DGAccountPlugin.shared.cacheAccountDic.reverseSortedValues;
         if (temporaryArray.count) {
-            temporaryArray.dg_copyExtObj = @"Temporary";
+            temporaryArray.dg_copyExtObj = @"缓存账号";
             [_dataArray addObject:temporaryArray];
         }
         
         NSArray *commonArray = DGAccountPlugin.shared.currentCommonAccountArray.copy;
         if (commonArray.count) {
-            commonArray.dg_copyExtObj = @"Common";
+            commonArray.dg_copyExtObj = @"共享账号";
             [_dataArray addObject:commonArray];
         }
     }
@@ -83,9 +92,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     [DGAccountPlugin setPluginSwitch:NO];
-    if (DGAccountPlugin.shared.configuration.execLoginCallback) {
-        DGAccountPlugin.shared.configuration.execLoginCallback(account);
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (DGAccountPlugin.shared.configuration.execLoginCallback) {
+            DGAccountPlugin.shared.configuration.execLoginCallback(account);
+        }
+    });
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

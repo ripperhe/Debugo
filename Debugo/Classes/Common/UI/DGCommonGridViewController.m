@@ -157,7 +157,7 @@
 
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:configuration.title attributes:@{NSForegroundColorAttributeName: UIColor.blackColor, NSFontAttributeName: [UIFont systemFontOfSize:11], NSParagraphStyleAttributeName: paragraphStyle}];
     
-    DGCommonGridButton *button = [[DGCommonGridButton alloc] init];
+    DGCommonGridButton *button = [DGCommonGridButton buttonWithType:UIButtonTypeCustom];
     button.tag = index;
     [button setBackgroundColor:[UIColor whiteColor]];
     [button setAttributedTitle:attributedString forState:UIControlStateNormal];

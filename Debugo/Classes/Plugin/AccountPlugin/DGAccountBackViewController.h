@@ -1,5 +1,5 @@
 //
-//  DGQuickLoginViewController.h
+//  DGAccountBackViewController.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DGQuickLoginViewController : UIViewController
+@interface DGAccountBackViewController : UIViewController
+
+- (void)dismissWithAnimation:(void (^)(void))completion;
 
 @end

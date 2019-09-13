@@ -11,7 +11,7 @@
 #import "DGAssistant.h"
 #import "DGFPSLabel.h"
 #import "DGCache.h"
-#import "DGQuickLoginViewController.h"
+#import "DGAccountBackViewController.h"
 #import "DGAccountPlugin.h"
 #import "DGActionManager.h"
 #import "DGFileManager.h"

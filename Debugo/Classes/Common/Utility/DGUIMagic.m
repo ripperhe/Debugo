@@ -8,6 +8,7 @@
 
 #import "DGUIMagic.h"
 #import "DebugoEnable.h"
+#import "DGCommon.h"
 
 @implementation DGUIMagic
 
@@ -78,14 +79,8 @@
         }
         NSArray *canBecomeSELComponents = @[@"_ca", @"nBe", @"co", @"meKeyWi", @"ndow"];
         SEL canBecomeSEL = NSSelectorFromString([canBecomeSELComponents componentsJoinedByString:@""]);
-        if ([window respondsToSelector:canBecomeSEL]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            BOOL canBecomeKey = (BOOL)[window performSelector:canBecomeSEL];
-#pragma clang diagnostic pop
-            if (!canBecomeKey) {
-                continue;
-            }
+        if ([dg_invoke(window, canBecomeSEL, nil) boolValue] == NO) {
+            continue;
         }
         return window;
     }
@@ -102,27 +97,15 @@
 }
 
 + (NSArray <UIWindow *>*)getAllWindows {
-    __unsafe_unretained NSArray *windows = nil;
     // private api
 #if DebugoCanBeEnabled
-    BOOL includeInternalWindows = YES;
-    BOOL onlyVisibleWindows = NO;
-    
     NSArray *allWindowsComponents = @[@"al", @"lWindo", @"wsIncl", @"udingInt", @"ernalWin", @"dows:o", @"nlyVisi", @"bleWin", @"dows:"];
     SEL allWindowsSelector = NSSelectorFromString([allWindowsComponents componentsJoinedByString:@""]);
-    
-    NSMethodSignature *methodSignature = [[UIWindow class] methodSignatureForSelector:allWindowsSelector];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-    
-    invocation.target = [UIWindow class];
-    invocation.selector = allWindowsSelector;
-    [invocation setArgument:&includeInternalWindows atIndex:2];
-    [invocation setArgument:&onlyVisibleWindows atIndex:3];
-    [invocation invoke];
-    
-    [invocation getReturnValue:&windows];
-#endif
+    NSArray *windows = dg_invoke(UIWindow.class, allWindowsSelector, @[@(YES), @(NO)]);
     return windows;
+#else
+    return nil;
+#endif
 }
 
 @end

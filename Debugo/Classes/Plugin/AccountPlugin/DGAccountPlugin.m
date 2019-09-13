@@ -8,7 +8,7 @@
 
 #import "DGAccountPlugin.h"
 #import "DGCache.h"
-#import "DGQuickLoginViewController.h"
+#import "DGAccountBackViewController.h"
 
 @interface DGAccountPlugin()
 
@@ -35,9 +35,22 @@
 
 + (void)setPluginSwitch:(BOOL)pluginSwitch {
     if (pluginSwitch) {
-        [[self shared] showLoginWindow];
+        if (![[self shared] loginWindow]) {
+            DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            window.name = @"Login Window";
+            window.rootViewController = [DGAccountBackViewController new];
+            window.windowLevel = 1000000;
+            [[self shared] setLoginWindow:window];
+            [window setHidden:NO];
+        }
+        [[[self shared] loginWindow] setHidden:NO];
     }else {
-        [[self shared] removeLoginWindow];
+        if ([[self shared] loginWindow]) {
+            [(DGAccountBackViewController *)[[self shared] loginWindow].rootViewController dismissWithAnimation:^{
+                [[[self shared] loginWindow] destroy];
+                [[self shared] setLoginWindow:nil];
+            }];
+        }
     }
 }
 
@@ -71,10 +84,27 @@ static DGAccountPlugin *_instance;
     }
 }
 
+- (void)addAccount:(DGAccount *)account {
+    DGAccount *newAccount = account;
+    if (!newAccount.isValid) return;
+    
+    for (DGAccount *account in self.currentCommonAccountArray) {
+        if ([newAccount.username isEqualToString:account.username] && [newAccount.password isEqualToString:account.password]) {
+            // 重复账号 忽略
+            return;
+        }
+    }
+    
+    // 在共享账号中没有重复账号，添加到缓存账号中
+    [self.cacheAccountDic setObject:newAccount forKey:newAccount.username];
+    // 缓存到本地
+    [DGCache.shared.accountPlister setObject:newAccount.password forKey:newAccount.username];
+}
+
 #pragma mark - getter
 
-- (DGOrderedDictionary<NSString *,DGAccount *> *)temporaryAccountDic {
-    if (!_temporaryAccountDic) {
+- (DGOrderedDictionary<NSString *,DGAccount *> *)cacheAccountDic {
+    if (!_cacheAccountDic) {
         DGOrderedDictionary *accountDic = [DGOrderedDictionary dictionary];
         // 获取本地缓存
         NSDictionary *cacheAccount = [DGCache.shared.accountPlister read];
@@ -87,50 +117,9 @@ static DGAccountPlugin *_instance;
                 [accountDic setObject:account forKey:account.username];
             }
         }];
-        _temporaryAccountDic = accountDic;
+        _cacheAccountDic = accountDic;
     }
-    return _temporaryAccountDic;
-}
-
-#pragma mark -
-
-- (void)addAccount:(DGAccount *)account {
-    DGAccount *newAccount = account;
-    if (!newAccount.isValid) return;
-    
-    for (DGAccount *account in self.currentCommonAccountArray) {
-        if ([newAccount.username isEqualToString:account.username] && [newAccount.password isEqualToString:account.password]) {
-            // 重复账号 忽略
-            return;
-        }
-    }
-    
-    // 在 permanent 中没有重复账号，添加到 temporary
-    [self.temporaryAccountDic setObject:newAccount forKey:newAccount.username];
-    // 缓存到本地
-    [DGCache.shared.accountPlister setObject:newAccount.password forKey:newAccount.username];
-}
-
-#pragma mark - login view controller
-- (void)showLoginWindow {
-    if (!self.loginWindow) {
-        // create
-        DGQuickLoginViewController *loginVC = [[DGQuickLoginViewController alloc] init];
-        DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        window.name = @"Login Window";
-        window.rootViewController = loginVC;
-        window.windowLevel = 1000000;
-        self.loginWindow = window;
-        
-        // show
-        [self.loginWindow setHidden:NO];
-    }
-    [self.loginWindow setHidden:NO];
-}
-
-- (void)removeLoginWindow {
-    [self.loginWindow destroy];
-    self.loginWindow = nil;
+    return _cacheAccountDic;
 }
 
 @end

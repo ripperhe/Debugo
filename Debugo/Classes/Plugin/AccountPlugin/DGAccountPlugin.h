@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) DGAccountPluginConfiguration *configuration;
 @property (nonatomic, strong, nullable) NSArray <DGAccount *>*currentCommonAccountArray;
-@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAccount *>*temporaryAccountDic;
-@property (nonatomic, strong, readonly) DGWindow *loginWindow;
+@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAccount *>*cacheAccountDic;
 
 + (instancetype)shared;
 

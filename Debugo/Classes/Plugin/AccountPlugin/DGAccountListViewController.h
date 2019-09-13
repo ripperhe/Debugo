@@ -1,5 +1,5 @@
 //
-//  DGAccountViewController.h
+//  DGAccountListViewController.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -9,6 +9,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DGAccountViewController : UITableViewController
+@interface DGAccountListViewController : UITableViewController
 
 @end
