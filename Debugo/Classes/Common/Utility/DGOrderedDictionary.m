@@ -9,7 +9,7 @@
 
 #import "DGOrderedDictionary.h"
 
-NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent) {
+NSString *DGDescriptionForObject(NSObject *object, id locale, NSUInteger indent) {
     NSString *objectString;
     if ([object isKindOfClass:[NSString class]]) {
         objectString = (NSString *)object.copy;
@@ -25,7 +25,9 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent) {
 
 @interface DGOrderedDictionary ()
 
+// 存储key-value
 @property (nonatomic, strong) NSMutableDictionary *dictionary;
+// 有序存储key
 @property (nonatomic, strong) NSMutableArray *array;
 
 @end
@@ -53,20 +55,45 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent) {
     return self;
 }
 
+- (instancetype)initWithKeysAndObjects:(id)firstKey, ... {
+    if (self = [self init]) {
+        if (firstKey) {
+            [self.array addObject:firstKey];
+
+            va_list argumentList;
+            va_start(argumentList, firstKey);
+            id argument;
+            NSInteger i = 1;
+            while ((argument = va_arg(argumentList, id))) {
+                if (i % 2 == 0) {
+                    [self.array addObject:argument];
+                } else {
+                    [self.dictionary setObject:argument forKey:self.array.lastObject];
+                }
+                i++;
+            }
+            va_end(argumentList);
+            
+            if (self.array.count != self.dictionary.count) {
+                NSAssert(0, @"DGOrderedDictionary: key 值和 value 必须一一对应!");
+                return nil;
+            }
+        }
+    }
+    return self;
+}
+
 - (instancetype)initWithSortedKeys:(NSArray *)sortedKeys keysAndObjects:(NSDictionary *)keysAndObjects {
     if (sortedKeys.count != keysAndObjects.allKeys.count) {
         NSAssert(0, @"DGOrderedDictionary: sortKeys 元素值必须和 dictionary 的 key 值一一对应!");
         return nil;
     }
-    
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         self.dictionary = [NSMutableDictionary dictionaryWithDictionary:keysAndObjects];
         self.array = [NSMutableArray arrayWithArray:sortedKeys];
     }
     return self;
 }
-
 
 - (id)mutableCopyWithZone:(NSZone *)zone {
     DGOrderedDictionary * copy = [[[self class] alloc] init];
@@ -242,8 +269,8 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent) {
         [description appendFormat:@"%@\t[%zd] %@ = %@;\n",
          indentString,
          idx,
-         DescriptionForObject(key, locale, level + 1),
-         DescriptionForObject([self.dictionary objectForKey:key], locale, level + 1)];
+         DGDescriptionForObject(key, locale, level + 1),
+         DGDescriptionForObject([self.dictionary objectForKey:key], locale, level + 1)];
     }];
     [description appendFormat:@"%@}", indentString];    
     return description;

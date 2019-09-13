@@ -19,14 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGOrderedDictionary<__covariant KeyType, __covariant ObjectType> : NSObject<NSMutableCopying>
 
-/** When updating the value of the existing key, move the subscript to the end. Default is NO. */
+/// 如果更新某个已经存在的Key的值，将其下标移动到最后; 默认为 NO
 @property (nonatomic, assign) BOOL moveToLastWhenUpdateValue;
 
 + (instancetype)dictionary;
 + (instancetype)dictionaryWithCapacity:(NSUInteger)numItems;
 - (instancetype)init;
 - (instancetype)initWithCapacity:(NSUInteger)numItems;
-/** ⚠️ The value of the sortedKeys element must be one-to-one correspondence with the key value of keysAndObjects. */
+/// key 和 value 必须一一对应，nil 结尾，形如key, value, key2, value2, nil
+- (instancetype)initWithKeysAndObjects:(id)firstKey,...;
+/// sortedKeys 数组的 key 值必须和 keysAndObjects 的 key 值一一对应
 - (instancetype)initWithSortedKeys:(NSArray <KeyType>*)sortedKeys keysAndObjects:(NSDictionary <KeyType, ObjectType>*)keysAndObjects;
 
 - (void)setObject:(ObjectType)anObject forKey:(KeyType)aKey;

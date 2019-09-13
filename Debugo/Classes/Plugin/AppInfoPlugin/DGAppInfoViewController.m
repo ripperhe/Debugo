@@ -26,14 +26,10 @@
  * GitLastCommitTimestamp           最后一次提交的时间
  */
 
-static NSString *kDGCellID = @"kDGCellID";
-static NSString *kDGCellTitle = @"kDGCellTitle";
-static NSString *kDGCellValue = @"kDGCellValue";
-
 @interface DGAppInfoViewController ()
 
 @property (nonatomic, strong) DGPlister *buildPlister;
-@property (nonatomic, strong) NSArray <NSArray *>*dataArray;
+@property (nonatomic, strong) NSArray<DGOrderedDictionary *> *dataArray;
 
 @end
 
@@ -57,15 +53,11 @@ static NSString *kDGCellValue = @"kDGCellValue";
         if (!self) return nil;
         NSString *fileName = [NSString stringWithFormat:@"%@-info-%@.plist", [self getBundleInfo:@"CFBundleName"], [[NSDate date] dg_dateStringWithFormat:@"yyyy-MM-dd-HH-mm-ss"]];
         NSURL *fileURL = [NSURL fileURLWithPath:[DGFilePath.temporaryDirectory stringByAppendingPathComponent:fileName]];
-        NSArray *dataArray = self.dataArray.copy;
+        NSArray<DGOrderedDictionary *> *dataArray = self.dataArray.copy;
         NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
-        for (NSArray *sectionArray in dataArray) {
-            NSMutableDictionary *sectionDic = [NSMutableDictionary dictionary];
-            for (NSDictionary *row in sectionArray) {
-                [sectionDic setObject:row[kDGCellValue] forKey:row[kDGCellTitle]];
-            }
-            [plistContentDic setObject:sectionDic forKey:sectionArray.dg_copyExtObj];
-        }
+        [dataArray enumerateObjectsUsingBlock:^(DGOrderedDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [plistContentDic setObject:obj.keysAndObjects forKey:obj.dg_copyExtObj];
+        }];
         BOOL result = [plistContentDic writeToFile:fileURL.path atomically:YES];
         if (result) {
             return @[fileURL];
@@ -78,41 +70,40 @@ static NSString *kDGCellValue = @"kDGCellValue";
     if ([[NSFileManager defaultManager] fileExistsAtPath:buildInfoPlistPath]) {
         self.buildPlister = [[DGPlister alloc] initWithFilePath:buildInfoPlistPath readonly:YES];
     }
+    
+    [self setupDatasource];
+    [self.tableView reloadData];
 }
 
-#pragma mark - data
-
-- (NSArray<NSArray *> *)dataArray {
-    if (!_dataArray) {
-        NSArray *budleArray = @[
-                                @{kDGCellTitle:@"Bundle Name", kDGCellValue:[self getBundleInfo:@"CFBundleName"]},
-                                @{kDGCellTitle:@"Display Name", kDGCellValue:[self getBundleInfo:@"CFBundleDisplayName"]},
-                                @{kDGCellTitle:@"Identifier", kDGCellValue:[self getBundleInfo:@"CFBundleIdentifier"]},
-                                @{kDGCellTitle:@"Build", kDGCellValue:[self getBundleInfo:@"CFBundleVersion"]},
-                                @{kDGCellTitle:@"Version", kDGCellValue:[self getBundleInfo:@"CFBundleShortVersionString"]},
-                                @{kDGCellTitle:@"Deployment Target", kDGCellValue:[self getBundleInfo:@"MinimumOSVersion"]},
-                                ];
-        budleArray.dg_copyExtObj = @"Bundle信息";
-        
-        NSArray *deviceArray = @[
-                                 @{kDGCellTitle:@"Name", kDGCellValue:[UIDevice currentDevice].name},
-                                 @{kDGCellTitle:@"Model Identifier", kDGCellValue:DGDevice.currentDevice.identifier},
-                                 @{kDGCellTitle:@"Model Name", kDGCellValue:DGDevice.currentDevice.isSimulator?DGDevice.currentDevice.simulatorName:DGDevice.currentDevice.name},
-                                 @{kDGCellTitle:@"System Version", kDGCellValue:[NSString stringWithFormat:@"%@ %@", [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion]},
-                                 @{kDGCellTitle:@"Screen Inch", kDGCellValue:DGDevice.currentDevice.isSimulator?DGDevice.currentDevice.simulatorScreenInch:DGDevice.currentDevice.screenInch},
-                                 @{kDGCellTitle:@"Screen Pt", kDGCellValue:[NSString stringWithFormat:@"%.0f*%.0f", [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height]},
-                                 @{kDGCellTitle:@"Screen Px", kDGCellValue:[NSString stringWithFormat:@"%.0f*%.0f", [UIScreen mainScreen].nativeBounds.size.width, [UIScreen mainScreen].nativeBounds.size.height]},
-                                 @{kDGCellTitle:@"Screen Scale", kDGCellValue:[NSString stringWithFormat:@"%g", [UIScreen mainScreen].scale]},
-                                 @{kDGCellTitle:@"Screen Native Scale", kDGCellValue:[NSString stringWithFormat:@"%g", [UIScreen mainScreen].nativeScale]},
-                                 @{kDGCellTitle:@"Current Locale", kDGCellValue:[[NSLocale currentLocale] localeIdentifier]},
-                                 @{kDGCellTitle:@"Local Timezone", kDGCellValue:[NSTimeZone localTimeZone].name},
-                                 ];
-        deviceArray.dg_copyExtObj = @"设备信息";
-        
-        NSArray *buildArray = [self getBuildInfoArray];
-        _dataArray = @[budleArray, deviceArray, buildArray];
-    }
-    return _dataArray;
+- (void)setupDatasource {
+    DGOrderedDictionary *bundleDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                                             @"Bundle Name", [self getBundleInfo:@"CFBundleName"],
+                                             @"Display Name", [self getBundleInfo:@"CFBundleDisplayName"],
+                                             @"Identifier", [self getBundleInfo:@"CFBundleIdentifier"],
+                                             @"Build", [self getBundleInfo:@"CFBundleVersion"],
+                                             @"Version", [self getBundleInfo:@"CFBundleShortVersionString"],
+                                             @"Deployment Target", [self getBundleInfo:@"MinimumOSVersion"],
+                                             nil];
+    bundleDictionary.dg_copyExtObj = @"Bundle信息";
+    
+    DGOrderedDictionary *deviceDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                                             @"Name", [UIDevice currentDevice].name,
+                                             @"Model Identifier", DGDevice.currentDevice.identifier,
+                                             @"Model Name", DGDevice.currentDevice.isSimulator?DGDevice.currentDevice.simulatorName:DGDevice.currentDevice.name,
+                                             @"System Version", [NSString stringWithFormat:@"%@ %@", [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion],
+                                             @"Screen Inch",  DGDevice.currentDevice.isSimulator?DGDevice.currentDevice.simulatorScreenInch:DGDevice.currentDevice.screenInch,
+                                             @"Screen Pt", [NSString stringWithFormat:@"%.0f*%.0f", [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height],
+                                             @"Screen Px", [NSString stringWithFormat:@"%.0f*%.0f", [UIScreen mainScreen].nativeBounds.size.width, [UIScreen mainScreen].nativeBounds.size.height],
+                                             @"Screen Scale", [NSString stringWithFormat:@"%g", [UIScreen mainScreen].scale],
+                                             @"Screen Native Scale", [NSString stringWithFormat:@"%g", [UIScreen mainScreen].nativeScale],
+                                             @"Current Locale", [[NSLocale currentLocale] localeIdentifier],
+                                             @"Local Timezone", [[NSTimeZone localTimeZone] name],
+                                             nil];
+    deviceDictionary.dg_copyExtObj = @"设备信息";
+    
+    DGOrderedDictionary *buildDictionary = [self getBuildInfoDictionary];
+    
+    self.dataArray = @[bundleDictionary, deviceDictionary, buildDictionary];
 }
 
 - (NSString *)getBundleInfo:(NSString *)key {
@@ -123,8 +114,8 @@ static NSString *kDGCellValue = @"kDGCellValue";
     return @"unknown";
 }
 
-- (NSArray *)getBuildInfoArray {
-    NSArray *buildInfoArray = nil;
+- (DGOrderedDictionary *)getBuildInfoDictionary {
+    DGOrderedDictionary *buildInfoDictionary = nil;
     DGPlister *plister = self.buildPlister;
     if (plister){
         NSString *(^nilOrEmptyHandler)(void) = ^(void) {
@@ -151,31 +142,31 @@ static NSString *kDGCellValue = @"kDGCellValue";
             }
             gitLastCommitTimestamp = gitLastCommitTimestamp?:@"unknown";
             
-            buildInfoArray = @[
-                               @{kDGCellTitle:@"Update Date", kDGCellValue:plistUpdateTimestamp },
-                               @{kDGCellTitle:@"Build Configuration", kDGCellValue:buildConfiguration},
-                               @{kDGCellTitle:@"Computer User", kDGCellValue:computerUser},
-                               @{kDGCellTitle:@"Computer UUID", kDGCellValue:computerUUID },
-                               @{kDGCellTitle:@"Git Branch", kDGCellValue:gitBranch },
-                               @{kDGCellTitle:@"Git Last Commit Hash", kDGCellValue:gitLastCommitAbbreviatedHash },
-                               @{kDGCellTitle:@"Git Last Commit User", kDGCellValue:gitLastCommitUser },
-                               @{kDGCellTitle:@"Git Last Commit Date", kDGCellValue:gitLastCommitTimestamp },
-                               ];
+            buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                                   @"Update Date", plistUpdateTimestamp,
+                                   @"Build Configuration", buildConfiguration,
+                                   @"Computer User", computerUser,
+                                   @"Computer UUID", computerUUID,
+                                   @"Git Branch", gitBranch,
+                                   @"Git Last Commit Hash", gitLastCommitAbbreviatedHash,
+                                   @"Git Last Commit User", gitLastCommitUser,
+                                   @"Git Last Commit Date", gitLastCommitTimestamp,
+                                   nil];
         }else{
-            buildInfoArray = @[
-                               @{kDGCellTitle:@"Update Date", kDGCellValue:plistUpdateTimestamp },
-                               @{kDGCellTitle:@"Build Configuration", kDGCellValue:buildConfiguration},
-                               @{kDGCellTitle:@"Computer User", kDGCellValue:computerUser},
-                               @{kDGCellTitle:@"Computer UUID", kDGCellValue:computerUUID },
-                               ];
+            buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                                   @"Update Date", plistUpdateTimestamp,
+                                   @"Build Configuration", buildConfiguration,
+                                   @"Computer User", computerUser,
+                                   @"Computer UUID", computerUUID,
+                                   nil];
         }
     }else{
-        buildInfoArray = @[
-                           @{kDGCellTitle:@"获取编译信息需要添加脚本，请进入网页查看", kDGCellValue:@"https://ripperhe.com/Debugo/#/Guide/build-info"},
-                           ];
+        buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                               @"获取编译信息需要添加脚本，请进入网页查看", @"https://ripperhe.com/Debugo/#/Guide/build-info",
+                               nil];
     }
-    buildInfoArray.dg_copyExtObj = @"编译信息";
-    return buildInfoArray;
+    buildInfoDictionary.dg_copyExtObj = @"编译信息";
+    return buildInfoDictionary;
 }
 
 #pragma mark - event
@@ -201,9 +192,9 @@ static NSString *kDGCellValue = @"kDGCellValue";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDGCellID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kDGCellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -212,9 +203,9 @@ static NSString *kDGCellValue = @"kDGCellValue";
         [btn addTarget:self action:@selector(clickedCopyBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = btn;
     }
-    NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
-    cell.textLabel.text = data[kDGCellTitle];
-    cell.detailTextLabel.text = data[kDGCellValue];
+    DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
+    cell.textLabel.text = [sectionDictionary keyAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [sectionDictionary objectAtIndex:indexPath.row];
     cell.accessoryView.dg_strongExtObj = indexPath;
     return cell;
 }
