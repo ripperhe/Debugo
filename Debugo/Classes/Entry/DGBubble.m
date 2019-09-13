@@ -94,7 +94,7 @@
     UIButton *button = [UIButton buttonWithType:self.config.buttonType];
     button.userInteractionEnabled = YES;
     button.clipsToBounds = YES;
-    button.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
+    button.backgroundColor = kDGHighlightColor;
     
     // click
     [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];

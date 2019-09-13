@@ -92,7 +92,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
                                 @{kDGCellTitle:@"Version", kDGCellValue:[self getBundleInfo:@"CFBundleShortVersionString"]},
                                 @{kDGCellTitle:@"Deployment Target", kDGCellValue:[self getBundleInfo:@"MinimumOSVersion"]},
                                 ];
-        budleArray.dg_copyExtObj = @"Bundle";
+        budleArray.dg_copyExtObj = @"Bundle信息";
         
         NSArray *deviceArray = @[
                                  @{kDGCellTitle:@"Name", kDGCellValue:[UIDevice currentDevice].name},
@@ -107,7 +107,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
                                  @{kDGCellTitle:@"Current Locale", kDGCellValue:[[NSLocale currentLocale] localeIdentifier]},
                                  @{kDGCellTitle:@"Local Timezone", kDGCellValue:[NSTimeZone localTimeZone].name},
                                  ];
-        deviceArray.dg_copyExtObj = @"Device";
+        deviceArray.dg_copyExtObj = @"设备信息";
         
         NSArray *buildArray = [self getBuildInfoArray];
         _dataArray = @[budleArray, deviceArray, buildArray];
@@ -171,10 +171,10 @@ static NSString *kDGCellValue = @"kDGCellValue";
         }
     }else{
         buildInfoArray = @[
-                           @{kDGCellTitle:@"Please visit the website for details.", kDGCellValue:@"https://ripperhe.com/Debugo/#/Guide/build-info"},
+                           @{kDGCellTitle:@"获取编译信息需要添加脚本，请进入网页查看", kDGCellValue:@"https://ripperhe.com/Debugo/#/Guide/build-info"},
                            ];
     }
-    buildInfoArray.dg_copyExtObj = @"Build Info";
+    buildInfoArray.dg_copyExtObj = @"编译信息";
     return buildInfoArray;
 }
 
@@ -221,6 +221,13 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.dataArray[section].dg_copyExtObj;
+}
+
+// https://stackoverflow.com/questions/18912980/uitableview-titleforheaderinsection-shows-all-caps/39504215#39504215
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(nonnull UIView *)view forSection:(NSInteger)section {
+    if ([view isKindOfClass:[UITableViewHeaderFooterView class]]) {
+        ((UITableViewHeaderFooterView *)view).textLabel.text = self.dataArray[section].dg_copyExtObj;
+    }
 }
 
 @end
