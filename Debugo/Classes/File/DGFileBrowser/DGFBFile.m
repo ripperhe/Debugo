@@ -67,23 +67,31 @@
 - (DGFBFileType)typeForPathExtension:(NSString *)pathExtension {
     if (!pathExtension.length) return DGFBFileTypeDefault;
     
-    if ([pathExtension isEqualToString:@"gif"]) {
-        return DGFBFileTypeGIF;
-    }else if ([pathExtension isEqualToString:@"jpg"]) {
-        return DGFBFileTypeJPG;
-    }else if ([pathExtension isEqualToString:@"json"]) {
-        return DGFBFileTypeJSON;
+    static NSSet *_imageSet = nil;
+    static NSSet *_audioSet = nil;
+    static NSSet *_dbSet = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _imageSet = [NSSet setWithObjects:@"png", @"jpg", @"jpeg", @"gif", nil];
+        _audioSet = [NSSet setWithObjects:@"mp3", @"m4a", nil];
+        _dbSet = [NSSet setWithObjects:@"db", @"sqlite", @"sqlite3", nil];
+    });
+    
+    if ([_imageSet containsObject:pathExtension]) {
+        return DGFBFileTypeImage;
+    }else if ([_audioSet containsObject:pathExtension]) {
+        return DGFBFileTypeAudio;
+    }else if ([pathExtension isEqualToString:@"mp4"]) {
+        return DGFBFileTypeVideo;
     }else if ([pathExtension isEqualToString:@"pdf"]) {
         return DGFBFileTypePDF;
     }else if ([pathExtension isEqualToString:@"plist"]) {
         return DGFBFileTypePLIST;
-    }else if ([pathExtension isEqualToString:@"png"]) {
-        return DGFBFileTypePNG;
+    }else if ([pathExtension isEqualToString:@"json"]) {
+        return DGFBFileTypeJSON;
     }else if ([pathExtension isEqualToString:@"zip"]) {
         return DGFBFileTypeZIP;
-    }else if ([pathExtension isEqualToString:@"db"]
-              || [pathExtension isEqualToString:@"sqlite"]
-              || [pathExtension isEqualToString:@"sqlite3"]) {
+    }else if ([_dbSet containsObject:pathExtension]) {
         return DGFBFileTypeDB;
     }
     return DGFBFileTypeDefault;
@@ -99,16 +107,28 @@
     DGFBFileType type = self.type;
     NSString *imageName = nil;
     switch (type) {
+        case DGFBFileTypeDefault:
+            imageName = @"file_default";
         case DGFBFileTypeDirectory:
             imageName = @"file_folder";
             break;
-        case DGFBFileTypeGIF:
-        case DGFBFileTypeJPG:
-        case DGFBFileTypePNG:
+        case DGFBFileTypeImage:
             imageName = @"file_image";
+            break;
+        case DGFBFileTypeAudio:
+            imageName = @"file_audio";
+            break;
+        case DGFBFileTypeVideo:
+            imageName = @"file_video";
             break;
         case DGFBFileTypePDF:
             imageName = @"file_pdf";
+            break;
+        case DGFBFileTypeJSON:
+            imageName = @"file_json";
+            break;
+        case DGFBFileTypePLIST:
+            imageName = @"file_plist";
             break;
         case DGFBFileTypeZIP:
             imageName = @"file_zip";
@@ -117,7 +137,7 @@
             imageName = @"file_database";
             break;
         default:
-            imageName = @"file_file";
+            imageName = @"file_default";
             break;
     }
     UIImage *image = [_cachedImageDic objectForKey:imageName];
@@ -133,7 +153,7 @@
     if (!fileAttributes.fileModificationDate) return nil;
     
     NSString *dateInfo = [fileAttributes.fileModificationDate dg_dateStringWithFormat:@"yyyy/MM/dd"];
-    if ([dateInfo isEqualToString:@"1970/01/01"]) return @"Unknown";
+    if ([dateInfo isEqualToString:@"1970/01/01"]) return @"未知";
     
     if (self.isDirectory) return dateInfo;
     

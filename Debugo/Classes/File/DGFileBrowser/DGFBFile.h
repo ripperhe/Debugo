@@ -11,16 +11,16 @@
 #import <QuickLook/QuickLook.h>
 
 typedef NS_ENUM(NSUInteger, DGFBFileType) {
-    DGFBFileTypeDirectory, // directory
-    DGFBFileTypeGIF,
-    DGFBFileTypeJPG,
-    DGFBFileTypeJSON,
+    DGFBFileTypeDefault,
+    DGFBFileTypeDirectory,
+    DGFBFileTypeImage,
+    DGFBFileTypeAudio,
+    DGFBFileTypeVideo,
     DGFBFileTypePDF,
+    DGFBFileTypeJSON,
     DGFBFileTypePLIST,
-    DGFBFileTypePNG,
     DGFBFileTypeZIP,
-    DGFBFileTypeDB,
-    DGFBFileTypeDefault, // file
+    DGFBFileTypeDB
 };
 
 NS_ASSUME_NONNULL_BEGIN
