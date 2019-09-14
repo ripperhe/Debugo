@@ -12,24 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^DGFBFileDidSelectFileBlock)(DGFBFile *file);
-typedef DGDatabasePreviewConfiguration * _Nullable (^DGDatabaseFilePreviewConfigurationBlock)(DGFBFile *file);
-
 @interface DGFileConfiguration : NSObject
 
 @property (nonatomic, strong) NSArray <NSNumber *>*allowedFileTypes;
 
-/// File types to exclude from the file browser.
-@property (nonatomic, strong) NSArray <NSString *>*excludesFileExtensions;
-
-/// File paths to exclude from the file browser.
-@property (nonatomic, strong) NSArray <NSURL *>*excludesFileURLs;
+@property (nonatomic, strong) NSArray <NSNumber *>*ignoredFileTypes;
 
 @property (nonatomic, assign) BOOL allowEditing;
 
-@property (nonatomic, copy) DGFBFileDidSelectFileBlock didSelectFileBlock;
+@property (nonatomic, copy) void(^didSelectFileBlock)(DGFBFile *file);
 
-@property (nonatomic, copy) DGDatabaseFilePreviewConfigurationBlock databaseFilePreviewConfigurationBlock;
+@property (nonatomic, copy) DGDatabasePreviewConfiguration * _Nullable(^databaseFilePreviewConfigurationBlock)(DGFBFile *file);
 
 @end
 

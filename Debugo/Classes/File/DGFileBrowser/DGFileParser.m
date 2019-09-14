@@ -39,13 +39,10 @@
                 continue;
             }
         }
-        if (file.fileExtension.length) {
-            if ([configuration.excludesFileExtensions containsObject:file.fileExtension]) {
+        if (configuration.ignoredFileTypes.count) {
+            if ([configuration.ignoredFileTypes containsObject:@(file.type)]) {
                 continue;
             }
-        }
-        if ([configuration.excludesFileURLs containsObject:file.fileURL]) {
-            continue;
         }
         if (file.displayName.length) {
             [files addObject:file];

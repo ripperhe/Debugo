@@ -87,7 +87,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"table";
+    return @"表";
 }
 
 

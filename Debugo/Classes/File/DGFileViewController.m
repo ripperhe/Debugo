@@ -90,7 +90,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
             }
         }
         if (shortcutDBFiles.count) {
-            shortcutDBFiles.dg_copyExtObj = @"Database shortcut";
+            shortcutDBFiles.dg_copyExtObj = @"数据库捷径";
             [array addObject:shortcutDBFiles];
         }
         
@@ -102,7 +102,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
             [shortcutMixFiles addObject:@{kDGCellTitle:file.displayName, kDGCellValue:file}];
         }
         if (shortcutMixFiles.count) {
-            shortcutMixFiles.dg_copyExtObj = @"# Shortcut";
+            shortcutMixFiles.dg_copyExtObj = @"捷径";
             [array addObject:shortcutMixFiles];
         }
         

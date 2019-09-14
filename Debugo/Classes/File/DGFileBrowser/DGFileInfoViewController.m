@@ -9,13 +9,12 @@
 #import "DGFileInfoViewController.h"
 #import "DGCommon.h"
 
-static NSString *kCellID = @"cell";
-static NSString *kCellTitle = @"title";
-static NSString *kCellValue = @"value";
+#define kBoolString(bool) bool?@"YES":@"NO"
+#define kNullString(obj)  obj?:@"null"
 
 @interface DGFileInfoViewController ()
 
-@property (nonatomic, strong) NSArray <NSArray *>*dataArray;
+@property (nonatomic, strong) NSArray <DGOrderedDictionary<NSString *, NSString *> *>*dataArray;
 @property (nonatomic, assign) long long size;
 
 @end
@@ -38,11 +37,9 @@ static NSString *kCellValue = @"value";
     if (!self.file.isExist) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"❌ File or directory do not exist!";
+        label.text = @"❌ 文件或文件夹不存在！";
         self.tableView.tableHeaderView = label;
         return;
-    }else {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     }
     
     if (self.file.isDirectory) {
@@ -68,34 +65,33 @@ static NSString *kCellValue = @"value";
 
 - (void)refresh {
     NSDictionary *fileAttributes = [self.file fileAttributes];
-    self.dataArray = @[
-                       @[
-                           @{kCellTitle:@"Name", kCellValue:self.file.displayName},
-                           @{kCellTitle:@"Path", kCellValue:self.file.fileURL.path},
-                           @{kCellTitle:@"Readable", kCellValue:[NSFileManager.defaultManager isReadableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
-                           @{kCellTitle:@"Writable", kCellValue:[NSFileManager.defaultManager isWritableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
-                           @{kCellTitle:@"Executable", kCellValue:[NSFileManager.defaultManager isExecutableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
-                           @{kCellTitle:@"Deletable", kCellValue:[NSFileManager.defaultManager isDeletableFileAtPath:self.file.fileURL.path]?@"YES":@"NO"},
-                           ],
-                       @[
-                           @{kCellTitle:@"fileSize", kCellValue:[NSString stringWithFormat:@"%lld bytes (%@)", self.size, [@(self.size) dg_sizeString]]},
-                           @{kCellTitle:@"fileModificationDate", kCellValue:[self dateStringWithDate:fileAttributes.fileModificationDate]},
-                           @{kCellTitle:@"fileCreationDate", kCellValue:[self dateStringWithDate:fileAttributes.fileCreationDate]},
-                           @{kCellTitle:@"fileType", kCellValue:fileAttributes.fileType ?: @"null"},
-                           @{kCellTitle:@"filePosixPermissions", kCellValue:@(fileAttributes.filePosixPermissions)},
-                           @{kCellTitle:@"fileOwnerAccountName", kCellValue:fileAttributes.fileOwnerAccountName ?: @"null"},
-                           @{kCellTitle:@"fileGroupOwnerAccountName", kCellValue:fileAttributes.fileGroupOwnerAccountName ?: @"null"},
-                           @{kCellTitle:@"fileSystemNumber", kCellValue:@(fileAttributes.fileSystemNumber)},
-                           @{kCellTitle:@"fileSystemFileNumber", kCellValue:@(fileAttributes.fileSystemFileNumber)},
-                           @{kCellTitle:@"fileExtensionHidden", kCellValue:fileAttributes.fileExtensionHidden?@"YES":@"NO"},
-                           @{kCellTitle:@"fileHFSCreatorCode", kCellValue:@(fileAttributes.fileHFSCreatorCode)},
-                           @{kCellTitle:@"fileHFSTypeCode", kCellValue:@(fileAttributes.fileHFSTypeCode)},
-                           @{kCellTitle:@"fileIsImmutable", kCellValue:fileAttributes.fileIsImmutable ? @"YES" : @"NO"},
-                           @{kCellTitle:@"fileIsAppendOnly", kCellValue:fileAttributes.fileIsAppendOnly ? @"YES" : @"NO"},
-                           @{kCellTitle:@"fileOwnerAccountID", kCellValue:fileAttributes.fileOwnerAccountID ?: @"null"},
-                           @{kCellTitle:@"fileGroupOwnerAccountID", kCellValue:fileAttributes.fileGroupOwnerAccountID?:@"null"},
-                           ],
-                       ];
+    DGOrderedDictionary *general = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                                    @"Name", self.file.displayName,
+                                    @"Path", self.file.fileURL.path,
+                                    @"Readable", kBoolString([NSFileManager.defaultManager isReadableFileAtPath:self.file.fileURL.path]),
+                                    @"Writable", kBoolString([NSFileManager.defaultManager isWritableFileAtPath:self.file.fileURL.path]),
+                                    @"Executable", kBoolString([NSFileManager.defaultManager isExecutableFileAtPath:self.file.fileURL.path]),
+                                    @"Deletable", kBoolString([NSFileManager.defaultManager isDeletableFileAtPath:self.file.fileURL.path]),
+                                    nil];
+    DGOrderedDictionary *attribute = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
+                                      @"fileSize", [NSString stringWithFormat:@"%lld bytes (%@)", self.size, [@(self.size) dg_sizeString]],
+                                      @"fileModificationDate", [self dateStringWithDate:fileAttributes.fileModificationDate],
+                                      @"fileCreationDate", [self dateStringWithDate:fileAttributes.fileCreationDate],
+                                      @"fileType", kNullString(fileAttributes.fileType),
+                                      @"filePosixPermissions", @(fileAttributes.filePosixPermissions),
+                                      @"fileOwnerAccountName", kNullString(fileAttributes.fileOwnerAccountName),
+                                      @"fileGroupOwnerAccountName", kNullString(fileAttributes.fileGroupOwnerAccountName),
+                                      @"fileSystemNumber", @(fileAttributes.fileSystemNumber),
+                                      @"fileSystemFileNumber", @(fileAttributes.fileSystemFileNumber),
+                                      @"fileExtensionHidden", kBoolString(fileAttributes.fileExtensionHidden),
+                                      @"fileHFSCreatorCode", @(fileAttributes.fileHFSCreatorCode),
+                                      @"fileHFSTypeCode", @(fileAttributes.fileHFSTypeCode),
+                                      @"fileIsImmutable", kBoolString(fileAttributes.fileIsImmutable),
+                                      @"fileIsAppendOnly", kBoolString(fileAttributes.fileIsAppendOnly),
+                                      @"fileOwnerAccountID", kNullString(fileAttributes.fileOwnerAccountID),
+                                      @"fileGroupOwnerAccountID", kNullString(fileAttributes.fileGroupOwnerAccountID),
+                                      nil];
+    self.dataArray = @[general, attribute];
     [self.tableView reloadData];
 }
 
@@ -114,7 +110,7 @@ static NSString *kCellValue = @"value";
     // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
     // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.dataArray[indexPath.section][indexPath.row][kCellValue];
+    pasteboard.string = [self.dataArray[indexPath.section] objectAtIndex:indexPath.row];
 }
 
 #pragma mark - Table view data source
@@ -128,9 +124,9 @@ static NSString *kCellValue = @"value";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -139,19 +135,19 @@ static NSString *kCellValue = @"value";
         [btn addTarget:self action:@selector(clickedCopyBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = btn;
     }
-    NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
-    cell.textLabel.text = data[kCellTitle];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", data[kCellValue]];
-    cell.accessoryView.hidden = ![data[kCellTitle] isEqualToString:@"Path"];
+    DGOrderedDictionary *sectionDic = self.dataArray[indexPath.section];
+    cell.textLabel.text = [sectionDic keyAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [sectionDic objectAtIndex:indexPath.row]];
+    cell.accessoryView.hidden = ![[sectionDic keyAtIndex:indexPath.row] isEqualToString:@"Path"];
     cell.accessoryView.dg_strongExtObj = indexPath;
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"general";
+        return nil;
     }else{
-        return @"attributes";
+        return @"属性";
     }
 }
 

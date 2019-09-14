@@ -113,7 +113,7 @@
         });
     }];
     [self indexFiles];
-    self.countLabel.text = [NSString stringWithFormat:@"%zd items", self.files.count];
+    self.countLabel.text = [NSString stringWithFormat:@"%zd 项", self.files.count];
 }
 
 - (void)indexFiles {
@@ -142,7 +142,7 @@
     }];
     self.filteredFiles = [self.files filteredArrayUsingPredicate:predicate];
     [self.tableView reloadData];
-    self.countLabel.text = [NSString stringWithFormat:@"%zd items", self.filteredFiles.count];
+    self.countLabel.text = [NSString stringWithFormat:@"%zd 项", self.filteredFiles.count];
 }
 
 #pragma mark - event
@@ -172,6 +172,7 @@
     if (!_searchController) {
         UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+        searchController.searchBar.placeholder = @"搜索";
         searchController.dimsBackgroundDuringPresentation = NO;
         _searchController = searchController;
     }

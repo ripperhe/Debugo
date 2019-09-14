@@ -58,7 +58,6 @@
 		C9B45712221D2B460098644E /* DGBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B5221D2B460098644E /* DGBubble.m */; };
 		C9B45713221D2B460098644E /* DGWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGWindow.m */; };
 		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
-		C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C1221D2B460098644E /* DGFileBrowser.m */; };
 		C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C2221D2B460098644E /* DGFileInfoViewController.m */; };
 		C9B4571A221D2B460098644E /* DGFBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C3221D2B460098644E /* DGFBFile.m */; };
 		C9B4571B221D2B460098644E /* DGFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C5221D2B460098644E /* DGFileListViewController.m */; };
@@ -195,7 +194,6 @@
 		C9B456BB221D2B460098644E /* DGBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBubble.h; sourceTree = "<group>"; };
 		C9B456BC221D2B460098644E /* DGWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWindow.h; sourceTree = "<group>"; };
 		C9B456C0221D2B460098644E /* DGFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileParser.m; sourceTree = "<group>"; };
-		C9B456C1221D2B460098644E /* DGFileBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileBrowser.m; sourceTree = "<group>"; };
 		C9B456C2221D2B460098644E /* DGFileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileInfoViewController.m; sourceTree = "<group>"; };
 		C9B456C3221D2B460098644E /* DGFBFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFBFile.m; sourceTree = "<group>"; };
 		C9B456C4221D2B460098644E /* DGDefaultPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDefaultPreviewViewController.h; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 		C9B456DC221D2B460098644E /* DGDatabaseContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseContentTableViewCell.h; sourceTree = "<group>"; };
 		C9B456DD221D2B460098644E /* DGDatabaseColumnInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseColumnInfo.h; sourceTree = "<group>"; };
 		C9B456DE221D2B460098644E /* DGDatabaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseGridView.h; sourceTree = "<group>"; };
-		C9B456DF221D2B460098644E /* DGFileBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileBrowser.h; sourceTree = "<group>"; };
 		C9B456E0221D2B460098644E /* DGFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileParser.h; sourceTree = "<group>"; };
 		C9B456E1221D2B460098644E /* DGFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileListViewController.h; sourceTree = "<group>"; };
 		C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDefaultPreviewViewController.m; sourceTree = "<group>"; };
@@ -558,8 +555,6 @@
 				C934EDCC224369C400B6979C /* DGFileConfiguration.m */,
 				C9B456E0221D2B460098644E /* DGFileParser.h */,
 				C9B456C0221D2B460098644E /* DGFileParser.m */,
-				C9B456DF221D2B460098644E /* DGFileBrowser.h */,
-				C9B456C1221D2B460098644E /* DGFileBrowser.m */,
 				C9B456E1221D2B460098644E /* DGFileListViewController.h */,
 				C9B456C5221D2B460098644E /* DGFileListViewController.m */,
 				C9B456C9221D2B460098644E /* DGFileInfoViewController.h */,
@@ -781,7 +776,6 @@
 				C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */,
 				C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */,
 				C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */,
-				C9B45718221D2B460098644E /* DGFileBrowser.m in Sources */,
 				C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */,
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
 				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
