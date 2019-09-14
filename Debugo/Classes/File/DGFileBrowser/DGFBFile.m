@@ -74,7 +74,7 @@
     dispatch_once(&onceToken, ^{
         _imageSet = [NSSet setWithObjects:@"png", @"jpg", @"jpeg", @"gif", nil];
         _audioSet = [NSSet setWithObjects:@"mp3", @"m4a", nil];
-        _dbSet = [NSSet setWithObjects:@"db", @"sqlite", @"sqlite3", nil];
+        _dbSet = [NSSet setWithObjects:@"db", @"database", @"sqlite", @"sqlite3", nil];
     });
     
     if ([_imageSet containsObject:pathExtension]) {
