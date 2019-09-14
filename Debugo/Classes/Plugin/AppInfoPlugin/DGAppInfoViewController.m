@@ -31,11 +31,11 @@
     
     self.title = [DGAppInfoPlugin pluginName];
     dg_weakify(self)
-    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self shareFilePathsWhenClickedBlock:^NSArray<NSString *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         dg_strongify(self)
         if (!self) return nil;
         if ([[NSFileManager defaultManager] fileExistsAtPath:[self plistCachePath]]) {
-            return @[[NSURL fileURLWithPath:[self plistCachePath]]];
+            return @[[self plistCachePath]];
         }else {
             return nil;
         }

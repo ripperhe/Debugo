@@ -51,11 +51,10 @@
 
     // navigationItem
     dg_weakify(self)
-    UIBarButtonItem *item1 = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    UIBarButtonItem *item1  = [[DGShareBarButtonItem alloc] initWithViewController:self shareFilePathsWhenClickedBlock:^NSArray<NSString *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         dg_strongify(self)
-        return @[self.file.fileURL];
+        return @[self.file.fileURL.path];
     }];
-    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [btn addTarget:self action:@selector(clickShowDirectoryInfoBtn:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:btn];

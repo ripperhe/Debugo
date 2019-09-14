@@ -33,9 +33,9 @@
 
     // Add share button
     dg_weakify(self)
-    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self clickedShareURLsBlock:^NSArray<NSURL *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
+    self.navigationItem.rightBarButtonItem = [[DGShareBarButtonItem alloc] initWithViewController:self shareFilePathsWhenClickedBlock:^NSArray<NSString *> * _Nonnull(DGShareBarButtonItem * _Nonnull item) {
         dg_strongify(self)
-        return @[self.file.fileURL];
+        return @[self.file.fileURL.path];
     }];
 
     self.tableArray = [self.dbOperation queryAllTableInfo];

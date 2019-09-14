@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DGShareBarButtonItem : UIBarButtonItem
 
 @property (nonatomic, weak) UIViewController *viewController;
-@property (nonatomic, copy) NSArray <NSURL *>*(^clickedShareURLsBlock)(DGShareBarButtonItem *);
+@property (nonatomic, copy) NSArray <NSString *>*(^shareFilePathsWhenClickedBlock)(DGShareBarButtonItem *);
 
 - (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem target:(nullable id)target action:(nullable SEL)action NS_UNAVAILABLE ;
-- (instancetype)initWithViewController:(UIViewController *)viewController clickedShareURLsBlock:(nullable NSArray <NSURL *>* (^)(DGShareBarButtonItem *item))clickedShareURLsBlock;
+- (instancetype)initWithViewController:(UIViewController *)viewController shareFilePathsWhenClickedBlock:(nullable NSArray <NSString *>* (^)(DGShareBarButtonItem *item))shareFilePathsWhenClickedBlock;
 
 @end
 
