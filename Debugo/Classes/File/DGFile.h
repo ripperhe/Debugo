@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSURL *fileURL;
 @property (nonatomic, strong, readonly) NSString *filePath;
+@property (nonatomic, copy, readonly) NSString *fileName;
 @property (nonatomic, copy, nullable, readonly) NSString *fileExtension;
 @property (nonatomic, assign, readonly) DGFileType type;
 @property (nonatomic, assign, readonly) BOOL isDirectory;

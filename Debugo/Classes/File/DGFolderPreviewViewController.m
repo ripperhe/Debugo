@@ -1,5 +1,5 @@
 //
-//  DGFileListViewController.m
+//  DGFolderPreviewViewController.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,16 +7,16 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGFileListViewController.h"
+#import "DGFolderPreviewViewController.h"
 #import "DGFileParser.h"
 #import "DGPreviewManager.h"
 #import "DGFileInfoViewController.h"
 #import "DGCommon.h"
 
-@interface DGFileListViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
+@interface DGFolderPreviewViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
 
-// Current directory
 @property (nonatomic, strong) DGFile *file;
+@property (nonatomic, strong) DGFileConfiguration *configuration;
 
 // Data
 @property (nonatomic, strong) NSArray <DGFile *>*files;
@@ -31,14 +31,14 @@
 
 @end
 
-@implementation DGFileListViewController
+@implementation DGFolderPreviewViewController
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithInitialURL:(NSURL *)initialURL configuration:(DGFileConfiguration *)configuration {
-    self = [super init];
-    if (self) {
-        self.file = [[DGFile alloc] initWithURL:initialURL];
+- (instancetype)initWithFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration {
+    if (file.type != DGFileTypeDirectory) return nil;
+    if (self = [super init]) {
+        self.file = file;
         self.configuration = configuration;
     }
     return self;
@@ -218,7 +218,7 @@
     DGLog(@"\n%@", selectedFile.fileURL.path);
     UIViewController *nextViewController = nil;
     if (selectedFile.isDirectory) {
-        DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:selectedFile.fileURL configuration:self.configuration];
+        DGFolderPreviewViewController *fileListViewController = [[DGFolderPreviewViewController alloc] initWithFile:selectedFile configuration:self.configuration];
         nextViewController = fileListViewController;
     }else{
         if (self.configuration.didSelectFileBlock) {

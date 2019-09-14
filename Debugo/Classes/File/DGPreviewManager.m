@@ -8,7 +8,7 @@
 //
 
 #import "DGPreviewManager.h"
-#import "DGFileListViewController.h"
+#import "DGFolderPreviewViewController.h"
 #import "DGWebviewPreviewViewContoller.h"
 #import "DGDefaultPreviewViewController.h"
 #import "DGDatabasePreviewViewController.h"
@@ -18,7 +18,7 @@
 + (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration {
     switch (file.type) {
         case DGFileTypeDirectory: {
-            DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:file.fileURL configuration:configuration];
+            DGFolderPreviewViewController *fileListViewController = [[DGFolderPreviewViewController alloc] initWithFile:file configuration:configuration];
             return fileListViewController;
         }
             break;

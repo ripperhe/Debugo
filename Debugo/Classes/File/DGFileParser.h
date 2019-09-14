@@ -12,6 +12,8 @@
 
 @interface DGFileParser : NSObject
 
-+ (NSArray <DGFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
++ (NSArray<DGFile *> *)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
+
++ (NSArray<DGFile *> *)filesForPath:(NSString *)path forType:(DGFileType)type errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler;
 
 @end

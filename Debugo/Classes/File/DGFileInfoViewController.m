@@ -14,6 +14,7 @@
 
 @interface DGFileInfoViewController ()
 
+@property (nonatomic, strong) DGFile *file;
 @property (nonatomic, strong) NSArray <DGOrderedDictionary<NSString *, NSString *> *>*dataArray;
 @property (nonatomic, assign) long long size;
 
@@ -23,7 +24,7 @@
 
 - (instancetype)initWithFile:(DGFile *)file {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-        self->_file = file;
+        self.file = file;
     }
     return self;
 }
@@ -66,8 +67,8 @@
 - (void)refresh {
     NSDictionary *fileAttributes = [self.file fileAttributes];
     DGOrderedDictionary *general = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
-                                    @"Name", self.file.displayName,
-                                    @"Path", self.file.fileURL.path,
+                                    @"Name", self.file.fileName,
+                                    @"Path", self.file.filePath,
                                     @"Readable", kBoolString([NSFileManager.defaultManager isReadableFileAtPath:self.file.fileURL.path]),
                                     @"Writable", kBoolString([NSFileManager.defaultManager isWritableFileAtPath:self.file.fileURL.path]),
                                     @"Executable", kBoolString([NSFileManager.defaultManager isExecutableFileAtPath:self.file.fileURL.path]),

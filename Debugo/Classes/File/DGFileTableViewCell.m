@@ -14,6 +14,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
         self.selectionStyle = UITableViewCellSelectionStyleBlue;
+        self.detailTextLabel.textColor = [UIColor grayColor];
     }
     return self;
 }

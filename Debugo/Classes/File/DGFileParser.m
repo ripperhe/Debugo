@@ -11,7 +11,7 @@
 
 @implementation DGFileParser
 
-+ (NSArray <DGFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
++ (NSArray<DGFile *> *)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
     BOOL isDirectory = NO;
     BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:direcotryURL.path isDirectory:&isDirectory];
     if (!isExist || !isDirectory) {
@@ -56,6 +56,19 @@
     return files;
 }
 
-
++ (NSArray<DGFile *> *)filesForPath:(NSString *)path forType:(DGFileType)type errorHandler:(void (NS_NOESCAPE^)(NSError * error))errorHandler {
+    DGFile *parseFile = [[DGFile alloc] initWithPath:path];
+    if (!parseFile) return nil;
+    if (parseFile.isDirectory) {
+        if (type == DGFileTypeDirectory) return @[parseFile];
+        DGFileConfiguration *configuration = [DGFileConfiguration new];
+        configuration.allowedFileTypes = @[@(type)];
+        NSArray<DGFile *> *files = [self filesForDirectory:parseFile.fileURL configuration:configuration errorHandler:errorHandler];
+        return files.count ? files : nil;
+    }else if (parseFile.type == type) {
+        return @[parseFile];
+    }
+    return nil;
+}
 
 @end

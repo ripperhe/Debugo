@@ -22,6 +22,7 @@
         _fileURL = URL;
         _filePath = URL.path;
         if (![self isExist]) return nil;
+        _fileName = URL.lastPathComponent;
         _isDirectory = [self checkDirectoryWithPath:URL.path];
         if (_isDirectory) {
             _fileExtension = nil;
@@ -30,7 +31,7 @@
             _fileExtension = _filePath.pathExtension;
             _type = [self typeForPathExtension:_fileExtension];
         }
-        _displayName = URL.lastPathComponent;
+        _displayName = _fileName;
     }
     return self;
 }
