@@ -74,15 +74,15 @@
         };
         
         
-        configuration.fileConfiguration.shortcutForDatabaseURLs = @[
-                                                  [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject],
-                                                  [NSURL URLWithString:[NSBundle mainBundle].bundlePath],
-                                                  [NSURL URLWithString:[DGFilePath.documentsDirectory stringByAppendingPathComponent:@"xx.sqlite"]],
+        configuration.fileConfiguration.shortcutForDatabasePaths = @[
+                                                  NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject,
+                                                  [NSBundle mainBundle].bundlePath,
+                                                  [DGFilePath.documentsDirectory stringByAppendingPathComponent:@"xx.sqlite"],
                                                   ];
         
-        configuration.fileConfiguration.shortcutForAnyURLs = @[
-                                             [NSURL URLWithString:NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject],
-                                             DGFilePath.userDefaultsPlistFileURL,
+        configuration.fileConfiguration.shortcutForAnyPaths = @[
+                                             NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject,
+                                             DGFilePath.userDefaultsPlistFilePath,
                                              ];
         
         // 自定义显示数据库文件时的宽高

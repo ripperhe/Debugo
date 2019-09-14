@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DGFileConfiguration.h"
+#import "DGFileTableViewCell.h"
 
 @interface DGFileListViewController : UITableViewController
 

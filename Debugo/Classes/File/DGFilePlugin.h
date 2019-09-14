@@ -1,19 +1,19 @@
 //
-//  DGFileManager.h
+//  DGFilePlugin.h
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/5/31.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "DGFileDisplayConfiguration.h"
+#import "DGPlugin.h"
+#import "DGFilePluginConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGFileManager : NSObject
+@interface DGFilePlugin : DGPlugin
 
-@property (nonatomic, strong) DGFileDisplayConfiguration *configuration;
+@property (nonatomic, strong) DGFilePluginConfiguration *configuration;
 
 + (instancetype)shared;
 

@@ -21,7 +21,7 @@
 
 @implementation DGFileInfoViewController
 
-- (instancetype)initWithFile:(DGFBFile *)file {
+- (instancetype)initWithFile:(DGFile *)file {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         self->_file = file;
     }

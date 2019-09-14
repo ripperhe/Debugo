@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGFBFile.h"
+#import "DGFile.h"
 #import "DGDatabasePreviewConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface DGDatabasePreviewViewController : UITableViewController
 
-@property (nonatomic, strong) DGFBFile *file;
+@property (nonatomic, strong) DGFile *file;
 @property (nonatomic, strong) DGDatabasePreviewConfiguration *previewConfiguration;
 
 @end

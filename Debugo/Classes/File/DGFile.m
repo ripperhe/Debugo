@@ -1,5 +1,5 @@
 //
-//  DGFBFile.m
+//  DGFile.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,23 +7,30 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGFBFile.h"
+#import "DGFile.h"
 #import "DGCommon.h"
 
-@implementation DGFBFile
+@implementation DGFile
+
+- (instancetype)initWithPath:(NSString *)path {
+    return [self initWithURL:[NSURL fileURLWithPath:path]];
+}
 
 - (instancetype)initWithURL:(NSURL *)URL {
+    if (!URL.path.length) return nil;
     if (self = [super init]) {
-        self.fileURL = URL;
-        self.isDirectory = [self checkDirectoryWithURL:URL];
-        if (self.isDirectory) {
-            self.fileExtension = nil;
-            self.type = DGFBFileTypeDirectory;
+        _fileURL = URL;
+        _filePath = URL.path;
+        if (![self isExist]) return nil;
+        _isDirectory = [self checkDirectoryWithPath:URL.path];
+        if (_isDirectory) {
+            _fileExtension = nil;
+            _type = DGFileTypeDirectory;
         }else{
-            self.fileExtension = self.fileURL.pathExtension;
-            self.type = [self typeForPathExtension:self.fileExtension];
+            _fileExtension = _filePath.pathExtension;
+            _type = [self typeForPathExtension:_fileExtension];
         }
-        self.displayName = URL.lastPathComponent;
+        _displayName = URL.lastPathComponent;
     }
     return self;
 }
@@ -32,40 +39,40 @@
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtURL:self.fileURL error:&error];
     if (error) {
-        NSLog(@"An error occured when trying to delete file:%@ error:%@", self.fileURL.path, error);
+        DGLog(@"删除文件失败:%@ error:%@", self.filePath, error);
         errorHandler(error);
     }
 }
 
-- (BOOL)checkDirectoryWithURL:(NSURL *)fileURL {
+- (BOOL)checkDirectoryWithPath:(NSString *)filePath {
     BOOL isDirectory = NO;
-    [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDirectory];
+    [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory];
     return isDirectory;
 }
 
 - (NSDictionary *)fileAttributes {
     if (!self.isExist) return nil;
     NSFileManager *manager = [NSFileManager defaultManager];
-    NSString *path = self.fileURL.path;
+    NSString *path = self.filePath;
     NSError *error;
     NSDictionary *attributes = [manager attributesOfItemAtPath:path error:&error];
     if (error) {
-        NSLog(@"%@<%p> %@ error:%@", [self class], self, NSStringFromSelector(_cmd), error);
+        DGLog(@"获取文件属性失败:%@ error:%@", self.filePath, error);
     }
     return attributes;
 }
 
 - (void)calculateSize:(void (^)(long long size))completion {
     if (self.isDirectory) {
-        [[NSFileManager defaultManager] dg_asyncCalculateFolderSizeAtPath:self.fileURL.path completion:completion];
+        [[NSFileManager defaultManager] dg_asyncCalculateFolderSizeAtPath:self.filePath completion:completion];
     }else {
-        long long size = [[NSFileManager defaultManager] dg_fileSizeAtPath:self.fileURL.path];
+        long long size = [[NSFileManager defaultManager] dg_fileSizeAtPath:self.filePath];
         completion(size);
     }
 }
 
-- (DGFBFileType)typeForPathExtension:(NSString *)pathExtension {
-    if (!pathExtension.length) return DGFBFileTypeDefault;
+- (DGFileType)typeForPathExtension:(NSString *)pathExtension {
+    if (!pathExtension.length) return DGFileTypeDefault;
     
     static NSSet *_imageSet = nil;
     static NSSet *_audioSet = nil;
@@ -78,23 +85,23 @@
     });
     
     if ([_imageSet containsObject:pathExtension]) {
-        return DGFBFileTypeImage;
+        return DGFileTypeImage;
     }else if ([_audioSet containsObject:pathExtension]) {
-        return DGFBFileTypeAudio;
+        return DGFileTypeAudio;
     }else if ([pathExtension isEqualToString:@"mp4"]) {
-        return DGFBFileTypeVideo;
+        return DGFileTypeVideo;
     }else if ([pathExtension isEqualToString:@"pdf"]) {
-        return DGFBFileTypePDF;
+        return DGFileTypePDF;
     }else if ([pathExtension isEqualToString:@"plist"]) {
-        return DGFBFileTypePLIST;
+        return DGFileTypePLIST;
     }else if ([pathExtension isEqualToString:@"json"]) {
-        return DGFBFileTypeJSON;
+        return DGFileTypeJSON;
     }else if ([pathExtension isEqualToString:@"zip"]) {
-        return DGFBFileTypeZIP;
+        return DGFileTypeZIP;
     }else if ([_dbSet containsObject:pathExtension]) {
-        return DGFBFileTypeDB;
+        return DGFileTypeDB;
     }
-    return DGFBFileTypeDefault;
+    return DGFileTypeDefault;
 }
 
 - (UIImage *)image {
@@ -104,36 +111,36 @@
         _cachedImageDic = [NSMutableDictionary dictionary];
     });
     
-    DGFBFileType type = self.type;
+    DGFileType type = self.type;
     NSString *imageName = nil;
     switch (type) {
-        case DGFBFileTypeDefault:
+        case DGFileTypeDefault:
             imageName = @"file_default";
-        case DGFBFileTypeDirectory:
+        case DGFileTypeDirectory:
             imageName = @"file_folder";
             break;
-        case DGFBFileTypeImage:
+        case DGFileTypeImage:
             imageName = @"file_image";
             break;
-        case DGFBFileTypeAudio:
+        case DGFileTypeAudio:
             imageName = @"file_audio";
             break;
-        case DGFBFileTypeVideo:
+        case DGFileTypeVideo:
             imageName = @"file_video";
             break;
-        case DGFBFileTypePDF:
+        case DGFileTypePDF:
             imageName = @"file_pdf";
             break;
-        case DGFBFileTypeJSON:
+        case DGFileTypeJSON:
             imageName = @"file_json";
             break;
-        case DGFBFileTypePLIST:
+        case DGFileTypePLIST:
             imageName = @"file_plist";
             break;
-        case DGFBFileTypeZIP:
+        case DGFileTypeZIP:
             imageName = @"file_zip";
             break;
-        case DGFBFileTypeDB:
+        case DGFileTypeDB:
             imageName = @"file_database";
             break;
         default:
@@ -162,7 +169,7 @@
 }
 
 - (BOOL)isExist {
-    return [[NSFileManager defaultManager] fileExistsAtPath:self.fileURL.path];
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.filePath];
 }
 
 #pragma mark - QLPreviewItem

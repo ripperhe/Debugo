@@ -14,7 +14,7 @@
 #import "DGAccountBackViewController.h"
 #import "DGAccountPlugin.h"
 #import "DGActionManager.h"
-#import "DGFileManager.h"
+#import "DGFilePlugin.h"
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
@@ -64,7 +64,7 @@ static DGAssistant *_instance;
     [DGCache.shared.settingPlister setBool:self.configuration.isShowTouches forKey:kDGSettingIsShowTouches];
 
     // file
-    DGFileManager.shared.configuration = configuration.fileConfiguration;
+    DGFilePlugin.shared.configuration = configuration.fileConfiguration;
     
     // account
     [DGAccountPlugin.shared setupWithConfiguration:configuration.accountConfiguration];

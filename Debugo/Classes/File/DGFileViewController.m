@@ -13,8 +13,8 @@
 #import "DGPreviewManager.h"
 #import "DGFileInfoViewController.h"
 #import "DGFileParser.h"
+#import "DGFileTableViewCell.h"
 
-static NSString *kDGCellID = @"kDGCellID";
 static NSString *kDGCellTitle = @"kDGCellTitle";
 static NSString *kDGCellSubtitle = @"kDGCellSubtitle";
 static NSString *kDGCellValue = @"kDGCellValue";
@@ -51,7 +51,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     if (!_configuration) {
         DGFileConfiguration *configuration = [DGFileConfiguration new];
         configuration.allowEditing = YES;
-        [configuration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration *(DGFBFile *file) {
+        [configuration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration *(DGFile *file) {
             DGDatabasePreviewConfiguration *config = nil;
             if (DGAssistant.shared.configuration.fileConfiguration.databasePreviewConfigurationFetcher) {
                 DGAssistant.shared.configuration.fileConfiguration.databasePreviewConfigurationFetcher(file.fileURL);
@@ -68,8 +68,9 @@ static NSString *kDGCellValue = @"kDGCellValue";
         NSMutableArray *array = [NSMutableArray array];
         
         // genaral
-        DGFBFile *sandboxFile = [[DGFBFile alloc] initWithURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
-        DGFBFile *bundleFile = [[DGFBFile alloc] initWithURL:[[NSBundle mainBundle] bundleURL]];
+        DGFile *sandboxFile = [[DGFile alloc] initWithURL:DGFilePath.sandboxDirectoryURL];
+        [sandboxFile setDisplayName:@"Sandbox"];
+        DGFile *bundleFile = [[DGFile alloc] initWithURL:DGFilePath.bundleDirectoryURL];
         NSArray *generalArray = @[
                        @{kDGCellTitle:@"Sandbox",
                          kDGCellSubtitle:@"App Home Folder",
@@ -81,29 +82,31 @@ static NSString *kDGCellValue = @"kDGCellValue";
         [array addObject:generalArray];
         
         // db shortcut
-        NSArray <NSURL *>*shortcutDBURLs = DGAssistant.shared.configuration.fileConfiguration.shortcutForDatabaseURLs.copy;
+        NSArray <NSString *>*shortcutForDatabasePaths = DGAssistant.shared.configuration.fileConfiguration.shortcutForDatabasePaths.copy;
         NSMutableArray *shortcutDBFiles = [NSMutableArray array];
-        for (NSURL *url in shortcutDBURLs) {
-            NSArray *files = [self parseURL:url forType:DGFBFileTypeDB];
+        [shortcutForDatabasePaths enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray *files = [self parsePath:obj forType:DGFileTypeDB];
             if (files.count) {
                 [shortcutDBFiles addObjectsFromArray:files];
             }
-        }
+        }];
         if (shortcutDBFiles.count) {
             shortcutDBFiles.dg_copyExtObj = @"数据库捷径";
             [array addObject:shortcutDBFiles];
         }
         
         // # shortcut
-        NSArray <NSURL *>*shortcutMixURLs = DGAssistant.shared.configuration.fileConfiguration.shortcutForAnyURLs.copy;
-        NSMutableArray *shortcutMixFiles = [NSMutableArray array];
-        for (NSURL *url in shortcutMixURLs) {
-            DGFBFile *file = [[DGFBFile alloc] initWithURL:url];
-            [shortcutMixFiles addObject:@{kDGCellTitle:file.displayName, kDGCellValue:file}];
-        }
-        if (shortcutMixFiles.count) {
-            shortcutMixFiles.dg_copyExtObj = @"捷径";
-            [array addObject:shortcutMixFiles];
+        NSArray <NSString *>*shortcutForAnyPaths = DGAssistant.shared.configuration.fileConfiguration.shortcutForAnyPaths.copy;
+        NSMutableArray *shortcutForAnyFiles = [NSMutableArray array];
+        [shortcutForAnyPaths enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            DGFile *file = [[DGFile alloc] initWithPath:obj];
+            if (file) {
+                [shortcutForAnyFiles addObject:@{kDGCellTitle:file.displayName, kDGCellValue:file}];
+            }
+        }];
+        if (shortcutForAnyFiles.count) {
+            shortcutForAnyFiles.dg_copyExtObj = @"捷径";
+            [array addObject:shortcutForAnyFiles];
         }
         
         _dataArray = array.copy;
@@ -111,31 +114,25 @@ static NSString *kDGCellValue = @"kDGCellValue";
     return _dataArray;
 }
 
-- (NSArray <NSDictionary <NSString *, DGFBFile *>*>*)parseURL:(NSURL *)url forType:(DGFBFileType)type {
-    BOOL isDirectory = NO;
-    BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:url.path isDirectory:&isDirectory];
-    if (!isExist) {
-        return nil;
-    }
-    
-    if (!isDirectory) {
-        DGFBFile *file = [[DGFBFile alloc] initWithURL:url];
-        if (file.type == type) {
-            return @[@{kDGCellTitle:file.displayName, kDGCellValue:file}];
-        }
-        return nil;
-    }else {
+- (NSArray <NSDictionary <NSString *, DGFile *>*>*)parsePath:(NSString *)path forType:(DGFileType)type {
+    DGFile *parseFile = [[DGFile alloc] initWithPath:path];
+    if (!parseFile) return nil;
+    if (parseFile.isDirectory) {
+        if (type == DGFileTypeDirectory) return @[@{kDGCellTitle:parseFile.displayName, kDGCellValue:parseFile}];
         DGFileConfiguration *configuration = [DGFileConfiguration new];
         configuration.allowedFileTypes = @[@(type)];
-        NSArray <DGFBFile *>*files = [DGFileParser filesForDirectory:url configuration:configuration errorHandler:^(NSError *error) {
-            NSLog(@"%@ %s error:%@", self, __func__, error);
+        NSArray <DGFile *>*files = [DGFileParser filesForDirectory:parseFile.fileURL configuration:configuration errorHandler:^(NSError *error) {
+            DGLog(@"获取文件失败 error:%@", error);
         }];
         NSMutableArray *fileDicArray = [NSMutableArray arrayWithCapacity:files.count];
-        for (DGFBFile *file in files) {
+        for (DGFile *file in files) {
             [fileDicArray addObject:@{kDGCellTitle:file.displayName, kDGCellValue:file}];
         }
         return fileDicArray;
+    }else if (parseFile.type == type) {
+        return @[@{kDGCellTitle:parseFile.displayName, kDGCellValue:parseFile}];
     }
+    return nil;
 }
 
 #pragma mark - Table view data source
@@ -149,19 +146,17 @@ static NSString *kDGCellValue = @"kDGCellValue";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDGCellID];
+    static NSString *kDGCellID = @"cell";
+    DGFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDGCellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kDGCellID];
-        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        cell = [[DGFileTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kDGCellID];
     }
-    
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
-    DGFBFile *file = [data objectForKey:kDGCellValue];
-    cell.textLabel.text = data[kDGCellTitle];
-    cell.detailTextLabel.text = [data objectForKey:kDGCellSubtitle]?:file.simpleInfo;
-    cell.imageView.image = file.image;
-    cell.accessoryType = file.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryDetailButton;
-    cell.accessoryView.userInteractionEnabled = !file.isDirectory;
+    DGFile *file = [data objectForKey:kDGCellValue];
+    [cell refreshWithFile:file];
+    if ([data objectForKey:kDGCellSubtitle]) {
+        cell.detailTextLabel.text = [data objectForKey:kDGCellSubtitle];
+    }
     return cell;
 }
 
@@ -169,7 +164,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
-    DGFBFile *file = [data objectForKey:kDGCellValue];;
+    DGFile *file = [data objectForKey:kDGCellValue];;
     UIViewController *previewViewController = [DGPreviewManager previewViewControllerForFile:file configuration:self.configuration];
     [self.navigationController pushViewController:previewViewController animated:YES];
     DGLog(@"\n%@", file.fileURL.path);
@@ -177,7 +172,7 @@ static NSString *kDGCellValue = @"kDGCellValue";
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *data = self.dataArray[indexPath.section][indexPath.row];
-    DGFBFile *file = [data objectForKey:kDGCellValue];
+    DGFile *file = [data objectForKey:kDGCellValue];
     DGFileInfoViewController *fileInfoVC = [[DGFileInfoViewController alloc] initWithFile:file];
     [self.navigationController pushViewController:fileInfoVC animated:YES];
 }

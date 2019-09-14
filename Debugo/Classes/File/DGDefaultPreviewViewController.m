@@ -21,7 +21,7 @@
     self.dataSource = self;
 }
 
-- (void)setFile:(DGFBFile *)file {
+- (void)setFile:(DGFile *)file {
     _file = file;
     self.title = file.displayName;
 }

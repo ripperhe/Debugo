@@ -41,7 +41,7 @@
 }
 
 #pragma mark - setter
-- (void)setFile:(DGFBFile *)file {
+- (void)setFile:(DGFile *)file {
     _file = file;
     self.title = file.displayName;
     [self processForDisplay];
@@ -69,7 +69,7 @@
     NSString *rawString = nil;
     
     // Prepare plist for display
-    if (self.file.type == DGFBFileTypePLIST) {
+    if (self.file.type == DGFileTypePLIST) {
         NSError *error;
         NSObject *plistObject = [NSPropertyListSerialization propertyListWithData:data
                                                   options:0
@@ -88,7 +88,7 @@
     }
     
     // Prepare json file for display
-    if (self.file.type == DGFBFileTypeJSON) {
+    if (self.file.type == DGFileTypeJSON) {
         NSError *error;
         id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
         if (error) {

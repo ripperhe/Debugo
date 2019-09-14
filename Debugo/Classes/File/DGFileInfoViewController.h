@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGFBFile.h"
+#import "DGFile.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DGFileInfoViewController : UITableViewController
 
-@property (nonatomic, strong, readonly) DGFBFile *file;
+@property (nonatomic, strong, readonly) DGFile *file;
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithStyle:(UITableViewStyle)style NS_UNAVAILABLE;
-- (instancetype)initWithFile:(DGFBFile *)file;
+- (instancetype)initWithFile:(DGFile *)file;
 
 @end
 

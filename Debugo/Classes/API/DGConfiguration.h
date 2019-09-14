@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import "DGAction.h"
 #import "DGAccountPluginConfiguration.h"
-#import "DGFileDisplayConfiguration.h"
+#import "DGFilePluginConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 指令模块，公用 action */
 @property (nullable, nonatomic, strong) NSArray <DGAction *>*commonActions;
 /** 文件模块配置 */
-@property (nonatomic, strong, readonly) DGFileDisplayConfiguration *fileConfiguration;
+@property (nonatomic, strong, readonly) DGFilePluginConfiguration *fileConfiguration;
 /** 登陆模块配置 */
 @property (nonatomic, strong, readonly) DGAccountPluginConfiguration *accountConfiguration;
 

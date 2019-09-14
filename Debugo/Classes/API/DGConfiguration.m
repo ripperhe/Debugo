@@ -21,7 +21,7 @@
         _isOpenFPS = [DGCache.shared.settingPlister boolForKey:kDGSettingIsOpenFPS];
         _isShowTouches = [DGCache.shared.settingPlister boolForKey:kDGSettingIsShowTouches];
 
-        _fileConfiguration = [DGFileDisplayConfiguration new];
+        _fileConfiguration = [DGFilePluginConfiguration new];
         _accountConfiguration = [DGAccountPluginConfiguration new];
     }
     return self;
@@ -32,8 +32,8 @@
     if (obj) {
         obj.commonActions = [self.commonActions copyWithZone:zone];
         
-//        obj.shortcutForDatabaseURLs = [self.shortcutForDatabaseURLs copyWithZone:zone];
-//        obj.shortcutForAnyURLs = [self.shortcutForAnyURLs copyWithZone:zone];
+//        obj.shortcutForDatabasePaths = [self.shortcutForDatabasePaths copyWithZone:zone];
+//        obj.shortcutForAnyPaths = [self.shortcutForAnyPaths copyWithZone:zone];
         
         obj.isOpenFPS = self.isOpenFPS;
         obj.isShowTouches = self.isShowTouches;

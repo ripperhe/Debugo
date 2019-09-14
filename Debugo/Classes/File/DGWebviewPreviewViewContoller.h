@@ -8,8 +8,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGFBFile.h"
+#import "DGFile.h"
 
 @interface DGWebviewPreviewViewContoller : UIViewController
-@property (nonatomic, strong) DGFBFile *file;
+@property (nonatomic, strong) DGFile *file;
 @end

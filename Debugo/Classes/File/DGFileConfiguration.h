@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGFBFile.h"
+#import "DGFile.h"
 #import "DGDatabasePreviewConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL allowEditing;
 
-@property (nonatomic, copy) void(^didSelectFileBlock)(DGFBFile *file);
+@property (nonatomic, copy) void(^didSelectFileBlock)(DGFile *file);
 
-@property (nonatomic, copy) DGDatabasePreviewConfiguration * _Nullable(^databaseFilePreviewConfigurationBlock)(DGFBFile *file);
+@property (nonatomic, copy) DGDatabasePreviewConfiguration * _Nullable(^databaseFilePreviewConfigurationBlock)(DGFile *file);
 
 @end
 

@@ -15,21 +15,21 @@
 
 @implementation DGPreviewManager
 
-+ (UIViewController *)previewViewControllerForFile:(DGFBFile *)file configuration:(DGFileConfiguration *)configuration {
++ (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration {
     switch (file.type) {
-        case DGFBFileTypeDirectory: {
+        case DGFileTypeDirectory: {
             DGFileListViewController *fileListViewController = [[DGFileListViewController alloc] initWithInitialURL:file.fileURL configuration:configuration];
             return fileListViewController;
         }
             break;
-        case DGFBFileTypePLIST:
-        case DGFBFileTypeJSON: {
+        case DGFileTypePLIST:
+        case DGFileTypeJSON: {
             DGWebviewPreviewViewContoller *webviewPreviewViewContoller = [DGWebviewPreviewViewContoller new];
             webviewPreviewViewContoller.file = file;
             return webviewPreviewViewContoller;
         }
             break;
-        case DGFBFileTypeDB: {
+        case DGFileTypeDB: {
             DGDatabasePreviewViewController *databasePreviewViewController = [DGDatabasePreviewViewController new];
             databasePreviewViewController.file = file;
             databasePreviewViewController.previewConfiguration = configuration.databaseFilePreviewConfigurationBlock?configuration.databaseFilePreviewConfigurationBlock(file):nil;

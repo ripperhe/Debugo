@@ -11,14 +11,14 @@
 
 @implementation DGFileParser
 
-+ (NSArray <DGFBFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
++ (NSArray <DGFile *>*)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
     BOOL isDirectory = NO;
     BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:direcotryURL.path isDirectory:&isDirectory];
     if (!isExist || !isDirectory) {
         return nil;
     }
     
-    NSMutableArray <DGFBFile *>*files = [NSMutableArray array];
+    NSMutableArray <DGFile *>*files = [NSMutableArray array];
     NSArray <NSURL *>*fileURLs = [NSArray array];
     
     // get contents
@@ -32,7 +32,7 @@
     
     // parse
     for (NSURL *URL in fileURLs) {
-        DGFBFile *file = [[DGFBFile alloc] initWithURL:URL];
+        DGFile *file = [[DGFile alloc] initWithURL:URL];
         
         if (configuration.allowedFileTypes.count) {
             if (![configuration.allowedFileTypes containsObject:@(file.type)]) {
@@ -50,7 +50,7 @@
     }
     
     // sort
-    [files sortUsingComparator:^NSComparisonResult(DGFBFile *  _Nonnull obj1, DGFBFile *  _Nonnull obj2) {
+    [files sortUsingComparator:^NSComparisonResult(DGFile *  _Nonnull obj1, DGFile *  _Nonnull obj2) {
         return [obj1.displayName compare:obj2.displayName];
     }];
     return files;

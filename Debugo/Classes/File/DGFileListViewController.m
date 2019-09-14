@@ -16,15 +16,15 @@
 @interface DGFileListViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
 
 // Current directory
-@property (nonatomic, strong) DGFBFile *file;
+@property (nonatomic, strong) DGFile *file;
 
 // Data
-@property (nonatomic, strong) NSArray <DGFBFile *>*files;
-@property (nonatomic, strong) NSMutableArray <NSMutableArray <DGFBFile *>*>*sections;
+@property (nonatomic, strong) NSArray <DGFile *>*files;
+@property (nonatomic, strong) NSMutableArray <NSMutableArray <DGFile *>*>*sections;
 
 // Search controller
 @property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) NSArray <DGFBFile *>*filteredFiles;
+@property (nonatomic, strong) NSArray <DGFile *>*filteredFiles;
 
 // Count Label
 @property (nonatomic, weak) UILabel *countLabel;
@@ -38,7 +38,7 @@
 - (instancetype)initWithInitialURL:(NSURL *)initialURL configuration:(DGFileConfiguration *)configuration {
     self = [super init];
     if (self) {
-        self.file = [[DGFBFile alloc] initWithURL:initialURL];
+        self.file = [[DGFile alloc] initWithURL:initialURL];
         self.configuration = configuration;
     }
     return self;
@@ -119,15 +119,15 @@
 - (void)indexFiles {
     [self.sections removeAllObjects];
     
-    NSArray *sortedObjects = [self.files sortedArrayUsingComparator:^NSComparisonResult(DGFBFile *  _Nonnull obj1, DGFBFile *  _Nonnull obj2) {
+    NSArray *sortedObjects = [self.files sortedArrayUsingComparator:^NSComparisonResult(DGFile *  _Nonnull obj1, DGFile *  _Nonnull obj2) {
         return [obj1.displayName compare:obj2.displayName];
     }];
     
     [self.sections addObject:sortedObjects.mutableCopy];
 }
 
-- (DGFBFile *)fileForIndexPath:(NSIndexPath *)indexPath {
-    DGFBFile *file = nil;
+- (DGFile *)fileForIndexPath:(NSIndexPath *)indexPath {
+    DGFile *file = nil;
     if (self.searchController.isActive) {
         file = [self.filteredFiles objectAtIndex:indexPath.row];
     }else{
@@ -137,7 +137,7 @@
 }
 
 - (void)filterContentForSearchText:(NSString *)searchText {
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(DGFBFile *  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(DGFile *  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         return [evaluatedObject.displayName.lowercaseString containsString:searchText.lowercaseString];
     }];
     self.filteredFiles = [self.files filteredArrayUsingPredicate:predicate];
@@ -154,14 +154,14 @@
 
 #pragma mark - setter
 
-- (void)setFile:(DGFBFile *)file {
+- (void)setFile:(DGFile *)file {
     _file = file;
     self.title = file.displayName;
 }
 
 #pragma mark - getter
 
-- (NSMutableArray<NSMutableArray<DGFBFile *> *> *)sections {
+- (NSMutableArray<NSMutableArray<DGFile *> *> *)sections {
     if (!_sections) {
         _sections = [NSMutableArray array];
     }
@@ -196,24 +196,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"FileCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"cell";
+    DGFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell = [[DGFileTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
-    cell.textLabel.text = selectedFile.displayName;
-    cell.detailTextLabel.text = selectedFile.simpleInfo;
-    cell.imageView.image = selectedFile.image;
-    cell.accessoryType = selectedFile.isDirectory?UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryDetailButton;
-    cell.accessoryView.userInteractionEnabled = !selectedFile.isDirectory;
+    [cell refreshWithFile:[self fileForIndexPath:indexPath]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
+    DGFile *selectedFile = [self fileForIndexPath:indexPath];
     DGFileInfoViewController *fileInfoVC = [[DGFileInfoViewController alloc] initWithFile:selectedFile];
     [self.navigationController pushViewController:fileInfoVC animated:YES];
 }
@@ -221,7 +214,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
+    DGFile *selectedFile = [self fileForIndexPath:indexPath];
     DGLog(@"\n%@", selectedFile.fileURL.path);
     UIViewController *nextViewController = nil;
     if (selectedFile.isDirectory) {
@@ -276,7 +269,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
+        DGFile *selectedFile = [self fileForIndexPath:indexPath];
         dg_weakify(self)
         [selectedFile deleteWithErrorHandler:^(NSError *error) {
             dg_strongify(self)
@@ -313,7 +306,7 @@
     if (@available(iOS 9.0, *)) {
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
         if (indexPath) {
-            DGFBFile *selectedFile = [self fileForIndexPath:indexPath];
+            DGFile *selectedFile = [self fileForIndexPath:indexPath];
             if (selectedFile.isDirectory == NO) {
                 previewingContext.sourceRect = [self.tableView rectForRowAtIndexPath:indexPath];
                 return [DGPreviewManager previewViewControllerForFile:selectedFile configuration:self.configuration];

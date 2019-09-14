@@ -6,17 +6,17 @@
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGFileDisplayConfiguration.h"
+#import "DGFilePluginConfiguration.h"
 #import "DGCommon.h"
 
-@implementation DGFileDisplayConfiguration
+@implementation DGFilePluginConfiguration
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        _shortcutForDatabaseURLs = @[DGFilePath.documentsDirectoryURL];
-        _shortcutForAnyURLs = @[DGFilePath.userDefaultsPlistFileURL];
+        _shortcutForDatabasePaths = @[DGFilePath.documentsDirectory];
+        _shortcutForAnyPaths = @[DGFilePath.userDefaultsPlistFilePath];
     }
     return self;
 }

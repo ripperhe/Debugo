@@ -1,16 +1,16 @@
 //
-//  DGFileManager.m
+//  DGFilePlugin.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/5/31.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGFileManager.h"
+#import "DGFilePlugin.h"
 
-@implementation DGFileManager
+@implementation DGFilePlugin
 
-static DGFileManager *_instance;
+static DGFilePlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;

@@ -12,6 +12,6 @@
 
 @interface DGPreviewManager : NSObject
 
-+ (UIViewController *)previewViewControllerForFile:(DGFBFile *)file configuration:(DGFileConfiguration *)configuration;
++ (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration;
 
 @end
