@@ -11,13 +11,8 @@
 #import "DGAssistant.h"
 #import "DGAccountPlugin.h"
 
-NSString * const kDGSettingIsShowBottomBarWhenPushed = @"kDGSettingIsShowBottomBarWhenPushed";
-NSString * const kDGSettingIsOpenFPS = @"kDGSettingIsOpenFPS";
-NSString * const kDGSettingIsShowTouches = @"kDGSettingIsShowTouches";
-
 @interface DGCache()
 
-@property (nonatomic, strong) DGPlister *settingPlister;
 @property (nonatomic, strong) DGPlister *accountPlister;
 
 @end
@@ -56,14 +51,6 @@ static DGCache *_instance;
         _debugoPath = debugoPath;
     }
     return _debugoPath;
-}
-
-- (DGPlister *)settingPlister {
-    if (!_settingPlister) {
-        NSString *settingPath = [self.debugoPath stringByAppendingPathComponent:@"com.ripperhe.debugo.setting.plist"];
-        _settingPlister = [[DGPlister alloc] initWithFilePath:settingPath readonly:NO];
-    }
-    return _settingPlister;
 }
 
 - (DGPlister *)accountPlister {

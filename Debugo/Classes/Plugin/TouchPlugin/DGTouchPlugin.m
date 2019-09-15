@@ -9,6 +9,7 @@
 
 
 #import "DGTouchPlugin.h"
+#import "DebugoEnable.h"
 #import "DGCommon.h"
 #import "DGTouchWindow.h"
 #import "DGTouchPluginViewController.h"
@@ -60,13 +61,12 @@ static DGTouchWindow *_touchWindow = nil;
 
 @implementation UIApplication (DGTouchPlugin)
 
-+ (void)load {
 #if DebugoCanBeEnabled
++ (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [UIApplication dg_swizzleInstanceMethod:@selector(sendEvent:) newSelector:@selector(dg_sendEvent:)];
     });
-#endif
 }
 
 - (void)dg_sendEvent:(UIEvent *)event {
@@ -75,5 +75,6 @@ static DGTouchWindow *_touchWindow = nil;
     }
     [self dg_sendEvent:event];
 }
+#endif
 
 @end
