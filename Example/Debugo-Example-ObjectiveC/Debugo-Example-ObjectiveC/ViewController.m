@@ -17,11 +17,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0 && indexPath.row == 0) {
-        // go to test login
         [self clickGoToTestLogin];
     }
 }

@@ -197,6 +197,7 @@
     if (action.autoClose) {
         [DGAssistant.shared closeDebugWindow];
     }
+    action.viewController = self;
     action.handler(action);
 }
 

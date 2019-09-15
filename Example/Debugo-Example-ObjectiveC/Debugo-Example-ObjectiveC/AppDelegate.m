@@ -84,72 +84,63 @@
                 Class LoginVCClass = NSClassFromString(@"LoginViewController");
                 
                 if (DebugoVCClass && [currentVC isMemberOfClass:DebugoVCClass]) {
-                    // go to login vc
+                    // 进入到登陆页面
                     [currentVC performSelector:@selector(clickGoToTestLogin) withObject:nil];
                     
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        // run login method
+                        // 执行登陆方法
                         UIViewController *vc = [DGDebugo topViewController];
                         if ([vc isKindOfClass:LoginVCClass]) {
                             [vc performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
                         }
                     });
                 }else if (LoginVCClass && [currentVC isMemberOfClass:LoginVCClass]) {
-                    // run login method
+                    // 直接执行登陆方法
                     [currentVC performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
                 }else{
-                    NSLog(@"Can't quick login at here.");
+                    DGLog(@"本页面不支持登陆");
                 }
-                
 #pragma clang diagnostic pop
             }];
         }];
     }];
     
-    [DGDebugo addActionWithTitle:@"xxx" handler:^(DGAction * _Nonnull action) {
-        NSLog(@"123");
-    }];
+    // 随便添加几个指令 👇
     
-//    [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
-//        DGLog(@"不知道啊...");
-//    }];
-//
-//    [DGDebugo addActionForUser:@"user1" title:@"来个弹窗 🤣" autoClose:NO handler:^(DGAction *action, UIViewController *actionVC) {
-//        UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"Ha Ha" message:@"mei shen me, wo jiu xiang xiao yi xia~" preferredStyle:UIAlertControllerStyleAlert];
-//        [alerController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            NSLog(@"mei shen me, wo zhi dao le!");
-//        }]];
-//        [actionVC presentViewController:alerController animated:YES completion:nil];
-//    }];
-//
-//    [DGDebugo addActionForUser:@"user2" title:@"push 新控制器 👉" autoClose:NO handler:^(DGAction *action, UIViewController *actionVC) {
-//        UIViewController *vc = [UIViewController new];
-//        vc.view.backgroundColor = [UIColor orangeColor];
-//        [actionVC.navigationController pushViewController:vc animated:YES];
-//    }];
-//
-//
-//    [DGDebugo addActionWithTitle:@"log windows" handler:^(DGAction *action, UIViewController *actionVC) {
-//        DGLog(@"\n%@", [UIApplication sharedApplication].windows);
-//        [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            DGLog(@"%f", obj.windowLevel);
-//        }];
-//    }];
-//
-//    [DGDebugo addActionWithTitle:@"screen bounds" handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionViewController) {
-//        DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
-//    }];
+    [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" handler:^(DGAction * _Nonnull action) {
+        DGLog(@"不知道啊...");
+    }];
+
+    [DGDebugo addActionForUser:@"user1" title:@"来个弹窗 🤣" handler:^(DGAction *action) {
+        UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"Ha Ha" message:@"mei shen me, wo jiu xiang xiao yi xia~" preferredStyle:UIAlertControllerStyleAlert];
+        [alerController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"mei shen me, wo zhi dao le!");
+        }]];
+        [action.viewController presentViewController:alerController animated:YES completion:nil];
+    } autoClose:NO];
+
+    [DGDebugo addActionForUser:@"user2" title:@"push 新控制器 👉" handler:^(DGAction *action) {
+        UIViewController *vc = [UIViewController new];
+        vc.view.backgroundColor = [UIColor orangeColor];
+        [action.viewController.navigationController pushViewController:vc animated:YES];
+    } autoClose:NO];
+
+    [DGDebugo addActionWithTitle:@"打印 windows" handler:^(DGAction *action) {
+        DGLog(@"\n%@", [UIApplication sharedApplication].windows);
+        [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            DGLog(@"%f", obj.windowLevel);
+        }];
+    }];
+
+    [DGDebugo addActionWithTitle:@"打印 [UIScreen mainScreen].bounds" handler:^(DGAction * _Nonnull action) {
+        DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
+    }];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"中文 中文 中文" forKey:@"Test UserDefaults"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self internalDevelop];
     
     return YES;
 }
-
-- (void)internalDevelop {
-}
-
 
 @end

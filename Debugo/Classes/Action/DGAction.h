@@ -25,7 +25,7 @@ typedef void(^DGActionHandlerBlock)(DGAction *action);
 @property (nonatomic, copy) DGActionHandlerBlock handler;
 /** 当前 action 归属于哪个使用者 */
 @property (nonatomic, copy) NSString *user;
-/** 触发当前 action 的控制器，可以用来推出页面，可能为空 */
+/** 触发当前 action 的控制器，可以用来推出页面 */
 @property (nonatomic, weak) UIViewController *viewController;
 
 + (instancetype)actionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler;
