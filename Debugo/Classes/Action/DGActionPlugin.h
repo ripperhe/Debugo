@@ -7,14 +7,14 @@
 //
 
 #import "DGPlugin.h"
-#import "DGAction.h"
+#import "DGActionPluginConfiguration.h"
 #import "DGCommon.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DGActionPlugin : DGPlugin
 
-@property (nullable, nonatomic, strong) NSArray <DGAction *>*commonActions;
+@property (nonatomic, strong) DGActionPluginConfiguration *configuration;
 
 @property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAction *>*anonymousActionDic;
 

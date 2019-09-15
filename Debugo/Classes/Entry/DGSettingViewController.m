@@ -66,47 +66,47 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
     BOOL value = sender.isOn;
     NSIndexPath *indexPath = sender.dg_strongExtObj;
     DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
-    switch (type) {
-        case DGSettingTypeTabBar: {
-            DGAssistant.shared.configuration.isShowBottomBarWhenPushed = value;
-            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowBottomBarWhenPushed];
-        }
-            break;
-        case DGSettingTypeFPS: {
-            DGAssistant.shared.configuration.isOpenFPS = value;
-            [DGAssistant.shared refreshDebugBubbleWithIsOpenFPS:value];
-            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsOpenFPS];
-        }
-            break;
-        case DGSettingTypeTouches: {
-            DGAssistant.shared.configuration.isShowTouches = value;
-//            DGTouchPlugin.shared.shouldDisplayTouches = value;
-            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowTouches];
-        }
-            break;
-        default:
-            break;
-    }
+//    switch (type) {
+//        case DGSettingTypeTabBar: {
+//            DGAssistant.shared.configuration.isShowBottomBarWhenPushed = value;
+//            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowBottomBarWhenPushed];
+//        }
+//            break;
+//        case DGSettingTypeFPS: {
+//            DGAssistant.shared.configuration.isOpenFPS = value;
+//            [DGAssistant.shared refreshDebugBubbleWithIsOpenFPS:value];
+//            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsOpenFPS];
+//        }
+//            break;
+//        case DGSettingTypeTouches: {
+//            DGAssistant.shared.configuration.isShowTouches = value;
+////            DGTouchPlugin.shared.shouldDisplayTouches = value;
+//            [DGCache.shared.settingPlister setBool:value forKey:kDGSettingIsShowTouches];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
 }
 
-- (void)buttonClicked:(UIButton *)sender {
-    kDGImpactFeedback
-    NSIndexPath *indexPath = sender.dg_strongExtObj;
-    DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
-
-    switch (type) {
-        case DGSettingTypeDebugging: {
-            [sender setTitle:@"已开启" forState:UIControlStateNormal];
-            [sender sizeToFit];
-            sender.enabled = NO;
-            [DGAssistant.shared closeDebugWindow];
-            [DGApplePlugin setPluginSwitch:YES];
-            break;
-        }
-        default:
-            break;
-    }
-}
+//- (void)buttonClicked:(UIButton *)sender {
+//    kDGImpactFeedback
+//    NSIndexPath *indexPath = sender.dg_strongExtObj;
+//    DGSettingType type = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] integerValue];
+//
+//    switch (type) {
+//        case DGSettingTypeDebugging: {
+//            [sender setTitle:@"已开启" forState:UIControlStateNormal];
+//            [sender sizeToFit];
+//            sender.enabled = NO;
+//            [DGAssistant.shared closeDebugWindow];
+//            [DGApplePlugin setPluginSwitch:YES];
+//            break;
+//        }
+//        default:
+//            break;
+//    }
+//}
 
 #pragma mark - Table view data source
 
@@ -154,43 +154,43 @@ typedef NS_ENUM(NSUInteger, DGSettingType) {
         }
     }
     cell.accessoryView.dg_strongExtObj = indexPath;
-    switch (type) {
-        case DGSettingTypeTabBar: {
-            cell.textLabel.text = @"TabBar";
-            cell.detailTextLabel.text = @"Show bottom bar when pushed";
-            ((UISwitch *)cell.accessoryView).on = DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
-        }
-            break;
-        case DGSettingTypeFPS: {
-            cell.textLabel.text = @"FPS";
-            cell.detailTextLabel.text = @"Display FPS number on debug bubble";
-            ((UISwitch *)cell.accessoryView).on = DGAssistant.shared.configuration.isOpenFPS;
-        }
-            break;
-        case DGSettingTypeTouches: {
-            cell.textLabel.text = @"Touches";
-            cell.detailTextLabel.text = @"Display touches on screen";
-            ((UISwitch *)cell.accessoryView).on = DGAssistant.shared.configuration.isShowTouches;
-        }
-            break;
-        case DGSettingTypeDebugging: {
-            NSArray *debugInfoComponents = @[@"U", @"IDe", @"bug", @"gin", @"gInfor", @"ma", @"ti", @"onO", @"ver", @"lay"];
-            cell.textLabel.text = [debugInfoComponents componentsJoinedByString:@""];
-            cell.detailTextLabel.text = @"Apple 内部的调试工具";
-            UIButton *button = (UIButton *)cell.accessoryView;
-            if ([DGApplePlugin pluginSwitch]) {
-                [button setTitle:@"已开启" forState:UIControlStateNormal];
-                button.enabled = NO;
-            }else {
-                [button setTitle:@"开启" forState:UIControlStateNormal];
-                button.enabled = YES;
-            }
-            [button sizeToFit];
-        }
-            break;
-        default:
-            break;
-    }
+//    switch (type) {
+//        case DGSettingTypeTabBar: {
+//            cell.textLabel.text = @"TabBar";
+//            cell.detailTextLabel.text = @"Show bottom bar when pushed";
+//            ((UISwitch *)cell.accessoryView).on = DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
+//        }
+//            break;
+//        case DGSettingTypeFPS: {
+//            cell.textLabel.text = @"FPS";
+//            cell.detailTextLabel.text = @"Display FPS number on debug bubble";
+//            ((UISwitch *)cell.accessoryView).on = DGAssistant.shared.configuration.isOpenFPS;
+//        }
+//            break;
+//        case DGSettingTypeTouches: {
+//            cell.textLabel.text = @"Touches";
+//            cell.detailTextLabel.text = @"Display touches on screen";
+//            ((UISwitch *)cell.accessoryView).on = DGAssistant.shared.configuration.isShowTouches;
+//        }
+//            break;
+//        case DGSettingTypeDebugging: {
+//            NSArray *debugInfoComponents = @[@"U", @"IDe", @"bug", @"gin", @"gInfor", @"ma", @"ti", @"onO", @"ver", @"lay"];
+//            cell.textLabel.text = [debugInfoComponents componentsJoinedByString:@""];
+//            cell.detailTextLabel.text = @"Apple 内部的调试工具";
+//            UIButton *button = (UIButton *)cell.accessoryView;
+//            if ([DGApplePlugin pluginSwitch]) {
+//                [button setTitle:@"已开启" forState:UIControlStateNormal];
+//                button.enabled = NO;
+//            }else {
+//                [button setTitle:@"开启" forState:UIControlStateNormal];
+//                button.enabled = YES;
+//            }
+//            [button sizeToFit];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
     return cell;
 }
 

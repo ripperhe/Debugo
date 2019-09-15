@@ -47,7 +47,7 @@
         [array addObject:generalArray];
         
         // db shortcut
-        NSArray<NSString *> *shortcutForDatabasePaths = DGAssistant.shared.configuration.fileConfiguration.shortcutForDatabasePaths.copy;
+        NSArray<NSString *> *shortcutForDatabasePaths = DGFilePlugin.shared.configuration.shortcutForDatabasePaths.copy;
         NSMutableArray *shortcutDBFiles = [NSMutableArray array];
         [shortcutForDatabasePaths enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSArray *files = [DGFileParser filesForPath:obj forType:DGFileTypeDB errorHandler:nil];
@@ -61,7 +61,7 @@
         }
         
         // # shortcut
-        NSArray <NSString *>*shortcutForAnyPaths = DGAssistant.shared.configuration.fileConfiguration.shortcutForAnyPaths.copy;
+        NSArray <NSString *>*shortcutForAnyPaths = DGFilePlugin.shared.configuration.shortcutForAnyPaths.copy;
         NSMutableArray *shortcutForAnyFiles = [NSMutableArray array];
         [shortcutForAnyPaths enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             DGFile *file = [[DGFile alloc] initWithPath:obj];

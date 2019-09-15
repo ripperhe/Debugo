@@ -9,31 +9,22 @@
 
 
 #import <Foundation/Foundation.h>
-#import "DGAction.h"
-#import "DGAccountPluginConfiguration.h"
+#import "DGActionPluginConfiguration.h"
 #import "DGFilePluginConfiguration.h"
+#import "DGAccountPluginConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGConfiguration : NSObject<NSCopying>
+@interface DGConfiguration : NSObject
 
-/** 指令模块，公用 action */
-@property (nullable, nonatomic, strong) NSArray <DGAction *>*commonActions;
-/** 文件模块配置 */
-@property (nonatomic, strong, readonly) DGFilePluginConfiguration *fileConfiguration;
-/** 登陆模块配置 */
-@property (nonatomic, strong, readonly) DGAccountPluginConfiguration *accountConfiguration;
+/// 配置指令模块
+- (void)setupActionPlugin:(void (^)(DGActionPluginConfiguration *actionConfiguration))block;
 
-///------------------------------------------------
-/// setting 以下设置均可在设置页面开启; 如需强制开启，可在代码中设置
-///------------------------------------------------
+/// 配置文件模块
+- (void)setupFilePlugin:(void (^)(DGFilePluginConfiguration *fileConfiguration))block;
 
-/** 是否在 push 时显示 tabBar; 默认为 NO */
-@property (nonatomic, assign) BOOL isShowBottomBarWhenPushed;
-/** 是否在 debug bubble 显示 FPS; 默认为 NO */
-@property (nonatomic, assign) BOOL isOpenFPS;
-/** 是否显示 touch 效果; 默认为 NO */
-@property (nonatomic, assign) BOOL isShowTouches;
+/// 配置自动登录工具
+- (void)setupAccountPlugin:(void (^)(DGAccountPluginConfiguration *accountConfiguration))block;
 
 @end
 

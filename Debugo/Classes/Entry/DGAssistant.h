@@ -7,21 +7,16 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-
 #import <Foundation/Foundation.h>
-#import "DGDebugo+Additional.h"
-#import "DGBubble.h"
-#import "DGTouchPlugin.h"
-#import "DGApplePlugin.h"
-#import "DGCommon.h"
 #import "DGConfiguration.h"
-#import "DGDebugViewController.h"
+#import "DGBubble.h"
+#import "DGDebugWindow.h"
+#import "DGCommon.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *const DGDebugWindowWillShowNotificationKey;
 extern NSString *const DGDebugWindowDidHiddenNotificationKey;
-
 
 @interface DGAssistant : NSObject
 
@@ -30,21 +25,8 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 + (instancetype)shared;
 
 - (void)setupWithConfiguration:(DGConfiguration *)configuration;
-- (void)reset;
 
-///------------------------------------------------
-/// Debug Bubble
-///------------------------------------------------
-
-@property (nonatomic, weak, readonly) DGBubble *debugBubble;
-@property (nonatomic, strong, readonly) DGWindow *debugWindow;
-@property (nonatomic, weak, readonly) DGDebugViewController *debugViewController;
-
-- (void)showDebugBubble;
-- (void)removeDebugBubble;
 - (void)closeDebugWindow;
-- (void)removeDebugWindow;
-- (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS;
 
 @end
 

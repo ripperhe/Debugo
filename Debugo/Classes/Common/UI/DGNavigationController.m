@@ -22,8 +22,9 @@
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    // 隐藏 tabBar
     if (self.viewControllers.count > 0) {
-        viewController.hidesBottomBarWhenPushed = !DGAssistant.shared.configuration.isShowBottomBarWhenPushed;
+        viewController.hidesBottomBarWhenPushed = YES;
     }
     
     // 去掉返回按钮文字

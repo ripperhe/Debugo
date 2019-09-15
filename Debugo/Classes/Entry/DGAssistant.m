@@ -11,10 +11,12 @@
 #import "DGAssistant.h"
 #import "DGFPSLabel.h"
 #import "DGCache.h"
-#import "DGAccountBackViewController.h"
 #import "DGAccountPlugin.h"
 #import "DGActionPlugin.h"
 #import "DGFilePlugin.h"
+#import "DGTouchPlugin.h"
+#import "DGApplePlugin.h"
+
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
@@ -23,9 +25,8 @@ UIWindowLevel const DGContentWindowLevel = 1999999;
 
 @interface DGAssistant ()
 
-@property (nonatomic, weak) DGBubble *debugBubble;
-@property (nonatomic, strong) DGWindow *debugWindow;
-@property (nonatomic, weak, nullable) DGDebugViewController *debugViewController;
+@property (nonatomic, weak) DGBubble *bubble;
+@property (nonatomic, strong) DGDebugWindow *debugWindow;
 
 @end
 
@@ -52,81 +53,25 @@ static DGAssistant *_instance;
 
 #pragma mark -
 - (void)setupWithConfiguration:(DGConfiguration *)configuration {
-    _instance->_configuration = [configuration copy];
+    _instance->_configuration = configuration;
     
-    // setting
-    [DGCache.shared.settingPlister setBool:self.configuration.isShowBottomBarWhenPushed forKey:kDGSettingIsShowBottomBarWhenPushed];
-    
-    [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
-    [DGCache.shared.settingPlister setBool:self.configuration.isOpenFPS forKey:kDGSettingIsOpenFPS];
-    
-    [DGTouchPlugin setPluginSwitch:self.configuration.isShowTouches];
-    [DGCache.shared.settingPlister setBool:self.configuration.isShowTouches forKey:kDGSettingIsShowTouches];
-
-    // file
-    DGFilePlugin.shared.configuration = configuration.fileConfiguration;
-    
-    // account
-    [DGAccountPlugin.shared setupWithConfiguration:configuration.accountConfiguration];
-
-    // action
-    DGActionPlugin.shared.commonActions = configuration.commonActions;
-    
-    [self showDebugBubble];
+    [self showBubble];
 }
 
-- (void)reset {
-    [self refreshDebugBubbleWithIsOpenFPS:NO];
-    [DGTouchPlugin setPluginSwitch:NO];
-    
-    self->_configuration = nil;
-    
-    [self removeDebugBubble];
-    [self removeDebugWindow];
-    
-    [DGAccountPlugin setPluginSwitch:NO];
-}
-
-
-#pragma mark - debug bubble
-- (void)refreshDebugBubbleWithIsOpenFPS:(BOOL)isOpenFPS {
-    if (!self.debugBubble) return;
-    
-    if (isOpenFPS) {
-        if (!self.debugBubble.dg_weakExtObj) {
-            // 添加 FPSLabel
-            DGFPSLabel *label = [DGFPSLabel new];
-            label.backgroundColor = [UIColor clearColor];
-            label.frame = CGRectMake(0, 0, 50, 30);
-            label.center = CGPointMake(55/2.0, 55/2.0);
-            [self.debugBubble.contentView addSubview:label];
-            self.debugBubble.dg_weakExtObj = label;
-        }
-        self.debugBubble.button.backgroundColor = [UIColor colorWithRed:0.07 green:0.07 blue:0.07 alpha:1.00];
-        [self.debugBubble.button setImage:nil forState:UIControlStateNormal];
-    }else{
-        [self.debugBubble.dg_weakExtObj removeFromSuperview];
-        self.debugBubble.dg_weakExtObj = nil;
-        self.debugBubble.button.backgroundColor = [UIColor colorWithRed:0.0 green:0.478431 blue:1.0 alpha:1.0];
-        [self.debugBubble.button setImage:[DGBundle imageNamed:@"bubble"] forState:UIControlStateNormal];
-    }
-}
-
-- (void)showDebugBubble {
-    if (self.debugBubble) {
-        [self.debugBubble setHidden:NO];
+#pragma mark - bubble
+- (void)showBubble {
+    if (self.bubble) {
+        [self.bubble setHidden:NO];
         return;
     }
     
-    DGBubbleConfig *config = [DGBubbleConfig new];
-    config.buttonType = UIButtonTypeSystem;
-    
-    DGBubble *debugBubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
-                                                                       config:config];
-    debugBubble.name = @"Debug Bubble";
-    [debugBubble.button setTintColor:[UIColor whiteColor]];
+    DGBubble *bubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
+                                                                       config:nil];
+    bubble.name = @"Bubble";
+    [bubble.button setImage:[DGBundle imageNamed:@"bubble"] forState:UIControlStateNormal];
+    [bubble.button setTintColor:[UIColor whiteColor]];
     dg_weakify(self)
-    [debugBubble setClickBlock:^(DGBubble *bubble) {
+    [bubble setClickBlock:^(DGBubble *bubble) {
         dg_strongify(self)
         DGLog(@"start");
         // debug
@@ -140,26 +85,14 @@ static DGAssistant *_instance;
             }
         }else{
             // create
-            DGDebugViewController *debugVC = [[DGDebugViewController alloc] init];
-            DGWindow *window = [[DGWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-            window.name = @"Debug Window";
-            window.rootViewController = debugVC;
-            window.windowLevel = DGContentWindowLevel;
-            self.debugViewController = debugVC;
-            self.debugWindow = window;
-            
+            self.debugWindow = [[DGDebugWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
             // show
             [self openDebugWindow];
         }
         DGLog(@"end");
     }];
-    [debugBubble show];
-    self.debugBubble = debugBubble;
-    [self refreshDebugBubbleWithIsOpenFPS:self.configuration.isOpenFPS];
-}
-
-- (void)removeDebugBubble {
-    [self.debugBubble removeFromScreen];
+    [bubble show];
+    self.bubble = bubble;
 }
 
 #pragma mark - debug view controller

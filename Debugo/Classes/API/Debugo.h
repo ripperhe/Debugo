@@ -8,6 +8,5 @@
 //
 
 #import "DGDebugo.h"
-#import "DGDebugo+Additional.h"
 #import "DGLog.h"
 

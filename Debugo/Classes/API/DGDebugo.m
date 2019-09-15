@@ -79,15 +79,6 @@ static DGDebugo *_instance = nil;
     });
 }
 
-//+ (void)stop {
-//    dg_exec_main_queue_only_can_be_enabled(^{
-//        if (!DGDebugo.shared.isFire) return;
-//
-//        DGDebugo.shared->_isFire = NO;
-//        [DGAssistant.shared reset];
-//    });
-//}
-
 + (void)closeDebugWindow {
     dg_exec_main_queue_only_can_be_enabled(^{
         if (!DGDebugo.shared.isFire) return;
@@ -96,11 +87,17 @@ static DGDebugo *_instance = nil;
     });
 }
 
-#pragma mark - action
+#pragma mark - action plugin
 
 + (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler {
     dg_exec_main_queue_only_can_be_enabled(^{
         [DGActionPlugin.shared addActionForUser:nil withTitle:title autoClose:YES handler:handler];
+    });
+}
+
++ (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler autoClose:(BOOL)autoClose {
+    dg_exec_main_queue_only_can_be_enabled(^{
+        [DGActionPlugin.shared addActionForUser:nil withTitle:title autoClose:autoClose handler:handler];
     });
 }
 
@@ -110,7 +107,7 @@ static DGDebugo *_instance = nil;
     });
 }
 
-+ (void)addActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler {
++ (void)addActionForUser:(NSString *)user title:(NSString *)title handler:(nonnull DGActionHandlerBlock)handler autoClose:(BOOL)autoClose {
     dg_exec_main_queue_only_can_be_enabled(^{
         [DGActionPlugin.shared addActionForUser:user withTitle:title autoClose:autoClose handler:handler];
     });
@@ -120,14 +117,36 @@ static DGDebugo *_instance = nil;
 
 + (void)accountPluginAddAccount:(DGAccount *)account {
     dg_exec_main_queue_only_can_be_enabled(^{
-        if (!DGDebugo.shared.isFire) return;
-        
         if ([account isKindOfClass:[DGAccount class]] && account.isValid){
             [DGAccountPlugin.shared addAccount:account];
         }else{
             DGLog(@"获取到未知登陆数据 %@", account);
         }
     });
+}
+
+@end
+
+@implementation DGDebugo (Additional)
+
++ (UIViewController *)topViewController {
+    return [DGUIMagic topViewController];
+}
+
++ (UIViewController *)topViewControllerForWindow:(UIWindow *)window {
+    return [DGUIMagic topViewControllerForWindow:window];
+}
+
++ (UIWindow *)topVisibleFullScreenWindow {
+    return [DGUIMagic topVisibleFullScreenWindow];
+}
+
++ (UIWindow *)keyboardWindow {
+    return [DGUIMagic keyboardWindow];
+}
+
++ (NSArray <UIWindow *>*)getAllWindows {
+    return [DGUIMagic getAllWindows];
 }
 
 @end

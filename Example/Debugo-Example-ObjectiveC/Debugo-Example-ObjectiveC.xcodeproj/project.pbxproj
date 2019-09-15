@@ -17,7 +17,9 @@
 		C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFilePlugin.m */; };
 		C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGFilePath.m */; };
 		C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */; };
+		C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C948A492232E27BE0061772C /* DGDebugWindow.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
+		C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */; };
 		C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */; };
 		C9A09F20232A3CA800C7983F /* DGSwitchCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */; };
 		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
@@ -36,7 +38,6 @@
 		C9B456FA221D2B460098644E /* DGAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGAction.m */; };
 		C9B456FB221D2B460098644E /* DGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45670221D2B460098644E /* DGAccount.m */; };
 		C9B456FC221D2B460098644E /* DGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45676221D2B460098644E /* DGCache.m */; };
-		C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45678221D2B460098644E /* DGDebugo+Additional.m */; };
 		C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4567F221D2B460098644E /* DGTabBarController.m */; };
 		C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45680221D2B460098644E /* DGNavigationController.m */; };
 		C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGDebugViewController.m */; };
@@ -113,7 +114,11 @@
 		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePreviewConfiguration.h; sourceTree = "<group>"; };
 		C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePreviewConfiguration.m; sourceTree = "<group>"; };
+		C948A491232E27BE0061772C /* DGDebugWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGDebugWindow.h; sourceTree = "<group>"; };
+		C948A492232E27BE0061772C /* DGDebugWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGDebugWindow.m; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
+		C994DAB5232E1DD3004BA540 /* DGActionPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionPluginConfiguration.h; sourceTree = "<group>"; };
+		C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPluginConfiguration.m; sourceTree = "<group>"; };
 		C9A09F1B232A3ACD00C7983F /* DGTouchPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchPluginViewController.h; sourceTree = "<group>"; };
 		C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTouchPluginViewController.m; sourceTree = "<group>"; };
 		C9A09F1E232A3CA800C7983F /* DGSwitchCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSwitchCellView.h; sourceTree = "<group>"; };
@@ -142,7 +147,6 @@
 		C9B45669221D2B460098644E /* DGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConfiguration.h; sourceTree = "<group>"; };
 		C9B4566A221D2B460098644E /* DGAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAssistant.m; sourceTree = "<group>"; };
 		C9B4566B221D2B460098644E /* DebugoEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugoEnable.h; sourceTree = "<group>"; };
-		C9B4566C221D2B460098644E /* DGDebugo+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DGDebugo+Additional.h"; sourceTree = "<group>"; };
 		C9B4566D221D2B460098644E /* DGDebugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugo.m; sourceTree = "<group>"; };
 		C9B4566F221D2B460098644E /* DGAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAction.m; sourceTree = "<group>"; };
 		C9B45670221D2B460098644E /* DGAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccount.m; sourceTree = "<group>"; };
@@ -151,7 +155,6 @@
 		C9B45673221D2B460098644E /* DGDebugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugo.h; sourceTree = "<group>"; };
 		C9B45676221D2B460098644E /* DGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCache.m; sourceTree = "<group>"; };
 		C9B45677221D2B460098644E /* DGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCache.h; sourceTree = "<group>"; };
-		C9B45678221D2B460098644E /* DGDebugo+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DGDebugo+Additional.m"; sourceTree = "<group>"; };
 		C9B45679221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
 		C9B4567B221D2B460098644E /* DGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTabBarController.h; sourceTree = "<group>"; };
 		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
@@ -291,8 +294,6 @@
 				C9B4566B221D2B460098644E /* DebugoEnable.h */,
 				C9B45673221D2B460098644E /* DGDebugo.h */,
 				C9B4566D221D2B460098644E /* DGDebugo.m */,
-				C9B4566C221D2B460098644E /* DGDebugo+Additional.h */,
-				C9B45678221D2B460098644E /* DGDebugo+Additional.m */,
 				C9B45669221D2B460098644E /* DGConfiguration.h */,
 				C9B45667221D2B460098644E /* DGConfiguration.m */,
 			);
@@ -306,6 +307,8 @@
 				C9B4566A221D2B460098644E /* DGAssistant.m */,
 				C9B456BB221D2B460098644E /* DGBubble.h */,
 				C9B456B5221D2B460098644E /* DGBubble.m */,
+				C948A491232E27BE0061772C /* DGDebugWindow.h */,
+				C948A492232E27BE0061772C /* DGDebugWindow.m */,
 				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
 				C9B45681221D2B460098644E /* DGDebugViewController.m */,
 				C9B4567B221D2B460098644E /* DGTabBarController.h */,
@@ -321,6 +324,8 @@
 			children = (
 				C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */,
 				C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */,
+				C994DAB5232E1DD3004BA540 /* DGActionPluginConfiguration.h */,
+				C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */,
 				C9B45671221D2B460098644E /* DGAction.h */,
 				C9B4566F221D2B460098644E /* DGAction.m */,
 				C9B4568E221D2B460098644E /* DGActionViewController.h */,
@@ -768,13 +773,13 @@
 				C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */,
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
 				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
+				C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */,
 				C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */,
 				C9B4570E221D2B460098644E /* DGPlister.m in Sources */,
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
 				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
 				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
 				C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */,
-				C9B456FD221D2B460098644E /* DGDebugo+Additional.m in Sources */,
 				C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */,
 				C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
@@ -812,6 +817,7 @@
 				C9A09F20232A3CA800C7983F /* DGSwitchCellView.m in Sources */,
 				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
 				C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */,
+				C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */,
 				C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */,
 				C9B45642221D02A60098644E /* AppDelegate.m in Sources */,
 				C9B45706221D2B460098644E /* DGFileViewController.m in Sources */,
