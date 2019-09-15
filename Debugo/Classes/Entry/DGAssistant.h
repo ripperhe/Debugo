@@ -8,7 +8,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,11 +16,12 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 
 @interface DGAssistant : NSObject
 
-@property (nonatomic, strong, readonly) DGConfiguration *configuration;
+@property (nonatomic, copy) void(^bubbleLongPressBlock)(void);
+@property (nonatomic, strong) NSMutableArray *customPlugins;
 
 + (instancetype)shared;
 
-- (void)setupWithConfiguration:(DGConfiguration *)configuration;
+- (void)setup;
 
 - (void)closeDebugWindow;
 

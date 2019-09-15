@@ -26,7 +26,7 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 + (BOOL)canBeEnabled;
 
 /// ☄️ 启动框架 可在 configuration block 中配置参数
-+ (void)fireWithConfiguration:(nullable void (^)(DGConfiguration *configuration))configuration;
++ (void)fireWithConfiguration:(nullable void (^)(DGConfiguration *configuration))block;
 
 /// 关闭 Debug Window
 + (void)closeDebugWindow;

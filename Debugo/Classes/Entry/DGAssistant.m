@@ -44,10 +44,15 @@ static DGAssistant *_instance;
     return _instance;
 }
 
+- (NSMutableArray *)customPlugins {
+    if (!_customPlugins) {
+        _customPlugins = [NSMutableArray array];
+    }
+    return _customPlugins;
+}
+
 #pragma mark -
-- (void)setupWithConfiguration:(DGConfiguration *)configuration {
-    _instance->_configuration = configuration;
-    
+- (void)setup {    
     [self showBubble];
 }
 
@@ -75,6 +80,12 @@ static DGAssistant *_instance;
         }else{
             self.debugWindow = [[DGDebugWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
             [self openDebugWindow];
+        }
+    }];
+    [bubble setLongPressStartBlock:^(DGBubble *bubble) {
+        dg_strongify(self)
+        if (self.bubbleLongPressBlock) {
+            self.bubbleLongPressBlock();
         }
     }];
     [bubble show];

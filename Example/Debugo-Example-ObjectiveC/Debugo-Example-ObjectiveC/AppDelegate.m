@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "Debugo.h"
 #import "DGPathFetcher.h"
+#import "CustomPlugin.h"
+#import "CustomPlugin2.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +22,11 @@
     
     /// 启用并配置
     [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
+        
+        /// 设置悬浮球的长按事件
+        [configuration setupBubbleLongPressAction:^{
+            DGLog(@"长按...");
+        }];
         
         /// 配置指令模块
         [configuration setupActionPlugin:^(DGActionPluginConfiguration * _Nonnull actionConfiguration) {
@@ -103,6 +110,11 @@
 #pragma clang diagnostic pop
             }];
         }];
+        
+        /// 添加自定义工具
+        [configuration addCustomPlugin:CustomPlugin.class];
+        [configuration addCustomPlugin:CustomPlugin2.class];
+        
     }];
     
     // 随便添加几个指令 👇

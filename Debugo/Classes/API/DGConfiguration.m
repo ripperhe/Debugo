@@ -9,11 +9,18 @@
 
 
 #import "DGConfiguration.h"
+#import "DGAssistant.h"
 #import "DGActionPlugin.h"
 #import "DGFilePlugin.h"
 #import "DGAccountPlugin.h"
 
 @implementation DGConfiguration
+
+- (void)setupBubbleLongPressAction:(void (^)(void))block {
+    if (block) {
+        DGAssistant.shared.bubbleLongPressBlock = block;
+    }
+}
 
 - (void)setupActionPlugin:(void (^)(DGActionPluginConfiguration * _Nonnull))block {
     DGActionPluginConfiguration *configuration = [DGActionPluginConfiguration new];
@@ -37,6 +44,13 @@
         block(configuration);
     }
     DGAccountPlugin.shared.configuration = configuration;
+}
+
+- (void)addCustomPlugin:(id)plugin {
+    if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
+        return;
+    }
+    [DGAssistant.shared.customPlugins addObject:plugin];
 }
 
 @end

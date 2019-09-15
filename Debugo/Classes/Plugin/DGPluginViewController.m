@@ -25,6 +25,11 @@
     [self addPlugin:DGAccountPlugin.class];
     [self addPlugin:DGApplePlugin.class];
     [self addPlugin:DGTouchPlugin.class];
+    
+    // 自定义 plugin
+    [DGAssistant.shared.customPlugins enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self addPlugin:obj];
+    }];
 }
 
 - (void)addPlugin:(id)plugin {

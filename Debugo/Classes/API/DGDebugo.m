@@ -66,16 +66,16 @@ static DGDebugo *_instance = nil;
 }
 
 #pragma mark -
-+ (void)fireWithConfiguration:(void (^)(DGConfiguration *configuration))configurationHandler {
++ (void)fireWithConfiguration:(void (^)(DGConfiguration *configuration))block {
     dg_exec_main_queue_only_can_be_enabled(^{
         if (DGDebugo.shared.isFire) return;
         
         DGDebugo.shared->_isFire = YES;
         DGConfiguration *configuration = [DGConfiguration new];
-        if (configurationHandler) {
-            configurationHandler(configuration);
+        if (block) {
+            block(configuration);
         }
-        [DGAssistant.shared setupWithConfiguration:configuration];
+        [DGAssistant.shared setup];
     });
 }
 

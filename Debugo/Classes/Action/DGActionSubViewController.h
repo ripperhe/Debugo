@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DGAction;
-
+#import "DGAction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

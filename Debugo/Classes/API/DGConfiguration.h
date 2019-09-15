@@ -9,6 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "DGPlugin.h"
 #import "DGActionPluginConfiguration.h"
 #import "DGFilePluginConfiguration.h"
 #import "DGAccountPluginConfiguration.h"
@@ -16,6 +17,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DGConfiguration : NSObject
+
+/// 自定义悬浮球的长按事件，可用于某些需要快捷操作的事情（点击事件是开启和关闭 Debug Window）
+- (void)setupBubbleLongPressAction:(void (^)(void))block;
 
 /// 配置指令模块
 - (void)setupActionPlugin:(void (^)(DGActionPluginConfiguration *actionConfiguration))block;
@@ -25,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 配置自动登录工具
 - (void)setupAccountPlugin:(void (^)(DGAccountPluginConfiguration *accountConfiguration))block;
+
+/// 添加自定义工具，需继承自 DGPlugin 或遵守 DGPluginProtocol 协议
+- (void)addCustomPlugin:(id)plugin;
 
 @end
 
