@@ -20,6 +20,7 @@ NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHidden
 
 @property (nonatomic, weak) DGBubble *bubble;
 @property (nonatomic, strong) DGDebugWindow *debugWindow;
+@property (nonatomic, weak) UIView *superView;
 
 @end
 
@@ -108,9 +109,17 @@ static DGAssistant *_instance;
     }
     [containerWindow setHidden:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowDidHiddenNotificationKey object:nil userInfo:nil];
+    if (self.debugWindow.rootViewController.view.superview) {
+        self.superView = self.debugWindow.rootViewController.view.superview;
+        [self.debugWindow.rootViewController.view removeFromSuperview];
+    }
 }
 
 - (void)openDebugWindow {
+    if (!self.debugWindow.rootViewController.view.superview) {
+        // Window 隐藏再显示，不会调用 viewWillAppear；为了保证调用子控制器的 viewWillAppear，window 显示的时候重新添加
+        [self.superView addSubview:self.debugWindow.rootViewController.view];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
     DGWindow *containerWindow = self.debugWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;

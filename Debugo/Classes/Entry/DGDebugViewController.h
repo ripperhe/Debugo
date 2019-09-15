@@ -8,6 +8,6 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface DGDebugViewController : UIViewController
+@interface DGDebugViewController : UITabBarController
 
 @end
