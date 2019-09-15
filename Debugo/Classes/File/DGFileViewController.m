@@ -15,6 +15,7 @@
 #import "DGFileParser.h"
 #import "DGFileTableViewCell.h"
 #import "DGFilePlugin.h"
+#import "DGCommon.h"
 
 @interface DGFileViewController ()
 
@@ -39,9 +40,9 @@
         NSMutableArray *array = [NSMutableArray array];
         
         // genaral
-        DGFile *sandboxFile = [[DGFile alloc] initWithURL:DGFilePath.sandboxDirectoryURL];
+        DGFile *sandboxFile = [[DGFile alloc] initWithURL:DGPathFetcher.sandboxDirectoryURL];
         [sandboxFile setDisplayName:@"Sandbox"];
-        DGFile *bundleFile = [[DGFile alloc] initWithURL:DGFilePath.bundleDirectoryURL];
+        DGFile *bundleFile = [[DGFile alloc] initWithURL:DGPathFetcher.bundleDirectoryURL];
         [bundleFile setDisplayName:@"Bundle"];
         NSArray *generalArray = @[sandboxFile, bundleFile];
         [array addObject:generalArray];

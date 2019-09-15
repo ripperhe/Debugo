@@ -9,6 +9,7 @@
 #import "DGDebugWindow.h"
 
 @implementation DGDebugWindow
+
 - (instancetype)initWithFrame:(CGRect)frame {
     if(self = [super initWithFrame:frame]) {
         DGDebugViewController *debugVC = [[DGDebugViewController alloc] init];

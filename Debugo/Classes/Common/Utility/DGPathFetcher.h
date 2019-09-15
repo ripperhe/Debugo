@@ -1,5 +1,5 @@
 //
-//  DGFilePath.h
+//  DGPathFetcher.h
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/2/22.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGFilePath : NSObject
+@interface DGPathFetcher : NSObject
 
 + (NSString *)bundleDirectory;
 + (NSURL *)bundleDirectoryURL;

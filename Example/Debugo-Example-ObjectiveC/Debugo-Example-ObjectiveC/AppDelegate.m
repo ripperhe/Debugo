@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Debugo.h"
-#import "DGFilePath.h"
+#import "DGPathFetcher.h"
 
 @interface AppDelegate ()
 
@@ -43,7 +43,7 @@
                                                              ]];
             [fileConfiguration setShortcutForAnyPaths:@[
                                                         NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject,
-                                                        DGFilePath.userDefaultsPlistFilePath,
+                                                        DGPathFetcher.userDefaultsPlistFilePath,
                                                         ]];
             // 自定义数据库预览列宽
             [fileConfiguration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration * _Nullable(NSString * _Nonnull filePath) {

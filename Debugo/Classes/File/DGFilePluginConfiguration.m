@@ -15,8 +15,8 @@
 {
     self = [super init];
     if (self) {
-        _shortcutForDatabasePaths = @[DGFilePath.documentsDirectory];
-        _shortcutForAnyPaths = @[DGFilePath.userDefaultsPlistFilePath];
+        _shortcutForDatabasePaths = @[DGPathFetcher.documentsDirectory];
+        _shortcutForAnyPaths = @[DGPathFetcher.userDefaultsPlistFilePath];
     }
     return self;
 }

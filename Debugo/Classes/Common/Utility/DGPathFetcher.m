@@ -1,5 +1,5 @@
 //
-//  DGFilePath.m
+//  DGPathFetcher.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/2/22.
@@ -18,9 +18,9 @@
  └── tmp
  */
 
-#import "DGFilePath.h"
+#import "DGPathFetcher.h"
 
-@implementation DGFilePath
+@implementation DGPathFetcher
 
 + (NSString *)bundleDirectory {
     return [[NSBundle mainBundle] bundlePath];

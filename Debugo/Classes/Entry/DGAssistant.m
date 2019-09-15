@@ -9,19 +9,12 @@
 
 
 #import "DGAssistant.h"
-#import "DGFPSLabel.h"
-#import "DGCache.h"
-#import "DGAccountPlugin.h"
-#import "DGActionPlugin.h"
-#import "DGFilePlugin.h"
-#import "DGTouchPlugin.h"
-#import "DGApplePlugin.h"
-
+#import "DGCommon.h"
+#import "DGBubble.h"
+#import "DGDebugWindow.h"
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
-
-UIWindowLevel const DGContentWindowLevel = 1999999;
 
 @interface DGAssistant ()
 
@@ -73,23 +66,16 @@ static DGAssistant *_instance;
     dg_weakify(self)
     [bubble setClickBlock:^(DGBubble *bubble) {
         dg_strongify(self)
-        DGLog(@"start");
-        // debug
         if (self.debugWindow) {
             if (self.debugWindow.isHidden == NO) {
-                // hidden
                 [self closeDebugWindow];
             }else {
-                // show
                 [self openDebugWindow];
             }
         }else{
-            // create
             self.debugWindow = [[DGDebugWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-            // show
             [self openDebugWindow];
         }
-        DGLog(@"end");
     }];
     [bubble show];
     self.bubble = bubble;

@@ -15,7 +15,7 @@
 		C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */; };
 		C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */; };
 		C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFilePlugin.m */; };
-		C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGFilePath.m */; };
+		C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGPathFetcher.m */; };
 		C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */; };
 		C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C948A492232E27BE0061772C /* DGDebugWindow.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
@@ -38,14 +38,12 @@
 		C9B456FA221D2B460098644E /* DGAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGAction.m */; };
 		C9B456FB221D2B460098644E /* DGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45670221D2B460098644E /* DGAccount.m */; };
 		C9B456FC221D2B460098644E /* DGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45676221D2B460098644E /* DGCache.m */; };
-		C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4567F221D2B460098644E /* DGTabBarController.m */; };
 		C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45680221D2B460098644E /* DGNavigationController.m */; };
 		C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGDebugViewController.m */; };
 		C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45683221D2B460098644E /* DGActionSubViewController.m */; };
 		C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45684221D2B460098644E /* DGAccountListViewController.m */; };
 		C9B45703221D2B460098644E /* DGActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45686221D2B460098644E /* DGActionViewController.m */; };
 		C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45687221D2B460098644E /* DGAppInfoViewController.m */; };
-		C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45689221D2B460098644E /* DGSettingViewController.m */; };
 		C9B45706221D2B460098644E /* DGFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568C221D2B460098644E /* DGFileViewController.m */; };
 		C9B45707221D2B460098644E /* DGAccountBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568F221D2B460098644E /* DGAccountBackViewController.m */; };
 		C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45694221D2B460098644E /* NSObject+Debugo.m */; };
@@ -110,8 +108,8 @@
 		C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePluginConfiguration.m; sourceTree = "<group>"; };
 		C916195122A13C14009FF2A3 /* DGFilePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePlugin.h; sourceTree = "<group>"; };
 		C916195222A13C14009FF2A3 /* DGFilePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePlugin.m; sourceTree = "<group>"; };
-		C92F8C78221FA1E00080C156 /* DGFilePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePath.h; sourceTree = "<group>"; };
-		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
+		C92F8C78221FA1E00080C156 /* DGPathFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPathFetcher.h; sourceTree = "<group>"; };
+		C92F8C79221FA1E00080C156 /* DGPathFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPathFetcher.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePreviewConfiguration.h; sourceTree = "<group>"; };
 		C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePreviewConfiguration.m; sourceTree = "<group>"; };
 		C948A491232E27BE0061772C /* DGDebugWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGDebugWindow.h; sourceTree = "<group>"; };
@@ -156,20 +154,16 @@
 		C9B45676221D2B460098644E /* DGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCache.m; sourceTree = "<group>"; };
 		C9B45677221D2B460098644E /* DGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCache.h; sourceTree = "<group>"; };
 		C9B45679221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
-		C9B4567B221D2B460098644E /* DGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTabBarController.h; sourceTree = "<group>"; };
 		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
 		C9B4567D221D2B460098644E /* DGAccountBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountBackViewController.h; sourceTree = "<group>"; };
 		C9B4567E221D2B460098644E /* DGDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugViewController.h; sourceTree = "<group>"; };
-		C9B4567F221D2B460098644E /* DGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTabBarController.m; sourceTree = "<group>"; };
 		C9B45680221D2B460098644E /* DGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNavigationController.m; sourceTree = "<group>"; };
 		C9B45681221D2B460098644E /* DGDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugViewController.m; sourceTree = "<group>"; };
 		C9B45683221D2B460098644E /* DGActionSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionSubViewController.m; sourceTree = "<group>"; };
 		C9B45684221D2B460098644E /* DGAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountListViewController.m; sourceTree = "<group>"; };
-		C9B45685221D2B460098644E /* DGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSettingViewController.h; sourceTree = "<group>"; };
 		C9B45686221D2B460098644E /* DGActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionViewController.m; sourceTree = "<group>"; };
 		C9B45687221D2B460098644E /* DGAppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppInfoViewController.m; sourceTree = "<group>"; };
 		C9B45688221D2B460098644E /* DGFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileViewController.h; sourceTree = "<group>"; };
-		C9B45689221D2B460098644E /* DGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSettingViewController.m; sourceTree = "<group>"; };
 		C9B4568A221D2B460098644E /* DGAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountListViewController.h; sourceTree = "<group>"; };
 		C9B4568B221D2B460098644E /* DGActionSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionSubViewController.h; sourceTree = "<group>"; };
 		C9B4568C221D2B460098644E /* DGFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileViewController.m; sourceTree = "<group>"; };
@@ -311,10 +305,6 @@
 				C948A492232E27BE0061772C /* DGDebugWindow.m */,
 				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
 				C9B45681221D2B460098644E /* DGDebugViewController.m */,
-				C9B4567B221D2B460098644E /* DGTabBarController.h */,
-				C9B4567F221D2B460098644E /* DGTabBarController.m */,
-				C9B45685221D2B460098644E /* DGSettingViewController.h */,
-				C9B45689221D2B460098644E /* DGSettingViewController.m */,
 			);
 			path = Entry;
 			sourceTree = "<group>";
@@ -568,8 +558,8 @@
 				C9B456AE221D2B460098644E /* DGOrderedDictionary.m */,
 				C9B456A7221D2B460098644E /* DGDevice.h */,
 				C9B456A8221D2B460098644E /* DGDevice.m */,
-				C92F8C78221FA1E00080C156 /* DGFilePath.h */,
-				C92F8C79221FA1E00080C156 /* DGFilePath.m */,
+				C92F8C78221FA1E00080C156 /* DGPathFetcher.h */,
+				C92F8C79221FA1E00080C156 /* DGPathFetcher.m */,
 				C9C2109B22A100A600D5EEDE /* DGUIMagic.h */,
 				C9C2109C22A100A600D5EEDE /* DGUIMagic.m */,
 			);
@@ -768,9 +758,7 @@
 				C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */,
 				C9B45717221D2B460098644E /* DGFileParser.m in Sources */,
 				C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */,
-				C9B456FE221D2B460098644E /* DGTabBarController.m in Sources */,
 				C9B4572A221D2B460098644E /* DGFPSLabel.m in Sources */,
-				C9B45705221D2B460098644E /* DGSettingViewController.m in Sources */,
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
 				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
 				C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */,
@@ -841,7 +829,7 @@
 				C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */,
 				C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */,
 				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,
-				C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */,
+				C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

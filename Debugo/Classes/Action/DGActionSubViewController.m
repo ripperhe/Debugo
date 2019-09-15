@@ -8,6 +8,7 @@
 
 #import "DGActionSubViewController.h"
 #import "DGAssistant.h"
+#import "DGCommon.h"
 
 @interface DGActionSubViewController ()
 

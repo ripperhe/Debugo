@@ -8,7 +8,7 @@
 //
 
 #import "DGNavigationController.h"
-#import "DGAssistant.h"
+#import "DGCommon.h"
 
 @interface DGNavigationController ()
 

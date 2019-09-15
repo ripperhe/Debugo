@@ -20,7 +20,7 @@
 #import "DGPlister.h"
 #import "DGOrderedDictionary.h"
 #import "DGDevice.h"
-#import "DGFilePath.h"
+#import "DGPathFetcher.h"
 #import "DGWindow.h"
 #import "DGShareBarButtonItem.h"
 #import "DGUIMagic.h"
