@@ -22,17 +22,17 @@
 
 @property (nonatomic, strong) DGDatabaseOperation *dbOperation;
 @property (nonatomic, strong) DGDatabaseTableInfo *table;
-@property (nonatomic, strong) DGDatabaseTablePreviewConfiguration *tablePreviewConfiguration;
+@property (nonatomic, strong) DGDatabasePreviewConfiguration *previewConfiguration;
 
 @end
 
 @implementation DGDatabaseTableContentViewController
 
-- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tablePreviewConfiguration:(DGDatabaseTablePreviewConfiguration *)tablePreviewConfiguration {
+- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table previewConfiguration:(nullable DGDatabasePreviewConfiguration *)previewConfiguration {
     if (self = [super init]) {
         self.dbOperation = operation;
         self.table = table;
-        self.tablePreviewConfiguration = tablePreviewConfiguration ?: [DGDatabaseTablePreviewConfiguration new];
+        self.previewConfiguration = previewConfiguration ?: [DGDatabasePreviewConfiguration new];
     }
     return self;
 }
@@ -106,12 +106,12 @@
 }
 
 - (CGFloat)gridView:(DGDatabaseGridView *)gridView widthForContentCellInColumn:(NSInteger)column {
-    return [self.tablePreviewConfiguration columnWidthForColumnName:_columnArray[column].name];
+    return [self.previewConfiguration columnWidthForTable:self.table.name column:_columnArray[column].name];
 }
 
-- (CGFloat)gridView:(DGDatabaseGridView *)gridView heightForContentCellInRow:(NSInteger)row {
-    return self.tablePreviewConfiguration.rowHeight;
-}
+//- (CGFloat)gridView:(DGDatabaseGridView *)gridView heightForContentCellInRow:(NSInteger)row {
+//    return self.previewConfiguration.rowHeight;
+//}
 
 - (void)gridView:(DGDatabaseGridView *)gridView didClickContentButton:(nonnull UIButton *)button gridIndex:(DGGridIndex)gridIndex {
     NSString *content = [self contentsAtRow:gridIndex.row][gridIndex.column];

@@ -8,10 +8,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGFileConfiguration.h"
+#import "DGFilePreviewConfiguration.h"
 
 @interface DGPreviewManager : NSObject
 
-+ (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration;
++ (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFilePreviewConfiguration *)configuration;
 
 @end

@@ -86,26 +86,17 @@
                                              ];
         
         // 自定义显示数据库文件时的宽高
-        configuration.fileConfiguration.databasePreviewConfigurationFetcher = ^DGDatabasePreviewConfiguration * _Nullable(NSURL * _Nonnull databaseURL) {
-            if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
-                DGDatabaseTablePreviewConfiguration *errorTableConfig = [DGDatabaseTablePreviewConfiguration new];
-                errorTableConfig.specialWidthForColumn = @{
-                                                           @"pk_createTime":@(160.0),
-                                                           @"pk_updateTime":@(160.0),
-                                                           @"productWxSn":@(180.0),
-                                                           @"productMac":@(160.0),
-                                                           @"productSerialNum":@(180.0),
-                                                           @"productWxUrl":@(180.0),
-                                                           };
-                
-                DGDatabasePreviewConfiguration *config = [DGDatabasePreviewConfiguration new];
-                config.specialConfigurationForTable = @{
-                                                        @"error_info":errorTableConfig,
-                                                        };
-                return config;
-            }
-            return nil;
-        };
+//        configuration.fileConfiguration.databasePreviewConfigurationFetcher = ^DGDatabasePreviewConfiguration * _Nullable(NSURL * _Nonnull databaseURL) {
+//            if ([databaseURL.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
+//                DGDatabasePreviewConfiguration *config = [DGDatabasePreviewConfiguration new];
+//                [config setSpecialColumnWidthDictionary:@{
+//                                                          @"pk_createTime":@200
+//                                                          }
+//                                               forTable:@"error_info"];
+//                return config;
+//            }
+//            return nil;
+//        };
     }];
     
     [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {

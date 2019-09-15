@@ -1,13 +1,13 @@
 //
-//  DGFileConfiguration.m
+//  DGFilePreviewConfiguration.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/3/21.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGFileConfiguration.h"
+#import "DGFilePreviewConfiguration.h"
 
-@implementation DGFileConfiguration
+@implementation DGFilePreviewConfiguration
 
 @end

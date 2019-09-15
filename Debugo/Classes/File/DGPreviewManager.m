@@ -15,7 +15,7 @@
 
 @implementation DGPreviewManager
 
-+ (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration {
++ (UIViewController *)previewViewControllerForFile:(DGFile *)file configuration:(DGFilePreviewConfiguration *)configuration {
     switch (file.type) {
         case DGFileTypeDirectory: {
             DGFolderPreviewViewController *fileListViewController = [[DGFolderPreviewViewController alloc] initWithFile:file configuration:configuration];
@@ -32,7 +32,8 @@
         case DGFileTypeDB: {
             DGDatabasePreviewViewController *databasePreviewViewController = [DGDatabasePreviewViewController new];
             databasePreviewViewController.file = file;
-            databasePreviewViewController.previewConfiguration = configuration.databaseFilePreviewConfigurationBlock?configuration.databaseFilePreviewConfigurationBlock(file):nil;
+            id config = configuration.databaseFilePreviewConfigurationBlock?configuration.databaseFilePreviewConfigurationBlock(file):nil;
+            databasePreviewViewController.previewConfiguration = config;
             return databasePreviewViewController;
         }
             break;

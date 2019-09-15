@@ -75,7 +75,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DGDatabaseTableContentViewController *contentController = [[DGDatabaseTableContentViewController alloc] initWithDatabaseOperation:self.dbOperation table:self.tableArray[indexPath.row] tablePreviewConfiguration:[self.previewConfiguration tablePreviewConfigurationForTableName:_tableArray[indexPath.row].name]];
+    DGDatabaseTableContentViewController *contentController = [[DGDatabaseTableContentViewController alloc] initWithDatabaseOperation:self.dbOperation table:self.tableArray[indexPath.row] previewConfiguration:self.previewConfiguration];
     [self.navigationController pushViewController:contentController animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

@@ -1,5 +1,5 @@
 //
-//  DGFileConfiguration.m
+//  DGFilePreviewConfiguration.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/5/31.

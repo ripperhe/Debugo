@@ -7,30 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DGDatabaseTablePreviewConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DGDatabasePreviewConfiguration : NSObject
 
-@property (nonatomic, assign) CGFloat rowHeight;
-@property (nonatomic, assign) CGFloat columnWidth;
-/** key为table名字，value对这个table的个性配置；没有设置则使用默认配置 */
-@property (nonatomic, strong) NSDictionary <NSString *, DGDatabaseTablePreviewConfiguration *>*specialConfigurationForTable;
+/// 设置整个数据库通用的列宽，默认100，范围[50, 300]
+- (void)setCommonColumnWidth:(CGFloat)columnWidth;
 
-- (DGDatabaseTablePreviewConfiguration *)tablePreviewConfigurationForTableName:(NSString *)tableName;
+/// 设置某个表通用的列宽
+- (void)setCommonColumnWidth:(CGFloat)columnWidth forTable:(NSString *)tableName;
 
-@end
+/// 设置某个表指定列的列宽，字典key值为列名，value和列宽
+- (void)setSpecialColumnWidthDictionary:(NSDictionary<NSString *, NSNumber *> *)columnNameToWidth forTable:(NSString *)tableName;
 
-
-@interface DGDatabaseTablePreviewConfiguration : NSObject
-
-@property (nonatomic, assign) CGFloat rowHeight;
-@property (nonatomic, assign) CGFloat columnWidth;
-/** key为列名，value为列高；没有设置的使用默认列高 */
-@property (nonatomic, strong) NSDictionary <NSString *, NSNumber *>*specialWidthForColumn;
-
-- (CGFloat)columnWidthForColumnName:(NSString *)columnName;
+/// 根据表名和列名获取列宽
+- (CGFloat)columnWidthForTable:(NSString *)tableName column:(NSString *)columnName;
 
 @end
 

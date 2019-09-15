@@ -11,7 +11,7 @@
 
 @implementation DGFileParser
 
-+ (NSArray<DGFile *> *)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFileConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
++ (NSArray<DGFile *> *)filesForDirectory:(NSURL *)direcotryURL configuration:(DGFilePreviewConfiguration *)configuration errorHandler:(void (NS_NOESCAPE^)(NSError *))errorHandler {
     BOOL isDirectory = NO;
     BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:direcotryURL.path isDirectory:&isDirectory];
     if (!isExist || !isDirectory) {
@@ -61,7 +61,7 @@
     if (!parseFile) return nil;
     if (parseFile.isDirectory) {
         if (type == DGFileTypeDirectory) return @[parseFile];
-        DGFileConfiguration *configuration = [DGFileConfiguration new];
+        DGFilePreviewConfiguration *configuration = [DGFilePreviewConfiguration new];
         configuration.allowedFileTypes = @[@(type)];
         NSArray<DGFile *> *files = [self filesForDirectory:parseFile.fileURL configuration:configuration errorHandler:errorHandler];
         return files.count ? files : nil;

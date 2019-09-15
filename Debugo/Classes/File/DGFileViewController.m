@@ -14,11 +14,12 @@
 #import "DGFileInfoViewController.h"
 #import "DGFileParser.h"
 #import "DGFileTableViewCell.h"
+#import "DGFilePlugin.h"
 
 @interface DGFileViewController ()
 
-@property (nonatomic, strong) DGFileConfiguration *configuration;
 @property (nonatomic, strong) NSArray<NSArray<DGFile *> *> *dataArray;
+@property (nonatomic, strong) DGFilePreviewConfiguration *previewConfiguration;
 
 @end
 
@@ -32,22 +33,6 @@
 }
 
 #pragma mark - getter
-
-- (DGFileConfiguration *)configuration {
-    if (!_configuration) {
-        DGFileConfiguration *configuration = [DGFileConfiguration new];
-        configuration.allowEditing = YES;
-        [configuration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration *(DGFile *file) {
-            DGDatabasePreviewConfiguration *config = nil;
-            if (DGAssistant.shared.configuration.fileConfiguration.databasePreviewConfigurationFetcher) {
-                DGAssistant.shared.configuration.fileConfiguration.databasePreviewConfigurationFetcher(file.fileURL);
-            }
-            return config;
-        }];
-        _configuration = configuration;
-    }
-    return _configuration;
-}
 
 - (NSArray *)dataArray {
     if (!_dataArray) {
@@ -94,6 +79,21 @@
     return _dataArray;
 }
 
+- (DGFilePreviewConfiguration *)previewConfiguration {
+    if (!_previewConfiguration) {
+        DGFilePreviewConfiguration *configuration = [DGFilePreviewConfiguration new];
+        // 设置数据库预览
+        [configuration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration *(DGFile *file) {
+            if (DGFilePlugin.shared.configuration.databaseFilePreviewConfigurationBlock) {
+                DGDatabasePreviewConfiguration *config = DGFilePlugin.shared.configuration.databaseFilePreviewConfigurationBlock(file.filePath);
+                return config;
+            }
+            return nil;
+        }];
+        _previewConfiguration = configuration;
+    }
+    return _previewConfiguration;
+}
 
 #pragma mark - Table view data source
 
@@ -121,7 +121,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     DGFile *file = self.dataArray[indexPath.section][indexPath.row];;;
-    UIViewController *previewViewController = [DGPreviewManager previewViewControllerForFile:file configuration:self.configuration];
+    UIViewController *previewViewController = [DGPreviewManager previewViewControllerForFile:file configuration:self.previewConfiguration];
     [self.navigationController pushViewController:previewViewController animated:YES];
     DGLog(@"\n%@", file.fileURL.path);
 }

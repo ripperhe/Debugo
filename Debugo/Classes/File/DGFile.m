@@ -117,6 +117,7 @@
     switch (type) {
         case DGFileTypeDefault:
             imageName = @"file_default";
+            break;
         case DGFileTypeDirectory:
             imageName = @"file_folder";
             break;

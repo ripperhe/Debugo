@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table tablePreviewConfiguration:(nullable DGDatabaseTablePreviewConfiguration *)tablePreviewConfiguration;
+- (instancetype)initWithDatabaseOperation:(DGDatabaseOperation *)operation table:(DGDatabaseTableInfo *)table previewConfiguration:(nullable DGDatabasePreviewConfiguration *)previewConfiguration;
 
 @end
 

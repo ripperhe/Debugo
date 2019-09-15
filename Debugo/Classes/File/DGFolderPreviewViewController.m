@@ -16,7 +16,7 @@
 @interface DGFolderPreviewViewController ()<UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate>
 
 @property (nonatomic, strong) DGFile *file;
-@property (nonatomic, strong) DGFileConfiguration *configuration;
+@property (nonatomic, strong) DGFilePreviewConfiguration *configuration;
 
 // Data
 @property (nonatomic, strong) NSArray <DGFile *>*files;
@@ -35,7 +35,7 @@
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration {
+- (instancetype)initWithFile:(DGFile *)file configuration:(DGFilePreviewConfiguration *)configuration {
     if (file.type != DGFileTypeDirectory) return nil;
     if (self = [super init]) {
         self.file = file;
@@ -289,7 +289,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.configuration.allowEditing;
+    return !self.configuration.forbidEditing;
 }
 
 #pragma mark - UIViewControllerPreviewingDelegate

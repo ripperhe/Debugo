@@ -16,7 +16,7 @@
 		C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */; };
 		C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFilePlugin.m */; };
 		C92F8C7A221FA1E00080C156 /* DGFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGFilePath.m */; };
-		C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFileConfiguration.m */; };
+		C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
 		C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */; };
 		C9A09F20232A3CA800C7983F /* DGSwitchCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */; };
@@ -111,8 +111,8 @@
 		C916195222A13C14009FF2A3 /* DGFilePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePlugin.m; sourceTree = "<group>"; };
 		C92F8C78221FA1E00080C156 /* DGFilePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePath.h; sourceTree = "<group>"; };
 		C92F8C79221FA1E00080C156 /* DGFilePath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePath.m; sourceTree = "<group>"; };
-		C934EDCB224369C400B6979C /* DGFileConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileConfiguration.h; sourceTree = "<group>"; };
-		C934EDCC224369C400B6979C /* DGFileConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileConfiguration.m; sourceTree = "<group>"; };
+		C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePreviewConfiguration.h; sourceTree = "<group>"; };
+		C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePreviewConfiguration.m; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
 		C9A09F1B232A3ACD00C7983F /* DGTouchPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchPluginViewController.h; sourceTree = "<group>"; };
 		C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTouchPluginViewController.m; sourceTree = "<group>"; };
@@ -340,10 +340,10 @@
 				C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */,
 				C9B45688221D2B460098644E /* DGFileViewController.h */,
 				C9B4568C221D2B460098644E /* DGFileViewController.m */,
+				C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */,
+				C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */,
 				C9B456E3221D2B460098644E /* DGFile.h */,
 				C9B456C3221D2B460098644E /* DGFile.m */,
-				C934EDCB224369C400B6979C /* DGFileConfiguration.h */,
-				C934EDCC224369C400B6979C /* DGFileConfiguration.m */,
 				C9B456E0221D2B460098644E /* DGFileParser.h */,
 				C9B456C0221D2B460098644E /* DGFileParser.m */,
 				C9BB4267232CB2AE00095F7E /* DGFileTableViewCell.h */,
@@ -793,7 +793,7 @@
 				C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */,
 				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
 				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
-				C934EDCD224369C500B6979C /* DGFileConfiguration.m in Sources */,
+				C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */,
 				C9BB4269232CB2AE00095F7E /* DGFileTableViewCell.m in Sources */,
 				C9B4571B221D2B460098644E /* DGFolderPreviewViewController.m in Sources */,
 				C9B4572B221D2B460098644E /* DGWeakProxy.m in Sources */,

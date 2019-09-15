@@ -8,11 +8,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGFileConfiguration.h"
+#import "DGFilePreviewConfiguration.h"
 #import "DGFileTableViewCell.h"
 
 @interface DGFolderPreviewViewController : UITableViewController
 
-- (instancetype)initWithFile:(DGFile *)file configuration:(DGFileConfiguration *)configuration;
+- (instancetype)initWithFile:(DGFile *)file configuration:(DGFilePreviewConfiguration *)configuration;
 
 @end
