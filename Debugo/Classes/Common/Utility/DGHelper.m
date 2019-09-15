@@ -25,6 +25,16 @@ NSString * dg_current_user() {
     return _currentUser;
 }
 
+void dg_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
+    NSString *currentUser = dg_current_user();
+    if (!currentUser.length || !user.length) return;
+    if (![currentUser isEqualToString:user]) return;
+    
+    if (handler) {
+        handler();
+    }
+}
+
 void dg_dispatch_main_safe(void(^block)(void)) {
     if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue())) == 0) {
         block();

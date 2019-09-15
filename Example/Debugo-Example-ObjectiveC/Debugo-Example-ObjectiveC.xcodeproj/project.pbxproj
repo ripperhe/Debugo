@@ -37,7 +37,7 @@
 		C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4565C221D29230098644E /* LoginSuccessViewController.m */; };
 		C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45667221D2B460098644E /* DGConfiguration.m */; };
 		C9B456F8221D2B460098644E /* DGAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566A221D2B460098644E /* DGAssistant.m */; };
-		C9B456F9221D2B460098644E /* DGDebugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566D221D2B460098644E /* DGDebugo.m */; };
+		C9B456F9221D2B460098644E /* Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566D221D2B460098644E /* Debugo.m */; };
 		C9B456FA221D2B460098644E /* DGAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGAction.m */; };
 		C9B456FB221D2B460098644E /* DGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45670221D2B460098644E /* DGAccount.m */; };
 		C9B456FC221D2B460098644E /* DGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45676221D2B460098644E /* DGCache.m */; };
@@ -154,15 +154,14 @@
 		C9B45669221D2B460098644E /* DGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConfiguration.h; sourceTree = "<group>"; };
 		C9B4566A221D2B460098644E /* DGAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAssistant.m; sourceTree = "<group>"; };
 		C9B4566B221D2B460098644E /* DebugoEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugoEnable.h; sourceTree = "<group>"; };
-		C9B4566D221D2B460098644E /* DGDebugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugo.m; sourceTree = "<group>"; };
+		C9B4566D221D2B460098644E /* Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugo.m; sourceTree = "<group>"; };
 		C9B4566F221D2B460098644E /* DGAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAction.m; sourceTree = "<group>"; };
 		C9B45670221D2B460098644E /* DGAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccount.m; sourceTree = "<group>"; };
 		C9B45671221D2B460098644E /* DGAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAction.h; sourceTree = "<group>"; };
 		C9B45672221D2B460098644E /* DGAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccount.h; sourceTree = "<group>"; };
-		C9B45673221D2B460098644E /* DGDebugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugo.h; sourceTree = "<group>"; };
+		C9B45673221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
 		C9B45676221D2B460098644E /* DGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCache.m; sourceTree = "<group>"; };
 		C9B45677221D2B460098644E /* DGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCache.h; sourceTree = "<group>"; };
-		C9B45679221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
 		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
 		C9B4567D221D2B460098644E /* DGAccountBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountBackViewController.h; sourceTree = "<group>"; };
 		C9B4567E221D2B460098644E /* DGDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugViewController.h; sourceTree = "<group>"; };
@@ -306,10 +305,9 @@
 		C9034DDE2324DC7B003D8984 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				C9B45679221D2B460098644E /* Debugo.h */,
+				C9B45673221D2B460098644E /* Debugo.h */,
+				C9B4566D221D2B460098644E /* Debugo.m */,
 				C9B4566B221D2B460098644E /* DebugoEnable.h */,
-				C9B45673221D2B460098644E /* DGDebugo.h */,
-				C9B4566D221D2B460098644E /* DGDebugo.m */,
 				C9B45669221D2B460098644E /* DGConfiguration.h */,
 				C9B45667221D2B460098644E /* DGConfiguration.m */,
 			);
@@ -821,7 +819,7 @@
 				C9B45650221D02A70098644E /* main.m in Sources */,
 				C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */,
 				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
-				C9B456F9221D2B460098644E /* DGDebugo.m in Sources */,
+				C9B456F9221D2B460098644E /* Debugo.m in Sources */,
 				C9F92C6C2326637200B8F882 /* DGPlugin.m in Sources */,
 				C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */,
 				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,

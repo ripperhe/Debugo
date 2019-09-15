@@ -61,7 +61,7 @@
         /**
          ☄️ 登陆成功之后调用登陆成功的方法，携带上账号信息，Debugo 会保存账号数据到沙盒 Library/Caches/com.ripperhe.debugo/ 内
          */
-        [DGDebugo accountPluginAddAccount:[DGAccount accountWithUsername:account password:password]];
+        [Debugo accountPluginAddAccount:[DGAccount accountWithUsername:account password:password]];
     });
     
 }

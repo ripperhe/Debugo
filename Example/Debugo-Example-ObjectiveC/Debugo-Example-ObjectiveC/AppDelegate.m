@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     /// 启用并配置
-    [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
+    [Debugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
         
         /// 设置悬浮球的长按事件
         [configuration setupBubbleLongPressAction:^{
@@ -32,11 +32,11 @@
         [configuration setupActionPlugin:^(DGActionPluginConfiguration * _Nonnull actionConfiguration) {
             [actionConfiguration setCommonActions:@[
                                                     [DGAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGAction *action) {
-                UIViewController *vc = DGDebugo.topViewController;
+                UIViewController *vc = Debugo.topViewController;
                 NSLog(@"%@", vc);
             }],
                                                     [DGAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGAction *action) {
-                NSArray *array = [DGDebugo getAllWindows];
+                NSArray *array = [Debugo getAllWindows];
                 NSLog(@"%@", array);
             }],
                                                     ]];
@@ -84,7 +84,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
                 
-                UIViewController *currentVC = [DGDebugo topViewController];
+                UIViewController *currentVC = [Debugo topViewController];
                 
                 // 假设需要在这两个页面自动登录
                 Class DebugoVCClass = NSClassFromString(@"ViewController");
@@ -96,7 +96,7 @@
                     
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         // 执行登陆方法
-                        UIViewController *vc = [DGDebugo topViewController];
+                        UIViewController *vc = [Debugo topViewController];
                         if ([vc isKindOfClass:LoginVCClass]) {
                             [vc performSelector:@selector(sendLoginRequestWithAccount:password:) withObject:account.username withObject:account.password];
                         }
@@ -117,13 +117,18 @@
         
     }];
     
+    // 在某人电脑上才执行某些代码
+    [Debugo executeCodeForUser:@"ripper" handler:^{
+        DGLog(@"ripper 的电脑才执行");
+    }];
+    
     // 随便添加几个指令 👇
     
-    [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" handler:^(DGAction * _Nonnull action) {
+    [Debugo addActionForUser:@"ripper" title:@"今天吃啥啊？" handler:^(DGAction * _Nonnull action) {
         DGLog(@"不知道啊...");
     }];
 
-    [DGDebugo addActionForUser:@"user1" title:@"来个弹窗 🤣" handler:^(DGAction *action) {
+    [Debugo addActionForUser:@"user1" title:@"来个弹窗 🤣" handler:^(DGAction *action) {
         UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"Ha Ha" message:@"mei shen me, wo jiu xiang xiao yi xia~" preferredStyle:UIAlertControllerStyleAlert];
         [alerController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSLog(@"mei shen me, wo zhi dao le!");
@@ -131,26 +136,26 @@
         [action.viewController presentViewController:alerController animated:YES completion:nil];
     } autoClose:NO];
 
-    [DGDebugo addActionForUser:@"user2" title:@"push 新控制器 👉" handler:^(DGAction *action) {
+    [Debugo addActionForUser:@"user2" title:@"push 新控制器 👉" handler:^(DGAction *action) {
         UIViewController *vc = [UIViewController new];
         vc.view.backgroundColor = [UIColor orangeColor];
         [action.viewController.navigationController pushViewController:vc animated:YES];
     } autoClose:NO];
 
-    [DGDebugo addActionWithTitle:@"打印 windows" handler:^(DGAction *action) {
+    [Debugo addActionWithTitle:@"打印 windows" handler:^(DGAction *action) {
         DGLog(@"\n%@", [UIApplication sharedApplication].windows);
         [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             DGLog(@"%f", obj.windowLevel);
         }];
     }];
 
-    [DGDebugo addActionWithTitle:@"打印 [UIScreen mainScreen].bounds" handler:^(DGAction * _Nonnull action) {
+    [Debugo addActionWithTitle:@"打印 [UIScreen mainScreen].bounds" handler:^(DGAction * _Nonnull action) {
         DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
     }];
     
+    // 测试文件查看解析 plist 中文
     [[NSUserDefaults standardUserDefaults] setObject:@"中文 中文 中文" forKey:@"Test UserDefaults"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     
     return YES;
 }

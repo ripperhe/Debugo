@@ -1,5 +1,5 @@
 //
-//  DGDebugo.m
+//  Debugo.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -7,34 +7,25 @@
 //  Copyright © 2018年 ripper. All rights reserved.
 //
 
-#import "DGDebugo.h"
+#import "Debugo.h"
 #import "DGAssistant.h"
+#import "DGCommon.h"
 #import "DebugoEnable.h"
 #import "DGActionPlugin.h"
 #import "DGAccountPlugin.h"
 
-#if DebugoCanBeEnabled
-void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
-    NSString *currentUser = dg_current_user();
-    if (!currentUser.length || !user.length) return;
-    if (![currentUser isEqualToString:user]) return;
-    
-    if (handler) {
-        handler();
-    }
-}
-#endif
+@interface Debugo()
 
-@interface DGDebugo()
 @property (nonatomic, assign) BOOL isFire;
+
 @end
 
-@implementation DGDebugo
+@implementation Debugo
 
 + (void)initialize {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:@"Debugo canBeEnabled %@\n", [DGDebugo canBeEnabled] ? @"✅" : @"❌"] UTF8String]);
+        printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:@"Debugo canBeEnabled %@\n", [Debugo canBeEnabled] ? @"✅" : @"❌"] UTF8String]);
     });
 }
 
@@ -46,7 +37,7 @@ void debugo_exec(NSString *user, void (NS_NOESCAPE ^handler)(void)) {
 #endif
 }
 
-static DGDebugo *_instance = nil;
+static Debugo *_instance = nil;
 + (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
@@ -68,9 +59,9 @@ static DGDebugo *_instance = nil;
 #pragma mark -
 + (void)fireWithConfiguration:(void (^)(DGConfiguration *configuration))block {
     dg_exec_main_queue_only_can_be_enabled(^{
-        if (DGDebugo.shared.isFire) return;
+        if (Debugo.shared.isFire) return;
         
-        DGDebugo.shared->_isFire = YES;
+        Debugo.shared->_isFire = YES;
         DGConfiguration *configuration = [DGConfiguration new];
         if (block) {
             block(configuration);
@@ -81,10 +72,15 @@ static DGDebugo *_instance = nil;
 
 + (void)closeDebugWindow {
     dg_exec_main_queue_only_can_be_enabled(^{
-        if (!DGDebugo.shared.isFire) return;
+        if (!Debugo.shared.isFire) return;
         
         [DGAssistant.shared closeDebugWindow];
     });
+}
+
++ (void)executeCodeForUser:(NSString *)user handler:(void (NS_NOESCAPE ^)(void))handler {
+    if (![self canBeEnabled]) return;
+    dg_exec(user, handler);
 }
 
 #pragma mark - action plugin
@@ -127,7 +123,7 @@ static DGDebugo *_instance = nil;
 
 @end
 
-@implementation DGDebugo (Additional)
+@implementation Debugo (Additional)
 
 + (UIViewController *)topViewController {
     return [DGUIMagic topViewController];

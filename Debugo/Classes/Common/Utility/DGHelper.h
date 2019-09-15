@@ -48,6 +48,14 @@ _Pragma("clang diagnostic pop")
 NSString * dg_current_user(void);
 
 /**
+ 仅在某用户编译的安装包上执行某些代码
+
+ @param user 用户名
+ @param handler 代码
+ */
+void dg_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
+
+/**
  当前主线程，同步执行；当前非主线程，异步执行
 
  @param block 需要执行的代码

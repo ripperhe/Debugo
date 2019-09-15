@@ -67,7 +67,7 @@ end
 启用
 
 ```objectivec
-[DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
+[Debugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
     // 设置 configuration 的属性，定制你的需求
 }];
 ```
@@ -75,7 +75,7 @@ end
 关闭
 
 ```objectivec
-[DGDebugo stop];
+[Debugo stop];
 ```
 
 [更多详细的使用方法可进入该页面查看 🚀](https://ripperhe.com/Debugo/#/Guide/quick-start)
