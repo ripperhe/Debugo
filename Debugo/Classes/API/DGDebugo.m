@@ -10,7 +10,7 @@
 #import "DGDebugo.h"
 #import "DGAssistant.h"
 #import "DebugoEnable.h"
-#import "DGActionManager.h"
+#import "DGActionPlugin.h"
 #import "DGAccountPlugin.h"
 
 #if DebugoCanBeEnabled
@@ -100,19 +100,19 @@ static DGDebugo *_instance = nil;
 
 + (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler {
     dg_exec_main_queue_only_can_be_enabled(^{
-        [DGActionManager.shared addActionForUser:nil withTitle:title autoClose:YES handler:handler];
+        [DGActionPlugin.shared addActionForUser:nil withTitle:title autoClose:YES handler:handler];
     });
 }
 
 + (void)addActionForUser:(NSString *)user title:(NSString *)title handler:(DGActionHandlerBlock)handler {
     dg_exec_main_queue_only_can_be_enabled(^{
-        [DGActionManager.shared addActionForUser:user withTitle:title autoClose:YES handler:handler];
+        [DGActionPlugin.shared addActionForUser:user withTitle:title autoClose:YES handler:handler];
     });
 }
 
 + (void)addActionForUser:(NSString *)user title:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler {
     dg_exec_main_queue_only_can_be_enabled(^{
-        [DGActionManager.shared addActionForUser:user withTitle:title autoClose:autoClose handler:handler];
+        [DGActionPlugin.shared addActionForUser:user withTitle:title autoClose:autoClose handler:handler];
     });
 }
 

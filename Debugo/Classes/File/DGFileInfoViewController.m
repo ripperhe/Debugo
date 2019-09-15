@@ -39,7 +39,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = @"❌ 文件或文件夹不存在！";
-        self.tableView.tableHeaderView = label;
+        self.tableView.tableFooterView = label;
         return;
     }
     

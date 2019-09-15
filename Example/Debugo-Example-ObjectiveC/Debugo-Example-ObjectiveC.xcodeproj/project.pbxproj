@@ -82,7 +82,7 @@
 		C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchPlugin.m */; };
 		C9BB4269232CB2AE00095F7E /* DGFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */; };
 		C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C2109C22A100A600D5EEDE /* DGUIMagic.m */; };
-		C9C210A222A10A8300D5EEDE /* DGActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A122A10A8300D5EEDE /* DGActionManager.m */; };
+		C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */; };
 		C9C210A822A110DE00D5EEDE /* DGAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */; };
 		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
 		C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */; };
@@ -244,8 +244,8 @@
 		C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileTableViewCell.m; sourceTree = "<group>"; };
 		C9C2109B22A100A600D5EEDE /* DGUIMagic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGUIMagic.h; sourceTree = "<group>"; };
 		C9C2109C22A100A600D5EEDE /* DGUIMagic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGUIMagic.m; sourceTree = "<group>"; };
-		C9C210A022A10A8300D5EEDE /* DGActionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionManager.h; sourceTree = "<group>"; };
-		C9C210A122A10A8300D5EEDE /* DGActionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionManager.m; sourceTree = "<group>"; };
+		C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionPlugin.h; sourceTree = "<group>"; };
+		C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPlugin.m; sourceTree = "<group>"; };
 		C9C210A622A110DE00D5EEDE /* DGAccountPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountPlugin.h; sourceTree = "<group>"; };
 		C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountPlugin.m; sourceTree = "<group>"; };
 		C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Debugo.h"; sourceTree = "<group>"; };
@@ -319,14 +319,14 @@
 		C9034DE12324DCE6003D8984 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */,
+				C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */,
 				C9B45671221D2B460098644E /* DGAction.h */,
 				C9B4566F221D2B460098644E /* DGAction.m */,
 				C9B4568E221D2B460098644E /* DGActionViewController.h */,
 				C9B45686221D2B460098644E /* DGActionViewController.m */,
 				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
 				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
-				C9C210A022A10A8300D5EEDE /* DGActionManager.h */,
-				C9C210A122A10A8300D5EEDE /* DGActionManager.m */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -804,7 +804,7 @@
 				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
 				C9B456F9221D2B460098644E /* DGDebugo.m in Sources */,
 				C9F92C6C2326637200B8F882 /* DGPlugin.m in Sources */,
-				C9C210A222A10A8300D5EEDE /* DGActionManager.m in Sources */,
+				C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */,
 				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
 				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
 				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,

@@ -13,7 +13,7 @@
 #import "DGCache.h"
 #import "DGAccountBackViewController.h"
 #import "DGAccountPlugin.h"
-#import "DGActionManager.h"
+#import "DGActionPlugin.h"
 #import "DGFilePlugin.h"
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
@@ -70,7 +70,7 @@ static DGAssistant *_instance;
     [DGAccountPlugin.shared setupWithConfiguration:configuration.accountConfiguration];
 
     // action
-    DGActionManager.shared.commonActions = configuration.commonActions;
+    DGActionPlugin.shared.commonActions = configuration.commonActions;
     
     [self showDebugBubble];
 }

@@ -1,16 +1,16 @@
 //
-//  DGActionManager.m
+//  DGActionPlugin.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/5/31.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGActionManager.h"
+#import "DGActionPlugin.h"
 
-@implementation DGActionManager
+@implementation DGActionPlugin
 
-static DGActionManager *_instance;
+static DGActionPlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;

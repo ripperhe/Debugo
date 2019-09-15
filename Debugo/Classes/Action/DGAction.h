@@ -13,18 +13,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^DGActionHandlerBlock)(DGAction *action, UIViewController *actionVC);
+typedef void(^DGActionHandlerBlock)(DGAction *action);
 
 @interface DGAction : NSObject
 
-/** Action 的标题，即 cell title */
+/** action 的标题，即 cell title */
 @property (nonatomic, copy) NSString *title;
 /** 点击执行 Action 后是否自动关闭 */
 @property (nonatomic, assign) BOOL autoClose;
 /** 实际执行的代码 */
 @property (nonatomic, copy) DGActionHandlerBlock handler;
-/** 当前 Action 归属于哪个使用者 */
+/** 当前 action 归属于哪个使用者 */
 @property (nonatomic, copy) NSString *user;
+/** 触发当前 action 的控制器，可以用来推出页面，可能为空 */
+@property (nonatomic, weak) UIViewController *viewController;
 
 + (instancetype)actionWithTitle:(NSString *)title autoClose:(BOOL)autoClose handler:(DGActionHandlerBlock)handler;
 - (BOOL)isValid;

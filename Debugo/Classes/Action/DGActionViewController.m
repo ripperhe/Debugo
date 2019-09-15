@@ -10,27 +10,15 @@
 #import "DGActionViewController.h"
 #import "DGAssistant.h"
 #import "DGActionSubViewController.h"
-#import "DGActionManager.h"
-
-static NSString *kDGCellID = @"kDGCellID";
+#import "DGActionPlugin.h"
 
 @interface DGActionViewController ()
 
-@property (nonatomic, strong) NSMutableArray <NSArray <DGAction *>*>*dataArray;
+@property (nonatomic, strong) NSMutableArray<NSArray<DGAction *>*> *dataArray;
 
 @end
 
 @implementation DGActionViewController
-
-- (void)dealloc {
-    DGLogFunction;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    //    [self configTableView];
-}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -60,12 +48,17 @@ static NSString *kDGCellID = @"kDGCellID";
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         
-        NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGActionManager.shared.usersActionsDic.mutableCopy;
-        
-        // current
-        __block NSArray <DGAction *>*currentActions =  nil;
-        // #
-        __block NSMutableArray <DGAction *>*otherActions = [NSMutableArray array];
+        // 当前用户指令
+        __block NSArray<DGAction *> *currentActions =  nil;
+        // 其他用户指令
+        __block NSMutableArray<DGAction *> *otherActions = [NSMutableArray array];
+        // 匿名指令
+        NSArray<DGAction *> *anonymousActions = [DGActionPlugin shared].anonymousActionDic.reverseSortedValues;
+        // 共享指令
+        NSArray<DGAction *> *commonActions = [DGActionPlugin shared].commonActions.copy;
+
+        // 赋值
+        NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGActionPlugin.shared.usersActionsDic.mutableCopy;
         [usersActionsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj, BOOL * _Nonnull stop) {
             if (dg_current_user().length && [key isEqualToString:dg_current_user()]) {
                 // current
@@ -84,51 +77,83 @@ static NSString *kDGCellID = @"kDGCellID";
                     title = [_persons[arc4random()%_persons.count] stringByAppendingFormat:@" %@", key];
                     [_cachedPersonsDic setObject:title forKey:key];
                 }
-                DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+                DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action) {
                     DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
                     subVC.title = action.title;
-                    [actionVC.navigationController pushViewController:subVC animated:YES];
+                    [action.viewController.navigationController pushViewController:subVC animated:YES];
                 }];
                 action.dg_strongExtObj = obj.reverseSortedValues;
                 [otherActions addObject:action];
             }
         }];
         
-        // common action
-        NSArray *commonActions = [DGActionManager shared].commonActions.copy;
-        // anonymous
-        NSArray *anonymousActions = [DGActionManager shared].anonymousActionDic.reverseSortedValues;
-        
+        /**
+         经实践，最方便的指令展示规则如下
+         1. 如果有当前用户指令：第一组展示当前用户指令，第二组展示共享指令，第三组展示匿名指令和其他用户指令
+         2. 如果没有当前用户指令:
+         2.1. 如果有其他用户指令：第一组展示共享指令，第二组展示匿名指令和其他用户指令
+         2.2. 如果没有其他用户指令：第一组展示匿名指令，第二组展示共享指令
+         PS: 以上展示规则中，如果没有的，直接跳过
+         */
+
         if (currentActions.count) {
+            // 有当前用户指令
             currentActions.dg_copyExtObj = dg_current_user();
             [_dataArray addObject:currentActions];
-        }
-        
-        if (commonActions.count) {
-            commonActions.dg_copyExtObj = @"共享指令";
-            [_dataArray addObject:commonActions];
-        }
-        
-        if (!_dataArray.count) {
-            if (anonymousActions.count) {
-                anonymousActions.dg_copyExtObj = @"👨🏿‍💻 匿名用户指令";
-                [_dataArray addObject:anonymousActions];
+            
+            if (commonActions.count) {
+                commonActions.dg_copyExtObj = @"共享指令";
+                [_dataArray addObject:commonActions];
             }
-        }else {
+
             if (anonymousActions.count) {
-                DGAction *action = [DGAction actionWithTitle:@"👨🏿‍💻 匿名用户指令" autoClose:NO handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+                // 将匿名指令添加到其他指令数组中，并且从二级页面展开
+                DGAction *action = [DGAction actionWithTitle:@"👨🏿‍💻 匿名用户" autoClose:NO handler:^(DGAction * _Nonnull action) {
                     DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
                     subVC.title = action.title;
-                    [actionVC.navigationController pushViewController:subVC animated:YES];
+                    [action.viewController.navigationController pushViewController:subVC animated:YES];
                 }];
                 action.dg_strongExtObj = anonymousActions;
                 [otherActions insertObject:action atIndex:0];
             }
-        }
-        
-        if (otherActions.count) {
-            otherActions.dg_copyExtObj = @"#";
-            [_dataArray addObject:otherActions];
+            if (otherActions.count) {
+                otherActions.dg_copyExtObj = @"其他用户指令";
+                [_dataArray addObject:otherActions];
+            }
+        }else {
+            // 无当前用户指令
+            if (otherActions.count) {
+                // 有其他用户指令
+                if (commonActions.count) {
+                    commonActions.dg_copyExtObj = @"共享指令";
+                    [_dataArray addObject:commonActions];
+                }
+                
+                if (anonymousActions.count) {
+                    // 将匿名指令添加到其他指令数组中，并且从二级页面展开
+                    DGAction *action = [DGAction actionWithTitle:@"👨🏿‍💻 匿名用户" autoClose:NO handler:^(DGAction * _Nonnull action) {
+                        DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
+                        subVC.title = action.title;
+                        [action.viewController.navigationController pushViewController:subVC animated:YES];
+                    }];
+                    action.dg_strongExtObj = anonymousActions;
+                    [otherActions insertObject:action atIndex:0];
+                }
+                if (otherActions.count) {
+                    otherActions.dg_copyExtObj = @"其他用户指令";
+                    [_dataArray addObject:otherActions];
+                }
+            }else {
+                // 无其他用户指令
+                if (anonymousActions.count) {
+                    [_dataArray addObject:anonymousActions];
+                }
+                
+                if (commonActions.count) {
+                    commonActions.dg_copyExtObj = @"共享指令";
+                    [_dataArray addObject:commonActions];
+                }
+            }
         }
     }
     return _dataArray;
@@ -146,9 +171,10 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDGCellID];
+    static NSString *cellId = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kDGCellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId];
         cell.detailTextLabel.textColor = kDGHighlightColor;
     }
     return cell;
@@ -171,11 +197,18 @@ static NSString *kDGCellID = @"kDGCellID";
     if (action.autoClose) {
         [DGAssistant.shared closeDebugWindow];
     }
-    action.handler(action, self);
+    action.handler(action);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.dataArray objectAtIndex:section].dg_copyExtObj;
+}
+
+// https://stackoverflow.com/questions/18912980/uitableview-titleforheaderinsection-shows-all-caps/39504215#39504215
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(nonnull UIView *)view forSection:(NSInteger)section {
+    if ([view isKindOfClass:[UITableViewHeaderFooterView class]]) {
+        ((UITableViewHeaderFooterView *)view).textLabel.text = self.dataArray[section].dg_copyExtObj;
+    }
 }
 
 @end

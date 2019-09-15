@@ -20,11 +20,11 @@
     [DGDebugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
         
         configuration.commonActions = @[
-                                        [DGAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGAction *action, UIViewController *actionVC) {
+                                        [DGAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGAction *action) {
                                             UIViewController *vc = DGDebugo.topViewController;
                                             NSLog(@"%@", vc);
                                         }],
-                                        [DGAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGAction *action, UIViewController *actionVC) {
+                                        [DGAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGAction *action) {
                                             NSArray *array = [DGDebugo getAllWindows];
                                             NSLog(@"%@", array);
                                         }],
@@ -99,35 +99,39 @@
 //        };
     }];
     
-    [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
-        DGLog(@"不知道啊...");
+    [DGDebugo addActionWithTitle:@"xxx" handler:^(DGAction * _Nonnull action) {
+        NSLog(@"123");
     }];
     
-    [DGDebugo addActionForUser:@"user1" title:@"来个弹窗 🤣" autoClose:NO handler:^(DGAction *action, UIViewController *actionVC) {
-        UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"Ha Ha" message:@"mei shen me, wo jiu xiang xiao yi xia~" preferredStyle:UIAlertControllerStyleAlert];
-        [alerController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSLog(@"mei shen me, wo zhi dao le!");
-        }]];
-        [actionVC presentViewController:alerController animated:YES completion:nil];
-    }];
-    
-    [DGDebugo addActionForUser:@"user2" title:@"push 新控制器 👉" autoClose:NO handler:^(DGAction *action, UIViewController *actionVC) {
-        UIViewController *vc = [UIViewController new];
-        vc.view.backgroundColor = [UIColor orangeColor];
-        [actionVC.navigationController pushViewController:vc animated:YES];
-    }];
-    
-    
-    [DGDebugo addActionWithTitle:@"log windows" handler:^(DGAction *action, UIViewController *actionVC) {
-        DGLog(@"\n%@", [UIApplication sharedApplication].windows);
-        [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            DGLog(@"%f", obj.windowLevel);
-        }];
-    }];
-    
-    [DGDebugo addActionWithTitle:@"screen bounds" handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionViewController) {
-        DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
-    }];
+//    [DGDebugo addActionForUser:@"ripper" title:@"今天吃啥啊？" autoClose:YES handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionVC) {
+//        DGLog(@"不知道啊...");
+//    }];
+//
+//    [DGDebugo addActionForUser:@"user1" title:@"来个弹窗 🤣" autoClose:NO handler:^(DGAction *action, UIViewController *actionVC) {
+//        UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"Ha Ha" message:@"mei shen me, wo jiu xiang xiao yi xia~" preferredStyle:UIAlertControllerStyleAlert];
+//        [alerController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            NSLog(@"mei shen me, wo zhi dao le!");
+//        }]];
+//        [actionVC presentViewController:alerController animated:YES completion:nil];
+//    }];
+//
+//    [DGDebugo addActionForUser:@"user2" title:@"push 新控制器 👉" autoClose:NO handler:^(DGAction *action, UIViewController *actionVC) {
+//        UIViewController *vc = [UIViewController new];
+//        vc.view.backgroundColor = [UIColor orangeColor];
+//        [actionVC.navigationController pushViewController:vc animated:YES];
+//    }];
+//
+//
+//    [DGDebugo addActionWithTitle:@"log windows" handler:^(DGAction *action, UIViewController *actionVC) {
+//        DGLog(@"\n%@", [UIApplication sharedApplication].windows);
+//        [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            DGLog(@"%f", obj.windowLevel);
+//        }];
+//    }];
+//
+//    [DGDebugo addActionWithTitle:@"screen bounds" handler:^(DGAction * _Nonnull action, UIViewController * _Nonnull actionViewController) {
+//        DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
+//    }];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"中文 中文 中文" forKey:@"Test UserDefaults"];
     [[NSUserDefaults standardUserDefaults] synchronize];

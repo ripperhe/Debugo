@@ -29,5 +29,4 @@ static DGFilePlugin *_instance;
     return _instance;
 }
 
-
 @end

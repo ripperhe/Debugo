@@ -9,8 +9,6 @@
 #import "DGActionSubViewController.h"
 #import "DGAssistant.h"
 
-static NSString *kDGCellID = @"kDGCellID";
-
 @interface DGActionSubViewController ()
 
 @property (nonatomic, strong) NSArray <DGAction *>*actions;
@@ -42,6 +40,7 @@ static NSString *kDGCellID = @"kDGCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *kDGCellID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDGCellID];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kDGCellID];
@@ -62,7 +61,8 @@ static NSString *kDGCellID = @"kDGCellID";
     if (action.autoClose) {
         [DGAssistant.shared closeDebugWindow];
     }
-    action.handler(action, self);
+    action.viewController = self;
+    action.handler(action);
 }
 
 @end
