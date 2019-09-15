@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Debugo'
   s.version          = '0.1.0'
-  s.summary          = '☄️ A simple and practical iOS debugging tool. '
+  s.summary          = '☄️ 一个简单却非常有用的 iOS 调试工具。'
   s.homepage         = 'https://github.com/ripperhe/Debugo'
   s.license          = { type: 'MIT', file: 'LICENSE' }
   s.author           = { 'ripperhe' => '453942056@qq.com' }
@@ -19,42 +19,8 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |sb|
-    sb.source_files = 'Debugo/Core/**/*'
-    sb.dependency 'Debugo/Base'
-    sb.dependency 'Debugo/Plugin'
-  end
-
-  s.subspec 'Base' do |sb|
-    sb.source_files = 'Debugo/Base/Classes/**/*'
-    sb.resources = 'Debugo/Base/Assets/**'
-  end
-
-  s.subspec 'Plugin' do |pg|
-    pg.subspec 'DGApplePlugin' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGApplePlugin/**'
-      sb.dependency 'Debugo/Base'
-    end
-    pg.subspec 'DGBubble' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGBubble/**'
-      sb.dependency 'Debugo/Base'
-    end
-    pg.subspec 'DGFileBrowser' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGFileBrowser/**/*'
-      sb.frameworks = 'QuickLook', 'WebKit'
-      sb.dependency 'Debugo/Base'
-      sb.dependency 'FMDB', '>= 2.7.2'
-    end
-    pg.subspec 'DGTouchPlugin' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGTouchPlugin/**'
-      sb.dependency 'Debugo/Base'
-    end
-    pg.subspec 'DGFPSLabel' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGFPSLabel/**'
-      sb.dependency 'Debugo/Base'
-    end
-    pg.subspec 'DGAppInfo' do |sb|
-      sb.source_files = 'Debugo/Plugin/DGAppInfo/**'
-      sb.dependency 'Debugo/Base'
-    end
+    sb.source_files = 'Debugo/Classes/**/*'
+    sb.resources = 'Debugo/Assets/Debugo.bundle'
+    sb.dependency 'FMDB', '>= 2.7.2'
   end
 end

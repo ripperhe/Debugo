@@ -66,7 +66,10 @@ static Debugo *_instance = nil;
         if (block) {
             block(configuration);
         }
-        [DGAssistant.shared setup];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 异步启动，防止影响 AppDelegate Window
+            [DGAssistant.shared setup];
+        });
     });
 }
 
