@@ -72,7 +72,7 @@
                                                                 [DGAccount accountWithUsername:@"woshixianshangzhanghao@qq.com" password:@"😉wojiuwennipabupa"],
                                                                 [DGAccount accountWithUsername:@"xianshangdeniubiba@qq.com" password:@"😍hahahabixude"],
                                                                 ]];
-            [accountConfiguration setExecLoginCallback:^(DGAccount * _Nonnull account) {
+            [accountConfiguration setExecuteLoginBlock:^(DGAccount * _Nonnull account) {
                 // 在这里实现自动登陆的功能
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"

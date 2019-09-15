@@ -16,12 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DGAccountPlugin : DGPlugin
 
 @property (nonatomic, strong) DGAccountPluginConfiguration *configuration;
-@property (nonatomic, strong, nullable) NSArray <DGAccount *>*currentCommonAccountArray;
-@property (nonatomic, strong, nullable) DGOrderedDictionary <NSString *, DGAccount *>*cacheAccountDic;
+@property (nonatomic, strong, nullable) DGOrderedDictionary<NSString *, DGAccount *> *cacheAccountDic;
 
 + (instancetype)shared;
 
-- (void)setupWithConfiguration:(DGAccountPluginConfiguration *)configuration;
+- (NSArray<DGAccount *> *)currentCommonAccountArray;
 
 - (void)addAccount:(DGAccount *)account;
 

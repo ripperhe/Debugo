@@ -92,11 +92,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAccount *account = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     [DGAccountPlugin setPluginSwitch:NO];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (DGAccountPlugin.shared.configuration.execLoginCallback) {
-            DGAccountPlugin.shared.configuration.execLoginCallback(account);
-        }
-    });
+    if (DGAccountPlugin.shared.configuration.executeLoginBlock) {
+        DGAccountPlugin.shared.configuration.executeLoginBlock(account);
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
