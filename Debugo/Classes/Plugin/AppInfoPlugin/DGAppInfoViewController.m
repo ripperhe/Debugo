@@ -88,7 +88,7 @@
     if (value.length) {
         return value;
     }
-    return @"unknown";
+    return @"未知";
 }
 
 - (DGOrderedDictionary *)getBuildInfoDictionary {
@@ -115,14 +115,14 @@
     }
     if (plister){
         NSString *(^nilOrEmptyHandler)(void) = ^(void) {
-            return @"unknown";
+            return @"未知";
         };
         
         NSString *plistUpdateTimestamp = [plister stringForKey:@"PlistUpdateTimestamp"];
         if (plistUpdateTimestamp.length) {
             plistUpdateTimestamp = [[NSDate dateWithTimeIntervalSince1970:plistUpdateTimestamp.doubleValue] dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
         }
-        plistUpdateTimestamp = plistUpdateTimestamp?:@"unknown";
+        plistUpdateTimestamp = plistUpdateTimestamp?:@"未知";
         NSString *buildConfiguration = [plister stringForKey:@"BuildConfiguration" nilOrEmpty:nilOrEmptyHandler];
         NSString *computerUser = [plister stringForKey:@"ComputerUser" nilOrEmpty:nilOrEmptyHandler];
         NSString *computerUUID = [plister stringForKey:@"ComputerUUID" nilOrEmpty:nilOrEmptyHandler];
@@ -136,7 +136,7 @@
             if (gitLastCommitTimestamp.length) {
                 gitLastCommitTimestamp = [[NSDate dateWithTimeIntervalSince1970:gitLastCommitTimestamp.doubleValue] dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
             }
-            gitLastCommitTimestamp = gitLastCommitTimestamp?:@"unknown";
+            gitLastCommitTimestamp = gitLastCommitTimestamp?:@"未知";
             
             buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
                                    @"Update Date", plistUpdateTimestamp,
