@@ -29,7 +29,7 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 	* App 信息工具
 		* 查看 Bundle 信息
 		* 查看设备信息
-		* 查看编译信息（需配置脚本）
+		* 查看编译信息（[需配置脚本](https://ripperhe/Debugo/docs/build-info)）
 	* 快速登录工具
 		* 简单配置之后，可一键登录
 		* 调用一句代码即可缓存账号
@@ -86,7 +86,7 @@ end
 }];
 ```
 
-[更多详细的使用方法可进入该页面查看 🚀](https://ripperhe.com/Debugo/#/Guide/quick-start)
+更多详细的使用方法可进入该页面查看
 
 ## Thanks
 
