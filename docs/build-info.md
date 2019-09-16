@@ -20,9 +20,9 @@
 6. 展开这个选项，将 shell 脚本粘贴到输入框，保存即可
 
 	```bash
-	# direct drag / pod no use_frameworks!
+	# 直接拖拽引入或者 CocoaPods 没有使用 use_frameworks!
 	buildInfoSh="${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Debugo.bundle/com.ripperhe.debugo.build.info.sh"
-	# pod use_frameworks!
+	# CocoaPods use_frameworks!
 	buildInfoSh2="${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Frameworks/Debugo.framework/Debugo.bundle/com.ripperhe.debugo.build.info.sh"
 	
 	if [ -x "${buildInfoSh}" ]; then

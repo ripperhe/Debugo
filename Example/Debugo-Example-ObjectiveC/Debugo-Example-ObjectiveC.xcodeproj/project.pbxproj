@@ -650,7 +650,7 @@
 				C9B45639221D02A60098644E /* Sources */,
 				C9B4563A221D02A60098644E /* Frameworks */,
 				C9B4563B221D02A60098644E /* Resources */,
-				C9B4573A221D2FB40098644E /* Debugo Build Info */,
+				C90FE8BB232F5F7C00F8EB22 /* Debugo Build Info */,
 			);
 			buildRules = (
 			);
@@ -731,7 +731,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C9B4573A221D2FB40098644E /* Debugo Build Info */ = {
+		C90FE8BB232F5F7C00F8EB22 /* Debugo Build Info */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -747,7 +747,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# direct drag / pod no use_frameworks!\nbuildInfoSh=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n# pod use_frameworks!\nbuildInfoSh2=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Frameworks/Debugo.framework/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n\nif [ -x \"${buildInfoSh}\" ]; then\n${buildInfoSh}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh}\"\nelif [ -x \"${buildInfoSh2}\" ]; then\n${buildInfoSh2}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh2}\"\nelse\necho \"com.ripperhe.debugo.build.info.sh not found!!! \"\nfi\n";
+			shellScript = "# 直接拖拽引入或者 CocoaPods 没有使用 use_frameworks!\nbuildInfoSh=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n# CocoaPods use_frameworks!\nbuildInfoSh2=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Frameworks/Debugo.framework/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n\nif [ -x \"${buildInfoSh}\" ]; then\n${buildInfoSh}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh}\"\nelif [ -x \"${buildInfoSh2}\" ]; then\n${buildInfoSh2}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh2}\"\nelse\necho \"com.ripperhe.debugo.build.info.sh not found!!! \"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
