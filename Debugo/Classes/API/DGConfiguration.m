@@ -46,7 +46,7 @@
     DGAccountPlugin.shared.configuration = configuration;
 }
 
-- (void)addCustomPlugin:(id)plugin {
+- (void)addCustomPlugin:(Class)plugin {
     if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
         return;
     }

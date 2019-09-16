@@ -32,9 +32,13 @@
     }];
 }
 
-- (void)addPlugin:(id)plugin {
+- (void)addPlugin:(Class)plugin {
     if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
         NSAssert(0, @"Debugo: 只能添加组件");
+        return;
+    }
+    NSNumber *support = dg_invoke(plugin, @selector(pluginSupport), nil);
+    if (support && ([support boolValue] == NO)) {
         return;
     }
     

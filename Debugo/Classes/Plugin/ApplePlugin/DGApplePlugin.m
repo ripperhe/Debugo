@@ -46,6 +46,13 @@
     return [DGBundle imageNamed:@"plugin_apple"];
 }
 
++ (BOOL)pluginSupport {
+    if (@available(iOS 10.0, *)) {
+        return YES;
+    }
+    return NO;
+}
+
 + (BOOL)pluginSwitch {
     __block BOOL pluginIsFire = NO;
     // private api

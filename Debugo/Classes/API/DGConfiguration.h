@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setupAccountPlugin:(void (^)(DGAccountPluginConfiguration *accountConfiguration))block;
 
 /// 添加自定义工具，需继承自 DGPlugin 或遵守 DGPluginProtocol 协议
-- (void)addCustomPlugin:(id)plugin;
+- (void)addCustomPlugin:(Class)plugin;
 
 @end
 

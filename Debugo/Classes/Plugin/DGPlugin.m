@@ -19,6 +19,10 @@
     return [DGBundle imageNamed:@"plugin_default"];
 }
 
++ (BOOL)pluginSupport {
+    return YES;
+}
+
 + (Class)pluginViewControllerClass {
     return nil;
 }

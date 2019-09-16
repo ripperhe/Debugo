@@ -28,7 +28,7 @@
 static CGFloat kGridHeaderHeight = 40.f;
 static CGFloat kGridLeftWidth = 60.f;
 static CGFloat kGridContentCellWidth = 100.f;
-static CGFloat kGridContentCellHeight = 30.f;
+static CGFloat kGridContentCellHeight = 32.f;
 
 DGGridIndex DGGridIndexMake(NSInteger column, NSInteger row) {
     DGGridIndex index;
