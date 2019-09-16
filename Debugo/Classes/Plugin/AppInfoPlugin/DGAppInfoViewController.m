@@ -74,7 +74,7 @@
     
     self.dataArray = @[bundleDictionary, deviceDictionary, buildDictionary];
     
-    // 缓存到本地
+    // 缓存plist文件到本地，方便分享
     [[NSFileManager defaultManager] removeItemAtPath:[self plistCachePath] error:nil];
     NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
     [self.dataArray enumerateObjectsUsingBlock:^(DGOrderedDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -147,7 +147,6 @@
                                    @"Git Last Commit Hash", gitLastCommitAbbreviatedHash,
                                    @"Git Last Commit User", gitLastCommitUser,
                                    @"Git Last Commit Date", gitLastCommitTimestamp,
-
                                    nil];
         }else{
             buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
@@ -159,8 +158,9 @@
         }
     }else{
         buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
-                               @"获取编译信息需要添加脚本，请进入网页查看", @"https://ripperhe.com/Debugo/#/Guide/build-info",
+                               @"如需获取，进入网页查看 🚀", @"",
                                nil];
+        buildInfoDictionary.dg_strongExtObj = @(YES);
     }
     buildInfoDictionary.dg_copyExtObj = @"编译信息";
     return buildInfoDictionary;
@@ -187,9 +187,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    static NSString *cellID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
     }
@@ -197,6 +198,15 @@
     cell.textLabel.text = [sectionDictionary keyAtIndex:indexPath.row];
     cell.detailTextLabel.text = [sectionDictionary objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
+    NSNumber *flag = sectionDictionary.dg_strongExtObj;
+    if (flag && [flag boolValue]) {
+        NSURL *url = [NSURL URLWithString:@"https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md"];
+        [[UIApplication sharedApplication] openURL:url];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
