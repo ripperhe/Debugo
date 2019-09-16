@@ -29,20 +29,25 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 	* App 信息工具
 		* 查看 Bundle 信息
 		* 查看设备信息
-		* 查看编译信息（[需配置脚本](https://ripperhe/Debugo/docs/build-info)）
+		* 查看编译信息（[需配置脚本 🚀](https://ripperhe/Debugo/docs/build-info)）
 	* 快速登录工具
 		* 简单配置之后，可一键登录
 		* 调用一句代码即可缓存账号
 	* Apple 内部工具
- 		* 苹果内部工具 `UIDebuggingInformationOverlay`
-		* [一些使用方法](http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/)
+ 		* 集成苹果内部工具 `UIDebuggingInformationOverlay`
+		* [查看使用方法 🚀](http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/)
 	* 触摸监听
 		* 监听手势触摸
 		* 用于手机录屏时能够看到手指的操作
 
 ## Snapshot
 
-![](https://raw.githubusercontent.com/ripperhe/Resource/master/20180930/debugo.gif)
+<!--![](https://raw.githubusercontent.com/ripperhe/Resource/master/20180930/debugo.gif)
+-->
+
+| 指令 | 文件 | 工具 |
+|:---: |:---:| :---: |
+| ![](docs/_media/debugo_action.png) | ![](docs/_media/debugo_file.png) | ![](docs/_media/debugo_plugin.png )|
 
 ## Example
 

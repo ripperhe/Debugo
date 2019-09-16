@@ -49,7 +49,7 @@
                                                              [NSBundle mainBundle].bundlePath,
                                                              ]];
             [fileConfiguration setShortcutForAnyPaths:@[
-                                                        NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject,
+                                                        DGPathFetcher.documentsDirectory,
                                                         DGPathFetcher.userDefaultsPlistFilePath,
                                                         ]];
             // 自定义数据库预览列宽
