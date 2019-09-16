@@ -22,7 +22,6 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 - [x] 长按 Debug Bubble 启用 `UIDebuggingInformationOverlay`
 - [x] 手机查看沙盒文件，Budle 文件，可利用 AirDrop 分享
 - [x] 列出 Bundle 信息、设备信息、Build 信息、Git 信息 (需添加脚本文件)
-- [x] 监控帧率 FPS
 - [x] 监控手势触摸
 
 ## Snapshot
@@ -84,8 +83,6 @@ end
 
 开发框架的灵感，以及一些现成的代码很多都源于 GitHub 网站上的开源框架，感谢以下项目的所有者：
 
-* [YYKit](https://github.com/ibireme/YYKit)
-* [FTPopOverMenu](https://github.com/liufengting/FTPopOverMenu)
 * [Alpha](https://github.com/Legoless/Alpha)
 * [FileBrowser](https://github.com/marmelroy/FileBrowser)
 * [GetGitInfo](https://github.com/y500/GetGitInfo)
@@ -95,8 +92,6 @@ end
 
 文章参考：
 
-* <https://git-scm.com/docs/git-log/1.7.12.2>
-* <https://stackoverflow.com/questions/6245570/how-to-get-the-current-branch-name-in-git>
 * <https://stackoverflow.com/questions/448162/determine-device-iphone-ipod-touch-with-iphone-sdk/1561920#1561920>
 * <http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/>
 * <http://www.cocoawithlove.com/2008/12/ordereddictionary-subclassing-cocoa.html>
