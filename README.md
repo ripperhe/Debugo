@@ -18,12 +18,12 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 ## Features
 
 * [x] 指令模块
-	* 快捷添加代码块，点击指令列表的 Cell 执行
+	* 快捷添加代码块，点击指令列表的 `Cell` 执行
 	* 支持多人协作，根据 User 自动优先显示当前用户的指令
 * [x] 文件模块
 	* 支持查看沙盒和 Bundle 的文件
 	* 支持预览数据库及其他大部分文件
-	* 支持利用 AirDrop 分享文件
+	* 支持利用 `AirDrop` 分享文件
 	* 支持设置文件捷径，快速直达经常查看的文件
 * [x] 工具模块
 	* App 信息工具
@@ -34,7 +34,8 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 		* 简单配置之后，可一键登录
 		* 调用一句代码即可缓存账号
 	* Apple 内部工具
-		* 苹果内部用于调用的工具
+ 		* 苹果内部工具 `UIDebuggingInformationOverlay`
+		* [一些使用方法](http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/)
 	* 触摸监听
 		* 监听手势触摸
 		* 用于手机录屏时能够看到手指的操作
@@ -86,7 +87,7 @@ end
 }];
 ```
 
-更多详细的使用方法可进入该页面查看
+更多详细的使用方法可下载 Demo 查看
 
 ## Thanks
 

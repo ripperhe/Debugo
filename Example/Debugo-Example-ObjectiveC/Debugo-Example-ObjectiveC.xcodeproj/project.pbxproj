@@ -255,7 +255,6 @@
 		C9E38B432285161500D46953 /* NSFileManager+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Debugo.m"; sourceTree = "<group>"; };
 		C9E73FC3221D399000BA9149 /* Debugo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Debugo.podspec; path = ../../Debugo.podspec; sourceTree = "<group>"; };
 		C9E73FC4221D399000BA9149 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		C9E73FC6221D399000BA9149 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = TODO.md; path = ../../TODO.md; sourceTree = "<group>"; };
 		C9F92C6A2326637200B8F882 /* DGPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPlugin.h; sourceTree = "<group>"; };
 		C9F92C6B2326637200B8F882 /* DGPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPlugin.m; sourceTree = "<group>"; };
 		C9F92C6D2326672A00B8F882 /* DGAppInfoPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAppInfoPlugin.h; sourceTree = "<group>"; };
@@ -628,7 +627,6 @@
 			children = (
 				C9E73FC3221D399000BA9149 /* Debugo.podspec */,
 				C9E73FC4221D399000BA9149 /* README.md */,
-				C9E73FC6221D399000BA9149 /* TODO.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
