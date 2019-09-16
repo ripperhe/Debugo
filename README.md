@@ -91,17 +91,13 @@ end
 
 ## Thanks
 
-开发框架的灵感，以及一些现成的代码很多都源于 GitHub 网站上的开源框架，感谢以下项目的所有者：
+开发框架的灵感，以及一些现成的代码很多都源于 GitHub 网站上的开源框架，感谢以下项目和文章的作者：
 
 * [Alpha](https://github.com/Legoless/Alpha)
 * [FileBrowser](https://github.com/marmelroy/FileBrowser)
 * [GetGitInfo](https://github.com/y500/GetGitInfo)
 * [DebuggingOverlay](https://gist.github.com/IMcD23/1fda47126429df43cc989d02c1c5e4a0)
 * [DatabaseVisual](https://github.com/YanPengImp/DatabaseVisual)
-* ...
-
-文章参考：
-
 * <https://stackoverflow.com/questions/448162/determine-device-iphone-ipod-touch-with-iphone-sdk/1561920#1561920>
 * <http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/>
 * <http://www.cocoawithlove.com/2008/12/ordereddictionary-subclassing-cocoa.html>
