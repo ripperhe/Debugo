@@ -30,7 +30,7 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 
 ## Example
 
-克隆或下载仓库到本地，进入到 Example/Debugo-Example-ObjectiveC 文件夹，执行 `pod install` 之后运行即可。
+克隆或下载仓库到本地，进入到 Example/Debugo-Example-ObjectiveC 文件夹，打开 `Debugo-Example-ObjectiveC.xcworkspace`  运行即可。
 
 ## Requirements
 
@@ -67,14 +67,8 @@ end
 
 ```objectivec
 [Debugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
-    // 设置 configuration 的属性，定制你的需求
+    // 配置 configuration，定制你的需求
 }];
-```
-
-关闭
-
-```objectivec
-[Debugo stop];
 ```
 
 [更多详细的使用方法可进入该页面查看 🚀](https://ripperhe.com/Debugo/#/Guide/quick-start)
