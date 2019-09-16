@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.version          = '0.2.0'
   s.summary          = '☄️ 一个简单却非常有用的 iOS 调试工具~'
   s.homepage         = 'https://github.com/ripperhe/Debugo'
-  s.license          = { type: 'MIT', file: 'LICENSE' }
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ripperhe' => '453942056@qq.com' }
-  s.source           = { git: 'https://github.com/ripperhe/Debugo.git', tag: s.version.to_s }
+  s.source           = { :git => 'https://github.com/ripperhe/Debugo.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
   s.requires_arc = true
   s.default_subspec = 'Core'
