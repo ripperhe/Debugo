@@ -9,20 +9,35 @@
 [![License](https://img.shields.io/cocoapods/l/Debugo.svg?style=flat)](https://cocoapods.org/pods/Debugo)
 [![Platform](https://img.shields.io/cocoapods/p/Debugo.svg?style=flat)](https://cocoapods.org/pods/Debugo)
 
-Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非常简单。以 Debug 为宗旨，自然要做到尽量简单，要是出现因为 Debug 工具而导致 Bug 的情况，那就和初衷背道而驰了。后续应该还会加入一些新的功能，不过都会建立在硬需求的基础之上~
+Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非常简单。以 Debug 为宗旨，自然要做到尽量简单，尽量避免 Debug 工具而导致 Bug 的情况。后续应该还会加入一些新的功能~
 
 - [x] **方便** 一行代码即可启用
 - [x] **安全** 内部做了控制，仅在 **DEBUG** 模式可以启用，携带上线无压力
-- [x] **灵活** 可执行各种自定义功能代码或者跳转自定义页面
+- [x] **灵活** 可添加自定义指令和工具
 
 ## Features
 
-- [x] 添加测试代码，从悬浮列表点击调用
-- [x] 辅助实现一建登陆，辅助存储登陆数据
-- [x] 长按 Debug Bubble 启用 `UIDebuggingInformationOverlay`
-- [x] 手机查看沙盒文件，Budle 文件，可利用 AirDrop 分享
-- [x] 列出 Bundle 信息、设备信息、Build 信息、Git 信息 (需添加脚本文件)
-- [x] 监控手势触摸
+* [x] 指令模块
+	* 快捷添加代码块，点击指令列表的 Cell 执行
+	* 支持多人协作，根据 User 自动优先显示当前用户的指令
+* [x] 文件模块
+	* 支持查看沙盒和 Bundle 的文件
+	* 支持预览数据库及其他大部分文件
+	* 支持利用 AirDrop 分享文件
+	* 支持设置文件捷径，快速直达经常查看的文件
+* [x] 工具模块
+	* App 信息工具
+		* 查看 Bundle 信息
+		* 查看设备信息
+		* 查看编译信息（需配置脚本）
+	* 快速登录工具
+		* 简单配置之后，可一键登录
+		* 调用一句代码即可缓存账号
+	* Apple 内部工具
+		* 苹果内部用于调用的工具
+	* 触摸监听
+		* 监听手势触摸
+		* 用于手机录屏时能够看到手指的操作
 
 ## Snapshot
 
@@ -30,7 +45,7 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 
 ## Example
 
-克隆或下载仓库到本地，进入到 Example/Debugo-Example-ObjectiveC 文件夹，打开 `Debugo-Example-ObjectiveC.xcworkspace`  运行即可。
+克隆或下载仓库到本地，进入到 Example/Debugo-Example-ObjectiveC 文件夹，打开 `Debugo-Example-ObjectiveC.xcworkspace` 运行即可。
 
 ## Requirements
 
