@@ -67,7 +67,8 @@ static Debugo *_instance = nil;
             block(configuration);
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            // 异步启动，防止影响 AppDelegate Window
+            // 异步启动，为了解决使用 storybroad 自动创建 AppDelegate window 且模拟器启动时为横屏状态会黑屏的问题
+            // 可能是 AppDelegate 的 window 还没变成 keyWindow，然后 debugo 内部创建 window 影响到了
             [DGAssistant.shared setup];
         });
     });
