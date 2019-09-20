@@ -29,4 +29,11 @@ static DGFilePlugin *_instance;
     return _instance;
 }
 
+- (DGFilePluginConfiguration *)configuration {
+    if (!_configuration) {
+        _configuration = [DGFilePluginConfiguration new];
+    }
+    return _configuration;
+}
+
 @end

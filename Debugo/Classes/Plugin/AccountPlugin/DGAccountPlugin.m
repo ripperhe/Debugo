@@ -75,6 +75,13 @@ static DGAccountPlugin *_instance;
     return _instance;
 }
 
+- (DGAccountPluginConfiguration *)configuration {
+    if (!_configuration) {
+        _configuration = [DGAccountPluginConfiguration new];
+    }
+    return _configuration;
+}
+
 - (NSArray<DGAccount *> *)currentCommonAccountArray {
     if(self.configuration.isProductionEnvironment) {
         return self.configuration.commonProductionAccounts;

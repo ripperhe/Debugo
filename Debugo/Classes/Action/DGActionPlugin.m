@@ -30,6 +30,13 @@ static DGActionPlugin *_instance;
 }
 
 #pragma mark - getter
+- (DGActionPluginConfiguration *)configuration {
+    if (!_configuration) {
+        _configuration = [DGActionPluginConfiguration new];
+    }
+    return _configuration;
+}
+
 - (DGOrderedDictionary<NSString *,DGAction *> *)anonymousActionDic {
     if (!_anonymousActionDic) {
         _anonymousActionDic = [DGOrderedDictionary dictionary];
