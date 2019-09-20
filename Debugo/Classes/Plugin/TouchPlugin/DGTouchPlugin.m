@@ -49,10 +49,9 @@ static DGTouchWindow *_touchWindow = nil;
 }
 
 + (void)handleToucheEvent:(UIEvent *)event {
-    if (_showTouch) {
-        [_touchWindow displayEvent:event];
-    }
+    [_touchWindow displayEvent:event];
 }
+
 @end
 
 @interface UIApplication (DGTouchPlugin)
@@ -70,7 +69,7 @@ static DGTouchWindow *_touchWindow = nil;
 }
 
 - (void)dg_sendEvent:(UIEvent *)event {
-    if (event.type == UIEventTypeTouches) {
+    if (_showTouch && event.type == UIEventTypeTouches) {
         [DGTouchPlugin handleToucheEvent:event];
     }
     [self dg_sendEvent:event];
