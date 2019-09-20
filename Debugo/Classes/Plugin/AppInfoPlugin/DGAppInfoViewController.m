@@ -190,9 +190,15 @@
     static NSString *cellID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+        if (kDGScreenMin < 375) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.556863 green:0.556863 blue:0.576471 alpha:1];
+            cell.detailTextLabel.numberOfLines = 0;
+        }else {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.detailTextLabel.numberOfLines = 0;
     }
     DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
     cell.textLabel.text = [sectionDictionary keyAtIndex:indexPath.row];
