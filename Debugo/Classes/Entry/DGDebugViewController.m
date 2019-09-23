@@ -11,8 +11,6 @@
 #import "DGCommon.h"
 #import "DGAssistant.h"
 #import "DGNavigationController.h"
-#import "DGActionViewController.h"
-#import "DGFileViewController.h"
 #import "DGPluginViewController.h"
 
 @interface DGDebugViewController ()
