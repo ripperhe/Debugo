@@ -23,28 +23,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        
+    NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     
-    DGActionViewController *actionVC = [[DGActionViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    actionVC.navigationItem.title = @"指令";
-    DGNavigationController *actionNavigationVC = [[DGNavigationController alloc] initWithRootViewController:actionVC];
-    actionNavigationVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"指令" image:[[DGBundle imageNamed:@"tab_action_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_action_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    
-    DGFileViewController *fileVC = [[DGFileViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    fileVC.navigationItem.title = @"文件";
-    DGNavigationController *fileNavigationVC = [[DGNavigationController alloc] initWithRootViewController:fileVC];
-    fileVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文件" image:[[DGBundle imageNamed:@"tab_file_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_file_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [DGAssistant.shared.tabBarPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
+        Class viewControllerClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
+        if (viewControllerClass) {
+            NSString *name = dg_invoke(plugin, @selector(pluginName), nil) ?: NSStringFromClass([plugin class]);
+            UIImage *image = dg_invoke(plugin, @selector(pluginTabBarImage:), @[@(NO)]) ?: [DGPlugin pluginTabBarImage:NO];
+            UIImage *selectedImage = dg_invoke(plugin, @selector(pluginTabBarImage:), @[@(YES)]) ?: [DGPlugin pluginTabBarImage:YES];
+
+            UIViewController *vc = [viewControllerClass new];
+            vc.navigationItem.title = name;
+            DGNavigationController *navigationController = [[DGNavigationController alloc] initWithRootViewController:vc];
+            navigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:name image:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            
+            [viewControllers addObject:navigationController];
+        }
+    }];
     
     DGPluginViewController *pluginVC = [DGPluginViewController new];
     pluginVC.navigationItem.title = @"工具";
-    DGNavigationController *pluginNavigationVC = [[DGNavigationController alloc] initWithRootViewController:pluginVC];
-    pluginVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"工具" image:[[DGBundle imageNamed:@"tab_plugin_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_plugin_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    DGNavigationController *pluginNavigationController = [[DGNavigationController alloc] initWithRootViewController:pluginVC];
+    pluginNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"工具" image:[[DGBundle imageNamed:@"tab_plugin_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[DGBundle imageNamed:@"tab_plugin_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-    NSArray<UIViewController *> *viewControllers = @[actionNavigationVC, fileNavigationVC, pluginNavigationVC];
+    [viewControllers addObject:pluginNavigationController];
+    
     [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:kDGHighlightColor} forState:UIControlStateSelected];
         [obj.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.572549 green:0.572549 blue:0.572549 alpha:1.0]} forState:UIControlStateNormal];
     }];
-    self.viewControllers = viewControllers;
+    
+    [self setViewControllers:viewControllers];
 }
 
 @end

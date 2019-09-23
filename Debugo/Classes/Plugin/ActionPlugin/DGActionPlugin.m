@@ -7,8 +7,29 @@
 //
 
 #import "DGActionPlugin.h"
+#import "DGCommon.h"
+#import "DGActionViewController.h"
 
 @implementation DGActionPlugin
+
++ (NSString *)pluginName {
+    return @"指令";
+}
+
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"plugin_action"];
+}
+
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_action_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_action_normal"];
+}
+
++ (Class)pluginViewControllerClass {
+    return DGActionViewController.class;
+}
 
 static DGActionPlugin *_instance;
 + (instancetype)shared {

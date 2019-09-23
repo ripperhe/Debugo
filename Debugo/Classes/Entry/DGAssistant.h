@@ -8,6 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DGPlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,9 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 @interface DGAssistant : NSObject
 
 @property (nonatomic, copy) void(^bubbleLongPressBlock)(void);
-@property (nonatomic, strong) NSMutableArray *customPlugins;
+@property (nonatomic, strong) NSArray<Class<DGPluginProtocol>> *debugoPlugins;
+@property (nonatomic, strong) NSMutableArray<Class<DGPluginProtocol>> *customPlugins;
+@property (nonatomic, strong) NSMutableArray<Class<DGPluginProtocol>> *tabBarPlugins;
 
 + (instancetype)shared;
 

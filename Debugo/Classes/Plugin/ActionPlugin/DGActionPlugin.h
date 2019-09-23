@@ -8,7 +8,7 @@
 
 #import "DGPlugin.h"
 #import "DGActionPluginConfiguration.h"
-#import "DGCommon.h"
+#import "DGOrderedDictionary.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

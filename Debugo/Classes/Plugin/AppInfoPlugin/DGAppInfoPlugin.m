@@ -17,7 +17,14 @@
 }
 
 + (UIImage *)pluginImage {
-    return [DGBundle imageNamed:@"plugin_app"];
+    return [DGBundle imageNamed:@"plugin_appinfo"];
+}
+
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_appinfo_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_appinfo_normal"];
 }
 
 + (Class)pluginViewControllerClass {

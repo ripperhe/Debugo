@@ -115,6 +115,11 @@
         [configuration addCustomPlugin:CustomPlugin.class];
         [configuration addCustomPlugin:CustomPlugin2.class];
         
+        /// 将部分工具放到 tabBar
+        [configuration putPluginsToTabBar:@[DGActionPlugin.class]];
+//        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, CustomPlugin2.class]];
+//        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, DGAppInfoPlugin.class, DGTouchPlugin.class, CustomPlugin2.class]];
+        
     }];
     
     // 在某人电脑上才执行某些代码

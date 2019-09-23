@@ -19,6 +19,13 @@
     return [DGBundle imageNamed:@"plugin_default"];
 }
 
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_default_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_default_normal"];
+}
+
 + (BOOL)pluginSupport {
     return YES;
 }

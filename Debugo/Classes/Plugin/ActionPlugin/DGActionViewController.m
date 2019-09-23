@@ -11,6 +11,7 @@
 #import "DGAssistant.h"
 #import "DGActionSubViewController.h"
 #import "DGActionPlugin.h"
+#import "DGCommon.h"
 
 @interface DGActionViewController ()
 
@@ -19,6 +20,13 @@
 @end
 
 @implementation DGActionViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        self.title = [DGActionPlugin pluginName];
+    }
+    return self;
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

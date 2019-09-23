@@ -322,7 +322,7 @@
 			path = Entry;
 			sourceTree = "<group>";
 		};
-		C9034DE12324DCE6003D8984 /* Action */ = {
+		C9034DE12324DCE6003D8984 /* ActionPlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */,
@@ -336,10 +336,10 @@
 				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
 				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
 			);
-			path = Action;
+			path = ActionPlugin;
 			sourceTree = "<group>";
 		};
-		C9034DE22324DD12003D8984 /* File */ = {
+		C9034DE22324DD12003D8984 /* FilePlugin */ = {
 			isa = PBXGroup;
 			children = (
 				C916195122A13C14009FF2A3 /* DGFilePlugin.h */,
@@ -389,7 +389,7 @@
 				C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */,
 				C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */,
 			);
-			path = File;
+			path = FilePlugin;
 			sourceTree = "<group>";
 		};
 		C9034DE42324DD41003D8984 /* Classes */ = {
@@ -398,8 +398,6 @@
 				C9034DDE2324DC7B003D8984 /* API */,
 				C9B45692221D2B460098644E /* Common */,
 				C9034DDF2324DC96003D8984 /* Entry */,
-				C9034DE12324DCE6003D8984 /* Action */,
-				C9034DE22324DD12003D8984 /* File */,
 				C9B45690221D2B460098644E /* Plugin */,
 			);
 			path = Classes;
@@ -511,6 +509,8 @@
 				C9F92C6B2326637200B8F882 /* DGPlugin.m */,
 				C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */,
 				C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */,
+				C9034DE12324DCE6003D8984 /* ActionPlugin */,
+				C9034DE22324DD12003D8984 /* FilePlugin */,
 				C9C2109822A0DB4200D5EEDE /* AppInfoPlugin */,
 				C9B4566E221D2B460098644E /* AccountPlugin */,
 				C9B456B1221D2B460098644E /* ApplePlugin */,

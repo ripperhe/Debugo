@@ -27,6 +27,13 @@ static DGTouchWindow *_touchWindow = nil;
     return [DGBundle imageNamed:@"plugin_touch"];
 }
 
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_touch_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_touch_normal"];
+}
+
 + (Class)pluginViewControllerClass {
     return [DGTouchPluginViewController class];
 }

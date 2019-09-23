@@ -9,10 +9,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import "DGPlugin.h"
-#import "DGActionPluginConfiguration.h"
-#import "DGFilePluginConfiguration.h"
-#import "DGAccountPluginConfiguration.h"
+#import "DGActionPlugin.h"
+#import "DGFilePlugin.h"
+#import "DGAppInfoPlugin.h"
+#import "DGAccountPlugin.h"
+#import "DGApplePlugin.h"
+#import "DGTouchPlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -31,7 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setupAccountPlugin:(void (^)(DGAccountPluginConfiguration *accountConfiguration))block;
 
 /// 添加自定义工具，需继承自 DGPlugin 或遵守 DGPluginProtocol 协议
-- (void)addCustomPlugin:(Class)plugin;
+- (void)addCustomPlugin:(Class<DGPluginProtocol>)plugin;
+
+/// 将工具放到 tabBar 上
+- (void)putPluginsToTabBar:(nullable NSArray<Class<DGPluginProtocol>> *)plugins;
 
 @end
 

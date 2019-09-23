@@ -18,10 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 组件图像；不设置则使用默认图像
 + (UIImage *)pluginImage;
 
+/// 组件放在 tabBar 的图像；不设置则使用默认图形
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected;
+
 /// 组件在当前环境是否可以使用；默认为 YES；
 + (BOOL)pluginSupport;
 
 /// 组件对应视图控制器的类；如果实现了本方法，点击本工具按钮会跳转到该页面；否则，会直接启用本工具
+/// 不能是 UINavigationController 及其子类
 + (Class)pluginViewControllerClass;
 
 /// 组件开关

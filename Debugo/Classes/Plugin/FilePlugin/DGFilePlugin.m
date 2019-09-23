@@ -7,8 +7,29 @@
 //
 
 #import "DGFilePlugin.h"
+#import "DGCommon.h"
+#import "DGFileViewController.h"
 
 @implementation DGFilePlugin
+
++ (NSString *)pluginName {
+    return @"文件";
+}
+
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"plugin_file"];
+}
+
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_file_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_file_normal"];
+}
+
++ (Class)pluginViewControllerClass {
+    return DGFileViewController.class;
+}
 
 static DGFilePlugin *_instance;
 + (instancetype)shared {

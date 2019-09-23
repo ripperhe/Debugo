@@ -26,6 +26,13 @@
 
 @implementation DGFileViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        self.title = [DGFilePlugin pluginName];
+    }
+    return self;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // 进页面刷新

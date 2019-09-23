@@ -12,6 +12,12 @@
 #import "DGCommon.h"
 #import "DGBubble.h"
 #import "DGDebugWindow.h"
+#import "DGActionPlugin.h"
+#import "DGFilePlugin.h"
+#import "DGAppInfoPlugin.h"
+#import "DGAccountPlugin.h"
+#import "DGApplePlugin.h"
+#import "DGTouchPlugin.h"
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
@@ -45,11 +51,36 @@ static DGAssistant *_instance;
     return _instance;
 }
 
+#pragma mark - getter
+
+- (NSArray<Class> *)debugoPlugins {
+    if (!_debugoPlugins) {
+        _debugoPlugins = @[
+            DGActionPlugin.class,
+            DGFilePlugin.class,
+            DGAppInfoPlugin.class,
+            DGAccountPlugin.class,
+            DGApplePlugin.class,
+            DGTouchPlugin.class,
+        ];
+    }
+    return _debugoPlugins;
+}
+
 - (NSMutableArray *)customPlugins {
     if (!_customPlugins) {
         _customPlugins = [NSMutableArray array];
     }
     return _customPlugins;
+}
+
+- (NSMutableArray *)tabBarPlugins {
+    if (!_tabBarPlugins) {
+        _tabBarPlugins = [NSMutableArray array];
+        // 默认显示指令组件
+        [_tabBarPlugins addObject:DGActionPlugin.class];
+    }
+    return _tabBarPlugins;
 }
 
 #pragma mark -
