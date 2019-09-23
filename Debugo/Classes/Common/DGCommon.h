@@ -23,4 +23,3 @@
 #import "DGPathFetcher.h"
 #import "DGWindow.h"
 #import "DGShareBarButtonItem.h"
-#import "DGUIMagic.h"

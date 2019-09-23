@@ -31,56 +31,53 @@ UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc]
 [feedBackGenertor impactOccurred]; \
 }
 
-/** 弱引用 */
 #define dg_weakify(var) __weak typeof(var) dg_weak_##var = var;
-/** 强引用 */
 #define dg_strongify(var) \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wshadow\"") \
 __strong typeof(var) var = dg_weak_##var; \
 _Pragma("clang diagnostic pop")
 
-/**
- 获取当前电脑用户
-
- @return 当前电脑用户名
- */
+/// 获取当前电脑用户
 NSString * dg_current_user(void);
 
-/**
- 仅在某用户编译的安装包上执行某些代码
-
- @param user 用户名
- @param handler 代码
- */
+/// 仅在某用户编译的安装包上执行某些代码
+/// @param user 用户名
+/// @param handler 代码
 void dg_exec(NSString *user, void (NS_NOESCAPE ^handler)(void));
 
-/**
- 当前主线程，同步执行；当前非主线程，异步执行
-
- @param block 需要执行的代码
- */
+/// 当前主线程，同步执行；当前非主线程，异步执行
+/// @param block 需要执行的代码
 void dg_dispatch_main_safe(void(^block)(void));
 
-/**
- 运行时执行方法，如果没有则不执行，支持大部分参数类型，不支持会断言
-
- @param any 类或者对象
- @param selector 方法选择器
- @param args 参数数组，如果没有参数传nil，如果中间某个参数为nil则传NSNull占位
- @return 方法返回值，没有返回值则为nil
- */
+/// 运行时执行方法，如果没有则不执行，支持大部分参数类型，不支持会断言
+/// @param any 类或者对象
+/// @param selector 方法选择器
+/// @param args 参数数组，如果没有参数传nil，如果中间某个参数为nil则传NSNull占位
+/// @return 方法返回值，没有返回值则为nil
 id dg_invoke(id any, SEL selector, NSArray * _Nullable args);
 
-/**
- 在DebugoCanBeEnabled的时候，在主线程执行对应代码，否则不执行
- 
- @param block 执行的代码
- */
+/// 在DebugoCanBeEnabled的时候，在主线程执行对应代码，否则不执行
+/// @param block 需要执行的代码
 #if DebugoCanBeEnabled
 void dg_exec_main_queue_only_can_be_enabled(void (^block)(void));
 #else
 #define dg_exec_main_queue_only_can_be_enabled(...)
 #endif
+
+/// 获取 [UIApplication sharedApplication].delegate.window 的顶部控制器
+UIViewController * dg_topViewController(void);
+
+/// 获取某个 window 顶部的 viewController
+UIViewController * dg_topViewControllerForWindow(UIWindow * _Nullable window);
+
+/// 获取顶部的全屏的 window
+UIWindow * dg_topVisibleFullScreenWindow(void);
+
+/// 获取可见的键盘 window
+UIWindow * dg_keyboardWindow(void);
+
+/// 获取所有 window, 包括系统内部的 window, 例如状态栏...
+NSArray<UIWindow *> * dg_getAllWindows(void);
 
 NS_ASSUME_NONNULL_END

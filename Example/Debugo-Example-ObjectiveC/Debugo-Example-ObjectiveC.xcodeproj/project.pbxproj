@@ -81,7 +81,6 @@
 		C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F0221D2B460098644E /* DGTouchWindow.m */; };
 		C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchPlugin.m */; };
 		C9BB4269232CB2AE00095F7E /* DGFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */; };
-		C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C2109C22A100A600D5EEDE /* DGUIMagic.m */; };
 		C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */; };
 		C9C210A822A110DE00D5EEDE /* DGAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */; };
 		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
@@ -241,8 +240,6 @@
 		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
 		C9BB4267232CB2AE00095F7E /* DGFileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileTableViewCell.h; sourceTree = "<group>"; };
 		C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileTableViewCell.m; sourceTree = "<group>"; };
-		C9C2109B22A100A600D5EEDE /* DGUIMagic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGUIMagic.h; sourceTree = "<group>"; };
-		C9C2109C22A100A600D5EEDE /* DGUIMagic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGUIMagic.m; sourceTree = "<group>"; };
 		C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionPlugin.h; sourceTree = "<group>"; };
 		C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPlugin.m; sourceTree = "<group>"; };
 		C9C210A622A110DE00D5EEDE /* DGAccountPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountPlugin.h; sourceTree = "<group>"; };
@@ -573,8 +570,6 @@
 				C9B456A8221D2B460098644E /* DGDevice.m */,
 				C92F8C78221FA1E00080C156 /* DGPathFetcher.h */,
 				C92F8C79221FA1E00080C156 /* DGPathFetcher.m */,
-				C9C2109B22A100A600D5EEDE /* DGUIMagic.h */,
-				C9C2109C22A100A600D5EEDE /* DGUIMagic.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -820,7 +815,6 @@
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
 				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
 				C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */,
-				C9C2109D22A100A600D5EEDE /* DGUIMagic.m in Sources */,
 				C9F92C6F2326672A00B8F882 /* DGAppInfoPlugin.m in Sources */,
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,

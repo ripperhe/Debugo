@@ -6,9 +6,6 @@
 //  Copyright © 2019 ripper. All rights reserved.
 //
 
-#ifndef DGLog_h
-#define DGLog_h
-
 #import "DebugoEnable.h"
 #import "NSDate+Debugo.h"
 
@@ -22,5 +19,3 @@
 
 #define DGLogSelf DGLog(@"%@", self)
 #define DGLogFunction DGLog(@"")
-
-#endif /* DGLog_h */

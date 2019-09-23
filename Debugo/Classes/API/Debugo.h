@@ -11,6 +11,7 @@
 #import "DebugoEnable.h"
 #import "DGConfiguration.h"
 #import "DGLog.h"
+#import "DGHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,40 +26,37 @@ NS_ASSUME_NONNULL_BEGIN
 /// 关闭 Debug Window
 + (void)closeDebugWindow;
 
-/// 仅在某个用户的电脑编译的包中立即执行某些代码（canBeEnabled 为 NO 时，则统统不执行）`$ whoami`
-+ (void)executeCodeForUser:(NSString *)user handler:(void (NS_NOESCAPE ^)(void))handler;
-
-/// 添加匿名指令，触发后自动关闭 Debug Window
+/// 指令：添加匿名指令，触发后自动关闭 Debug Window
 + (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler;
 
-/// 添加匿名指令，通过 autoClose 控制触发后是否自动关闭 Debug Window
+/// 指令：添加匿名指令，通过 autoClose 控制触发后是否自动关闭 Debug Window
 + (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler autoClose:(BOOL)autoClose;
 
-/// 为某个用户添加指令，触发后自动关闭 Debug Window
+/// 指令：为某个用户添加指令，触发后自动关闭 Debug Window
 + (void)addActionForUser:(nullable NSString *)user title:(NSString *)title handler:(DGActionHandlerBlock)handler;
 
-/// 为某个用户添加指令，通过 autoClose 控制触发后是否自动关闭 Debug Window
+/// 指令：为某个用户添加指令，通过 autoClose 控制触发后是否自动关闭 Debug Window
 + (void)addActionForUser:(nullable NSString *)user title:(NSString *)title handler:(DGActionHandlerBlock)handler autoClose:(BOOL)autoClose;
 
-/// 缓存账号
+/// 快速登录：缓存账号
 + (void)accountPluginAddAccount:(DGAccount *)account;
 
 @end
 
 ///------------------------------------------------
-/// ⚠️ 以下为一些比较实用的方法，仅用于调试，请勿用于业务代码中
+/// ⚠️ 以下为一些用于调试的实用方法，请勿用于正式业务代码中
 ///------------------------------------------------
 
 @interface Debugo (Additional)
 
+/// 仅在某个用户的电脑编译的包中立即执行某些代码（canBeEnabled 为 NO 时，则统统不执行）`$ whoami`
++ (void)executeCodeForUser:(NSString *)user handler:(void (NS_NOESCAPE ^)(void))handler;
+
 /// 获取 [UIApplication sharedApplication].delegate.window 的顶部控制器
 + (nullable UIViewController *)topViewController;
 
-/// 获取某个 window 顶部的 viewController; 传 nil 则取 [UIApplication sharedApplication].delegate.window
+/// 获取某个 window 顶部的 viewController
 + (nullable UIViewController *)topViewControllerForWindow:(nullable UIWindow *)window;
-
-/// 获取 [UIApplication sharedApplication].windows 中最上层的、可见的、全屏 window
-+ (nullable UIWindow *)topVisibleFullScreenWindow;
 
 /// 获取可见的键盘 window
 + (nullable UIWindow *)keyboardWindow;

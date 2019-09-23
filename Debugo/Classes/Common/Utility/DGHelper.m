@@ -20,7 +20,11 @@ NSString * dg_current_user() {
                 _currentUser = components[2];
             }
         }
-        DGCLog(@"dg_current_user: %@", _currentUser);
+        if (_currentUser.length) {
+            DGCLog(@"dg_current_user: %@", _currentUser);
+        }else {
+            DGCLog(@"dg_current_user: ❌ 没有找到当前 user");
+        }
     });
     return _currentUser;
 }
@@ -239,3 +243,79 @@ void dg_exec_main_queue_only_can_be_enabled(void (^block)(void)) {
     dg_dispatch_main_safe(block);
 }
 #endif
+
+/**
+ Reference:
+ * http://stackoverflow.com/questions/24825123/get-the-current-view-controller-from-the-app-delegate%EF%BC%89
+ */
+UIViewController * dg_findBestViewController(UIViewController* vc) {
+    if (vc.presentedViewController) {
+        // Return presented view controller
+        return dg_findBestViewController(vc.presentedViewController);
+    } else if ([vc isKindOfClass:[UISplitViewController class]]) {
+        // Return right hand side
+        UISplitViewController* svc = (UISplitViewController*) vc;
+        if (svc.viewControllers.count > 0)
+            return dg_findBestViewController(svc.viewControllers.lastObject);
+        else
+            return vc;
+    } else if ([vc isKindOfClass:[UINavigationController class]]) {
+        // Return top view
+        UINavigationController* svc = (UINavigationController*) vc;
+        if (svc.viewControllers.count > 0)
+            return dg_findBestViewController(svc.topViewController);
+        else
+            return vc;
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        // Return visible view
+        UITabBarController* svc = (UITabBarController*) vc;
+        if (svc.viewControllers.count > 0)
+            return dg_findBestViewController(svc.selectedViewController);
+        else
+            return vc;
+    } else {
+        // Unknown view controller type, return last child view controller
+        return vc;
+    }
+}
+
+UIViewController * dg_topViewController(void) {
+    return dg_topViewControllerForWindow(nil);
+}
+
+UIViewController * dg_topViewControllerForWindow(UIWindow * _Nullable window) {
+    UIWindow *targetWindow = window ?: [UIApplication sharedApplication].delegate.window;
+    if (!targetWindow) return nil;
+    UIViewController* viewController = targetWindow.rootViewController;
+    return dg_findBestViewController(viewController);
+}
+
+UIWindow * dg_topVisibleFullScreenWindow(void) {
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    for (UIWindow *window in windows.reverseObjectEnumerator) {
+        if (window.hidden == YES || window.opaque == NO) {
+            continue;
+        }
+        if (CGRectEqualToRect(window.bounds, [UIScreen mainScreen].bounds) == NO) {
+            continue;
+        }
+        return window;
+    }
+    return nil;
+}
+
+UIWindow * dg_keyboardWindow(void) {
+    for (UIWindow *window in [[UIApplication sharedApplication].windows reverseObjectEnumerator]) {
+        if ([window isKindOfClass:NSClassFromString(@"UITextEffectsWindow")] && window.hidden == NO && window.alpha > 0) {
+            return window;
+        }
+    }
+    return nil;
+}
+
+NSArray<UIWindow *> * dg_getAllWindows(void) {
+    NSArray *allWindowsComponents = @[@"al", @"lWindo", @"wsIncl", @"udingInt", @"ernalWin", @"dows:o", @"nlyVisi", @"bleWin", @"dows:"];
+    SEL allWindowsSelector = NSSelectorFromString([allWindowsComponents componentsJoinedByString:@""]);
+    NSArray *windows = dg_invoke(UIWindow.class, allWindowsSelector, @[@(YES), @(NO)]);
+    return windows;
+}

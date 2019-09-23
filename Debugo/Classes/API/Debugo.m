@@ -82,11 +82,6 @@ static Debugo *_instance = nil;
     });
 }
 
-+ (void)executeCodeForUser:(NSString *)user handler:(void (NS_NOESCAPE ^)(void))handler {
-    if (![self canBeEnabled]) return;
-    dg_exec(user, handler);
-}
-
 #pragma mark - action plugin
 
 + (void)addActionWithTitle:(NSString *)title handler:(DGActionHandlerBlock)handler {
@@ -129,24 +124,25 @@ static Debugo *_instance = nil;
 
 @implementation Debugo (Additional)
 
++ (void)executeCodeForUser:(NSString *)user handler:(void (NS_NOESCAPE ^)(void))handler {
+    if (![self canBeEnabled]) return;
+    dg_exec(user, handler);
+}
+
 + (UIViewController *)topViewController {
-    return [DGUIMagic topViewController];
+    return dg_topViewController();
 }
 
 + (UIViewController *)topViewControllerForWindow:(UIWindow *)window {
-    return [DGUIMagic topViewControllerForWindow:window];
-}
-
-+ (UIWindow *)topVisibleFullScreenWindow {
-    return [DGUIMagic topVisibleFullScreenWindow];
+    return dg_topViewControllerForWindow(window);
 }
 
 + (UIWindow *)keyboardWindow {
-    return [DGUIMagic keyboardWindow];
+    return dg_keyboardWindow();
 }
 
 + (NSArray <UIWindow *>*)getAllWindows {
-    return [DGUIMagic getAllWindows];
+    return dg_getAllWindows();
 }
 
 @end

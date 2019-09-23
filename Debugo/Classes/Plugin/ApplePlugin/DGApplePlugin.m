@@ -60,7 +60,7 @@
     NSArray *debugInfoComponents = @[@"U", @"IDe", @"bug", @"gin", @"gInfor", @"ma", @"ti", @"onO", @"ver", @"lay"];
     id debugInfoClass = NSClassFromString([debugInfoComponents componentsJoinedByString:@""]);
     
-    NSArray <UIWindow *>*allWindows = [DGUIMagic getAllWindows];
+    NSArray <UIWindow *>*allWindows = dg_getAllWindows();
     [allWindows enumerateObjectsUsingBlock:^(UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:debugInfoClass]) {
             if (obj.isHidden == NO) {
