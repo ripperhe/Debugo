@@ -35,7 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 添加自定义工具，需继承自 DGPlugin 或遵守 DGPluginProtocol 协议
 - (void)addCustomPlugin:(Class<DGPluginProtocol>)plugin;
 
-/// 将工具放到 tabBar 上
+/// 将工具放到 tabBar 上；默认是 DGActionPlugin
+/// 目前支持 DGActionPlugin DGFilePlugin DGAppInfoPlugin DGAppInfoPlugin
+/// 以及实现了pluginViewControllerClass 的自定义插件
 - (void)putPluginsToTabBar:(nullable NSArray<Class<DGPluginProtocol>> *)plugins;
 
 @end
