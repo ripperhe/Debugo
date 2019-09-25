@@ -17,37 +17,40 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 
 ## Features
 
-* [x] 指令模块
+* 指令
 	* 快捷添加代码块，点击指令列表的 `Cell` 执行
 	* 支持多人协作，根据 User 自动优先显示当前用户的指令
-* [x] 文件模块
+* 文件
 	* 支持查看沙盒和 Bundle 的文件
 	* 支持预览数据库及其他大部分文件
 	* 支持利用 `AirDrop` 分享文件
 	* 支持设置文件捷径，快速直达经常查看的文件
-* [x] 工具模块
-	* App 信息工具
-		* 查看 Bundle 信息
-		* 查看设备信息
-		* 查看编译信息（[需配置脚本 🚀](https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md)）
-	* 快速登录工具
-		* 简单配置之后，可一键登录
-		* 调用一句代码即可缓存账号
-	* Apple 内部工具
- 		* 集成苹果内部工具 `UIDebuggingInformationOverlay`
-		* [查看使用方法 🚀](http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/)
-	* 触摸监听
-		* 监听手势触摸
-		* 用于手机录屏时能够看到手指的操作
+* App 信息
+	* 查看 Bundle 信息
+	* 查看设备信息
+	* 查看编译信息（[需配置脚本 🚀](https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md)）
+* 快速登录
+	* 简单配置之后，可一键登录
+	* 调用一句代码即可缓存账号
+* Apple 内部神器
+	* 集成苹果内部工具 `UIDebuggingInformationOverlay`
+	* [查看使用方法 🚀](http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverlay/)
+* 触摸监听
+	* 监听手势触摸
+	* 用于手机录屏时能够看到手指的操作
 
 ## Snapshot
 
 <!--![](https://raw.githubusercontent.com/ripperhe/Resource/master/20180930/debugo.gif)
 -->
 
-| 指令 | 文件 | 工具 |
+| 指令 | 文件 | APP信息 |
 |:---: |:---:| :---: |
-| ![](docs/_media/debugo_action.png) | ![](docs/_media/debugo_file.png) | ![](docs/_media/debugo_plugin.png )|
+| ![](docs/_media/debugo_action.png) | ![](docs/_media/debugo_file.png) | ![](docs/_media/debugo_appinfo.png )|
+
+| 快速登录 | Apple内部神器 | 触摸监听 |
+|:---: |:---:| :---: |
+| ![](docs/_media/debugo_account.png) | ![](docs/_media/debugo_apple.png) | ![](docs/_media/debugo_touch.png )|
 
 ## Example
 

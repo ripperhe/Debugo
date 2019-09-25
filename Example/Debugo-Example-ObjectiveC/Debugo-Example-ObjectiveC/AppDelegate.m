@@ -115,8 +115,8 @@
         [configuration addCustomPlugin:CustomPlugin.class];
         [configuration addCustomPlugin:CustomPlugin2.class];
         
-        /// 将部分工具放到 tabBar
-        [configuration putPluginsToTabBar:@[DGActionPlugin.class]];
+        /// 将部分工具放到 tabBar, 默认会将指令放到 tabBar
+//        [configuration putPluginsToTabBar:nil];
 //        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, CustomPlugin2.class]];
 //        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, DGAppInfoPlugin.class, DGTouchPlugin.class, CustomPlugin2.class]];
         
