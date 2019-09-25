@@ -8,37 +8,44 @@
 
 #import "DGTouchPluginViewController.h"
 #import "DGCommon.h"
-#import "DGSwitchCellView.h"
 #import "DGTouchPlugin.h"
-
-@interface DGTouchPluginViewController ()
-
-@property (nonatomic, strong) DGSwitchCellView *switchCellView;
-
-@end
+#import "DGStaticProvider.h"
 
 @implementation DGTouchPluginViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = [DGTouchPlugin pluginName];
-    self.view.backgroundColor = kDGBackgroundColor;
     
-    self.switchCellView = [DGSwitchCellView dg_make:^(DGSwitchCellView * switchCellView) {
-        switchCellView.label.text = @"是否开启触摸监听";
-        [switchCellView.switchView setOn:[DGTouchPlugin pluginSwitch]];
-        [switchCellView setSwitchValueChangedBlock:^(UISwitch * _Nonnull switchView) {
-            [DGTouchPlugin setPluginSwitch:switchView.isOn];
+    DGStaticProvider *provider = [DGStaticProvider new];
+    [provider addSectionWithBlock:^(DGStaticSection * _Nonnull section) {
+        [section addRowWithBlock:^(DGStaticRow * _Nonnull row) {
+            [row setCreateCell:^UITableViewCell * _Nonnull(NSIndexPath * _Nonnull indexPath, NSString * _Nonnull identifier) {
+                UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                cell.textLabel.text = @"是否开启触摸监听";
+                UISwitch *switchView = [UISwitch new];
+                [switchView setOn:[DGTouchPlugin pluginSwitch]];
+                [switchView dg_addReceiverForControlEvents:UIControlEventValueChanged handler:^(UISwitch *  _Nonnull sender) {
+                    [DGTouchPlugin setPluginSwitch:sender.isOn];
+                }];
+                cell.accessoryView = switchView;
+                return cell;
+            }];
+            [row setHeight:60];
         }];
+        [section setHeaderHeight:20];
     }];
-    [self.view addSubview:self.switchCellView];
-}
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-
-    self.switchCellView.frame = CGRectMake(0, kDGNavigationTotalHeight + 20, kDGScreenW, [DGSwitchCellView expectHeight]);
+    self.tableView.allowsSelection = NO;
+    self.tableView.bounces = NO;
+    [self.tableView setDg_staticProvider:provider];
+    [self.tableView reloadData];
 }
 
 @end

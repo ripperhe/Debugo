@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CustomPlugin2ViewController : UIViewController
+@interface CustomPlugin2ViewController : UITableViewController
 
 @end
 

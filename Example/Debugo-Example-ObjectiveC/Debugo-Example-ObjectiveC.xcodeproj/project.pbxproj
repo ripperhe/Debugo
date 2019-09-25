@@ -18,13 +18,16 @@
 		C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */; };
 		C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */; };
 		C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFilePlugin.m */; };
+		C928D754233B64D20078202B /* DGStaticRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D74D233B64D10078202B /* DGStaticRow.m */; };
+		C928D755233B64D20078202B /* UIControl+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D74E233B64D10078202B /* UIControl+Debugo.m */; };
+		C928D756233B64D20078202B /* DGStaticSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D74F233B64D10078202B /* DGStaticSection.m */; };
+		C928D757233B64D20078202B /* DGStaticProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D753233B64D10078202B /* DGStaticProvider.m */; };
 		C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGPathFetcher.m */; };
 		C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */; };
 		C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C948A492232E27BE0061772C /* DGDebugWindow.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
 		C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */; };
 		C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */; };
-		C9A09F20232A3CA800C7983F /* DGSwitchCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */; };
 		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
@@ -114,6 +117,14 @@
 		C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePluginConfiguration.m; sourceTree = "<group>"; };
 		C916195122A13C14009FF2A3 /* DGFilePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePlugin.h; sourceTree = "<group>"; };
 		C916195222A13C14009FF2A3 /* DGFilePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePlugin.m; sourceTree = "<group>"; };
+		C928D74C233B64D10078202B /* DGStaticSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStaticSection.h; sourceTree = "<group>"; };
+		C928D74D233B64D10078202B /* DGStaticRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStaticRow.m; sourceTree = "<group>"; };
+		C928D74E233B64D10078202B /* UIControl+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Debugo.m"; sourceTree = "<group>"; };
+		C928D74F233B64D10078202B /* DGStaticSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStaticSection.m; sourceTree = "<group>"; };
+		C928D750233B64D10078202B /* DGStaticProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStaticProvider.h; sourceTree = "<group>"; };
+		C928D751233B64D10078202B /* DGStaticRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStaticRow.h; sourceTree = "<group>"; };
+		C928D752233B64D10078202B /* UIControl+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Debugo.h"; sourceTree = "<group>"; };
+		C928D753233B64D10078202B /* DGStaticProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStaticProvider.m; sourceTree = "<group>"; };
 		C92F8C78221FA1E00080C156 /* DGPathFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPathFetcher.h; sourceTree = "<group>"; };
 		C92F8C79221FA1E00080C156 /* DGPathFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPathFetcher.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePreviewConfiguration.h; sourceTree = "<group>"; };
@@ -125,8 +136,6 @@
 		C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPluginConfiguration.m; sourceTree = "<group>"; };
 		C9A09F1B232A3ACD00C7983F /* DGTouchPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchPluginViewController.h; sourceTree = "<group>"; };
 		C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTouchPluginViewController.m; sourceTree = "<group>"; };
-		C9A09F1E232A3CA800C7983F /* DGSwitchCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSwitchCellView.h; sourceTree = "<group>"; };
-		C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGSwitchCellView.m; sourceTree = "<group>"; };
 		C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAnimationDelegate.h; sourceTree = "<group>"; };
 		C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAnimationDelegate.m; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -491,10 +500,14 @@
 				C9B456B8221D2B460098644E /* DGWindow.m */,
 				C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */,
 				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
-				C9A09F1E232A3CA800C7983F /* DGSwitchCellView.h */,
-				C9A09F1F232A3CA800C7983F /* DGSwitchCellView.m */,
 				C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */,
 				C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */,
+				C928D751233B64D10078202B /* DGStaticRow.h */,
+				C928D74D233B64D10078202B /* DGStaticRow.m */,
+				C928D74C233B64D10078202B /* DGStaticSection.h */,
+				C928D74F233B64D10078202B /* DGStaticSection.m */,
+				C928D750233B64D10078202B /* DGStaticProvider.h */,
+				C928D753233B64D10078202B /* DGStaticProvider.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -541,6 +554,8 @@
 				C9E38B432285161500D46953 /* NSFileManager+Debugo.m */,
 				C9034DE82324ED5F003D8984 /* UIView+Debugo.h */,
 				C9034DE92324ED5F003D8984 /* UIView+Debugo.m */,
+				C928D752233B64D10078202B /* UIControl+Debugo.h */,
+				C928D74E233B64D10078202B /* UIControl+Debugo.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -777,6 +792,7 @@
 				C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */,
 				C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */,
 				C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */,
+				C928D756233B64D20078202B /* DGStaticSection.m in Sources */,
 				C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */,
 				C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */,
 				C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */,
@@ -799,7 +815,7 @@
 				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
 				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
 				C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */,
-				C9A09F20232A3CA800C7983F /* DGSwitchCellView.m in Sources */,
+				C928D755233B64D20078202B /* UIControl+Debugo.m in Sources */,
 				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
 				C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */,
 				C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */,
@@ -819,6 +835,7 @@
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
 				C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */,
+				C928D757233B64D20078202B /* DGStaticProvider.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
 				C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
@@ -826,6 +843,7 @@
 				C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */,
 				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,
 				C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */,
+				C928D754233B64D20078202B /* DGStaticRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

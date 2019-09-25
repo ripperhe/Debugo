@@ -14,6 +14,7 @@
 #import "NSNumber+Debugo.h"
 #import "NSFileManager+Debugo.h"
 #import "UIView+Debugo.h"
+#import "UIControl+Debugo.h"
 
 #import "DGLog.h"
 #import "DGHelper.h"

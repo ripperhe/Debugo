@@ -13,7 +13,7 @@
  ├── Library
  │   ├── Caches
  │   └── Preferences
- │       └── com.picooc.picooc.plist
+ │       └── com.ripperhe.debugo.plist
  ├── SystemData
  └── tmp
  */
