@@ -24,6 +24,10 @@
 		C928D757233B64D20078202B /* DGStaticProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D753233B64D10078202B /* DGStaticProvider.m */; };
 		C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGPathFetcher.m */; };
 		C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */; };
+		C93A25C4233C5F09008AEC18 /* DGColorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25C3233C5F09008AEC18 /* DGColorPlugin.m */; };
+		C93A25C7233C5F4F008AEC18 /* UIView+DGColorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25C6233C5F4F008AEC18 /* UIView+DGColorPlugin.m */; };
+		C93A25CA233C5FB7008AEC18 /* UIColor+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25C9233C5FB7008AEC18 /* UIColor+Debugo.m */; };
+		C93A25CD233C6107008AEC18 /* DGColorPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25CC233C6107008AEC18 /* DGColorPluginViewController.m */; };
 		C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C948A492232E27BE0061772C /* DGDebugWindow.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
 		C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */; };
@@ -129,6 +133,14 @@
 		C92F8C79221FA1E00080C156 /* DGPathFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPathFetcher.m; sourceTree = "<group>"; };
 		C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePreviewConfiguration.h; sourceTree = "<group>"; };
 		C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePreviewConfiguration.m; sourceTree = "<group>"; };
+		C93A25C2233C5F09008AEC18 /* DGColorPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGColorPlugin.h; sourceTree = "<group>"; };
+		C93A25C3233C5F09008AEC18 /* DGColorPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGColorPlugin.m; sourceTree = "<group>"; };
+		C93A25C5233C5F4F008AEC18 /* UIView+DGColorPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+DGColorPlugin.h"; sourceTree = "<group>"; };
+		C93A25C6233C5F4F008AEC18 /* UIView+DGColorPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+DGColorPlugin.m"; sourceTree = "<group>"; };
+		C93A25C8233C5FB7008AEC18 /* UIColor+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Debugo.h"; sourceTree = "<group>"; };
+		C93A25C9233C5FB7008AEC18 /* UIColor+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Debugo.m"; sourceTree = "<group>"; };
+		C93A25CB233C6107008AEC18 /* DGColorPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGColorPluginViewController.h; sourceTree = "<group>"; };
+		C93A25CC233C6107008AEC18 /* DGColorPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGColorPluginViewController.m; sourceTree = "<group>"; };
 		C948A491232E27BE0061772C /* DGDebugWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGDebugWindow.h; sourceTree = "<group>"; };
 		C948A492232E27BE0061772C /* DGDebugWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGDebugWindow.m; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
@@ -409,6 +421,19 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		C93A25C1233C5EF3008AEC18 /* ColorPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				C93A25C2233C5F09008AEC18 /* DGColorPlugin.h */,
+				C93A25C3233C5F09008AEC18 /* DGColorPlugin.m */,
+				C93A25CB233C6107008AEC18 /* DGColorPluginViewController.h */,
+				C93A25CC233C6107008AEC18 /* DGColorPluginViewController.m */,
+				C93A25C5233C5F4F008AEC18 /* UIView+DGColorPlugin.h */,
+				C93A25C6233C5F4F008AEC18 /* UIView+DGColorPlugin.m */,
+			);
+			path = ColorPlugin;
+			sourceTree = "<group>";
+		};
 		C9B45634221D02A50098644E = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +550,7 @@
 				C9B4566E221D2B460098644E /* AccountPlugin */,
 				C9B456B1221D2B460098644E /* ApplePlugin */,
 				C9B456EC221D2B460098644E /* TouchPlugin */,
+				C93A25C1233C5EF3008AEC18 /* ColorPlugin */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -556,6 +582,8 @@
 				C9034DE92324ED5F003D8984 /* UIView+Debugo.m */,
 				C928D752233B64D10078202B /* UIControl+Debugo.h */,
 				C928D74E233B64D10078202B /* UIControl+Debugo.m */,
+				C93A25C8233C5FB7008AEC18 /* UIColor+Debugo.h */,
+				C93A25C9233C5FB7008AEC18 /* UIColor+Debugo.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -780,12 +808,14 @@
 				C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */,
 				C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */,
 				C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */,
+				C93A25CD233C6107008AEC18 /* DGColorPluginViewController.m in Sources */,
 				C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
 				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
 				C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */,
 				C9B45713221D2B460098644E /* DGWindow.m in Sources */,
 				C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */,
+				C93A25CA233C5FB7008AEC18 /* UIColor+Debugo.m in Sources */,
 				C9B4570D221D2B460098644E /* DGDevice.m in Sources */,
 				C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */,
 				C901D404232E63F700974DE8 /* CustomPlugin2ViewController.m in Sources */,
@@ -828,6 +858,7 @@
 				C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */,
 				C9B456F8221D2B460098644E /* DGAssistant.m in Sources */,
 				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
+				C93A25C7233C5F4F008AEC18 /* UIView+DGColorPlugin.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
 				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
 				C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */,
@@ -838,6 +869,7 @@
 				C928D757233B64D20078202B /* DGStaticProvider.m in Sources */,
 				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
 				C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */,
+				C93A25C4233C5F09008AEC18 /* DGColorPlugin.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
 				C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */,
 				C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */,

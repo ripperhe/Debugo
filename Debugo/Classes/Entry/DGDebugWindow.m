@@ -16,6 +16,7 @@
         self.name = @"Debug Window";
         self.rootViewController = debugVC;
         self.windowLevel = 1999999;
+        _debugViewController = debugVC;
     }
     return self;
 }

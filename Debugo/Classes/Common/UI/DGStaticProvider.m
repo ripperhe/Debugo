@@ -65,6 +65,10 @@
     return [[self.sections objectAtIndex:indexPath.section].rows objectAtIndex:indexPath.row];
 }
 
+- (DGStaticSection *)sectionForSection:(NSUInteger)section {
+    return [self.sections objectAtIndex:section];
+}
+
 #pragma mark - getter
 
 - (NSMutableArray<DGStaticSection *> *)sections {
@@ -102,8 +106,8 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     DGStaticRow *row = [self rowForIndexPath:indexPath];
-    if (row.configCell) {
-        row.configCell(cell, indexPath);
+    if (row.willDisplay) {
+        row.willDisplay(cell, indexPath);
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,15 +149,28 @@
     if (self.viewForHeaderInSection) {
         header = self.viewForHeaderInSection(tableView, section, sectionObj.headerIdentifier);
     }
-    if (sectionObj.createOrConfigHeader) {
-        header = sectionObj.createOrConfigHeader(header, section, sectionObj.headerIdentifier);
+    if (!header && sectionObj.createHeader) {
+        header = sectionObj.createHeader(section, sectionObj.headerIdentifier);
     }
     return header;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     DGStaticSection *sectionObj = [self.sections objectAtIndex:section];
-    return sectionObj.headerHeight;
+    if (sectionObj.willDisplayHeader) {
+        sectionObj.willDisplayHeader(view, section);
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    CGFloat height = 0;
+    DGStaticSection *sectionObj = [self.sections objectAtIndex:section];
+    if (sectionObj.headerHeight > 0) {
+        height = sectionObj.headerHeight;
+    }else if (self.heightForHeaderInSection) {
+        height = self.heightForHeaderInSection(tableView, section);
+    }
+    return height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -162,15 +179,28 @@
     if (self.viewForFooterInSection) {
         footer = self.viewForFooterInSection(tableView, section, sectionObj.footerIdentifier);
     }
-    if (sectionObj.createOrConfigFooter) {
-        footer = sectionObj.createOrConfigFooter(footer, section, sectionObj.footerIdentifier);
+    if (!footer && sectionObj.createFooter) {
+        footer = sectionObj.createFooter(section, sectionObj.footerIdentifier);
     }
     return footer;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
     DGStaticSection *sectionObj = [self.sections objectAtIndex:section];
-    return sectionObj.footerHeight;
+    if (sectionObj.willDispalyFooter) {
+        sectionObj.willDispalyFooter(view, section);
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    CGFloat height = 0;
+    DGStaticSection *sectionObj = [self.sections objectAtIndex:section];
+    if (sectionObj.footerHeight > 0) {
+        height = sectionObj.footerHeight;
+    }else if (self.heightForFooterInSection) {
+        height = self.heightForFooterInSection(tableView, section);
+    }
+    return height;
 }
 
 @end
@@ -187,6 +217,14 @@ static const void * kAssociatedObjectKey_staticProvider = &kAssociatedObjectKey_
 
 - (DGStaticProvider *)dg_staticProvider {
     return objc_getAssociatedObject(self, kAssociatedObjectKey_staticProvider);
+}
+
+- (DGStaticRow *)dg_staticRowForIndexPath:(NSIndexPath *)indexPath {
+    return [self.dg_staticProvider rowForIndexPath:indexPath];
+}
+
+- (DGStaticSection *)dg_staticSectionForSection:(NSUInteger)section {
+    return [self.dg_staticProvider sectionForSection:section];
 }
 
 @end

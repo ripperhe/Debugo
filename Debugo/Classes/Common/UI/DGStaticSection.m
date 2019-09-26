@@ -10,20 +10,6 @@
 
 @implementation DGStaticSection
 
-- (NSString *)headerIdentifier {
-    if (!_headerIdentifier) {
-        _headerIdentifier = [NSString stringWithFormat:@"header_%p", self];
-    }
-    return _headerIdentifier;
-}
-
-- (NSString *)footerIdentifier {
-    if (!_footerIdentifier) {
-        _footerIdentifier = [NSString stringWithFormat:@"footer_%p", self];
-    }
-    return _footerIdentifier;
-}
-
 + (instancetype)section:(void (^)(DGStaticSection * _Nonnull))block {
     DGStaticSection *obj = [DGStaticSection new];
     block(obj);
@@ -51,5 +37,18 @@
     [self.rows addObjectsFromArray:rows];
 }
 
+- (NSString *)headerIdentifier {
+    if (!_headerIdentifier) {
+        _headerIdentifier = [NSString stringWithFormat:@"header_%p", self];
+    }
+    return _headerIdentifier;
+}
+
+- (NSString *)footerIdentifier {
+    if (!_footerIdentifier) {
+        _footerIdentifier = [NSString stringWithFormat:@"footer_%p", self];
+    }
+    return _footerIdentifier;
+}
 
 @end

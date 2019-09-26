@@ -10,17 +10,17 @@
 
 @implementation DGStaticRow
 
++ (instancetype)row:(void (^)(DGStaticRow * _Nonnull))block {
+    DGStaticRow *obj = [self new];
+    block(obj);
+    return obj;
+}
+
 - (NSString *)identifier {
     if (!_identifier) {
         _identifier = [NSString stringWithFormat:@"cell_%p", self];
     }
     return _identifier;
-}
-
-+ (instancetype)row:(void (^)(DGStaticRow * _Nonnull))block {
-    DGStaticRow *obj = [self new];
-    block(obj);
-    return obj;
 }
 
 @end

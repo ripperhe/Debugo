@@ -13,10 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DGDebugWindow : DGWindow
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
-@property(nullable, nonatomic, strong) DGDebugViewController *rootViewController;
-#pragma clang diagnostic pop
+/// 根控制器
+@property (nonatomic, strong, readonly) DGDebugViewController *debugViewController;
 
 @end
 

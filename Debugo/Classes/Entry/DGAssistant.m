@@ -18,6 +18,7 @@
 #import "DGAccountPlugin.h"
 #import "DGApplePlugin.h"
 #import "DGTouchPlugin.h"
+#import "DGColorPlugin.h"
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
@@ -26,7 +27,6 @@ NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHidden
 
 @property (nonatomic, weak) DGBubble *bubble;
 @property (nonatomic, strong) DGDebugWindow *debugWindow;
-@property (nonatomic, weak) UIView *superView;
 
 @end
 
@@ -62,6 +62,7 @@ static DGAssistant *_instance;
             DGAccountPlugin.class,
             DGApplePlugin.class,
             DGTouchPlugin.class,
+            DGColorPlugin.class,
         ];
     }
     return _debugoPlugins;
@@ -140,16 +141,16 @@ static DGAssistant *_instance;
     }
     [containerWindow setHidden:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowDidHiddenNotificationKey object:nil userInfo:nil];
-    if (self.debugWindow.rootViewController.view.superview) {
-        self.superView = self.debugWindow.rootViewController.view.superview;
-        [self.debugWindow.rootViewController.view removeFromSuperview];
+    if (self.debugWindow.rootViewController) {
+        self.debugWindow.rootViewController = nil;
     }
 }
 
 - (void)openDebugWindow {
-    if (!self.debugWindow.rootViewController.view.superview) {
-        // Window 隐藏再显示，不会调用 viewWillAppear；为了保证调用子控制器的 viewWillAppear，window 显示的时候重新添加
-        [self.superView addSubview:self.debugWindow.rootViewController.view];
+    if (!self.debugWindow.rootViewController) {
+        // Window 隐藏再显示，不会调用 viewWillAppear 等方法
+        // 为了保证调用子控制器的 viewWillAppear，window 显示的时候重新设置 rootViewController
+        self.debugWindow.rootViewController = self.debugWindow.debugViewController;
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
     DGWindow *containerWindow = self.debugWindow;

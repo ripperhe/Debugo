@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 创建 cell; 只有需要创建的时候才会调用此方法
 @property (nonatomic, copy) UITableViewCell *(^createCell)(NSIndexPath *indexPath, NSString *identifier);
-/// 配置 cell; 每次都会调用此方法（一般不需要设置）
-@property (nonatomic, copy) void(^configCell)(id cell, NSIndexPath *indexPath);
+/// 即将显示 cell
+@property (nonatomic, copy) void(^willDisplay)(id cell, NSIndexPath *indexPath);
 
 /// cell 高度配置
 @property (nonatomic, assign) CGFloat height;
