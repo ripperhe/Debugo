@@ -12,13 +12,7 @@
 #import "DGCommon.h"
 #import "DGBubble.h"
 #import "DGDebugWindow.h"
-#import "DGActionPlugin.h"
-#import "DGFilePlugin.h"
-#import "DGAppInfoPlugin.h"
-#import "DGAccountPlugin.h"
-#import "DGApplePlugin.h"
-#import "DGTouchPlugin.h"
-#import "DGColorPlugin.h"
+#import "DGConfiguration.h"
 
 NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
 NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";

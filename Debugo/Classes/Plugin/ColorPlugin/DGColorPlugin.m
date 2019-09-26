@@ -16,6 +16,17 @@
     return @"UIView背景色";
 }
 
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"plugin_uiviewcolor"];
+}
+
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_uiviewcolor_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_uiviewcolor_normal"];
+}
+
 + (Class)pluginViewControllerClass {
     return DGColorPluginViewController.class;
 }
