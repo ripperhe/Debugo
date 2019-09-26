@@ -90,7 +90,7 @@ static DGAssistant *_instance;
         return;
     }
     
-    DGBubble *bubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (255 + 55 + kDGBottomSafeMargin), 55, 55)
+    DGBubble *bubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (320 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:nil];
     bubble.name = @"Bubble";
     [bubble.button setImage:[DGBundle imageNamed:@"bubble"] forState:UIControlStateNormal];
