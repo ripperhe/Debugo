@@ -19,10 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationBar setTintColor:kDGHighlightColor];
+    // [self.navigationBar setTranslucent:NO];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // 隐藏 tabBar
+    // 下一个控制器被推出来的时候隐藏 tabBar
     if (self.viewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
     }
@@ -32,7 +33,7 @@
     if (currentViewController) {
         currentViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:NULL];
     }
-
+    
     [super pushViewController:viewController animated:animated];
 }
 

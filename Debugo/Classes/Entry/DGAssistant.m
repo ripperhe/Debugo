@@ -145,6 +145,20 @@ static DGAssistant *_instance;
         // Window 隐藏再显示，不会调用 viewWillAppear 等方法
         // 为了保证调用子控制器的 viewWillAppear，window 显示的时候重新设置 rootViewController
         self.debugWindow.rootViewController = self.debugWindow.debugViewController;
+        UIViewController *topViewController = dg_topViewControllerForWindow(self.debugWindow);
+        UINavigationController *navigationController = topViewController.navigationController;
+        if (!(topViewController.tabBarController == self.debugWindow.debugViewController &&
+              navigationController &&
+              [self.debugWindow.debugViewController.viewControllers containsObject:navigationController] &&
+              navigationController.viewControllers.count <= 1)) {
+            // 不是根视图的情况下隐藏 tabBar
+            [self.debugWindow.debugViewController.tabBar setHidden:YES];
+            // 重新调用一次 pop，否则 tabBar 无法正确显示
+            if (navigationController && navigationController.viewControllers.count > 1) {
+                [navigationController popViewControllerAnimated:NO];
+                [navigationController pushViewController:topViewController animated:NO];
+            }
+        }
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
     DGWindow *containerWindow = self.debugWindow;
