@@ -28,7 +28,7 @@
             DGLog(@"长按...");
         }];
         
-        /// 配置指令模块
+        /// 配置指令
         [configuration setupActionPlugin:^(DGActionPluginConfiguration * _Nonnull actionConfiguration) {
             [actionConfiguration setCommonActions:@[
                                                     [DGAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGAction *action) {
@@ -42,7 +42,7 @@
                                                     ]];
         }];
         
-        /// 配置文件模块
+        /// 配置文件
         [configuration setupFilePlugin:^(DGFilePluginConfiguration * _Nonnull fileConfiguration) {
             [fileConfiguration setShortcutForDatabasePaths:@[
                                                              NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject,
@@ -65,7 +65,7 @@
             }];
         }];
         
-        /// 配置自动登陆
+        /// 配置快速登陆
         [configuration setupAccountPlugin:^(DGAccountPluginConfiguration * _Nonnull accountConfiguration) {
             [accountConfiguration setIsProductionEnvironment:YES];
             [accountConfiguration setCommonDevelopmentAccounts:@[

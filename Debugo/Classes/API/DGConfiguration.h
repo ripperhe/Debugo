@@ -24,13 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// 自定义悬浮球的长按事件，可用于某些需要快捷操作的事情（点击事件是开启和关闭 Debug Window）
 - (void)setupBubbleLongPressAction:(void (^)(void))block;
 
-/// 配置指令模块
+/// 配置指令
 - (void)setupActionPlugin:(void (^)(DGActionPluginConfiguration *actionConfiguration))block;
 
-/// 配置文件模块
+/// 配置文件
 - (void)setupFilePlugin:(void (^)(DGFilePluginConfiguration *fileConfiguration))block;
 
-/// 配置自动登录工具
+/// 配置快速登录
 - (void)setupAccountPlugin:(void (^)(DGAccountPluginConfiguration *accountConfiguration))block;
 
 /// 添加自定义工具，需继承自 DGPlugin 或遵守 DGPluginProtocol 协议
