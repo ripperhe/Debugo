@@ -77,7 +77,7 @@ UIWindow * dg_topVisibleFullScreenWindow(void);
 /// 获取可见的键盘 window
 UIWindow * dg_keyboardWindow(void);
 
-/// 获取所有 window, 包括系统内部的 window, 例如状态栏...
+/// 获取所有 window, 包括系统内部的 window, 例如状态栏...(iOS13貌似不管用了)
 NSArray<UIWindow *> * dg_getAllWindows(void);
 
 NS_ASSUME_NONNULL_END

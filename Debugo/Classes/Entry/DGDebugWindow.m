@@ -13,12 +13,12 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if(self = [super initWithFrame:frame]) {
         DGDebugViewController *debugVC = [[DGDebugViewController alloc] init];
+        _debugViewController = debugVC;
         self.name = @"Debug Window";
         self.rootViewController = debugVC;
         self.windowLevel = 1999999;
         // 防止 navigationbar 为 translucent 时，有黑色阴影
         self.backgroundColor = [UIColor whiteColor];
-        _debugViewController = debugVC;
     }
     return self;
 }

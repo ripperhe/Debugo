@@ -19,6 +19,10 @@
     if (self = [super initWithFrame:frame]) {
         // 防止旋转时四周有黑边
         self.clipsToBounds = YES;
+        // 暂时关闭暗黑模式
+        if (@available(iOS 13.0, *)) {
+            self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+        }
     }
     return self;
 }

@@ -13,7 +13,7 @@
 #import "DGAccountPlugin.h"
 #import "DGAnimationDelegate.h"
 
-#define kBottomMargin (130.0 + kDGBottomSafeMargin)
+#define kBottomMargin (100.0 + kDGBottomSafeMargin)
 #define kLeftMargin 10
 
 @interface DGAccountBackViewController ()
@@ -40,7 +40,7 @@
     [self.view addSubview:navVC.view];
     self.contentView = navVC.view;
     
-    [UIView animateWithDuration:.25 animations:^{
+    [UIView animateWithDuration:.2 animations:^{
         self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5];
         self.contentView.dg_y = kDGStatusBarHeight + 10;
     }];
@@ -56,7 +56,7 @@
 }
 
 - (void)dismissWithAnimation:(void (^)(void))completion {
-    [UIView animateWithDuration:.25 animations:^{
+    [UIView animateWithDuration:.2 animations:^{
         self.view.backgroundColor = [UIColor clearColor];
         self.contentView.dg_y = kDGScreenH;
     } completion:^(BOOL finished) {

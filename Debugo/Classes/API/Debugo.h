@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取可见的键盘 window
 + (nullable UIWindow *)keyboardWindow;
 
-/// 获取所有 window, 包括系统内部的 window, 例如状态栏...
+/// 获取所有 window, 包括系统内部的 window, 例如状态栏...(iOS13貌似不管用了)
 + (nullable NSArray <UIWindow *>*)getAllWindows;
 
 @end
