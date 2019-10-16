@@ -8,7 +8,6 @@
 
 #import "DGColorPluginViewController.h"
 #import "DGCommon.h"
-#import "DGStaticProvider.h"
 #import "DGColorPlugin.h"
 
 @interface DGColorPluginViewController ()

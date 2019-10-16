@@ -527,12 +527,12 @@
 				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
 				C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */,
 				C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */,
-				C928D751233B64D10078202B /* DGStaticRow.h */,
-				C928D74D233B64D10078202B /* DGStaticRow.m */,
-				C928D74C233B64D10078202B /* DGStaticSection.h */,
-				C928D74F233B64D10078202B /* DGStaticSection.m */,
 				C928D750233B64D10078202B /* DGStaticProvider.h */,
 				C928D753233B64D10078202B /* DGStaticProvider.m */,
+				C928D74C233B64D10078202B /* DGStaticSection.h */,
+				C928D74F233B64D10078202B /* DGStaticSection.m */,
+				C928D751233B64D10078202B /* DGStaticRow.h */,
+				C928D74D233B64D10078202B /* DGStaticRow.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";

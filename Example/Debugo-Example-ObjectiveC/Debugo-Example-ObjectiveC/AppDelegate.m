@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Debugo.h"
-#import "DGPathFetcher.h"
+#import "DGCommon.h"
 #import "CustomPlugin.h"
 #import "CustomPlugin2.h"
 

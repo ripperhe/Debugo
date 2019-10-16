@@ -9,7 +9,6 @@
 #import "DGTouchPluginViewController.h"
 #import "DGCommon.h"
 #import "DGTouchPlugin.h"
-#import "DGStaticProvider.h"
 
 @implementation DGTouchPluginViewController
 
