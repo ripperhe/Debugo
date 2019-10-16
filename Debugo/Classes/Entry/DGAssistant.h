@@ -12,9 +12,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const DGDebugWindowWillShowNotificationKey;
-extern NSString *const DGDebugWindowDidHiddenNotificationKey;
-
 @interface DGAssistant : NSObject
 
 @property (nonatomic, copy) void(^bubbleLongPressBlock)(void);

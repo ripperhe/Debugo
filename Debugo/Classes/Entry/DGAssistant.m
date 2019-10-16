@@ -14,9 +14,6 @@
 #import "DGDebugWindow.h"
 #import "DGConfiguration.h"
 
-NSString *const DGDebugWindowWillShowNotificationKey = @"DGDebugWindowWillShowNotificationKey";
-NSString *const DGDebugWindowDidHiddenNotificationKey = @"DGDebugWindowDidHiddenNotificationKey";
-
 @interface DGAssistant ()
 
 @property (nonatomic, weak) DGBubble *bubble;
@@ -134,11 +131,9 @@ static DGAssistant *_instance;
     [topViewController beginAppearanceTransition:NO animated:NO];
     [containerWindow setHidden:YES];
     [topViewController endAppearanceTransition];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowDidHiddenNotificationKey object:nil userInfo:nil];
 }
 
 - (void)openDebugWindowWithIsFirstOpen:(BOOL)isFirstOpen {
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
     DGWindow *containerWindow = self.debugWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     containerWindow.dg_canBecomeKeyWindow = YES;
