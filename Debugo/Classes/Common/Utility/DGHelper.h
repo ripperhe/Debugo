@@ -80,4 +80,7 @@ UIWindow * dg_keyboardWindow(void);
 /// 获取所有 window, 包括系统内部的 window, 例如状态栏...(iOS13貌似不管用了)
 NSArray<UIWindow *> * dg_getAllWindows(void);
 
+/// 解决中文乱码问题
+NSString * dg_description(id<NSObject> obj);
+
 NS_ASSUME_NONNULL_END

@@ -319,3 +319,12 @@ NSArray<UIWindow *> * dg_getAllWindows(void) {
     NSArray *windows = dg_invoke(UIWindow.class, allWindowsSelector, @[@(YES), @(NO)]);
     return windows;
 }
+
+NSString * dg_description(id<NSObject> obj) {
+    if (!obj) {
+        return nil;
+    }
+    NSString *descpription = [obj description];
+    NSString *newDescpription = [NSString stringWithCString:[descpription cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding];
+    return newDescpription ?: descpription;
+}

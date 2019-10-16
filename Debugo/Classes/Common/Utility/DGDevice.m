@@ -14,14 +14,21 @@
 
 /**
  Reference:
- https://stackoverflow.com/questions/448162/determine-device-iphone-ipod-touch-with-iphone-sdk/1561920#1561920
- https://gist.github.com/Jaybles/1323251
+ 
+ # 型号
+ https://support.apple.com/en-us/HT201296
  https://www.theiphonewiki.com/wiki/Models
  https://ipsw.me/device-finder
- https://www.apple.com/cn/iphone/compare/
+ 
+ # 代码
+ https://stackoverflow.com/questions/448162/determine-device-iphone-ipod-touch-with-iphone-sdk/1561920#1561920
+ https://gist.github.com/Jaybles/1323251
  https://github.com/InderKumarRathore/DeviceUtil
- https://kangzubin.com/iphone-resolutions/
+ 
+ # 分辨率
  https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
+ https://kangzubin.com/iphone-resolutions/
+ 
  */
 
 static NSString * const kDGNameKey = @"kDGNameKey";
