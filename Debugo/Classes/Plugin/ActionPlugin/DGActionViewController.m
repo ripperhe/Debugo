@@ -86,11 +86,11 @@
                     [_cachedPersonsDic setObject:title forKey:key];
                 }
                 DGAction *action = [DGAction actionWithTitle:title autoClose:NO handler:^(DGAction * _Nonnull action) {
-                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
+                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_extStrongObj];
                     subVC.title = action.title;
                     [action.viewController.navigationController pushViewController:subVC animated:YES];
                 }];
-                action.dg_strongExtObj = obj.reverseSortedValues;
+                action.dg_extStrongObj = obj.reverseSortedValues;
                 [otherActions addObject:action];
             }
         }];
@@ -106,26 +106,26 @@
 
         if (currentActions.count) {
             // 有当前用户指令
-            currentActions.dg_copyExtObj = dg_current_user();
+            currentActions.dg_extCopyObj = dg_current_user();
             [_dataArray addObject:currentActions];
             
             if (commonActions.count) {
-                commonActions.dg_copyExtObj = @"共享指令";
+                commonActions.dg_extCopyObj = @"共享指令";
                 [_dataArray addObject:commonActions];
             }
 
             if (anonymousActions.count) {
                 // 将匿名指令添加到其他指令数组中，并且从二级页面展开
                 DGAction *action = [DGAction actionWithTitle:@"👨🏿‍💻 匿名用户" autoClose:NO handler:^(DGAction * _Nonnull action) {
-                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
+                    DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_extStrongObj];
                     subVC.title = action.title;
                     [action.viewController.navigationController pushViewController:subVC animated:YES];
                 }];
-                action.dg_strongExtObj = anonymousActions;
+                action.dg_extStrongObj = anonymousActions;
                 [otherActions insertObject:action atIndex:0];
             }
             if (otherActions.count) {
-                otherActions.dg_copyExtObj = @"其他用户指令";
+                otherActions.dg_extCopyObj = @"其他用户指令";
                 [_dataArray addObject:otherActions];
             }
         }else {
@@ -133,22 +133,22 @@
             if (otherActions.count) {
                 // 有其他用户指令
                 if (commonActions.count) {
-                    commonActions.dg_copyExtObj = @"共享指令";
+                    commonActions.dg_extCopyObj = @"共享指令";
                     [_dataArray addObject:commonActions];
                 }
                 
                 if (anonymousActions.count) {
                     // 将匿名指令添加到其他指令数组中，并且从二级页面展开
                     DGAction *action = [DGAction actionWithTitle:@"👨🏿‍💻 匿名用户" autoClose:NO handler:^(DGAction * _Nonnull action) {
-                        DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_strongExtObj];
+                        DGActionSubViewController *subVC = [[DGActionSubViewController alloc] initWithActions:action.dg_extStrongObj];
                         subVC.title = action.title;
                         [action.viewController.navigationController pushViewController:subVC animated:YES];
                     }];
-                    action.dg_strongExtObj = anonymousActions;
+                    action.dg_extStrongObj = anonymousActions;
                     [otherActions insertObject:action atIndex:0];
                 }
                 if (otherActions.count) {
-                    otherActions.dg_copyExtObj = @"其他用户指令";
+                    otherActions.dg_extCopyObj = @"其他用户指令";
                     [_dataArray addObject:otherActions];
                 }
             }else {
@@ -158,7 +158,7 @@
                 }
                 
                 if (commonActions.count) {
-                    commonActions.dg_copyExtObj = @"共享指令";
+                    commonActions.dg_extCopyObj = @"共享指令";
                     [_dataArray addObject:commonActions];
                 }
             }
@@ -191,7 +191,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     DGAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = action.title;
-    if (action.dg_strongExtObj) {
+    if (action.dg_extStrongObj) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -210,13 +210,13 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.dataArray objectAtIndex:section].dg_copyExtObj;
+    return [self.dataArray objectAtIndex:section].dg_extCopyObj;
 }
 
 // https://stackoverflow.com/questions/18912980/uitableview-titleforheaderinsection-shows-all-caps/39504215#39504215
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(nonnull UIView *)view forSection:(NSInteger)section {
     if ([view isKindOfClass:[UITableViewHeaderFooterView class]]) {
-        ((UITableViewHeaderFooterView *)view).textLabel.text = self.dataArray[section].dg_copyExtObj;
+        ((UITableViewHeaderFooterView *)view).textLabel.text = self.dataArray[section].dg_extCopyObj;
     }
 }
 

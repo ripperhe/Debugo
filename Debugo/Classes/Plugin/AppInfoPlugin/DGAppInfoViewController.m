@@ -53,7 +53,7 @@
                                              @"Version", [self getBundleInfo:@"CFBundleShortVersionString"],
                                              @"Deployment Target", [self getBundleInfo:@"MinimumOSVersion"],
                                              nil];
-    bundleDictionary.dg_copyExtObj = @"Bundle信息";
+    bundleDictionary.dg_extCopyObj = @"Bundle信息";
     
     DGOrderedDictionary *deviceDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
                                              @"Name", [UIDevice currentDevice].name,
@@ -68,7 +68,7 @@
                                              @"Current Locale", [[NSLocale currentLocale] localeIdentifier],
                                              @"Local Timezone", [[NSTimeZone localTimeZone] name],
                                              nil];
-    deviceDictionary.dg_copyExtObj = @"设备信息";
+    deviceDictionary.dg_extCopyObj = @"设备信息";
     
     DGOrderedDictionary *buildDictionary = [self getBuildInfoDictionary];
     
@@ -78,7 +78,7 @@
     [[NSFileManager defaultManager] removeItemAtPath:[self plistCachePath] error:nil];
     NSMutableDictionary *plistContentDic = [NSMutableDictionary dictionary];
     [self.dataArray enumerateObjectsUsingBlock:^(DGOrderedDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [plistContentDic setObject:obj.keysAndObjects forKey:obj.dg_copyExtObj];
+        [plistContentDic setObject:obj.keysAndObjects forKey:obj.dg_extCopyObj];
     }];
     [plistContentDic writeToFile:[self plistCachePath] atomically:YES];
 }
@@ -160,9 +160,9 @@
         buildInfoDictionary = [[DGOrderedDictionary alloc] initWithKeysAndObjects:
                                @"如需获取，进入网页查看 🚀", @"",
                                nil];
-        buildInfoDictionary.dg_strongExtObj = @(YES);
+        buildInfoDictionary.dg_extStrongObj = @(YES);
     }
-    buildInfoDictionary.dg_copyExtObj = @"编译信息";
+    buildInfoDictionary.dg_extCopyObj = @"编译信息";
     return buildInfoDictionary;
 }
 
@@ -208,7 +208,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
-    NSNumber *flag = sectionDictionary.dg_strongExtObj;
+    NSNumber *flag = sectionDictionary.dg_extStrongObj;
     if (flag && [flag boolValue]) {
         NSURL *url = [NSURL URLWithString:@"https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md"];
         [[UIApplication sharedApplication] openURL:url];
@@ -216,13 +216,13 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.dataArray[section].dg_copyExtObj;
+    return self.dataArray[section].dg_extCopyObj;
 }
 
 // https://stackoverflow.com/questions/18912980/uitableview-titleforheaderinsection-shows-all-caps/39504215#39504215
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(nonnull UIView *)view forSection:(NSInteger)section {
     if ([view isKindOfClass:[UITableViewHeaderFooterView class]]) {
-        ((UITableViewHeaderFooterView *)view).textLabel.text = self.dataArray[section].dg_copyExtObj;
+        ((UITableViewHeaderFooterView *)view).textLabel.text = self.dataArray[section].dg_extCopyObj;
     }
 }
 

@@ -54,13 +54,13 @@
         
         NSArray *temporaryArray = DGAccountPlugin.shared.cacheAccountDic.reverseSortedValues;
         if (temporaryArray.count) {
-            temporaryArray.dg_copyExtObj = @"缓存账号";
+            temporaryArray.dg_extCopyObj = @"缓存账号";
             [_dataArray addObject:temporaryArray];
         }
         
         NSArray *commonArray = DGAccountPlugin.shared.currentCommonAccountArray.copy;
         if (commonArray.count) {
-            commonArray.dg_copyExtObj = @"共享账号";
+            commonArray.dg_extCopyObj = @"共享账号";
             [_dataArray addObject:commonArray];
         }
     }
@@ -98,7 +98,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.dataArray objectAtIndex:section].dg_copyExtObj;
+    return [self.dataArray objectAtIndex:section].dg_extCopyObj;
 }
 
 @end

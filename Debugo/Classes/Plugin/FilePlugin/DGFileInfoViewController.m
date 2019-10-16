@@ -106,7 +106,7 @@
 
 - (void)clickedCopyBtn:(UIButton *)sender {
     kDGImpactFeedback
-    NSIndexPath *indexPath = sender.dg_strongExtObj;
+    NSIndexPath *indexPath = sender.dg_extStrongObj;
     
     // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
     // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
@@ -140,7 +140,7 @@
     cell.textLabel.text = [sectionDic keyAtIndex:indexPath.row];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [sectionDic objectAtIndex:indexPath.row]];
     cell.accessoryView.hidden = ![[sectionDic keyAtIndex:indexPath.row] isEqualToString:@"Path"];
-    cell.accessoryView.dg_strongExtObj = indexPath;
+    cell.accessoryView.dg_extStrongObj = indexPath;
     return cell;
 }
 

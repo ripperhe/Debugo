@@ -64,7 +64,7 @@
             }
         }];
         if (shortcutDBFiles.count) {
-            shortcutDBFiles.dg_copyExtObj = @"数据库捷径";
+            shortcutDBFiles.dg_extCopyObj = @"数据库捷径";
             [array addObject:shortcutDBFiles];
         }
         
@@ -78,7 +78,7 @@
             }
         }];
         if (shortcutForAnyFiles.count) {
-            shortcutForAnyFiles.dg_copyExtObj = @"捷径";
+            shortcutForAnyFiles.dg_extCopyObj = @"捷径";
             [array addObject:shortcutForAnyFiles];
         }
         
@@ -141,7 +141,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.dataArray[section].dg_copyExtObj;
+    return self.dataArray[section].dg_extCopyObj;
 }
 
 @end

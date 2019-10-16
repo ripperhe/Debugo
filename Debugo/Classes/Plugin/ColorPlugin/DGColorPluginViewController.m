@@ -90,11 +90,11 @@
                 [segmentedControl sizeToFit];
                 segmentedControl.dg_centerY = 25;
                 [cell addSubview:segmentedControl];
-                cell.dg_weakExtObj = segmentedControl;
+                cell.dg_extWeakObj = segmentedControl;
                 return cell;
             }];
             [row setWillDisplay:^(UITableViewCell *  _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
-                UISegmentedControl *segmentedControl = cell.dg_weakExtObj;
+                UISegmentedControl *segmentedControl = cell.dg_extWeakObj;
                 segmentedControl.selectedSegmentIndex = self.topViewController.view.dg_renderType;
                 segmentedControl.dg_x = cell.dg_safeAreaInsets.left + 20;
             }];
@@ -121,11 +121,11 @@
                 [segmentedControl sizeToFit];
                 segmentedControl.dg_centerY = 25;
                 [cell addSubview:segmentedControl];
-                cell.dg_weakExtObj = segmentedControl;
+                cell.dg_extWeakObj = segmentedControl;
                 return cell;
             }];
             [row setWillDisplay:^(UITableViewCell *  _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
-                UISegmentedControl *segmentedControl = cell.dg_weakExtObj;
+                UISegmentedControl *segmentedControl = cell.dg_extWeakObj;
                 segmentedControl.selectedSegmentIndex = self.topViewController.view.dg_colorType;
                 segmentedControl.dg_x = cell.dg_safeAreaInsets.left + 20;
             }];
