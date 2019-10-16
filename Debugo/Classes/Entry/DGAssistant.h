@@ -24,7 +24,7 @@ extern NSString *const DGDebugWindowDidHiddenNotificationKey;
 
 + (instancetype)shared;
 
-- (void)setup;
+- (void)showBubble;
 
 - (void)closeDebugWindow;
 

@@ -78,11 +78,6 @@ static DGAssistant *_instance;
     return _tabBarPlugins;
 }
 
-#pragma mark -
-- (void)setup {    
-    [self showBubble];
-}
-
 #pragma mark - bubble
 - (void)showBubble {
     if (self.bubble) {
@@ -102,11 +97,11 @@ static DGAssistant *_instance;
             if (self.debugWindow.isHidden == NO) {
                 [self closeDebugWindow];
             }else {
-                [self openDebugWindow];
+                [self openDebugWindowWithIsFirstOpen:NO];
             }
         }else{
             self.debugWindow = [[DGDebugWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-            [self openDebugWindow];
+            [self openDebugWindowWithIsFirstOpen:YES];
         }
     }];
     [bubble setLongPressStartBlock:^(DGBubble *bubble) {
@@ -133,43 +128,31 @@ static DGAssistant *_instance;
         [containerWindow.lastKeyWindow makeKeyWindow];
         containerWindow.lastKeyWindow = nil;
     }
+    // Window 隐藏再显示，不会调用 viewWillDisappear:, viewDidDisappear:
+    // 此操作为了调用顶部控制器的 viewWillDisappear:, viewDidDisappear:
+    UIViewController *topViewController = dg_topViewControllerForWindow(self.debugWindow);
+    [topViewController beginAppearanceTransition:NO animated:NO];
     [containerWindow setHidden:YES];
+    [topViewController endAppearanceTransition];
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowDidHiddenNotificationKey object:nil userInfo:nil];
-    if (self.debugWindow.rootViewController) {
-        self.debugWindow.rootViewController = nil;
-    }
 }
 
-- (void)openDebugWindow {
-    if (!self.debugWindow.rootViewController) {
-        // Window 隐藏再显示，不会调用 viewWillAppear 等方法
-        // 为了保证调用子控制器的 viewWillAppear，window 显示的时候重新设置 rootViewController
-        self.debugWindow.rootViewController = self.debugWindow.debugViewController;
-        UIViewController *topViewController = dg_topViewControllerForWindow(self.debugWindow);
-        UINavigationController *navigationController = topViewController.navigationController;
-        if (!(topViewController.tabBarController == self.debugWindow.debugViewController &&
-              navigationController &&
-              [self.debugWindow.debugViewController.viewControllers containsObject:navigationController] &&
-              navigationController.viewControllers.count <= 1)) {
-            // 不是根视图的情况下隐藏 tabBar
-            [self.debugWindow.debugViewController.tabBar setHidden:YES];
-            // 重新调用一次 pop，否则 tabBar 无法正确显示
-            if (navigationController && navigationController.viewControllers.count > 1) {
-                [navigationController popViewControllerAnimated:NO];
-                [navigationController pushViewController:topViewController animated:NO];
-            }
-        }
-    }
+- (void)openDebugWindowWithIsFirstOpen:(BOOL)isFirstOpen {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGDebugWindowWillShowNotificationKey object:nil];
     DGWindow *containerWindow = self.debugWindow;
     containerWindow.lastKeyWindow = [UIApplication sharedApplication].keyWindow;
     containerWindow.dg_canBecomeKeyWindow = YES;
+    // Window 隐藏再显示，不会调用 viewWillAppear:, viewDidAppear:
+    // 此操作为了调用顶部控制器的 viewWillAppear:, viewDidAppear:
+    UIViewController *topViewController = dg_topViewControllerForWindow(self.debugWindow);
+    if (!isFirstOpen) [topViewController beginAppearanceTransition:YES animated:NO];
     if (dg_keyboardWindow()) {
         // 有键盘的时候，防止挡住视图；没有键盘的时候，尽量不改变 keyWindow
         [containerWindow makeKeyAndVisible];
     }else {
         [containerWindow setHidden:NO];
     }
+    if (!isFirstOpen) [topViewController endAppearanceTransition];
 }
 
 @end
