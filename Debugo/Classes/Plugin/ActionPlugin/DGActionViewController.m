@@ -63,7 +63,7 @@
         // 匿名指令
         NSArray<DGAction *> *anonymousActions = [DGActionPlugin shared].anonymousActionDic.reverseSortedValues;
         // 共享指令
-        NSArray<DGAction *> *commonActions = [DGActionPlugin shared].configuration.commonActions.copy;
+        NSArray<DGAction *> *commonActions = [DGActionPlugin shared].configuration.getAllCommonActions.copy;
 
         // 赋值
         NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGActionPlugin.shared.usersActionsDic.mutableCopy;

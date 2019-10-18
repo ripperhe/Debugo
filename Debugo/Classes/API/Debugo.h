@@ -10,8 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "DebugoEnable.h"
 #import "DGConfiguration.h"
-#import "DGLog.h"
-#import "DGHelper.h"
+#import "DGTool.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

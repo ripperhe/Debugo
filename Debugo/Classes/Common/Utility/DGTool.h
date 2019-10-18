@@ -7,10 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGDevice.h"
 #import "DebugoEnable.h"
+#import "DGDevice.h"
+#import "NSDate+Debugo.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+#if DebugoCanBeEnabled
+#define DGLog(format, ...)  do { printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String]);} while (0)
+#define DGCLog(format, ...)  do { printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, __func__, [[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String]);} while (0)
+#else
+#define DGLog(...)
+#define DGCLog(...)
+#endif
+
+#define DGLogSelf DGLog(@"%@", self)
+#define DGLogFunction DGLog(@"")
 
 #define kDGScreenW ([UIScreen mainScreen].bounds.size.width)
 #define kDGScreenH ([UIScreen mainScreen].bounds.size.height)

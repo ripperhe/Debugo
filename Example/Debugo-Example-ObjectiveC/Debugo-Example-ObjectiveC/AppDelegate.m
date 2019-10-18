@@ -30,28 +30,26 @@
         
         /// 配置指令
         [configuration setupActionPlugin:^(DGActionPluginConfiguration * _Nonnull actionConfiguration) {
-            [actionConfiguration setCommonActions:@[
-                                                    [DGAction actionWithTitle:@"Log Top ViewController 😘" autoClose:YES handler:^(DGAction *action) {
+            [actionConfiguration addCommonActionWithTitle:@"Log Top ViewController 😘" handler:^(DGAction * _Nonnull action) {
                 UIViewController *vc = Debugo.topViewController;
                 NSLog(@"%@", vc);
-            }],
-                                                    [DGAction actionWithTitle:@"Log All Window 🧐" autoClose:YES handler:^(DGAction *action) {
+            }];
+            [actionConfiguration addCommonActionWithTitle:@"Log All Window 🧐" handler:^(DGAction * _Nonnull action) {
                 NSArray *array = [Debugo getAllWindows];
                 NSLog(@"%@", array);
-            }],
-                                                    ]];
+            }];
         }];
         
         /// 配置文件
         [configuration setupFilePlugin:^(DGFilePluginConfiguration * _Nonnull fileConfiguration) {
             [fileConfiguration setShortcutForDatabasePaths:@[
-                                                             NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject,
-                                                             [NSBundle mainBundle].bundlePath,
-                                                             ]];
+                NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject,
+                [NSBundle mainBundle].bundlePath,
+            ]];
             [fileConfiguration setShortcutForAnyPaths:@[
-                                                        DGPathFetcher.documentsDirectory,
-                                                        DGPathFetcher.userDefaultsPlistFilePath,
-                                                        ]];
+                DGPathFetcher.documentsDirectory,
+                DGPathFetcher.userDefaultsPlistFilePath,
+            ]];
             // 自定义数据库预览列宽
             [fileConfiguration setDatabaseFilePreviewConfigurationBlock:^DGDatabasePreviewConfiguration * _Nullable(NSString * _Nonnull filePath) {
                 if (![filePath.lastPathComponent isEqualToString:@"picooc.production.sqlite"]) {
@@ -69,16 +67,16 @@
         [configuration setupAccountPlugin:^(DGAccountPluginConfiguration * _Nonnull accountConfiguration) {
             [accountConfiguration setIsProductionEnvironment:YES];
             [accountConfiguration setCommonDevelopmentAccounts:@[
-                                                                [DGAccount accountWithUsername:@"jintianyoudiantoutong@qq.com" password:@"dasinigewangbadan🤣"],
-                                                                [DGAccount accountWithUsername:@"wozhendeyoudianxinfan@qq.com" password:@"niyoubenshizaishuoyiju🧐"],
-                                                                [DGAccount accountWithUsername:@"kanshenmekan@gmail.com" password:@"meijianguoma😉"],
-                                                                [DGAccount accountWithUsername:@"woshikaiwanxiaode@163.com" password:@"zhendezhende😨"],
-                                                                ]];
+                [DGAccount accountWithUsername:@"jintianyoudiantoutong@qq.com" password:@"dasinigewangbadan🤣"],
+                [DGAccount accountWithUsername:@"wozhendeyoudianxinfan@qq.com" password:@"niyoubenshizaishuoyiju🧐"],
+                [DGAccount accountWithUsername:@"kanshenmekan@gmail.com" password:@"meijianguoma😉"],
+                [DGAccount accountWithUsername:@"woshikaiwanxiaode@163.com" password:@"zhendezhende😨"],
+            ]];
             [accountConfiguration setCommonProductionAccounts:@[
-                                                                [DGAccount accountWithUsername:@"wolaile@gmail.com" password:@"😴wozouleoubuwoshuile"],
-                                                                [DGAccount accountWithUsername:@"woshixianshangzhanghao@qq.com" password:@"😉wojiuwennipabupa"],
-                                                                [DGAccount accountWithUsername:@"xianshangdeniubiba@qq.com" password:@"😍hahahabixude"],
-                                                                ]];
+                [DGAccount accountWithUsername:@"wolaile@gmail.com" password:@"😴wozouleoubuwoshuile"],
+                [DGAccount accountWithUsername:@"woshixianshangzhanghao@qq.com" password:@"😉wojiuwennipabupa"],
+                [DGAccount accountWithUsername:@"xianshangdeniubiba@qq.com" password:@"😍hahahabixude"],
+            ]];
             [accountConfiguration setExecuteLoginBlock:^(DGAccount * _Nonnull account) {
                 // 在这里实现自动登陆的功能
 #pragma clang diagnostic push

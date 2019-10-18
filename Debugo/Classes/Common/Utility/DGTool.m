@@ -6,8 +6,7 @@
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGHelper.h"
-#import "DGLog.h"
+#import "DGTool.h"
 
 NSString * dg_current_user() {
     static NSString *_currentUser = nil;

@@ -9,10 +9,10 @@
 #import "DGDatabasePreviewConfiguration.h"
 
 // #define isValidRowHeight(h) (h>=30.0&&h<=100.0?YES:NO)
-#define isValidColumnWidth(w) (w>=50.0&&w<=300.0?YES:NO)
+#define isValidColumnWidth(w) (w>=50.0&&w<=1000.0?YES:NO)
 #define checkColumnAndReturn(columnWidth) \
 if (!isValidColumnWidth(columnWidth)) { \
-NSAssert(0, @"请给出合理的列宽"); \
+NSAssert(0, @"DGFilePlugin: 请给出合理的列宽 [50, 1000]"); \
 return; \
 }
 

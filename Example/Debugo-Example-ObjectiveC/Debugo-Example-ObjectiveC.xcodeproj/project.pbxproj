@@ -14,7 +14,7 @@
 		C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */; };
 		C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE92324ED5F003D8984 /* UIView+Debugo.m */; };
 		C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */; };
-		C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGHelper.m */; };
+		C916194722A11CB1009FF2A3 /* DGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGTool.m */; };
 		C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */; };
 		C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */; };
 		C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFilePlugin.m */; };
@@ -113,8 +113,8 @@
 		C9034DE92324ED5F003D8984 /* UIView+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugo.m"; sourceTree = "<group>"; };
 		C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPluginViewController.h; sourceTree = "<group>"; };
 		C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPluginViewController.m; sourceTree = "<group>"; };
-		C916194522A11CB1009FF2A3 /* DGHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGHelper.h; sourceTree = "<group>"; };
-		C916194622A11CB1009FF2A3 /* DGHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGHelper.m; sourceTree = "<group>"; };
+		C916194522A11CB1009FF2A3 /* DGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTool.h; sourceTree = "<group>"; };
+		C916194622A11CB1009FF2A3 /* DGTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTool.m; sourceTree = "<group>"; };
 		C916194822A1222C009FF2A3 /* DGAccountPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountPluginConfiguration.h; sourceTree = "<group>"; };
 		C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountPluginConfiguration.m; sourceTree = "<group>"; };
 		C916194C22A12770009FF2A3 /* DGFilePluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePluginConfiguration.h; sourceTree = "<group>"; };
@@ -203,7 +203,6 @@
 		C9B45698221D2B460098644E /* DGCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCommon.h; sourceTree = "<group>"; };
 		C9B4569A221D2B460098644E /* DGBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBundle.h; sourceTree = "<group>"; };
 		C9B4569B221D2B460098644E /* DGBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBundle.m; sourceTree = "<group>"; };
-		C9B4569E221D2B460098644E /* DGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLog.h; sourceTree = "<group>"; };
 		C9B456A7221D2B460098644E /* DGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDevice.h; sourceTree = "<group>"; };
 		C9B456A8221D2B460098644E /* DGDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDevice.m; sourceTree = "<group>"; };
 		C9B456AA221D2B460098644E /* DGPlister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPlister.h; sourceTree = "<group>"; };
@@ -602,9 +601,8 @@
 		C9B4569F221D2B460098644E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				C9B4569E221D2B460098644E /* DGLog.h */,
-				C916194522A11CB1009FF2A3 /* DGHelper.h */,
-				C916194622A11CB1009FF2A3 /* DGHelper.m */,
+				C916194522A11CB1009FF2A3 /* DGTool.h */,
+				C916194622A11CB1009FF2A3 /* DGTool.m */,
 				C9B456AA221D2B460098644E /* DGPlister.h */,
 				C9B456AB221D2B460098644E /* DGPlister.m */,
 				C9B456AD221D2B460098644E /* DGOrderedDictionary.h */,
@@ -807,7 +805,7 @@
 				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
 				C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */,
 				C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */,
-				C916194722A11CB1009FF2A3 /* DGHelper.m in Sources */,
+				C916194722A11CB1009FF2A3 /* DGTool.m in Sources */,
 				C93A25CD233C6107008AEC18 /* DGColorPluginViewController.m in Sources */,
 				C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,

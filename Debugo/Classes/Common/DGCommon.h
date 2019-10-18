@@ -17,8 +17,7 @@
 #import "UIControl+Debugo.h"
 #import "UIColor+Debugo.h"
 
-#import "DGLog.h"
-#import "DGHelper.h"
+#import "DGTool.h"
 #import "DGPlister.h"
 #import "DGOrderedDictionary.h"
 #import "DGDevice.h"
