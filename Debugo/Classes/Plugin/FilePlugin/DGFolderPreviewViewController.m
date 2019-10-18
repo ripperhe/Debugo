@@ -58,7 +58,12 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [btn addTarget:self action:@selector(clickShowDirectoryInfoBtn:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItems = @[item1, item2];
+    if ([self.file.filePath isEqualToString:DGPathFetcher.sandboxDirectory]) {
+        // 沙盒根目录有系统文件，不允许分享
+        self.navigationItem.rightBarButtonItem = item2;
+    }else {
+        self.navigationItem.rightBarButtonItems = @[item1, item2];
+    }
     
     // Set search controller
     if (@available(iOS 11.0, *)) {
