@@ -31,6 +31,8 @@
     return DGActionViewController.class;
 }
 
+#pragma mark -
+
 static DGActionPlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {

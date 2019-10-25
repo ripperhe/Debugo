@@ -55,6 +55,8 @@ static DGTouchWindow *_touchWindow = nil;
     }
 }
 
+#pragma mark -
+
 + (void)handleToucheEvent:(UIEvent *)event {
     [_touchWindow displayEvent:event];
 }

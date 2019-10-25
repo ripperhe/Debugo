@@ -14,6 +14,7 @@
 		C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */; };
 		C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE92324ED5F003D8984 /* UIView+Debugo.m */; };
 		C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */; };
+		C915FC542361922200189E8D /* DGPodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C915FC532361922200189E8D /* DGPodModel.m */; };
 		C916194722A11CB1009FF2A3 /* DGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGTool.m */; };
 		C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */; };
 		C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */; };
@@ -32,6 +33,10 @@
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
 		C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */; };
 		C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */; };
+		C9A2562D23628D7500E6B3FA /* DGSpecRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2562C23628D7500E6B3FA /* DGSpecRepoModel.m */; };
+		C9A256312362991D00E6B3FA /* DGPodPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A256302362991D00E6B3FA /* DGPodPlugin.m */; };
+		C9A25638236299F300E6B3FA /* DGPodPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */; };
+		C9A2563E2362A14600E6B3FA /* NSString+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */; };
 		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
@@ -113,6 +118,8 @@
 		C9034DE92324ED5F003D8984 /* UIView+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugo.m"; sourceTree = "<group>"; };
 		C9034DEB2324F0D5003D8984 /* DGPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPluginViewController.h; sourceTree = "<group>"; };
 		C9034DEC2324F0D5003D8984 /* DGPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPluginViewController.m; sourceTree = "<group>"; };
+		C915FC522361922200189E8D /* DGPodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodModel.h; sourceTree = "<group>"; };
+		C915FC532361922200189E8D /* DGPodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodModel.m; sourceTree = "<group>"; };
 		C916194522A11CB1009FF2A3 /* DGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTool.h; sourceTree = "<group>"; };
 		C916194622A11CB1009FF2A3 /* DGTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTool.m; sourceTree = "<group>"; };
 		C916194822A1222C009FF2A3 /* DGAccountPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountPluginConfiguration.h; sourceTree = "<group>"; };
@@ -148,6 +155,14 @@
 		C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPluginConfiguration.m; sourceTree = "<group>"; };
 		C9A09F1B232A3ACD00C7983F /* DGTouchPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchPluginViewController.h; sourceTree = "<group>"; };
 		C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTouchPluginViewController.m; sourceTree = "<group>"; };
+		C9A2562B23628D7500E6B3FA /* DGSpecRepoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSpecRepoModel.h; sourceTree = "<group>"; };
+		C9A2562C23628D7500E6B3FA /* DGSpecRepoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGSpecRepoModel.m; sourceTree = "<group>"; };
+		C9A2562F2362991D00E6B3FA /* DGPodPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodPlugin.h; sourceTree = "<group>"; };
+		C9A256302362991D00E6B3FA /* DGPodPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodPlugin.m; sourceTree = "<group>"; };
+		C9A25636236299F300E6B3FA /* DGPodPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodPluginViewController.h; sourceTree = "<group>"; };
+		C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodPluginViewController.m; sourceTree = "<group>"; };
+		C9A2563C2362A14600E6B3FA /* NSString+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Debugo.h"; sourceTree = "<group>"; };
+		C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Debugo.m"; sourceTree = "<group>"; };
 		C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAnimationDelegate.h; sourceTree = "<group>"; };
 		C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAnimationDelegate.m; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +435,21 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		C915FC502361899000189E8D /* PodPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2562F2362991D00E6B3FA /* DGPodPlugin.h */,
+				C9A256302362991D00E6B3FA /* DGPodPlugin.m */,
+				C9A25636236299F300E6B3FA /* DGPodPluginViewController.h */,
+				C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */,
+				C9A2562B23628D7500E6B3FA /* DGSpecRepoModel.h */,
+				C9A2562C23628D7500E6B3FA /* DGSpecRepoModel.m */,
+				C915FC522361922200189E8D /* DGPodModel.h */,
+				C915FC532361922200189E8D /* DGPodModel.m */,
+			);
+			path = PodPlugin;
+			sourceTree = "<group>";
+		};
 		C93A25C1233C5EF3008AEC18 /* ColorPlugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,6 +580,7 @@
 				C9B456B1221D2B460098644E /* ApplePlugin */,
 				C9B456EC221D2B460098644E /* TouchPlugin */,
 				C93A25C1233C5EF3008AEC18 /* ColorPlugin */,
+				C915FC502361899000189E8D /* PodPlugin */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -571,6 +602,8 @@
 			children = (
 				C9B45696221D2B460098644E /* NSObject+Debugo.h */,
 				C9B45694221D2B460098644E /* NSObject+Debugo.m */,
+				C9A2563C2362A14600E6B3FA /* NSString+Debugo.h */,
+				C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */,
 				C9B45695221D2B460098644E /* NSDate+Debugo.h */,
 				C9B45697221D2B460098644E /* NSDate+Debugo.m */,
 				C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */,
@@ -799,16 +832,19 @@
 				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
 				C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */,
 				C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */,
+				C915FC542361922200189E8D /* DGPodModel.m in Sources */,
 				C9B4570E221D2B460098644E /* DGPlister.m in Sources */,
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
 				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
 				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
 				C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */,
 				C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */,
+				C9A2563E2362A14600E6B3FA /* NSString+Debugo.m in Sources */,
 				C916194722A11CB1009FF2A3 /* DGTool.m in Sources */,
 				C93A25CD233C6107008AEC18 /* DGColorPluginViewController.m in Sources */,
 				C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */,
 				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
+				C9A2562D23628D7500E6B3FA /* DGSpecRepoModel.m in Sources */,
 				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
 				C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */,
 				C9B45713221D2B460098644E /* DGWindow.m in Sources */,
@@ -825,6 +861,7 @@
 				C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */,
 				C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */,
 				C9B456FC221D2B460098644E /* DGCache.m in Sources */,
+				C9A256312362991D00E6B3FA /* DGPodPlugin.m in Sources */,
 				C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */,
 				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
 				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
@@ -869,6 +906,7 @@
 				C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */,
 				C93A25C4233C5F09008AEC18 /* DGColorPlugin.m in Sources */,
 				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
+				C9A25638236299F300E6B3FA /* DGPodPluginViewController.m in Sources */,
 				C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */,
 				C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */,
 				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,

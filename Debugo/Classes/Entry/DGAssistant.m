@@ -54,6 +54,7 @@ static DGAssistant *_instance;
             DGApplePlugin.class,
             DGTouchPlugin.class,
             DGColorPlugin.class,
+            DGPodPlugin.class,
         ];
     }
     return _debugoPlugins;

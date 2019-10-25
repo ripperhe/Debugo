@@ -31,6 +31,8 @@
     return DGFileViewController.class;
 }
 
+#pragma mark -
+
 static DGFilePlugin *_instance;
 + (instancetype)shared {
     if (!_instance) {

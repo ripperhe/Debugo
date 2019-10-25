@@ -10,6 +10,7 @@
 #import "DGCache.h"
 
 #import "NSObject+Debugo.h"
+#import "NSString+Debugo.h"
 #import "NSDate+Debugo.h"
 #import "NSNumber+Debugo.h"
 #import "NSFileManager+Debugo.h"

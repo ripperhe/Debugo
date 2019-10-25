@@ -82,6 +82,8 @@
     }
 }
 
+#pragma mark -
+
 // In iOS 11, Apple added additional checks to disable this overlay unless the
 // device is an internal device. To get around this, we swizzle out the
 // -[UIDebuggingInformationOverlay init] method (which returns nil now if

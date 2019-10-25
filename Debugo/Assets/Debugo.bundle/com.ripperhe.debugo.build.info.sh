@@ -1,5 +1,5 @@
 # script version
-scriptVersion="1.1"
+scriptVersion="1.2"
 echo "script version ${scriptVersion}"
 # update time
 plistUpdateTimestamp="$(date +%s)"
@@ -37,6 +37,22 @@ else
   # git uninstalled
   echo "Error: git is not installed."
 fi
+# cocoapods info
+cocoaPodsLockFileExist=false
+cocoaPodsLockFileSourcePath="$(pwd)/Podfile.lock"
+cocoaPodsLockFileDestinationPath="${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/com.ripperhe.debugo.cocoapods.podfile.lock"
+echo ${BUILT_PRODUCTS_DIR}
+echo ${cocoaPodsLockFileSourcePath}
+echo ${cocoaPodsLockFileDestinationPath}
+if [ -f ${cocoaPodsLockFileDestinationPath} ]; then
+  rm -f ${cocoaPodsLockFileDestinationPath}
+fi
+if [ -f ${cocoaPodsLockFileSourcePath} ]; then
+  cp ${cocoaPodsLockFileSourcePath} ${cocoaPodsLockFileDestinationPath}
+  if [ -f ${cocoaPodsLockFileDestinationPath} ]; then
+    cocoaPodsLockFileExist=true
+  fi
+fi
 
 # plist file
 buildInfoPlist="${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/com.ripperhe.debugo.build.info.plist"
@@ -60,3 +76,4 @@ if [ "${gitEnable}"=true ]; then
   /usr/libexec/PlistBuddy -c "Add :GitLastCommitUser string ${gitLastCommitUser}" ${buildInfoPlist}
   /usr/libexec/PlistBuddy -c "Add :GitLastCommitTimestamp string ${gitLastCommitTimestamp}" ${buildInfoPlist}
 fi
+/usr/libexec/PlistBuddy -c "Add :CocoaPodsLockFileExist bool ${cocoaPodsLockFileExist}" ${buildInfoPlist}
