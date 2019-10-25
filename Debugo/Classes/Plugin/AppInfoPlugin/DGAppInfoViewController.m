@@ -92,47 +92,22 @@
 }
 
 - (DGOrderedDictionary *)getBuildInfoDictionary {
-    /**
-     Build info plist（存储在 bundle 中）以下为所有 key 值:
-     * ScriptVersion                    脚本版本
-     * PlistUpdateTimestamp             plist 文件更新时间（build 时间）
-     * BuildConfiguration               编译配置
-     * ComputerUser                     编译包的电脑 当前用户名
-     * ComputerUUID                     编译包的电脑 UUID
-     * GitEnable                        编译包的电脑 是否安装 git
-     * GitBranch                        当前 git 分支
-     * GitLastCommitAbbreviatedHash     最后一次提交的缩写 hash
-     * GitLastCommitUser                最后一次提交的用户
-     * GitLastCommitTimestamp           最后一次提交的时间
-     */
-
     DGOrderedDictionary *buildInfoDictionary = nil;
-    DGPlister *plister = nil;
-    // build info plister (从 bundle 中获取)
-    NSString *buildInfoPlistPath = [[NSBundle mainBundle] pathForResource:@"com.ripperhe.debugo.build.info" ofType:@"plist"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:buildInfoPlistPath]) {
-        plister = [[DGPlister alloc] initWithFilePath:buildInfoPlistPath readonly:YES];
-    }
-    if (plister){
-        NSString *(^nilOrEmptyHandler)(void) = ^(void) {
-            return @"未知";
-        };
-        
-        NSString *plistUpdateTimestamp = [plister stringForKey:@"PlistUpdateTimestamp"];
+    NSString *defaultString = @"未知";
+    if (DGBuildInfo.shared.scriptVersion){
+        NSString *plistUpdateTimestamp = DGBuildInfo.shared.plistUpdateTimestamp;
         if (plistUpdateTimestamp.length) {
             plistUpdateTimestamp = [[NSDate dateWithTimeIntervalSince1970:plistUpdateTimestamp.doubleValue] dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
         }
-        plistUpdateTimestamp = plistUpdateTimestamp?:@"未知";
-        NSString *buildConfiguration = [plister stringForKey:@"BuildConfiguration" nilOrEmpty:nilOrEmptyHandler];
-        NSString *computerUser = [plister stringForKey:@"ComputerUser" nilOrEmpty:nilOrEmptyHandler];
-        NSString *computerUUID = [plister stringForKey:@"ComputerUUID" nilOrEmpty:nilOrEmptyHandler];
-        
-        BOOL gitEnable = [plister boolForKey:@"GitEnable"];
-        if (gitEnable) {
-            NSString *gitBranch = [plister stringForKey:@"GitBranch" nilOrEmpty:nilOrEmptyHandler];
-            NSString *gitLastCommitAbbreviatedHash = [plister stringForKey:@"GitLastCommitAbbreviatedHash" nilOrEmpty:nilOrEmptyHandler];
-            NSString *gitLastCommitUser = [plister stringForKey:@"GitLastCommitUser" nilOrEmpty:nilOrEmptyHandler];
-            NSString *gitLastCommitTimestamp = [plister stringForKey:@"GitLastCommitTimestamp"];
+        plistUpdateTimestamp = plistUpdateTimestamp?:defaultString;
+        NSString *buildConfiguration = DGBuildInfo.shared.buildConfiguration?:defaultString;
+        NSString *computerUser = DGBuildInfo.shared.computerUser?:defaultString;
+        NSString *computerUUID = DGBuildInfo.shared.computerUUID?:defaultString;
+        if (DGBuildInfo.shared.gitEnable) {
+            NSString *gitBranch = DGBuildInfo.shared.gitBranch?:defaultString;
+            NSString *gitLastCommitAbbreviatedHash = DGBuildInfo.shared.gitLastCommitAbbreviatedHash?:defaultString;
+            NSString *gitLastCommitUser = DGBuildInfo.shared.gitLastCommitUser?:defaultString;
+            NSString *gitLastCommitTimestamp = DGBuildInfo.shared.gitLastCommitTimestamp;
             if (gitLastCommitTimestamp.length) {
                 gitLastCommitTimestamp = [[NSDate dateWithTimeIntervalSince1970:gitLastCommitTimestamp.doubleValue] dg_dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
             }
@@ -210,7 +185,7 @@
     DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
     NSNumber *flag = sectionDictionary.dg_extStrongObj;
     if (flag && [flag boolValue]) {
-        NSURL *url = [NSURL URLWithString:@"https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md"];
+        NSURL *url = [NSURL URLWithString:DGBuildInfo.shared.configURL];
         [[UIApplication sharedApplication] openURL:url];
     }
 }

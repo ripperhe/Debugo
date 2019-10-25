@@ -28,8 +28,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"com.ripperhe.debugo.cocoapods.podfile" ofType:@"lock"];
+    if (!DGBuildInfo.shared.cocoaPodsLockFileExist) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [button setTitle:@"如需获取 CcocoaPods 信息，进入网页查看 🚀" forState:UIControlStateNormal];
+        [button setFrame:CGRectMake(0, 0, 0, 80)];
+        [button dg_addReceiverForControlEvents:UIControlEventTouchUpInside handler:^(id  _Nonnull sender) {
+            NSURL *url = [NSURL URLWithString:DGBuildInfo.shared.configURL];
+            [[UIApplication sharedApplication] openURL:url];
+        }];
+        self.tableView.tableFooterView = button;
+        return;
+    }
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:DGBuildInfo.shared.cocoaPodsLockFileName ofType:nil];
     self.dataArray = [DGPodPlugin parsePodfileLockWithPath:path];
+    if (!self.dataArray.count || !self.dataArray.firstObject.pods.count) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"没有依赖的 CocoaPods 三方库~";
+        self.tableView.tableFooterView = label;
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

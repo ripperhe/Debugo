@@ -12,6 +12,7 @@
 @interface DGBundle : NSObject
 
 + (NSBundle *)bundle;
+
 + (UIImage *)imageNamed:(NSString *)name;
 
 @end

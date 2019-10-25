@@ -39,8 +39,9 @@ else
 fi
 # cocoapods info
 cocoaPodsLockFileExist=false
+cocoaPodsLockFileName="com.ripperhe.debugo.cocoapods.podfile.lock"
 cocoaPodsLockFileSourcePath="$(pwd)/Podfile.lock"
-cocoaPodsLockFileDestinationPath="${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/com.ripperhe.debugo.cocoapods.podfile.lock"
+cocoaPodsLockFileDestinationPath="${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/${cocoaPodsLockFileName}"
 echo ${BUILT_PRODUCTS_DIR}
 echo ${cocoaPodsLockFileSourcePath}
 echo ${cocoaPodsLockFileDestinationPath}
@@ -77,3 +78,4 @@ if [ "${gitEnable}"=true ]; then
   /usr/libexec/PlistBuddy -c "Add :GitLastCommitTimestamp string ${gitLastCommitTimestamp}" ${buildInfoPlist}
 fi
 /usr/libexec/PlistBuddy -c "Add :CocoaPodsLockFileExist bool ${cocoaPodsLockFileExist}" ${buildInfoPlist}
+/usr/libexec/PlistBuddy -c "Add :CocoaPodsLockFileName string ${cocoaPodsLockFileName}" ${buildInfoPlist}

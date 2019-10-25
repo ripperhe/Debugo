@@ -8,6 +8,7 @@
 
 #import "DGBundle.h"
 #import "DGCache.h"
+#import "DGBuildInfo.h"
 
 #import "NSObject+Debugo.h"
 #import "NSString+Debugo.h"
