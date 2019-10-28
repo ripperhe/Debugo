@@ -24,9 +24,9 @@
     }
 }
 
-- (NSMutableArray<DGPodModel *> *)pods {
+- (DGOrderedDictionary<NSString *,DGPodModel *> *)pods {
     if (!_pods) {
-        _pods = [NSMutableArray array];
+        _pods = [DGOrderedDictionary dictionary];
     }
     return _pods;
 }

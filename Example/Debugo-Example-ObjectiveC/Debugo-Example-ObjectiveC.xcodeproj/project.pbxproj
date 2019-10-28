@@ -38,6 +38,7 @@
 		C9A25638236299F300E6B3FA /* DGPodPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */; };
 		C9A2563E2362A14600E6B3FA /* NSString+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */; };
 		C9A256452362E0AC00E6B3FA /* DGBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A256442362E0AC00E6B3FA /* DGBuildInfo.m */; };
+		C9A2564B2362FD8600E6B3FA /* DGPodPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */; };
 		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
@@ -166,6 +167,8 @@
 		C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Debugo.m"; sourceTree = "<group>"; };
 		C9A256432362E0AC00E6B3FA /* DGBuildInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGBuildInfo.h; sourceTree = "<group>"; };
 		C9A256442362E0AC00E6B3FA /* DGBuildInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGBuildInfo.m; sourceTree = "<group>"; };
+		C9A256492362FD8600E6B3FA /* DGPodPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodPluginConfiguration.h; sourceTree = "<group>"; };
+		C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodPluginConfiguration.m; sourceTree = "<group>"; };
 		C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAnimationDelegate.h; sourceTree = "<group>"; };
 		C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAnimationDelegate.m; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,6 +446,8 @@
 			children = (
 				C9A2562F2362991D00E6B3FA /* DGPodPlugin.h */,
 				C9A256302362991D00E6B3FA /* DGPodPlugin.m */,
+				C9A256492362FD8600E6B3FA /* DGPodPluginConfiguration.h */,
+				C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */,
 				C9A25636236299F300E6B3FA /* DGPodPluginViewController.h */,
 				C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */,
 				C9A2562B23628D7500E6B3FA /* DGSpecRepoModel.h */,
@@ -905,6 +910,7 @@
 				C9034DED2324F0D5003D8984 /* DGPluginViewController.m in Sources */,
 				C9F92C6F2326672A00B8F882 /* DGAppInfoPlugin.m in Sources */,
 				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
+				C9A2564B2362FD8600E6B3FA /* DGPodPluginConfiguration.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
 				C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */,
 				C928D757233B64D20078202B /* DGStaticProvider.m in Sources */,

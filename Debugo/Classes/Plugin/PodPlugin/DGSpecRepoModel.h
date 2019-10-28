@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DGPodModel.h"
+#import "DGOrderedDictionary.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, assign) BOOL isOfficial;
 @property (nonatomic, assign) BOOL isRemote;
-@property (nonatomic, strong) NSMutableArray<DGPodModel *> *pods;
+@property (nonatomic, strong) DGOrderedDictionary<NSString *, DGPodModel *> *pods;
 
 @end
 

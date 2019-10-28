@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 配置快速登录
 - (void)setupAccountPlugin:(void (^)(DGAccountPluginConfiguration *accountConfiguration))block;
 
+/// 配置CocoaPods
+- (void)setupPodPlugin:(void (^)(DGPodPluginConfiguration *podConfiguration))block;
+
 /// 添加自定义工具，需继承自 DGPlugin 或遵守 DGPluginProtocol 协议
 - (void)addCustomPlugin:(Class<DGPluginProtocol>)plugin;
 

@@ -43,6 +43,14 @@
     DGAccountPlugin.shared.configuration = configuration;
 }
 
+- (void)setupPodPlugin:(void (^)(DGPodPluginConfiguration * _Nonnull))block {
+    DGPodPluginConfiguration *configuration = [DGPodPluginConfiguration new];
+    if (block) {
+        block(configuration);
+    }
+    DGPodPlugin.shared.configuration = configuration;
+}
+
 - (void)addCustomPlugin:(Class)plugin {
     if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
         NSAssert(0, @"Debugo: 必须实现了 DGPluginProtocol 协议的工具才能添加");

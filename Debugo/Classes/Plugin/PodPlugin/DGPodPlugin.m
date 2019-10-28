@@ -20,6 +20,26 @@
 }
 
 #pragma mark -
+
+static DGPodPlugin *_instance;
++ (instancetype)shared {
+    if (!_instance) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _instance = [[self alloc] init];
+        });
+    }
+    return _instance;
+}
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
+
 + (NSArray<DGSpecRepoModel *> *)parsePodfileLockWithPath:(NSString *)path {
     @try {
         NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -88,7 +108,7 @@
                     if (podName.length) {
                         DGPodModel *currentPod = [totalPod.subPods objectForKey:podName];
                         if (currentPod && currentSpecRepo) {
-                            [currentSpecRepo.pods addObject:currentPod];
+                            [currentSpecRepo.pods setObject:currentPod forKey:podName];
                         }
                     }
                 }
@@ -136,20 +156,9 @@
     }
 }
 
-+ (void)queryLatestPodInfoFromCocoaPodsSpecRepoWithName:(NSString *)podName completion:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))completion {
++ (void)queryLatestPodInfoFromCocoaPodsSpecRepoWithPodName:(NSString *)podName completion:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))completion {
     if (!podName) {
         completion(nil, nil);
-        return;
-    }
-
-    static NSMutableDictionary *_podInfoCachePool = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _podInfoCachePool = [NSMutableDictionary dictionary];
-    });
-    
-    if ([_podInfoCachePool objectForKey:podName]) {
-        completion([_podInfoCachePool objectForKey:podName], nil);
         return;
     }
     
@@ -163,23 +172,149 @@
             NSError *serialError = nil;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:&serialError];
             if (!serialError && [dictionary isKindOfClass:[NSDictionary class]]) {
-                [_podInfoCachePool setObject:dictionary forKey:podName];
                 callbackResult = dictionary;
-//                completion(dictionary, nil);
             }else {
                 callbackError = serialError;
-//                completion(nil, serialError);
             }
         }else {
             callbackError = error;
-//            completion(nil, error);
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             completion(callbackResult, callbackError);
         });
     }];
     [sessionDataTask resume];
+}
 
++ (void)queryLatestPodInfoFromGitLabSpecRepoWithRequestInfo:(DGGitLabSpecRepoRequestInfo *)requestInfo completion:(void (^)(DGSpecRepoModel * _Nullable specRepo, NSError * _Nullable error))completion {
+    if (!requestInfo.website.length ||
+        !requestInfo.repoId.length ||
+        !requestInfo.privateToken.length) {
+        completion(nil, nil);
+        return;
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v3/projects/%@/repository/tree?ref=master&path&recursive=yes", requestInfo.website, requestInfo.repoId];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    [request setValue:requestInfo.privateToken forHTTPHeaderField:@"PRIVATE-TOKEN"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        DGSpecRepoModel *callbackResult = nil;
+        NSError *callbackError = nil;
+        callbackError = error;
+        if (!error) {
+            NSError *serialError = nil;
+            id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&serialError];
+            if (serialError) {
+                callbackError = serialError;
+            }else {
+                DGSpecRepoModel *repo = [self parseGitLabPrivateSpecRepoJsonData:obj];
+                if (repo) {
+                    callbackResult = repo;
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(callbackResult, callbackError);
+        });
+    }];
+    [sessionDataTask resume];
+}
+
++ (DGSpecRepoModel *)parseGitLabPrivateSpecRepoJsonData:(id)responseObject {
+    NSArray<NSDictionary *> *array = nil;
+    @try {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            array = responseObject;
+        }else if ([responseObject isKindOfClass:[NSData class]]) {
+            NSError *serialError = nil;
+            NSArray *result = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableLeaves) error:&serialError];
+            if (!serialError && [result isKindOfClass:NSArray.class]) {
+                array = result;
+            }
+        }
+        if (!array.count) {
+            return nil;
+        }
+        
+    } @catch (NSException *exception) {
+        return nil;
+    }
+    
+    DGSpecRepoModel *repo = [DGSpecRepoModel new];
+    [array enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (![obj isKindOfClass:NSDictionary.class]) {
+            return;
+        }
+        
+        NSString *name = [obj objectForKey:@"name"];
+        if (![name isKindOfClass:NSString.class] && ![name hasSuffix:@".podspec"]) {
+            return;
+        }
+        NSString *path = [obj objectForKey:@"path"];
+        if (![path isKindOfClass:NSString.class]) {
+            return;
+        }
+        NSArray<NSString *> *components = [path componentsSeparatedByString:@"/"];
+        if (components.count != 3) {
+            return;
+        }
+        NSString *podName =components[0];
+        if (![podName isKindOfClass:NSString.class] || !podName.length) {
+            return;
+        }
+        NSString *podVersion = components[1];
+        if (![podVersion isKindOfClass:NSString.class] || !podVersion.length) {
+            return;
+        }
+        
+        DGPodModel *currentPod = [repo.pods objectForKey:podName];
+        if (!currentPod) {
+            currentPod = [DGPodModel new];
+            currentPod.name = podName;
+            currentPod.version = podVersion;
+            [repo.pods setObject:currentPod forKey:podName];
+        }else {
+            // 比较 version，取最大的
+            if ([self compareVersionA:podVersion withVersionB:currentPod.version] == NSOrderedDescending) {
+                currentPod.version = podVersion;
+            }
+        }
+    }];
+    return repo.pods.count ? repo : nil;
+}
+
++ (NSComparisonResult)compareVersionA:(NSString *)versionA withVersionB:(NSString *)versionB {
+    __block NSComparisonResult result = NSOrderedAscending;
+    __block BOOL hasResult = NO;
+    NSArray<NSString *> *componentsA = [versionA componentsSeparatedByString:@"."];
+    NSArray<NSString *> *componentsB = [versionB componentsSeparatedByString:@"."];
+    [componentsA enumerateObjectsUsingBlock:^(NSString * _Nonnull objA, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx >= componentsB.count) {
+            *stop = YES;
+            return;
+        }
+        NSString *objB = [componentsB objectAtIndex:idx];
+        if (objA.intValue != objB.intValue) {
+            hasResult = YES;
+            if (objA.intValue < objB.intValue) {
+                result = NSOrderedAscending;
+            }else {
+                result = NSOrderedDescending;
+            }
+            *stop = YES;
+        }
+    }];
+    if (hasResult) {
+        return result;
+    }
+    if (componentsA.count < componentsB.count) {
+        return NSOrderedAscending;
+    }else if (componentsA.count == componentsB.count) {
+        return NSOrderedSame;
+    }else {
+        return NSOrderedDescending;
+    }
 }
 
 @end

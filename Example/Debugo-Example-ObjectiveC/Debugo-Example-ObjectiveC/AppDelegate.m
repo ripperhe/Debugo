@@ -109,6 +109,20 @@
             }];
         }];
         
+        /// 配置 cocoapods
+        [configuration setupPodPlugin:^(DGPodPluginConfiguration * _Nonnull podConfiguration) {
+            [podConfiguration setGitLabSpecRepoRequestInfoBlock:^DGGitLabSpecRepoRequestInfo * _Nullable(NSString * _Nonnull specRepoUrl) {
+                if ([specRepoUrl containsString:@"picooc"]) {
+                    DGGitLabSpecRepoRequestInfo *requestInfo = [DGGitLabSpecRepoRequestInfo new];
+                    requestInfo.website = @"https://gitlab.example.com";
+                    requestInfo.repoId = @"182";
+                    requestInfo.privateToken = @"tsf_6hEs37Jok6PZFHhn";
+                    return requestInfo;
+                }
+                return nil;
+            }];
+        }];
+        
         /// 添加自定义工具
         [configuration addCustomPlugin:CustomPlugin.class];
         [configuration addCustomPlugin:CustomPlugin2.class];

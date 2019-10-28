@@ -12,7 +12,10 @@
 
 @interface DGPodPluginViewController ()
 
+/// podfile.lock 安装的库
 @property (nonatomic, strong) NSArray<DGSpecRepoModel *> *dataArray;
+/// 库对应的最新版本信息
+@property (nonatomic, strong) DGOrderedDictionary<NSString *, DGSpecRepoModel *> *latestRepoDict;
 
 @end
 
@@ -21,6 +24,7 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         self.title = [DGPodPlugin pluginName];
+        self.latestRepoDict = [DGOrderedDictionary dictionary];
     }
     return self;
 }
@@ -28,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 判断是否有 lock 文件
     if (!DGBuildInfo.shared.cocoaPodsLockFileExist) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
         [button setTitle:@"如需获取 CcocoaPods 信息，进入网页查看 🚀" forState:UIControlStateNormal];
@@ -40,16 +45,63 @@
         return;
     }
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:DGBuildInfo.shared.cocoaPodsLockFileName ofType:nil];
+    // 解析 lock 文件
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"x2.lock" ofType:nil];
     self.dataArray = [DGPodPlugin parsePodfileLockWithPath:path];
     if (!self.dataArray.count || !self.dataArray.firstObject.pods.count) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = @"没有依赖的 CocoaPods 三方库~";
         self.tableView.tableFooterView = label;
+        return;
     }
     
-    [self.tableView reloadData];
+    // 请求 pod 最新版本
+    [self.dataArray enumerateObjectsUsingBlock:^(DGSpecRepoModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.isOfficial) {
+            // cocoapods 官方库
+            DGSpecRepoModel *specRepo = [DGSpecRepoModel new];
+            specRepo.url = obj.url;
+            [self.latestRepoDict setObject:specRepo forKey:obj.url];
+            NSInteger totalCount = obj.pods.count;
+            __block NSInteger currentCount = 0;
+            [obj.pods enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGPodModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                dg_weakify(self)
+                [DGPodPlugin queryLatestPodInfoFromCocoaPodsSpecRepoWithPodName:key completion:^(NSDictionary * _Nullable podInfo, NSError * _Nullable error) {
+                    dg_strongify(self)
+                    if (podInfo) {
+                        DGPodModel *pod = [DGPodModel new];
+                        pod.name = [podInfo objectForKey:@"name"];
+                        pod.version= [podInfo objectForKey:@"version"];
+                        pod.homepage = [podInfo objectForKey:@"homepage"];
+                        if (pod.name.length && pod.version.length) {
+                            [specRepo.pods setObject:pod forKey:pod.name];
+                            obj.homepage = pod.homepage;
+                        }
+                    }
+                    // 无论成功失败，累计次数并刷新
+                    currentCount++;
+                    if (currentCount >= totalCount) {
+                        [self.tableView reloadData];
+                    }
+                }];
+            }];
+        }else if (obj.isRemote && DGPodPlugin.shared.configuration.gitLabSpecRepoRequestInfoBlock) {
+            // gitlab 私有库
+            DGGitLabSpecRepoRequestInfo *reuqestInfo = DGPodPlugin.shared.configuration.gitLabSpecRepoRequestInfoBlock(obj.url);
+            if (reuqestInfo) {
+                dg_weakify(self)
+                [DGPodPlugin queryLatestPodInfoFromGitLabSpecRepoWithRequestInfo:reuqestInfo completion:^(DGSpecRepoModel * _Nullable specRepo, NSError * _Nullable error) {
+                    dg_strongify(self)
+                    if (specRepo) {
+                        specRepo.url = obj.url;
+                        [self.latestRepoDict setObject:specRepo forKey:obj.url];
+                        [self.tableView reloadData];
+                    }
+                }];
+            }
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -72,12 +124,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
         cell.detailTextLabel.numberOfLines = 0;
-        UILabel *latestLabel = [UILabel new];
-        latestLabel.textColor = UIColor.greenColor;
-//        latestLabel.text = @"99.99.99";
-//        [latestLabel sizeToFit];
-//        latestLabel.text = nil;
-        cell.accessoryView = latestLabel;
+        cell.accessoryView = [UILabel new];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", pod.name, pod.version];
     if (pod.subPods.count) {
@@ -86,21 +133,21 @@
     }else {
         cell.detailTextLabel.text = nil;
     }
-    ((UILabel *)cell.accessoryView).text = nil;
-    if (repo.isOfficial) {
-        dg_weakify(cell)
-        [DGPodPlugin queryLatestPodInfoFromCocoaPodsSpecRepoWithName:pod.name completion:^(NSDictionary * _Nullable podInfo, NSError * _Nullable error) {
-            dg_strongify(cell)
-            if (podInfo) {
-                NSString *name = [podInfo objectForKey:@"name"];
-                NSString *version = [podInfo objectForKey:@"version"];
-                if ([cell.textLabel.text hasPrefix:name]) {
-                    ((UILabel *)cell.accessoryView).text = version;
-                    [((UILabel *)cell.accessoryView) sizeToFit];
-                }
+    [cell.accessoryView dg_put:^(UILabel * label) {
+        label.text = nil;
+        if ([self.latestRepoDict objectForKey:repo.url]) {
+            DGPodModel *latestPod = [[self.latestRepoDict objectForKey:repo.url].pods objectForKey:pod.name];
+            if ([DGPodPlugin compareVersionA:pod.version withVersionB:latestPod.version] == NSOrderedAscending) {
+                label.textColor = kDGHighlightColor;
+            }else {
+                label.textColor = UIColor.grayColor;
             }
-        }];
-    }
+            if (latestPod) {
+                label.text = latestPod.version;
+            }
+            [label sizeToFit];
+        }
+    }];
     return cell;
 }
 
@@ -108,13 +155,17 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGSpecRepoModel *repo = [self.dataArray objectAtIndex:indexPath.section];
     DGPodModel *pod = [repo.pods objectAtIndex:indexPath.row];
+    NSString *url = nil;
     if (repo.isOfficial) {
-        if (pod.name) {
-            NSString *url = [NSString stringWithFormat:@"https://cocoapods.org/pods/%@", pod.name];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        if (pod.homepage) {
+            url = pod.homepage;
+        }else if (pod.name) {
+            url = [NSString stringWithFormat:@"https://cocoapods.org/pods/%@", pod.name];
         }
     }else if (repo.isRemote) {
-        NSString *url = [NSString stringWithFormat:@"%@/tree/master/%@", [repo.url substringToIndex:repo.url.length - 4], pod.name];
+        url = [NSString stringWithFormat:@"%@/tree/master/%@", [repo.url substringToIndex:repo.url.length - 4], pod.name];
+    }
+    if (url.length) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     }
 }

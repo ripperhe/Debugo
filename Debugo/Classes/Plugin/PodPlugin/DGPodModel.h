@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *version;
 @property (nonatomic, strong) NSArray<NSString *> *nameComponents;
 @property (nonatomic, strong) DGOrderedDictionary<NSString *, DGPodModel *> *subPods;
-
+@property (nonatomic, copy) NSString *homepage;
 @end
 
 NS_ASSUME_NONNULL_END
