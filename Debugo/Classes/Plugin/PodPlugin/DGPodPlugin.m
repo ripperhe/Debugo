@@ -194,7 +194,7 @@ static DGPodPlugin *_instance;
         return;
     }
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/api/v3/projects/%@/repository/tree?ref=master&path&recursive=yes", requestInfo.website, requestInfo.repoId];
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v3/projects/%@/repository/tree?ref=master&recursive=yes", requestInfo.website, requestInfo.repoId];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     [request setValue:requestInfo.privateToken forHTTPHeaderField:@"PRIVATE-TOKEN"];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -248,7 +248,7 @@ static DGPodPlugin *_instance;
         }
         
         NSString *name = [obj objectForKey:@"name"];
-        if (![name isKindOfClass:NSString.class] && ![name hasSuffix:@".podspec"]) {
+        if (![name isKindOfClass:NSString.class] || ![name hasSuffix:@".podspec"]) {
             return;
         }
         NSString *path = [obj objectForKey:@"path"];
@@ -272,12 +272,14 @@ static DGPodPlugin *_instance;
         if (!currentPod) {
             currentPod = [DGPodModel new];
             currentPod.name = podName;
-            currentPod.version = podVersion;
+            currentPod.latestVersion = podVersion;
+            currentPod.specFilePath = path;
             [repo.pods setObject:currentPod forKey:podName];
         }else {
             // 比较 version，取最大的
             if ([self compareVersionA:podVersion withVersionB:currentPod.version] == NSOrderedDescending) {
-                currentPod.version = podVersion;
+                currentPod.latestVersion = podVersion;
+                currentPod.specFilePath = path;
             }
         }
     }];

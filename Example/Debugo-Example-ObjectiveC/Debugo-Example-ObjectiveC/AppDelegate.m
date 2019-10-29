@@ -112,6 +112,7 @@
         /// 配置 cocoapods
         [configuration setupPodPlugin:^(DGPodPluginConfiguration * _Nonnull podConfiguration) {
             [podConfiguration setGitLabSpecRepoRequestInfoBlock:^DGGitLabSpecRepoRequestInfo * _Nullable(NSString * _Nonnull specRepoUrl) {
+                // 换成自己的 gitlab spec 仓库的信息，用于请求私有库最新版本
                 if ([specRepoUrl containsString:@"picooc"]) {
                     DGGitLabSpecRepoRequestInfo *requestInfo = [DGGitLabSpecRepoRequestInfo new];
                     requestInfo.website = @"https://gitlab.example.com";

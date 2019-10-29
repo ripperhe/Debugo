@@ -110,8 +110,7 @@
     
     // iOS 模拟器和真机剪切板不互通的问题 https://stackoverflow.com/questions/15188852/copy-and-paste-text-into-ios-simulator
     // Xcode 10 解决了这个问题：模拟器导航栏->Edit->Automatically Sync Pasteboard
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = [self.dataArray[indexPath.section] objectAtIndex:indexPath.row];
+    [UIPasteboard generalPasteboard].string = [self.dataArray[indexPath.section] objectAtIndex:indexPath.row];
 }
 
 #pragma mark - Table view data source
