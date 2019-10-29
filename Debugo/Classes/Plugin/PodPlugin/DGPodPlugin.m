@@ -15,6 +15,17 @@
     return @"CocoaPods";
 }
 
++ (UIImage *)pluginImage {
+    return [DGBundle imageNamed:@"plugin_pod"];
+}
+
++ (UIImage *)pluginTabBarImage:(BOOL)isSelected {
+    if (isSelected) {
+        return [DGBundle imageNamed:@"tab_pod_selected"];
+    }
+    return [DGBundle imageNamed:@"tab_pod_normal"];
+}
+
 + (Class)pluginViewControllerClass {
     return DGPodPluginViewController.class;
 }
