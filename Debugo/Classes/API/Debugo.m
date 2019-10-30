@@ -49,7 +49,7 @@ static Debugo *_instance = nil;
 }
 
 + (NSString *)version {
-    return @"0.2.5";
+    return @"0.2.6";
 }
 
 + (BOOL)canBeEnabled {
