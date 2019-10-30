@@ -4,7 +4,8 @@
 
 * 获取安装包 build 时间
 * 获取 build 安装包的电脑 hostname、UUID
-* 获取当前代码的 git 分支以及最后一次 commit 信息等
+* 获取当前代码的 git 分支以及最后一次 commit 信息
+* 获取工程依赖的 CocoaPods 库
 
 那么你需要添加脚本到工程中，具体如下
 

@@ -38,19 +38,29 @@ Debugo 是一款致力于 iOS Debugging 的实用工具，集成和启用都非�
 * 触摸监听
 	* 监听手势触摸
 	* 用于手机录屏时能够看到手指的操作
+* UIView 背景色
+	* 快速显示顶部控制器视图的背景色
+	* 多种渲染方式
+* CocoaPods
+	* 查看工程安装的 pod 库（[需配置脚本 🚀](https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md)）
+	* 查看 pod 库的最新版本
 
 ## Snapshot
 
 <!--![](https://raw.githubusercontent.com/ripperhe/Resource/master/20180930/debugo.gif)
 -->
 
-| 指令 | 文件 | APP信息 |
+| 指令 | 文件 | APP 信息 |
 |:---: |:---:| :---: |
 | ![](docs/_media/debugo_action.png) | ![](docs/_media/debugo_file.png) | ![](docs/_media/debugo_appinfo.png )|
 
-| 快速登录 | Apple内部神器 | 触摸监听 |
+| 快速登录 | Apple 内部神器 | 触摸监听 |
 |:---: |:---:| :---: |
 | ![](docs/_media/debugo_account.png) | ![](docs/_media/debugo_apple.png) | ![](docs/_media/debugo_touch.png )|
+
+| UIView 背景色 | CocoaPods | 工具总览 |
+|:---: |:---:| :---: |
+| ![](docs/_media/debugo_uiviewcolor.png) | ![](docs/_media/debugo_pod.png) | ![](docs/_media/debugo_plugin.png )|
 
 ## Example
 

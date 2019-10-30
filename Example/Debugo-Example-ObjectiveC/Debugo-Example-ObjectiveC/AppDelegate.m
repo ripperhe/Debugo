@@ -28,8 +28,8 @@
         [configuration addCustomPlugin:CustomPlugin2.class];
         
         /// 将部分工具放到 tabBar, 默认会将指令放到 tabBar
-        //        [configuration putPluginsToTabBar:nil];
-        //        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, CustomPlugin2.class]];
+        // [configuration putPluginsToTabBar:nil];
+        // [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, CustomPlugin2.class]];
         
         /// 设置悬浮球的长按事件
         [configuration setupBubbleLongPressAction:^{
