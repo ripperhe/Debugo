@@ -51,7 +51,7 @@ static DGEntrance *_instance;
     DGBubble *bubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (320 + 55 + kDGBottomSafeMargin), 55, 55)
                                                                        config:nil];
     bubble.name = @"Bubble";
-    [bubble.button setImage:[DGBundle imageNamed:@"bubble"] forState:UIControlStateNormal];
+    [bubble.button setImage:[DGBundle imageNamed:@"icon_bubble"] forState:UIControlStateNormal];
     [bubble.button setTintColor:[UIColor whiteColor]];
     dg_weakify(self)
     [bubble setClickBlock:^(DGBubble *bubble) {

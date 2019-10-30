@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Debugo : NSObject
 
+/// 框架版本
++ (NSString *)version;
+
 /// 框架是否可以启用，目前默认为仅在 DEBUG 模式可以启用
 + (BOOL)canBeEnabled;
 

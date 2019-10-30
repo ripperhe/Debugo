@@ -122,7 +122,7 @@
         alertTitleString = [content stringByAppendingFormat:@"\n\n🧐 %@", contentTimeString];
     }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitleString message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addAction:[UIAlertAction actionWithTitle:@"copy" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"拷贝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (content && content.length) {
             UIPasteboard *pastboard = [UIPasteboard generalPasteboard];
             pastboard.string = content;
@@ -133,7 +133,7 @@
 //        dg_strongify(self)
 //        [self jumpmToModifyViewControllerWithContent:content gridIndex:gridIndex];
 //    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
         // fix iPad crash when show alert
         // https://stackoverflow.com/questions/24224916/presenting-a-uialertcontroller-properly-on-an-ipad-using-ios-8

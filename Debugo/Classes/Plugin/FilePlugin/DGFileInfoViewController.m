@@ -130,7 +130,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.numberOfLines = 0;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [btn setImage:[DGBundle imageNamed:@"copy"] forState:UIControlStateNormal];
+        [btn setImage:[DGBundle imageNamed:@"icon_copy"] forState:UIControlStateNormal];
         [btn setFrame:CGRectMake(0, 0, 44, 44)];
         [btn addTarget:self action:@selector(clickedCopyBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.accessoryView = btn;

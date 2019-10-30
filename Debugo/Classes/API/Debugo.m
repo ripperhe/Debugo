@@ -22,21 +22,6 @@
 
 @implementation Debugo
 
-+ (void)initialize {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:@"Debugo canBeEnabled %@", [Debugo canBeEnabled] ? @"✅" : @"❌"] UTF8String]);
-    });
-}
-
-+ (BOOL)canBeEnabled {
-#if DebugoCanBeEnabled
-    return YES;
-#else
-    return NO;
-#endif
-}
-
 static Debugo *_instance = nil;
 + (instancetype)shared {
     if (!_instance) {
@@ -54,6 +39,25 @@ static Debugo *_instance = nil;
         _instance = [super allocWithZone:zone];
     });
     return _instance;
+}
+
++ (void)initialize {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        printf("[☄️ %s ● %s ● %d] %s ● %s\n", [NSDate date].dg_dateString.UTF8String, ([NSString stringWithFormat:@"%s", __FILE__].lastPathComponent).UTF8String, __LINE__, NSStringFromSelector(_cmd).UTF8String, [[NSString stringWithFormat:@"Debugo canBeEnabled %@", [Debugo canBeEnabled] ? @"✅" : @"❌"] UTF8String]);
+    });
+}
+
++ (NSString *)version {
+    return @"0.2.5";
+}
+
++ (BOOL)canBeEnabled {
+#if DebugoCanBeEnabled
+    return YES;
+#else
+    return NO;
+#endif
 }
 
 #pragma mark -

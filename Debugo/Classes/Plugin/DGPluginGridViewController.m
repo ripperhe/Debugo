@@ -11,8 +11,33 @@
 #import "DGCommon.h"
 #import "DGPluginManager.h"
 #import "DGEntrance.h"
+#import "Debugo.h"
 
 @implementation DGPluginGridViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    dg_weakify(self)
+    [DGPodPlugin queryLatestPodInfoFromCocoaPodsSpecRepoWithPodName:@"Debugo" completion:^(NSDictionary * _Nullable podInfo, NSError * _Nullable error) {
+        dg_strongify(self)
+        if (!podInfo) return;
+        NSString *version = [podInfo objectForKey:@"version"];
+        if ([version isKindOfClass:NSString.class] && version.length) {
+            if ([DGPodPlugin compareVersionA:Debugo.version withVersionB:version] == NSOrderedAscending) {
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSString stringWithFormat:@"发现新版本(%@)", version] style:UIBarButtonItemStylePlain target:self action:@selector(pushVersionViewController)];
+            }
+        }
+    }];
+}
+
+- (void)pushVersionViewController {
+    NSURL *url = [NSURL URLWithString:@"https://github.com/ripperhe/Debugo/releases"];
+    [[UIApplication sharedApplication] openURL:url];
+    DGLog(@"\n%@", url.absoluteString);
+}
+
+#pragma mark -
 
 - (void)setupDatasouce {
     [DGPluginManager.shared.debugoPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {

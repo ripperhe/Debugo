@@ -185,6 +185,7 @@
     DGOrderedDictionary *sectionDictionary = self.dataArray[indexPath.section];
     NSNumber *flag = sectionDictionary.dg_extStrongObj;
     if (flag && [flag boolValue]) {
+        DGLog(@"\n%@", DGBuildInfo.shared.configURL);
         NSURL *url = [NSURL URLWithString:DGBuildInfo.shared.configURL];
         [[UIApplication sharedApplication] openURL:url];
     }
