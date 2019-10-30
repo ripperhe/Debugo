@@ -1,31 +1,31 @@
 
 //
-//  DGPluginViewController.m
+//  DGPluginGridViewController.m
 //  Debugo-Example-ObjectiveC
 //
 //  Created by ripper on 2019/9/8.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGPluginViewController.h"
+#import "DGPluginGridViewController.h"
 #import "DGCommon.h"
-#import "DGAssistant.h"
-#import "DGPlugin.h"
+#import "DGPluginManager.h"
+#import "DGEntrance.h"
 
-@implementation DGPluginViewController
+@implementation DGPluginGridViewController
 
 - (void)setupDatasouce {
-    [DGAssistant.shared.debugoPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
+    [DGPluginManager.shared.debugoPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addPlugin:plugin];
     }];
     
-    [DGAssistant.shared.customPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
+    [DGPluginManager.shared.customPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addPlugin:plugin];
     }];
 }
 
 - (void)addPlugin:(Class)plugin {
-    if ([DGAssistant.shared.tabBarPlugins containsObject:plugin]) {
+    if ([DGPluginManager.shared.tabBarPlugins containsObject:plugin]) {
         return;
     }
 
@@ -51,7 +51,7 @@
         }else {
             // 无控制器，直接启用
             [configuration setSelectedBlock:^{
-                [DGAssistant.shared closeDebugWindow];
+                [DGEntrance.shared closeDebugWindow];
                 dg_invoke(plugin, @selector(setPluginSwitch:), @[@YES]);
             }];
         }

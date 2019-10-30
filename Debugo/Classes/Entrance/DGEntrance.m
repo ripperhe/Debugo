@@ -1,5 +1,5 @@
 //
-//  DGAssistant.m
+//  DGEntrance.m
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,22 +8,21 @@
 //
 
 
-#import "DGAssistant.h"
+#import "DGEntrance.h"
 #import "DGCommon.h"
 #import "DGBubble.h"
 #import "DGDebugWindow.h"
-#import "DGConfiguration.h"
 
-@interface DGAssistant ()
+@interface DGEntrance ()
 
 @property (nonatomic, weak) DGBubble *bubble;
 @property (nonatomic, strong) DGDebugWindow *debugWindow;
 
 @end
 
-@implementation DGAssistant
+@implementation DGEntrance
 
-static DGAssistant *_instance;
+static DGEntrance *_instance;
 + (instancetype)shared {
     if (!_instance) {
         static dispatch_once_t onceToken;
@@ -40,40 +39,6 @@ static DGAssistant *_instance;
         _instance = [super allocWithZone:zone];
     });
     return _instance;
-}
-
-#pragma mark - getter
-
-- (NSArray<Class> *)debugoPlugins {
-    if (!_debugoPlugins) {
-        _debugoPlugins = @[
-            DGActionPlugin.class,
-            DGFilePlugin.class,
-            DGAppInfoPlugin.class,
-            DGAccountPlugin.class,
-            DGApplePlugin.class,
-            DGTouchPlugin.class,
-            DGColorPlugin.class,
-            DGPodPlugin.class,
-        ];
-    }
-    return _debugoPlugins;
-}
-
-- (NSMutableArray *)customPlugins {
-    if (!_customPlugins) {
-        _customPlugins = [NSMutableArray array];
-    }
-    return _customPlugins;
-}
-
-- (NSMutableArray *)tabBarPlugins {
-    if (!_tabBarPlugins) {
-        _tabBarPlugins = [NSMutableArray array];
-        // 默认显示指令组件
-        [_tabBarPlugins addObject:DGActionPlugin.class];
-    }
-    return _tabBarPlugins;
 }
 
 #pragma mark - bubble

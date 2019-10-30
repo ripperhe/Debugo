@@ -8,7 +8,7 @@
 //
 
 #import "DGCache.h"
-#import "DGAssistant.h"
+#import "DGEntrance.h"
 #import "DGAccountPlugin.h"
 
 @interface DGCache()

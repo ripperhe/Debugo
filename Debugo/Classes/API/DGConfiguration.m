@@ -9,13 +9,22 @@
 
 
 #import "DGConfiguration.h"
-#import "DGAssistant.h"
+#import "DGEntrance.h"
+#import "DGPluginManager.h"
 
 @implementation DGConfiguration
 
+- (void)addCustomPlugin:(Class<DGPluginProtocol>)plugin {
+    [DGPluginManager.shared addCustomPlugin:plugin];
+}
+
+- (void)putPluginsToTabBar:(NSArray<Class<DGPluginProtocol>> *)plugins {
+    [DGPluginManager.shared putPluginsToTabBar:plugins];
+}
+
 - (void)setupBubbleLongPressAction:(void (^)(void))block {
     if (block) {
-        DGAssistant.shared.bubbleLongPressBlock = block;
+        DGEntrance.shared.bubbleLongPressBlock = block;
     }
 }
 
@@ -49,31 +58,6 @@
         block(configuration);
     }
     DGPodPlugin.shared.configuration = configuration;
-}
-
-- (void)addCustomPlugin:(Class)plugin {
-    if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
-        NSAssert(0, @"Debugo: 必须实现了 DGPluginProtocol 协议的工具才能添加");
-        return;
-    }
-    [DGAssistant.shared.customPlugins addObject:plugin];
-}
-
-- (void)putPluginsToTabBar:(NSArray<Class> *)plugins {
-    [DGAssistant.shared.tabBarPlugins removeAllObjects];
-    [plugins enumerateObjectsUsingBlock:^(Class  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
-            NSAssert(0, @"Debugo: 必须实现了 DGPluginProtocol 协议的工具才能添加");
-            return;
-        }
-        Class vcClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
-        if (vcClass) {
-            NSAssert(![vcClass isKindOfClass:[UINavigationController class]], @"Debugo: pluginViewControllerClass 不能是 UINavigationController 及其子类");
-            [DGAssistant.shared.tabBarPlugins addObject:plugin];
-        }else {
-            NSAssert(!0, @"Debugo: 必须实现了 pluginViewControllerClass 方法，并且返回了控制器类才可以添加到 tabBar");
-        }
-    }];
 }
 
 @end

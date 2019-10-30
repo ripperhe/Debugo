@@ -9,7 +9,7 @@
 
 
 #import "DGFileViewController.h"
-#import "DGAssistant.h"
+#import "DGEntrance.h"
 #import "DGPreviewManager.h"
 #import "DGFileInfoViewController.h"
 #import "DGFileParser.h"

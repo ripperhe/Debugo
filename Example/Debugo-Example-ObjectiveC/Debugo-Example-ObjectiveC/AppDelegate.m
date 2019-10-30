@@ -23,6 +23,14 @@
     /// 启用并配置
     [Debugo fireWithConfiguration:^(DGConfiguration * _Nonnull configuration) {
         
+        /// 添加自定义工具
+        [configuration addCustomPlugin:CustomPlugin.class];
+        [configuration addCustomPlugin:CustomPlugin2.class];
+        
+        /// 将部分工具放到 tabBar, 默认会将指令放到 tabBar
+        //        [configuration putPluginsToTabBar:nil];
+        //        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, CustomPlugin2.class]];
+        
         /// 设置悬浮球的长按事件
         [configuration setupBubbleLongPressAction:^{
             DGLog(@"长按...");
@@ -124,15 +132,6 @@
             }];
         }];
         
-        /// 添加自定义工具
-        [configuration addCustomPlugin:CustomPlugin.class];
-        [configuration addCustomPlugin:CustomPlugin2.class];
-        
-        /// 将部分工具放到 tabBar, 默认会将指令放到 tabBar
-//        [configuration putPluginsToTabBar:nil];
-//        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, CustomPlugin2.class]];
-//        [configuration putPluginsToTabBar:@[DGActionPlugin.class, DGFilePlugin.class, DGAppInfoPlugin.class, DGTouchPlugin.class, CustomPlugin2.class]];
-        
     }];
     
     // 在某人电脑上才执行某些代码
@@ -145,7 +144,7 @@
     [Debugo addActionForUser:@"ripper" title:@"今天吃啥啊？" handler:^(DGAction * _Nonnull action) {
         DGLog(@"不知道啊...");
     }];
-
+    
     [Debugo addActionForUser:@"user1" title:@"来个弹窗 🤣" handler:^(DGAction *action) {
         UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"Ha Ha" message:@"mei shen me, wo jiu xiang xiao yi xia~" preferredStyle:UIAlertControllerStyleAlert];
         [alerController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -153,20 +152,20 @@
         }]];
         [action.viewController presentViewController:alerController animated:YES completion:nil];
     } autoClose:NO];
-
+    
     [Debugo addActionForUser:@"user2" title:@"push 新控制器 👉" handler:^(DGAction *action) {
         UIViewController *vc = [UIViewController new];
         vc.view.backgroundColor = [UIColor orangeColor];
         [action.viewController.navigationController pushViewController:vc animated:YES];
     } autoClose:NO];
-
+    
     [Debugo addActionWithTitle:@"打印 windows" handler:^(DGAction *action) {
         DGLog(@"\n%@", [UIApplication sharedApplication].windows);
         [[UIApplication sharedApplication].windows enumerateObjectsUsingBlock:^(__kindof UIWindow * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             DGLog(@"%f", obj.windowLevel);
         }];
     }];
-
+    
     [Debugo addActionWithTitle:@"打印 [UIScreen mainScreen].bounds" handler:^(DGAction * _Nonnull action) {
         DGLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
     }];

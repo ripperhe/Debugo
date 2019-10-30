@@ -8,7 +8,7 @@
 //
 
 #import "DGActionViewController.h"
-#import "DGAssistant.h"
+#import "DGEntrance.h"
 #import "DGActionSubViewController.h"
 #import "DGActionPlugin.h"
 #import "DGCommon.h"
@@ -203,7 +203,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DGAction *action = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (action.autoClose) {
-        [DGAssistant.shared closeDebugWindow];
+        [DGEntrance.shared closeDebugWindow];
     }
     action.viewController = self;
     action.handler(action);

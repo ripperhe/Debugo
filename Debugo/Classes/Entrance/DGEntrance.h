@@ -1,5 +1,5 @@
 //
-//  DGAssistant.h
+//  DGEntrance.h
 //  Debugo
 //
 //  GitHub https://github.com/ripperhe/Debugo
@@ -8,21 +8,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DGPlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DGAssistant : NSObject
+@interface DGEntrance : NSObject
 
+/// bubble 长按事件
 @property (nonatomic, copy) void(^bubbleLongPressBlock)(void);
-@property (nonatomic, strong) NSArray<Class<DGPluginProtocol>> *debugoPlugins;
-@property (nonatomic, strong) NSMutableArray<Class<DGPluginProtocol>> *customPlugins;
-@property (nonatomic, strong) NSMutableArray<Class<DGPluginProtocol>> *tabBarPlugins;
 
 + (instancetype)shared;
 
+/// 显示悬浮球
 - (void)showBubble;
 
+/// 关闭 debug window
 - (void)closeDebugWindow;
 
 @end
