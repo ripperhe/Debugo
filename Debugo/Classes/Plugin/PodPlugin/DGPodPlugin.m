@@ -288,7 +288,7 @@ static DGPodPlugin *_instance;
             [repo.pods setObject:currentPod forKey:podName];
         }else {
             // 比较 version，取最大的
-            if ([self compareVersionA:podVersion withVersionB:currentPod.version] == NSOrderedDescending) {
+            if ([self compareVersionA:podVersion withVersionB:currentPod.latestVersion] == NSOrderedDescending) {
                 currentPod.latestVersion = podVersion;
                 currentPod.specFilePath = path;
             }
