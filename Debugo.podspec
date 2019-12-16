@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Debugo'
-  s.version          = '0.2.7'
+  s.version          = '0.2.8'
   s.summary          = '☄️ 一个可能有点用的 iOS 调试工具~'
   s.homepage         = 'https://github.com/ripperhe/Debugo'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

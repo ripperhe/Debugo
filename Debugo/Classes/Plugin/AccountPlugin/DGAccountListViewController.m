@@ -28,9 +28,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     
     if (DGAccountPlugin.shared.configuration.isProductionEnvironment) {
-        self.title = @"快速登陆 (开发环境)";
-    }else{
         self.title = @"快速登陆 (生产环境)";
+    }else{
+        self.title = @"快速登陆 (开发环境)";
     }
     
     if (!self.dataArray.count) {
