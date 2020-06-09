@@ -12,12 +12,14 @@
 
 - (void)setUrl:(NSString *)url {
     _url = url;
-    if ([url.lowercaseString hasPrefix:@"https://github.com/cocoapods/specs.git"]) {
+    NSString *lowercaseString = url.lowercaseString;
+    if ([lowercaseString hasPrefix:@"https://github.com/cocoapods/specs.git"] ||
+        [lowercaseString hasPrefix:@"https://cdn.cocoapods.org"]) {
         _isOfficial = YES;
     }else {
         _isOfficial = NO;
     }
-    if ([url.lowercaseString hasPrefix:@"http"]) {
+    if ([lowercaseString hasPrefix:@"http"]) {
         _isRemote = YES;
     }else {
         _isRemote = NO;
