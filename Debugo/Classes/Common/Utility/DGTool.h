@@ -77,11 +77,17 @@ void dg_exec_main_queue_only_can_be_enabled(void (^block)(void));
 #define dg_exec_main_queue_only_can_be_enabled(...)
 #endif
 
-/// 获取 [UIApplication sharedApplication].delegate.window 的顶部控制器
+/// 获取主 winow 的顶部控制器
 UIViewController * dg_topViewController(void);
 
 /// 获取某个 window 顶部的 viewController
 UIViewController * dg_topViewControllerForWindow(UIWindow * _Nullable window);
+
+/// 获取主 window scene; (仅iOS13有效，可能为空)
+id dg_mainWindowScene(void);
+
+/// 获取主 window
+UIWindow *dg_mainWindow(void);
 
 /// 获取顶部的全屏的 window
 UIWindow * dg_topVisibleFullScreenWindow(void);
@@ -89,7 +95,7 @@ UIWindow * dg_topVisibleFullScreenWindow(void);
 /// 获取可见的键盘 window
 UIWindow * dg_keyboardWindow(void);
 
-/// 获取所有 window, 包括系统内部的 window, 例如状态栏...(iOS13貌似不管用了)
+/// 获取所有 window, 包括系统内部的 window, 例如状态栏...
 NSArray<UIWindow *> * dg_getAllWindows(void);
 
 /// 解决中文乱码问题

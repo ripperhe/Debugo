@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 仅在某个用户的电脑编译的包中立即执行某些代码（canBeEnabled 为 NO 时，则统统不执行）`$ whoami`
 + (void)executeCodeForUser:(NSString *)user handler:(void (NS_NOESCAPE ^)(void))handler;
 
-/// 获取 [UIApplication sharedApplication].delegate.window 的顶部控制器
+/// 获取主 window 的顶部控制器
 + (nullable UIViewController *)topViewController;
 
 /// 获取某个 window 顶部的 viewController
@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取可见的键盘 window
 + (nullable UIWindow *)keyboardWindow;
 
-/// 获取所有 window, 包括系统内部的 window, 例如状态栏...(iOS13貌似不管用了)
+/// 获取所有 window, 包括系统内部的 window, 例如状态栏...
 + (nullable NSArray <UIWindow *>*)getAllWindows;
 
 @end

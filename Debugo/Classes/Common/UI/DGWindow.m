@@ -10,6 +10,7 @@
 
 #import "DGWindow.h"
 #import "DebugoEnable.h"
+#import "DGTool.h"
 
 #define BoolString(boolValue) (boolValue?@"YES":@"NO")
 
@@ -17,12 +18,16 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        // 防止旋转时四周有黑边
-        self.clipsToBounds = YES;
-        // 暂时关闭暗黑模式
         if (@available(iOS 13.0, *)) {
+            // iOS13不设置无法显示
+            self.windowScene = dg_mainWindowScene();
+            
+            // 关闭深色模式
             self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
         }
+
+        // 防止旋转时四周有黑边
+        self.clipsToBounds = YES;
     }
     return self;
 }

@@ -283,10 +283,45 @@ UIViewController * dg_topViewController(void) {
 }
 
 UIViewController * dg_topViewControllerForWindow(UIWindow * _Nullable window) {
-    UIWindow *targetWindow = window ?: [UIApplication sharedApplication].delegate.window;
+    UIWindow *targetWindow = window ?: dg_mainWindow();
     if (!targetWindow) return nil;
     UIViewController* viewController = targetWindow.rootViewController;
     return dg_findBestViewController(viewController);
+}
+
+id dg_mainWindowScene(void) {
+    __block id scene = nil;
+    if (@available(iOS 13.0, *)) {
+        [[[UIApplication sharedApplication] connectedScenes] enumerateObjectsUsingBlock:^(UIScene * _Nonnull obj, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:UIWindowScene.class]) {
+                UIWindowScene *windowScene = (UIWindowScene *)obj;
+                if (windowScene.screen == UIScreen.mainScreen) {
+                    scene = obj;
+                    *stop = YES;
+                }
+            }
+        }];
+    }
+    return scene;
+}
+
+UIWindow *dg_mainWindow(void) {
+    __block UIWindow *window = nil;
+    
+    if ([[[UIApplication sharedApplication] delegate] respondsToSelector:@selector(window)]) {
+        window = [[[UIApplication sharedApplication] delegate] window];
+    }
+    
+    if (!window) {
+        if (@available(iOS 13.0, *)) {
+            UIWindowScene *windowScene = dg_mainWindowScene();
+            if ([windowScene.delegate respondsToSelector:@selector(window)]) {
+                window = [windowScene.delegate performSelector:@selector(window)];
+            }
+        }
+    }
+    
+    return window ?: [UIApplication sharedApplication].keyWindow;
 }
 
 UIWindow * dg_topVisibleFullScreenWindow(void) {

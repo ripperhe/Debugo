@@ -140,7 +140,7 @@
 
 #pragma mark - event response
 - (void)handlePanGesture:(UIPanGestureRecognizer*)p {
-    UIWindow *appWindow = [UIApplication sharedApplication].delegate.window;
+    UIWindow *appWindow = dg_mainWindow();
     CGPoint panPoint = [p locationInView:appWindow];
     
     if(p.state == UIGestureRecognizerStateBegan) {
