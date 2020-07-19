@@ -24,7 +24,13 @@
 @implementation UIWindow (DocsUIDebuggingInformationOverlaySwizzler)
 
 - (instancetype)swizzle_basicInit {
-    return [super init];
+    id x = [super init];
+    if (@available(iOS 13.0, *)) {
+        if ([x respondsToSelector:@selector(setWindowScene:)]) {
+            [x setWindowScene:dg_mainWindowScene()];
+        }
+    }
+    return x;
 }
 
 // [[UIDebuggingInformationOverlayInvokeGestureHandler mainHandler] _handleActivationGesture:(UIGestureRecognizer *)]
