@@ -43,16 +43,14 @@ static DGPluginManager *_instance;
     [self.tabBarPlugins removeAllObjects];
     [plugins enumerateObjectsUsingBlock:^(Class  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
         if (![plugin conformsToProtocol:@protocol(DGPluginProtocol)]) {
-            NSAssert(0, @"Debugo: 必须实现了 DGPluginProtocol 协议的工具才能添加");
+            NSAssert(0, @"Debugo: 必须实现了 DGPluginProtocol 协议的工具才能添加到 tab bar");
             return;
         }
-        Class vcClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
-        if (vcClass) {
-            NSAssert(![vcClass isKindOfClass:[UINavigationController class]], @"Debugo: pluginViewControllerClass 不能是 UINavigationController 及其子类");
-            [self.tabBarPlugins addObject:plugin];
-        }else {
-            NSAssert(!0, @"Debugo: 必须实现了 pluginViewControllerClass 方法，并且返回了控制器类才可以添加到 tabBar");
+        if (![plugin respondsToSelector:@selector(pluginViewController)]) {
+            NSAssert(0, @"Debugo: Debugo: 必须实现了 pluginViewController 方法的工具才能添加到 tab bar");
+            return;
         }
+        [self.tabBarPlugins addObject:plugin];
     }];
 }
 

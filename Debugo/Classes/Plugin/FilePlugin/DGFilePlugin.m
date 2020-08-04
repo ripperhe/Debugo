@@ -27,8 +27,8 @@
     return [DGBundle imageNamed:@"tab_file_normal"];
 }
 
-+ (Class)pluginViewControllerClass {
-    return DGFileViewController.class;
++ (UIViewController *)pluginViewController {
+    return [DGFileViewController new];
 }
 
 #pragma mark -

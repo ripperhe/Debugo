@@ -25,13 +25,14 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     
     [DGPluginManager.shared.tabBarPlugins enumerateObjectsUsingBlock:^(Class<DGPluginProtocol>  _Nonnull plugin, NSUInteger idx, BOOL * _Nonnull stop) {
-        Class viewControllerClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
-        if (viewControllerClass) {
+        UIViewController *vc = dg_invoke(plugin, @selector(pluginViewController), nil);
+        if (vc) {
+            NSAssert(![vc isKindOfClass:[UINavigationController class]], @"Debugo: pluginViewController 不能是 UINavigationController 及其子类");
+            
             NSString *name = dg_invoke(plugin, @selector(pluginName), nil) ?: NSStringFromClass([plugin class]);
             UIImage *image = dg_invoke(plugin, @selector(pluginTabBarImage:), @[@(NO)]) ?: [DGPlugin pluginTabBarImage:NO];
             UIImage *selectedImage = dg_invoke(plugin, @selector(pluginTabBarImage:), @[@(YES)]) ?: [DGPlugin pluginTabBarImage:YES];
 
-            UIViewController *vc = [viewControllerClass new];
             vc.navigationItem.title = name;
             DGNavigationController *navigationController = [[DGNavigationController alloc] initWithRootViewController:vc];
             navigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:name image:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

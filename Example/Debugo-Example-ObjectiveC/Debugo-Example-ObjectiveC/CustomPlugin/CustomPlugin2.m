@@ -11,9 +11,9 @@
 
 @implementation CustomPlugin2
 
-+ (Class)pluginViewControllerClass {
-    // 如果点击工具之后，需要跳转到页面，而不是直接开启工具的话，就在这里返回需要跳转的控制器类
-    return CustomPlugin2ViewController.class;
++ (UIViewController *)pluginViewController {
+    // 如果点击工具之后，需要跳转到页面，而不是直接开启工具的话，就在这里返回需要跳转的控制器实例对象
+    return [CustomPlugin2ViewController new];
 }
 
 static BOOL _switch = NO;

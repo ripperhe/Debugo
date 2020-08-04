@@ -30,7 +30,7 @@
     return YES;
 }
 
-+ (Class)pluginViewControllerClass {
++ (UIViewController *)pluginViewController {
     return nil;
 }
 

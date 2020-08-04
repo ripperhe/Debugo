@@ -177,7 +177,9 @@
             [self.navigationController pushViewController:vc animated:YES];
         }else if (configuration.selectedPushViewControlerBlock) {
             UIViewController *vc = configuration.selectedPushViewControlerBlock();
-            [self.navigationController pushViewController:vc animated:YES];
+            if (vc) {
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }else if (configuration.selectedBlock) {
             configuration.selectedBlock();
         }

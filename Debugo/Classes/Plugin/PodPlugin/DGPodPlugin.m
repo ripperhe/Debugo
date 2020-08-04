@@ -26,8 +26,8 @@
     return [DGBundle imageNamed:@"tab_pod_normal"];
 }
 
-+ (Class)pluginViewControllerClass {
-    return DGPodPluginViewController.class;
++ (UIViewController *)pluginViewController {
+    return [DGPodPluginViewController new];
 }
 
 #pragma mark -

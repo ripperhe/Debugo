@@ -68,18 +68,19 @@
         dg_strongify(self)
         configuration.title = dg_invoke(plugin, @selector(pluginName), nil) ?: NSStringFromClass([plugin class]);
         configuration.image = dg_invoke(plugin, @selector(pluginImage), nil) ?: [DGPlugin pluginImage];
-        Class vcClass = dg_invoke(plugin, @selector(pluginViewControllerClass), nil);
-        if (vcClass) {
-            // 有控制器，跳转到控制器
-            NSAssert(![vcClass isKindOfClass:[UINavigationController class]], @"Debugo: pluginViewControllerClass 不能是 UINavigationController 及其子类");
-            configuration.selectedPushViewControllerClass = vcClass;
-        }else {
-            // 无控制器，直接启用
-            [configuration setSelectedBlock:^{
+        configuration.selectedPushViewControlerBlock = ^UIViewController * _Nonnull{
+            UIViewController *vc = dg_invoke(plugin, @selector(pluginViewController), nil);
+            if (vc) {
+                // 有控制器，跳转到控制器
+                NSAssert(![vc isKindOfClass:[UINavigationController class]], @"Debugo: pluginViewController 不能是 UINavigationController 及其子类");
+                return vc;
+            } else {
+                // 无控制器，直接启用
                 [DGEntrance.shared closeDebugWindow];
                 dg_invoke(plugin, @selector(setPluginSwitch:), @[@YES]);
-            }];
-        }
+                return nil;
+            }
+        };
     }];
 }
 

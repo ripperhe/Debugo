@@ -27,8 +27,8 @@
     return [DGBundle imageNamed:@"tab_action_normal"];
 }
 
-+ (Class)pluginViewControllerClass {
-    return DGActionViewController.class;
++ (UIViewController *)pluginViewController {
+    return [DGActionViewController new];
 }
 
 #pragma mark -

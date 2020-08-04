@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 将工具放到 tabBar 上；默认是 DGActionPlugin
 /// 目前支持 DGActionPlugin DGFilePlugin DGAppInfoPlugin DGAccountPlugin DGColorPlugin DGPodPlugin
-/// 以及实现了 pluginViewControllerClass 的自定义工具
+/// 以及实现了 pluginViewController 的自定义工具
 - (void)putPluginsToTabBar:(nullable NSArray<Class<DGPluginProtocol>> *)plugins;
 
 /// 自定义悬浮球的长按事件，可用于某些需要快捷操作的事情（点击事件是开启和关闭 Debug Window）

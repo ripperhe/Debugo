@@ -34,8 +34,8 @@ static DGTouchWindow *_touchWindow = nil;
     return [DGBundle imageNamed:@"tab_touch_normal"];
 }
 
-+ (Class)pluginViewControllerClass {
-    return [DGTouchPluginViewController class];
++ (UIViewController *)pluginViewController {
+    return [DGTouchPluginViewController new];
 }
 
 + (BOOL)pluginSwitch {

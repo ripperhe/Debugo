@@ -27,8 +27,8 @@
     return [DGBundle imageNamed:@"tab_appinfo_normal"];
 }
 
-+ (Class)pluginViewControllerClass {
-    return DGAppInfoViewController.class;
++ (UIViewController *)pluginViewController {
+    return [DGAppInfoViewController new];
 }
 
 @end

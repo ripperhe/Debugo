@@ -27,8 +27,8 @@
     return [DGBundle imageNamed:@"tab_uiviewcolor_normal"];
 }
 
-+ (Class)pluginViewControllerClass {
-    return DGColorPluginViewController.class;
++ (UIViewController *)pluginViewController {
+    return [DGColorPluginViewController new];
 }
 
 + (BOOL)pluginSwitch {
