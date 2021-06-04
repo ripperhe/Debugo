@@ -122,7 +122,7 @@ static const void *kAssociatedObjectKey_extMap = &kAssociatedObjectKey_extMap;
         Class class = object_getClass((id)self);
         
         Method originalMethod = class_getClassMethod(class, originalSelector);
-        Method newMethod = class_getInstanceMethod(class, newSelector);
+        Method newMethod = class_getClassMethod(class, newSelector);
         
         BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
         
