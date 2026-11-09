@@ -15,6 +15,7 @@
 #import "DGTouchPlugin.h"
 #import "DGColorPlugin.h"
 #import "DGPodPlugin.h"
+#import "DGSPMPlugin.h"
 #import "DGNetworkPlugin.h"
 #import "DGLogPlugin.h"
 

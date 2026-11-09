@@ -49,6 +49,8 @@ static DGBuildInfo *_instance;
      * GitLastCommitTimestamp           最后一次提交的时间
      * CocoaPodsLockFileExist           是否拷贝了 Podfile.lock 文件
      * CocoaPodsLockFileName            Podfile.lock 文件名
+     * SPMResolvedFileExist             是否拷贝了 Package.resolved 文件
+     * SPMResolvedFileName              Package.resolved 文件名
      */
 
     // build info plister (从 bundle 中获取)
@@ -70,6 +72,8 @@ static DGBuildInfo *_instance;
     self.gitLastCommitTimestamp = [plister stringForKey:@"GitLastCommitTimestamp"];
     self.cocoaPodsLockFileExist = [plister boolForKey:@"CocoaPodsLockFileExist"];
     self.cocoaPodsLockFileName = [plister stringForKey:@"CocoaPodsLockFileName"];
+    self.spmResolvedFileExist = [plister boolForKey:@"SPMResolvedFileExist"];
+    self.spmResolvedFileName = [plister stringForKey:@"SPMResolvedFileName"];
 
 }
 

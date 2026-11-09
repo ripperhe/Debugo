@@ -50,6 +50,9 @@ Debugo 是一款使用 Objective-C 编写的 iOS 应用内调试工具。通过�
 * CocoaPods
 	* 查看工程安装的 pod 库（[需配置脚本 🚀](https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md)）
 	* 查看 pod 库的最新版本
+* Swift Package Manager
+	* 查看工程依赖的 Swift Package（同样依赖上方 Build Info 脚本，会拷贝 `Package.resolved`）
+	* 对 GitHub 仓库尽力展示最新 Release / Tag 版本；非 GitHub 来源不查询
 
 ## Snapshot
 

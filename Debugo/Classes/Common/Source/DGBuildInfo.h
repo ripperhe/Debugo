@@ -40,6 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL cocoaPodsLockFileExist;
 /// Podfile.lock 文件名
 @property (nonatomic, copy) NSString *cocoaPodsLockFileName;
+/// 是否拷贝了 Package.resolved 文件
+@property (nonatomic, assign) BOOL spmResolvedFileExist;
+/// Package.resolved 文件名
+@property (nonatomic, copy) NSString *spmResolvedFileName;
 
 + (instancetype)shared;
 
