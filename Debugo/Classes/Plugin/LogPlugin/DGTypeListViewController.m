@@ -590,18 +590,18 @@ static void DGLogHandleDrag(UIView *view, UIPanGestureRecognizer *pan) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DGLogTypeModel *typeModel = self.visibleArray[indexPath.row];
-    DGTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DGTypeListViewControllerCell"];
+    NSString *cellID = @"DGTypeListViewControllerCell";
+    DGTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
         Class cls = NSClassFromString(DGLogPlugin.shared.configuration.cellClsString);
         if (cls) {
-            cell = [[cls alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"DGTypeListViewControllerCell"];
+            cell = [[cls alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
         } else {
-            cell = [[DGTypeListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"DGTypeListViewControllerCell"];
+            cell = [[DGTypeListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
         }
         cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.28 alpha:1];
         cell.backgroundColor = [UIColor clearColor];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", typeModel.typeID];
     cell.logTypeModel = typeModel;
     return cell;
 }
