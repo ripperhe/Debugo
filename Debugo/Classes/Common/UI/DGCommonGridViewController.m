@@ -241,7 +241,8 @@
     self.actionBlock = block;
 }
 
-- (void)adjustHighlight:(BOOL)isHighlight {
+- (void)adjustHighlight:(id)highlight {
+    BOOL isHighlight = [highlight boolValue];
     if (!self.highlightedBackgroundLayer) {
         self.highlightedBackgroundLayer = [CALayer layer];
         [self.layer insertSublayer:self.highlightedBackgroundLayer atIndex:0];
@@ -255,8 +256,8 @@
 }
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)gesture {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(adjustHighlight:) object:nil];
-    [self adjustHighlight:YES];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(adjustHighlight:) object:@NO];
+    [self adjustHighlight:@YES];
     [self performSelector:@selector(adjustHighlight:) withObject:@NO afterDelay:.125];
     if (self.actionBlock) {
         self.actionBlock();
