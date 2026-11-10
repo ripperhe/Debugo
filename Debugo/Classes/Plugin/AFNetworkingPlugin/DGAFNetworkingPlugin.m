@@ -1,24 +1,24 @@
 //
-//  DGNetworkPlugin.m
+//  DGAFNetworkingPlugin.m
 //  Debugo
 //
 
-#import "DGNetworkPlugin.h"
-#import "DGNetworkCenter.h"
-#import "DGNetworkListViewController.h"
+#import "DGAFNetworkingPlugin.h"
+#import "DGAFNetworkingCenter.h"
+#import "DGAFNetworkingListViewController.h"
 
-@implementation DGNetworkPlugin
+@implementation DGAFNetworkingPlugin
 
 + (void)monitorSessionManager:(AFURLSessionManager *)sessionManager {
-    [DGNetworkCenter.sharedCenter monitorSessionManager:sessionManager];
+    [DGAFNetworkingCenter.sharedCenter monitorSessionManager:sessionManager];
 }
 
-+ (DGNetworkListModule)listModules {
-    return DGNetworkCenter.sharedCenter.listModules;
++ (DGAFNetworkingListModule)listModules {
+    return DGAFNetworkingCenter.sharedCenter.listModules;
 }
 
-+ (void)setListModules:(DGNetworkListModule)listModules {
-    DGNetworkCenter.sharedCenter.listModules = listModules;
++ (void)setListModules:(DGAFNetworkingListModule)listModules {
+    DGAFNetworkingCenter.sharedCenter.listModules = listModules;
 }
 
 + (UIImage *)pluginImage {
@@ -29,11 +29,11 @@
 }
 
 + (NSString *)pluginName {
-    return @"网络请求";
+    return @"AFNetworking请求";
 }
 
 + (UIViewController *)pluginViewController {
-    return [DGNetworkListViewController new];
+    return [DGAFNetworkingListViewController new];
 }
 
 @end

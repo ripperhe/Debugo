@@ -1,5 +1,5 @@
 //
-//  DGNetworkRecord.h
+//  DGAFNetworkingRecord.h
 //  Debugo
 //
 
@@ -7,8 +7,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// 一条被拦截的 AFNetworking 请求。
-@interface DGNetworkRecord : NSObject
+/// 把对象格式化成列表 / 详情里展示的文本，超长会截断。
+FOUNDATION_EXPORT NSString *DGAFNetworkingPrettyText(id _Nullable object);
+/// 把请求头或响应头格式化成多行文本。
+FOUNDATION_EXPORT NSString *DGAFNetworkingHeaderText(NSDictionary * _Nullable headers);
+
+/// 一条被拦截的网络请求。
+@interface DGAFNetworkingRecord : NSObject
 
 @property (nonatomic, copy) NSString *recordID;
 @property (nonatomic, strong) NSDate *startDate;

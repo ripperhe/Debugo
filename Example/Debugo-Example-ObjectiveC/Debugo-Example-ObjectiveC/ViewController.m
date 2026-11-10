@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import "LoginViewController.h"
+#import "Debugo_Example_ObjectiveC-Swift.h"
 #import <Debugo/Debugo.h>
 #import <AFNetworking/AFNetworking.h>
 
 @interface ViewController ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property (nonatomic, strong) UILabel *resultLabel;
 
 @end
 
@@ -23,14 +25,27 @@
     [super viewDidLoad];
 
     self.sessionManager = [AFHTTPSessionManager manager];
-    [DGNetworkPlugin monitorSessionManager:self.sessionManager];
-    DGNetworkPlugin.listModules = DGNetworkListModuleURI | DGNetworkListModuleResponseHeaders | DGNetworkListModuleResponseBody;
+    [DGAFNetworkingPlugin monitorSessionManager:self.sessionManager];
+    DGAFNetworkingPlugin.listModules = DGAFNetworkingListModuleURI | DGAFNetworkingListModuleResponseHeaders | DGAFNetworkingListModuleResponseBody;
+    DGAlamofirePlugin.listModules = DGAFNetworkingListModuleURI | DGAFNetworkingListModuleResponseHeaders | DGAFNetworkingListModuleResponseBody;
 
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 132)];
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 248)];
     UIButton *logButton = [self headerButtonWithTitle:@"写入一条 Log" action:@selector(writeLog) y:16];
-    UIButton *requestButton = [self headerButtonWithTitle:@"发送一条请求" action:@selector(sendRequest) y:72];
+    UIButton *afnButton = [self headerButtonWithTitle:@"AFNetworking 请求" action:@selector(sendAFNetworkingRequest) y:72];
+    UIButton *alamofireButton = [self headerButtonWithTitle:@"Alamofire 请求" action:@selector(sendAlamofireRequest) y:128];
     [header addSubview:logButton];
-    [header addSubview:requestButton];
+    [header addSubview:afnButton];
+    [header addSubview:alamofireButton];
+
+    UILabel *resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 184, CGRectGetWidth(self.view.bounds) - 32, 48)];
+    resultLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    resultLabel.font = [UIFont systemFontOfSize:13];
+    resultLabel.textColor = [UIColor secondaryLabelColor];
+    resultLabel.numberOfLines = 2;
+    resultLabel.text = @"点击上方按钮请求 https://dummyjson.com/products";
+    [header addSubview:resultLabel];
+    self.resultLabel = resultLabel;
+
     self.tableView.tableHeaderView = header;
 }
 
@@ -55,15 +70,47 @@
     [DGLogPlugin.shared addTypeModel:model];
 }
 
-- (void)sendRequest {
-    [self.sessionManager GET:@"https://httpbin.org/get"
-                  parameters:@{@"from": @"debugo-example"}
+- (void)updateResult:(NSString *)text {
+    if (!NSThread.isMainThread) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateResult:text];
+        });
+        return;
+    }
+    self.resultLabel.text = text;
+}
+
+- (NSString *)productSummaryFromResponse:(id)responseObject stack:(NSString *)stack {
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return [NSString stringWithFormat:@"%@ 成功，但返回数据格式不符合预期", stack];
+    }
+    NSDictionary *json = (NSDictionary *)responseObject;
+    NSArray *products = json[@"products"];
+    NSUInteger count = [products isKindOfClass:NSArray.class] ? products.count : 0;
+    NSNumber *total = json[@"total"];
+    if ([total isKindOfClass:NSNumber.class]) {
+        return [NSString stringWithFormat:@"%@ 成功，本页 %lu 个商品，共 %@ 个", stack, (unsigned long)count, total];
+    }
+    return [NSString stringWithFormat:@"%@ 成功，商品数 %lu", stack, (unsigned long)count];
+}
+
+- (void)sendAFNetworkingRequest {
+    [self updateResult:@"AFNetworking 请求中…"];
+    [self.sessionManager GET:@"https://dummyjson.com/products"
+                  parameters:nil
                      headers:nil
                     progress:nil
                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"example request success");
+        [self updateResult:[self productSummaryFromResponse:responseObject stack:@"AFNetworking"]];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"example request failed: %@", error);
+        [self updateResult:[NSString stringWithFormat:@"AFNetworking 失败：%@", error.localizedDescription]];
+    }];
+}
+
+- (void)sendAlamofireRequest {
+    [self updateResult:@"Alamofire 请求中…"];
+    [DGExampleNetworkClient requestProductsWithCompletion:^(NSString * _Nonnull text) {
+        [self updateResult:text];
     }];
 }
 

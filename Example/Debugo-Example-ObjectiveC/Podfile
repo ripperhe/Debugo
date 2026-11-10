@@ -1,4 +1,5 @@
 platform :ios, '15.0'
+use_frameworks! :linkage => :static
 
 project 'Debugo-Example-ObjectiveC',
         'Debug' => :debug,
@@ -13,6 +14,7 @@ target 'Debugo-Example-ObjectiveC' do
     :path => '../..'
     
   pod 'AFNetworking', '~> 4.0'
+  pod 'Alamofire', '~> 5.10'
 
 end
 

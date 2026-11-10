@@ -1,19 +1,19 @@
 //
-//  DGNetworkCell.m
+//  DGAFNetworkingCell.m
 //  Debugo
 //
 
-#import "DGNetworkCell.h"
-#import "DGNetworkLayout.h"
+#import "DGAFNetworkingCell.h"
+#import "DGAFNetworkingLayout.h"
 
-static UIColor *DGNetworkPurple(void) {
+static UIColor *DGAFNetworkingPurple(void) {
     return [UIColor colorWithRed:108 / 255.0 green:92 / 255.0 blue:231 / 255.0 alpha:1];
 }
 
-@interface DGNetworkInsetLabel : UILabel
+@interface DGAFNetworkingInsetLabel : UILabel
 @end
 
-@implementation DGNetworkInsetLabel
+@implementation DGAFNetworkingInsetLabel
 
 - (CGSize)intrinsicContentSize {
     CGSize size = [super intrinsicContentSize];
@@ -26,14 +26,16 @@ static UIColor *DGNetworkPurple(void) {
 
 @end
 
-@interface DGNetworkCell ()
+@interface DGAFNetworkingCell ()
 
 @property (nonatomic, strong) UIView *cardView;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) DGNetworkInsetLabel *statusLabel;
+@property (nonatomic, strong) DGAFNetworkingInsetLabel *statusLabel;
 @property (nonatomic, strong) UILabel *methodLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
+@property (nonatomic, strong) UIButton *clipboardButton;
 @property (nonatomic, strong) UIButton *detailButton;
+@property (nonatomic, copy, nullable) NSString *clipboardFeedbackRecordID;
 @property (nonatomic, strong) UILabel *uriLabel;
 @property (nonatomic, strong) UIView *headersModuleView;
 @property (nonatomic, strong) UILabel *headersLabel;
@@ -46,7 +48,7 @@ static UIColor *DGNetworkPurple(void) {
 
 @end
 
-@implementation DGNetworkCell
+@implementation DGAFNetworkingCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -55,7 +57,7 @@ static UIColor *DGNetworkPurple(void) {
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor clearColor];
         [self setupUI];
-        self.modules = DGNetworkListModuleAll;
+        self.modules = DGAFNetworkingListModuleAll;
     }
     return self;
 }
@@ -67,7 +69,7 @@ static UIColor *DGNetworkPurple(void) {
     cardView.layer.masksToBounds = YES;
     [self.contentView addSubview:cardView];
     self.cardView = cardView;
-    DGNetworkPinEdges(cardView, self.contentView, UIEdgeInsetsMake(6, 12, 6, 12));
+    DGAFNetworkingPinEdges(cardView, self.contentView, UIEdgeInsetsMake(6, 12, 6, 12));
 
     UILabel *timeLabel = [[UILabel alloc] init];
     timeLabel.font = [UIFont systemFontOfSize:12];
@@ -75,7 +77,7 @@ static UIColor *DGNetworkPurple(void) {
     [cardView addSubview:timeLabel];
     self.timeLabel = timeLabel;
 
-    DGNetworkInsetLabel *statusLabel = [[DGNetworkInsetLabel alloc] init];
+    DGAFNetworkingInsetLabel *statusLabel = [[DGAFNetworkingInsetLabel alloc] init];
     statusLabel.font = [UIFont boldSystemFontOfSize:12];
     statusLabel.textColor = [UIColor whiteColor];
     statusLabel.textAlignment = NSTextAlignmentCenter;
@@ -99,16 +101,18 @@ static UIColor *DGNetworkPurple(void) {
     [cardView addSubview:durationLabel];
     self.durationLabel = durationLabel;
 
-    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [detailButton setTitle:@"详情" forState:UIControlStateNormal];
-    [detailButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    detailButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    detailButton.backgroundColor = DGNetworkPurple();
-    detailButton.layer.cornerRadius = 14;
-    detailButton.contentEdgeInsets = UIEdgeInsetsMake(4, 12, 4, 12);
-    [detailButton addTarget:self action:@selector(tapDetail) forControlEvents:UIControlEventTouchUpInside];
-    [cardView addSubview:detailButton];
-    self.detailButton = detailButton;
+    UIButton *clipboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clipboardButton setTitle:@"复制" forState:UIControlStateNormal];
+    [clipboardButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    clipboardButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    clipboardButton.backgroundColor = DGAFNetworkingPurple();
+    clipboardButton.layer.cornerRadius = 18;
+    clipboardButton.contentEdgeInsets = UIEdgeInsetsMake(8, 18, 8, 18);
+    [clipboardButton setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [clipboardButton setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [clipboardButton addTarget:self action:@selector(tapCopy) forControlEvents:UIControlEventTouchUpInside];
+    [cardView addSubview:clipboardButton];
+    self.clipboardButton = clipboardButton;
 
     self.uriLabel = [self bodyLabelWithLines:3];
     self.headersLabel = [self bodyLabelWithLines:6];
@@ -132,36 +136,37 @@ static UIColor *DGNetworkPurple(void) {
     stackView.alignment = UIStackViewAlignmentFill;
     [cardView addSubview:stackView];
 
-    DGNetworkDisableAutoresizing(timeLabel);
-    DGNetworkDisableAutoresizing(statusLabel);
-    DGNetworkDisableAutoresizing(methodLabel);
-    DGNetworkDisableAutoresizing(durationLabel);
-    DGNetworkDisableAutoresizing(detailButton);
-    DGNetworkDisableAutoresizing(stackView);
+    DGAFNetworkingDisableAutoresizing(timeLabel);
+    DGAFNetworkingDisableAutoresizing(statusLabel);
+    DGAFNetworkingDisableAutoresizing(methodLabel);
+    DGAFNetworkingDisableAutoresizing(durationLabel);
+    DGAFNetworkingDisableAutoresizing(clipboardButton);
+    DGAFNetworkingDisableAutoresizing(stackView);
 
     [NSLayoutConstraint activateConstraints:@[
-        DGNetworkConstraint(statusLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, cardView, NSLayoutAttributeTop, 14),
-        DGNetworkConstraint(statusLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
+        DGAFNetworkingConstraint(statusLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, cardView, NSLayoutAttributeTop, 14),
+        DGAFNetworkingConstraint(statusLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
 
-        DGNetworkConstraint(methodLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeRight, 8),
-        DGNetworkConstraint(methodLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
+        DGAFNetworkingConstraint(methodLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeRight, 8),
+        DGAFNetworkingConstraint(methodLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
 
-        DGNetworkConstraint(durationLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, methodLabel, NSLayoutAttributeRight, 8),
-        DGNetworkConstraint(durationLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
-        DGNetworkConstraint(detailButton, NSLayoutAttributeLeft, NSLayoutRelationGreaterThanOrEqual, durationLabel, NSLayoutAttributeRight, 8),
+        DGAFNetworkingConstraint(durationLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, methodLabel, NSLayoutAttributeRight, 8),
+        DGAFNetworkingConstraint(durationLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
+        DGAFNetworkingConstraint(clipboardButton, NSLayoutAttributeLeft, NSLayoutRelationGreaterThanOrEqual, durationLabel, NSLayoutAttributeRight, 8),
 
-        DGNetworkConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, detailButton, NSLayoutAttributeRight, 12),
-        DGNetworkConstraint(detailButton, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
-        DGNetworkConstraint(detailButton, NSLayoutAttributeHeight, NSLayoutRelationEqual, nil, NSLayoutAttributeNotAnAttribute, 28),
+        DGAFNetworkingConstraint(clipboardButton, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
+        DGAFNetworkingConstraint(clipboardButton, NSLayoutAttributeHeight, NSLayoutRelationEqual, nil, NSLayoutAttributeNotAnAttribute, 36),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, clipboardButton, NSLayoutAttributeRight, 12),
 
-        DGNetworkConstraint(timeLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeBottom, 8),
-        DGNetworkConstraint(timeLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
-        DGNetworkConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeRight, 14),
+        DGAFNetworkingConstraint(timeLabel, NSLayoutAttributeTop, NSLayoutRelationGreaterThanOrEqual, statusLabel, NSLayoutAttributeBottom, 8),
+        DGAFNetworkingConstraint(timeLabel, NSLayoutAttributeTop, NSLayoutRelationGreaterThanOrEqual, clipboardButton, NSLayoutAttributeBottom, 8),
+        DGAFNetworkingConstraint(timeLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeRight, 14),
 
-        DGNetworkConstraint(stackView, NSLayoutAttributeTop, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeBottom, 12),
-        DGNetworkConstraint(stackView, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
-        DGNetworkConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, stackView, NSLayoutAttributeRight, 14),
-        DGNetworkConstraint(cardView, NSLayoutAttributeBottom, NSLayoutRelationEqual, stackView, NSLayoutAttributeBottom, 14),
+        DGAFNetworkingConstraint(stackView, NSLayoutAttributeTop, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeBottom, 12),
+        DGAFNetworkingConstraint(stackView, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, stackView, NSLayoutAttributeRight, 14),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeBottom, NSLayoutRelationEqual, stackView, NSLayoutAttributeBottom, 14),
     ]];
 }
 
@@ -170,23 +175,23 @@ static UIColor *DGNetworkPurple(void) {
     UILabel *titleLabel = [self titleLabelWithText:title];
     [moduleView addSubview:titleLabel];
     [moduleView addSubview:bodyLabel];
-    DGNetworkPinHorizontal(titleLabel, moduleView, 0);
-    DGNetworkPinHorizontal(bodyLabel, moduleView, 0);
+    DGAFNetworkingPinHorizontal(titleLabel, moduleView, 0);
+    DGAFNetworkingPinHorizontal(bodyLabel, moduleView, 0);
     [NSLayoutConstraint activateConstraints:@[
-        DGNetworkConstraint(titleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, moduleView, NSLayoutAttributeTop, 0),
-        DGNetworkConstraint(bodyLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, titleLabel, NSLayoutAttributeBottom, 4),
-        DGNetworkConstraint(moduleView, NSLayoutAttributeBottom, NSLayoutRelationEqual, bodyLabel, NSLayoutAttributeBottom, 0),
+        DGAFNetworkingConstraint(titleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, moduleView, NSLayoutAttributeTop, 0),
+        DGAFNetworkingConstraint(bodyLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, titleLabel, NSLayoutAttributeBottom, 4),
+        DGAFNetworkingConstraint(moduleView, NSLayoutAttributeBottom, NSLayoutRelationEqual, bodyLabel, NSLayoutAttributeBottom, 0),
     ]];
     return moduleView;
 }
 
-- (void)setModules:(DGNetworkListModule)modules {
+- (void)setModules:(DGAFNetworkingListModule)modules {
     _modules = modules;
-    self.uriLabel.hidden = (modules & DGNetworkListModuleURI) == 0;
-    self.headersModuleView.hidden = (modules & DGNetworkListModuleRequestHeaders) == 0;
-    self.requestDataModuleView.hidden = (modules & DGNetworkListModuleRequestData) == 0;
-    self.responseHeadersModuleView.hidden = (modules & DGNetworkListModuleResponseHeaders) == 0;
-    self.responseModuleView.hidden = (modules & DGNetworkListModuleResponseBody) == 0;
+    self.uriLabel.hidden = (modules & DGAFNetworkingListModuleURI) == 0;
+    self.headersModuleView.hidden = (modules & DGAFNetworkingListModuleRequestHeaders) == 0;
+    self.requestDataModuleView.hidden = (modules & DGAFNetworkingListModuleRequestData) == 0;
+    self.responseHeadersModuleView.hidden = (modules & DGAFNetworkingListModuleResponseHeaders) == 0;
+    self.responseModuleView.hidden = (modules & DGAFNetworkingListModuleResponseBody) == 0;
 }
 
 - (UILabel *)titleLabelWithText:(NSString *)text {
@@ -205,7 +210,7 @@ static UIColor *DGNetworkPurple(void) {
     return label;
 }
 
-- (void)setRecord:(DGNetworkRecord *)record {
+- (void)setRecord:(DGAFNetworkingRecord *)record {
     _record = record;
     if (!record) {
         return;
@@ -237,12 +242,32 @@ static UIColor *DGNetworkPurple(void) {
         response = [response stringByAppendingFormat:@"\n\nError:\n%@", record.errorText];
     }
     self.responseLabel.text = response;
+    [self resetCopyButtonTitle];
 }
 
-- (void)tapDetail {
-    if (self.record && self.detailHandler) {
-        self.detailHandler(self.record);
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self resetCopyButtonTitle];
+}
+
+- (void)resetCopyButtonTitle {
+    self.clipboardFeedbackRecordID = nil;
+    [self.clipboardButton setTitle:@"复制" forState:UIControlStateNormal];
+}
+
+- (void)tapCopy {
+    if (!self.record) {
+        return;
     }
+    [UIPasteboard generalPasteboard].string = self.record.detailText ?: @"";
+    [self.clipboardButton setTitle:@"已复制" forState:UIControlStateNormal];
+    NSString *recordID = self.record.recordID ?: @"";
+    self.clipboardFeedbackRecordID = recordID;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.clipboardFeedbackRecordID isEqualToString:recordID]) {
+            [self resetCopyButtonTitle];
+        }
+    });
 }
 
 @end

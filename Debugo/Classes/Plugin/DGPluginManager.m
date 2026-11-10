@@ -68,7 +68,8 @@ static DGPluginManager *_instance;
             DGColorPlugin.class,
             DGPodPlugin.class,
             DGSPMPlugin.class,
-            DGNetworkPlugin.class,
+            DGAFNetworkingPlugin.class,
+            DGAlamofirePlugin.class,
             DGLogPlugin.class,
         ];
     }

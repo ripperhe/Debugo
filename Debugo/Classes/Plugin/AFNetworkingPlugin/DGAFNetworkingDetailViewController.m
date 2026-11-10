@@ -1,17 +1,17 @@
 //
-//  DGNetworkDetailViewController.m
+//  DGAFNetworkingDetailViewController.m
 //  Debugo
 //
 
-#import "DGNetworkDetailViewController.h"
-#import "DGNetworkCenter.h"
-#import "DGNetworkLayout.h"
+#import "DGAFNetworkingDetailViewController.h"
+#import "DGAFNetworkingCenter.h"
+#import "DGAFNetworkingLayout.h"
 #import "DGTool.h"
 
-@interface DGNetworkDetailInsetLabel : UILabel
+@interface DGAFNetworkingDetailInsetLabel : UILabel
 @end
 
-@implementation DGNetworkDetailInsetLabel
+@implementation DGAFNetworkingDetailInsetLabel
 
 - (CGSize)intrinsicContentSize {
     CGSize size = [super intrinsicContentSize];
@@ -24,10 +24,10 @@
 
 @end
 
-@interface DGNetworkDetailViewController ()
+@interface DGAFNetworkingDetailViewController ()
 
-@property (nonatomic, strong) DGNetworkRecord *record;
-@property (nonatomic, strong) DGNetworkDetailInsetLabel *statusLabel;
+@property (nonatomic, strong) DGAFNetworkingRecord *record;
+@property (nonatomic, strong) DGAFNetworkingDetailInsetLabel *statusLabel;
 @property (nonatomic, strong) UILabel *methodLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
@@ -39,9 +39,9 @@
 
 @end
 
-@implementation DGNetworkDetailViewController
+@implementation DGAFNetworkingDetailViewController
 
-- (instancetype)initWithRecord:(DGNetworkRecord *)record {
+- (instancetype)initWithRecord:(DGAFNetworkingRecord *)record {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _record = record;
@@ -57,7 +57,7 @@
     [self setupUI];
     [self reloadContent];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadContent) name:DGNetworkRecordsDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadContent) name:DGAFNetworkingRecordsDidChangeNotification object:nil];
 }
 
 - (void)setupUI {
@@ -65,13 +65,13 @@
     scrollView.alwaysBounceVertical = YES;
     scrollView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:scrollView];
-    DGNetworkPinEdges(scrollView, self.view, UIEdgeInsetsZero);
+    DGAFNetworkingPinEdges(scrollView, self.view, UIEdgeInsetsZero);
 
     UIView *contentView = [[UIView alloc] init];
     [scrollView addSubview:contentView];
-    DGNetworkPinEdges(contentView, scrollView, UIEdgeInsetsZero);
+    DGAFNetworkingPinEdges(contentView, scrollView, UIEdgeInsetsZero);
     [NSLayoutConstraint activateConstraints:@[
-        DGNetworkConstraint(contentView, NSLayoutAttributeWidth, NSLayoutRelationEqual, scrollView, NSLayoutAttributeWidth, 0),
+        DGAFNetworkingConstraint(contentView, NSLayoutAttributeWidth, NSLayoutRelationEqual, scrollView, NSLayoutAttributeWidth, 0),
     ]];
 
     UIView *cardView = [[UIView alloc] init];
@@ -79,9 +79,9 @@
     cardView.layer.cornerRadius = 16;
     cardView.layer.masksToBounds = YES;
     [contentView addSubview:cardView];
-    DGNetworkPinEdges(cardView, contentView, UIEdgeInsetsMake(6, 12, 12, 12));
+    DGAFNetworkingPinEdges(cardView, contentView, UIEdgeInsetsMake(6, 12, 12, 12));
 
-    DGNetworkDetailInsetLabel *statusLabel = [[DGNetworkDetailInsetLabel alloc] init];
+    DGAFNetworkingDetailInsetLabel *statusLabel = [[DGAFNetworkingDetailInsetLabel alloc] init];
     statusLabel.font = [UIFont boldSystemFontOfSize:12];
     statusLabel.textColor = [UIColor whiteColor];
     statusLabel.textAlignment = NSTextAlignmentCenter;
@@ -134,39 +134,39 @@
     ];
     for (UILabel *label in labels) {
         [cardView addSubview:label];
-        DGNetworkPinHorizontal(label, cardView, 14);
+        DGAFNetworkingPinHorizontal(label, cardView, 14);
     }
 
-    DGNetworkDisableAutoresizing(statusLabel);
-    DGNetworkDisableAutoresizing(methodLabel);
-    DGNetworkDisableAutoresizing(durationLabel);
-    DGNetworkDisableAutoresizing(timeLabel);
+    DGAFNetworkingDisableAutoresizing(statusLabel);
+    DGAFNetworkingDisableAutoresizing(methodLabel);
+    DGAFNetworkingDisableAutoresizing(durationLabel);
+    DGAFNetworkingDisableAutoresizing(timeLabel);
 
     [NSLayoutConstraint activateConstraints:@[
-        DGNetworkConstraint(statusLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, cardView, NSLayoutAttributeTop, 14),
-        DGNetworkConstraint(statusLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
+        DGAFNetworkingConstraint(statusLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, cardView, NSLayoutAttributeTop, 14),
+        DGAFNetworkingConstraint(statusLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
 
-        DGNetworkConstraint(methodLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeRight, 8),
-        DGNetworkConstraint(methodLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
+        DGAFNetworkingConstraint(methodLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeRight, 8),
+        DGAFNetworkingConstraint(methodLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
 
-        DGNetworkConstraint(durationLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, methodLabel, NSLayoutAttributeRight, 8),
-        DGNetworkConstraint(durationLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
-        DGNetworkConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationGreaterThanOrEqual, durationLabel, NSLayoutAttributeRight, 14),
+        DGAFNetworkingConstraint(durationLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, methodLabel, NSLayoutAttributeRight, 8),
+        DGAFNetworkingConstraint(durationLabel, NSLayoutAttributeCenterY, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeCenterY, 0),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationGreaterThanOrEqual, durationLabel, NSLayoutAttributeRight, 14),
 
-        DGNetworkConstraint(timeLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeBottom, 8),
-        DGNetworkConstraint(timeLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
-        DGNetworkConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeRight, 14),
+        DGAFNetworkingConstraint(timeLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, statusLabel, NSLayoutAttributeBottom, 8),
+        DGAFNetworkingConstraint(timeLabel, NSLayoutAttributeLeft, NSLayoutRelationEqual, cardView, NSLayoutAttributeLeft, 14),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeRight, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeRight, 14),
 
-        DGNetworkConstraint(self.uriLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeBottom, 12),
-        DGNetworkConstraint(headersTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.uriLabel, NSLayoutAttributeBottom, 10),
-        DGNetworkConstraint(self.headersLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, headersTitleLabel, NSLayoutAttributeBottom, 4),
-        DGNetworkConstraint(bodyTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.headersLabel, NSLayoutAttributeBottom, 10),
-        DGNetworkConstraint(self.bodyLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, bodyTitleLabel, NSLayoutAttributeBottom, 4),
-        DGNetworkConstraint(responseHeadersTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.bodyLabel, NSLayoutAttributeBottom, 10),
-        DGNetworkConstraint(self.responseHeadersLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, responseHeadersTitleLabel, NSLayoutAttributeBottom, 4),
-        DGNetworkConstraint(responseTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.responseHeadersLabel, NSLayoutAttributeBottom, 10),
-        DGNetworkConstraint(self.responseLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, responseTitleLabel, NSLayoutAttributeBottom, 4),
-        DGNetworkConstraint(cardView, NSLayoutAttributeBottom, NSLayoutRelationEqual, self.responseLabel, NSLayoutAttributeBottom, 14),
+        DGAFNetworkingConstraint(self.uriLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, timeLabel, NSLayoutAttributeBottom, 12),
+        DGAFNetworkingConstraint(headersTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.uriLabel, NSLayoutAttributeBottom, 10),
+        DGAFNetworkingConstraint(self.headersLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, headersTitleLabel, NSLayoutAttributeBottom, 4),
+        DGAFNetworkingConstraint(bodyTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.headersLabel, NSLayoutAttributeBottom, 10),
+        DGAFNetworkingConstraint(self.bodyLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, bodyTitleLabel, NSLayoutAttributeBottom, 4),
+        DGAFNetworkingConstraint(responseHeadersTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.bodyLabel, NSLayoutAttributeBottom, 10),
+        DGAFNetworkingConstraint(self.responseHeadersLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, responseHeadersTitleLabel, NSLayoutAttributeBottom, 4),
+        DGAFNetworkingConstraint(responseTitleLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, self.responseHeadersLabel, NSLayoutAttributeBottom, 10),
+        DGAFNetworkingConstraint(self.responseLabel, NSLayoutAttributeTop, NSLayoutRelationEqual, responseTitleLabel, NSLayoutAttributeBottom, 4),
+        DGAFNetworkingConstraint(cardView, NSLayoutAttributeBottom, NSLayoutRelationEqual, self.responseLabel, NSLayoutAttributeBottom, 14),
     ]];
 }
 
@@ -187,7 +187,7 @@
 }
 
 - (void)reloadContent {
-    DGNetworkRecord *record = self.record;
+    DGAFNetworkingRecord *record = self.record;
     if (!record) {
         return;
     }

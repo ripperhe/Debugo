@@ -17,7 +17,8 @@
 #import "DGTouchPlugin.h"
 #import "DGColorPlugin.h"
 #import "DGPodPlugin.h"
-#import "DGNetworkPlugin.h"
+#import "DGAFNetworkingPlugin.h"
+#import "DGAlamofirePlugin.h"
 #import "DGLogPlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -28,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addCustomPlugin:(Class<DGPluginProtocol>)plugin;
 
 /// 将工具放到 tabBar 上；默认是 DGActionPlugin
-/// 目前支持 DGActionPlugin DGFilePlugin DGAppInfoPlugin DGAccountPlugin DGColorPlugin DGPodPlugin DGNetworkPlugin
+/// 目前支持 DGActionPlugin DGFilePlugin DGAppInfoPlugin DGAccountPlugin DGColorPlugin DGPodPlugin DGAFNetworkingPlugin DGAlamofirePlugin
 /// 以及实现了 pluginViewController 的自定义工具
 - (void)putPluginsToTabBar:(nullable NSArray<Class<DGPluginProtocol>> *)plugins;
 

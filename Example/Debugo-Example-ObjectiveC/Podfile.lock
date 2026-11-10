@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.12.2)
   - Debugo (0.4.0):
     - Debugo/Core (= 0.4.0)
   - Debugo/Core (0.4.0):
@@ -27,11 +28,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
+  - Alamofire (~> 5.10)
   - Debugo (from `../..`)
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - Alamofire
     - FMDB
 
 EXTERNAL SOURCES:
@@ -40,9 +43,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
-  Debugo: ced751fb83d698b336787260af2216a13a3852ce
+  Alamofire: c5f37d8f438dc1d7fd3ff767f2f80fd01ca381d7
+  Debugo: 235394d539f06bb4d0ff012a17c375f29a9538bd
   FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
 
-PODFILE CHECKSUM: 653d306e9e7347d790f0571633434a2f4a6a3ffc
+PODFILE CHECKSUM: 33dc053e35d8279c05fa5b6fc27c9df284a48f56
 
 COCOAPODS: 1.17.0

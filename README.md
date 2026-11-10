@@ -29,9 +29,12 @@ Debugo 是一款使用 Objective-C 编写的 iOS 应用内调试工具。通过�
 	* 查看 Bundle 信息
 	* 查看设备信息
 	* 查看编译信息（[需配置脚本 🚀](https://github.com/ripperhe/Debugo/blob/master/docs/build-info.md)）
-* 网络请求
+* AFNetworking 请求
 	* 监听显式传入的 `AFURLSessionManager`，查看请求地址、请求头、请求体、响应及耗时
 	* 支持配置列表展示模块，详情页保留完整模块
+* Alamofire 请求
+	* 监听显式传入的 `Alamofire.Session`，列表与 AFNetworking 插件独立，互不混入
+	* Debugo 不把 Alamofire 作为硬依赖；将 `Debugo/Optional/Alamofire/DGAlamofireSessionHook.swift` 加入 App Target 后即可拦截
 * Log 日志
 	* 通过 `DGLogTypeModel` 接入业务日志，在独立悬浮窗口中查看
 	* 支持筛选、调整窗口高度、自定义 Cell 和点击回调
@@ -180,7 +183,7 @@ open YourApp.xcworkspace
     [configuration putPluginsToTabBar:@[
         DGActionPlugin.class,
         DGFilePlugin.class,
-        DGNetworkPlugin.class
+        DGAFNetworkingPlugin.class
     ]];
 }];
 #endif
@@ -216,20 +219,38 @@ open YourApp.xcworkspace
 
 默认指令执行后关闭调试面板，传入 `autoClose:NO` 可保持面板打开。
 
-### 监听网络请求
+### 监听 AFNetworking 请求
 
 将业务实际使用的 Manager 传给插件，在创建请求前注册：
 
 ```objectivec
 #if DebugoCanBeEnabled
-[DGNetworkPlugin monitorSessionManager:self.sessionManager];
-DGNetworkPlugin.listModules = DGNetworkListModuleURI
-                            | DGNetworkListModuleResponseHeaders
-                            | DGNetworkListModuleResponseBody;
+[DGAFNetworkingPlugin monitorSessionManager:self.sessionManager];
+DGAFNetworkingPlugin.listModules = DGAFNetworkingListModuleURI
+                            | DGAFNetworkingListModuleResponseHeaders
+                            | DGAFNetworkingListModuleResponseBody;
 #endif
 ```
 
-`self.sessionManager` 应为业务持有的 `AFURLSessionManager` 或其子类实例，例如 `AFHTTPSessionManager`。插件弱引用 Manager，仅记录已注册实例发出的请求。列表默认展示所有模块，`listModules` 不影响详情页。
+`self.sessionManager` 应为业务持有的 `AFURLSessionManager` 或其子类实例，例如 `AFHTTPSessionManager`。插件弱引用 Manager，仅记录已注册实例发出的请求，并显示在「AFNetworking请求」页。列表默认展示所有模块，`listModules` 不影响详情页。
+
+### 监听 Alamofire 请求
+
+Debugo 不依赖 Alamofire。先把仓库中的 [`Debugo/Optional/Alamofire/DGAlamofireSessionHook.swift`](Debugo/Optional/Alamofire/DGAlamofireSessionHook.swift) 加入 App Target（需已集成 Alamofire 5），再把业务实际使用的 `Session` 传给插件：
+
+```objectivec
+#if DebugoCanBeEnabled
+[DGAlamofirePlugin monitorSession:self.session];
+#endif
+```
+
+```swift
+#if canImport(Debugo)
+DGAlamofirePlugin.monitorSession(session)
+#endif
+```
+
+插件只弱引用该 `Session`，仅记录它发出的请求，并显示在独立的「Alamofire请求」页。默认创建的 `Session` 已包含 `AlamofireNotifications`，不必为了接入而重建 Session。若你在自定义 `eventMonitors` 时去掉了默认项，请保留 `AlamofireNotifications()`，或同时加入 `DGAlamofireEventMonitor()`。
 
 ### 接入业务日志
 
@@ -362,7 +383,7 @@ open Debugo-Example-ObjectiveC.xcworkspace
 | 操作 | 查看效果 |
 | --- | --- |
 | 首页点击「写入一条 Log」 | 每次添加一条含序号、消息和时间的日志；点击悬浮球，在工具总览打开「Log日志」查看，也可先打开窗口再写入 |
-| 首页点击「发送一条请求」 | 使用已注册的 `AFHTTPSessionManager` 请求 `https://httpbin.org/get`；在「网络请求」中查看地址、响应头和响应体，点击记录查看详情；请求需要联网 |
+| 首页点击「发送一条请求」 | 使用已注册的 `AFHTTPSessionManager` 请求 `https://httpbin.org/get`；在「AFNetworking请求」中查看地址、响应头和响应体，点击记录查看详情；请求需要联网 |
 | 首页进入测试登录页 | 手动测试登录后缓存账号；通过快速登录工具选择账号，触发 Example 配置的登录回调 |
 | 打开文件工具 | 查看 Documents、Bundle、UserDefaults 捷径和数据库预览配置 |
 | 打开自定义工具 | 体验直接执行动作的插件，或打开「自定义工具2」页面切换开关 |

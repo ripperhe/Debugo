@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7E0000800000000000000E8 /* DGAlamofireSessionHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000700000000000000E7 /* DGAlamofireSessionHook.swift */; };
+		A7E0000A00000000000000EA /* DGExampleNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000900000000000000E9 /* DGExampleNetworkClient.swift */; };
+		475264224AA633A5A7EE6464 /* Pods_Debugo_Example_ObjectiveC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39314411BF17DF376628F853 /* Pods_Debugo_Example_ObjectiveC.framework */; };
 		A7E0000200000000000000E1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000100000000000000E2 /* SceneDelegate.m */; };
-		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
 		C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D3FD232E634500974DE8 /* CustomPlugin.m */; };
 		C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D400232E63D300974DE8 /* CustomPlugin2.m */; };
 		C901D404232E63F700974DE8 /* CustomPlugin2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D403232E63F700974DE8 /* CustomPlugin2ViewController.m */; };
@@ -25,10 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7E0000700000000000000E7 /* DGAlamofireSessionHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DGAlamofireSessionHook.swift; path = ../../../Debugo/Optional/Alamofire/DGAlamofireSessionHook.swift; sourceTree = "<group>"; };
+		A7E0000900000000000000E9 /* DGExampleNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGExampleNetworkClient.swift; sourceTree = "<group>"; };
 		06550910F6F176182E6D1EE5 /* Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig"; sourceTree = "<group>"; };
 		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
+		39314411BF17DF376628F853 /* Pods_Debugo_Example_ObjectiveC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debugo_Example_ObjectiveC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
-		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E0000100000000000000E1 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		A7E0000100000000000000E2 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		C901D3FC232E634500974DE8 /* CustomPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlugin.h; sourceTree = "<group>"; };
@@ -64,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */,
+				475264224AA633A5A7EE6464 /* Pods_Debugo_Example_ObjectiveC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +128,8 @@
 				A7E0000100000000000000E2 /* SceneDelegate.m */,
 				C9B45643221D02A60098644E /* ViewController.h */,
 				C9B45644221D02A60098644E /* ViewController.m */,
+				A7E0000900000000000000E9 /* DGExampleNetworkClient.swift */,
+				A7E0000700000000000000E7 /* DGAlamofireSessionHook.swift */,
 				C9B45658221D069B0098644E /* UIView+IB.h */,
 				C9B45657221D069B0098644E /* UIView+IB.m */,
 				C9B45656221D02B90098644E /* PrefixHeader.pch */,
@@ -160,7 +166,7 @@
 		FFF05105D6B17D3CEF96B84E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */,
+				39314411BF17DF376628F853 /* Pods_Debugo_Example_ObjectiveC.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -300,6 +306,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
+				A7E0000A00000000000000EA /* DGExampleNetworkClient.swift in Sources */,
+				A7E0000800000000000000E8 /* DGAlamofireSessionHook.swift in Sources */,
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
 				C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */,
 				C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */,
@@ -385,6 +393,8 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = ReleaseInhouse;
 		};
@@ -407,6 +417,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = ReleaseInhouse;
 		};
@@ -466,6 +478,8 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Debug;
 		};
@@ -519,6 +533,8 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Release;
 		};
@@ -529,7 +545,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PYJ3M9TJFN;
+				DEVELOPMENT_TEAM = 45H964TRL6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -541,6 +557,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Debug;
 		};
@@ -563,6 +581,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Release;
 		};
