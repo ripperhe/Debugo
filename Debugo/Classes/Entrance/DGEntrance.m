@@ -11,12 +11,15 @@
 #import "DGEntrance.h"
 #import "DGCommon.h"
 #import "DGBubble.h"
-#import "DGDebugWindow.h"
 
 @interface DGEntrance ()
 
 @property (nonatomic, weak) DGBubble *bubble;
 @property (nonatomic, strong) DGDebugWindow *debugWindow;
+
+@property (weak, nonatomic) CADisplayLink *link;
+@property (assign, nonatomic) NSTimeInterval lastTime;
+@property (assign, nonatomic) NSUInteger count;
 
 @end
 
@@ -48,11 +51,21 @@ static DGEntrance *_instance;
         return;
     }
     
-    DGBubble *bubble = [[DGBubble alloc] initWithFrame:CGRectMake(400, kDGScreenH - (320 + 55 + kDGBottomSafeMargin), 55, 55)
-                                                                       config:nil];
+    DGBubble *bubble = [[DGBubble alloc] initWithFrame:CGRectMake(0, 200, 60, 60) config:nil];
     bubble.name = @"Bubble";
-    [bubble.button setImage:[DGBundle imageNamed:@"icon_bubble"] forState:UIControlStateNormal];
+    //[bubble.button setImage:[DGBundle imageNamed:@"icon_bubble"] forState:UIControlStateNormal];
     [bubble.button setTintColor:[UIColor whiteColor]];
+    
+    CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick:)];
+    if (@available(iOS 15.0, *)) {
+        CGFloat preferred = UIScreen.mainScreen.maximumFramesPerSecond;
+        link.preferredFrameRateRange = CAFrameRateRangeMake(60, 120, preferred);
+    } else {
+        
+    }
+    [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    self.link = link;
+    
     dg_weakify(self)
     [bubble setClickBlock:^(DGBubble *bubble) {
         dg_strongify(self)
@@ -75,6 +88,30 @@ static DGEntrance *_instance;
     }];
     [bubble show];
     self.bubble = bubble;
+}
+
+/// 隐藏悬浮球
+- (void)hiddenBubble {
+    [self.bubble removeFromScreen];
+    [self.link invalidate];
+}
+
+- (void)tick:(CADisplayLink *)link {
+    if (self.lastTime == 0) {
+        self.lastTime = link.timestamp;
+        return;
+    }
+
+    self.count++;
+    NSTimeInterval delta = link.timestamp - self.lastTime;
+    if (delta < 1)
+        return;
+
+    self.lastTime = link.timestamp;
+    float fps = self.count / delta;
+    self.count = 0;
+
+    [self.bubble.button setTitle:[NSString stringWithFormat:@"%dFPS", (int)round(fps)] forState:UIControlStateNormal];
 }
 
 #pragma mark - debug view controller

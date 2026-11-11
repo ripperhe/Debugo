@@ -14,7 +14,7 @@
     _url = url;
     NSString *lowercaseString = url.lowercaseString;
     if ([lowercaseString hasPrefix:@"https://github.com/cocoapods/specs.git"] ||
-        [lowercaseString hasPrefix:@"https://cdn.cocoapods.org"]) {
+        [lowercaseString hasPrefix:@"https://cdn.cocoapods.org"] || [lowercaseString hasPrefix:@"trunk"]) {
         _isOfficial = YES;
     }else {
         _isOfficial = NO;

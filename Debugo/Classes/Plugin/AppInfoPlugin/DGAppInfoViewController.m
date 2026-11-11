@@ -105,6 +105,7 @@
         NSString *computerUUID = DGBuildInfo.shared.computerUUID?:defaultString;
         if (DGBuildInfo.shared.gitEnable) {
             NSString *gitBranch = DGBuildInfo.shared.gitBranch?:defaultString;
+            NSString *gitLastCommitMessage = DGBuildInfo.shared.gitLastCommitMessage?:defaultString;
             NSString *gitLastCommitAbbreviatedHash = DGBuildInfo.shared.gitLastCommitAbbreviatedHash?:defaultString;
             NSString *gitLastCommitUser = DGBuildInfo.shared.gitLastCommitUser?:defaultString;
             NSString *gitLastCommitTimestamp = DGBuildInfo.shared.gitLastCommitTimestamp;
@@ -119,6 +120,7 @@
                                    @"Computer User", computerUser,
                                    @"Computer UUID", computerUUID,
                                    @"Git Branch", gitBranch,
+                                   @"Git Last Commit Message", gitLastCommitMessage,
                                    @"Git Last Commit Hash", gitLastCommitAbbreviatedHash,
                                    @"Git Last Commit User", gitLastCommitUser,
                                    @"Git Last Commit Date", gitLastCommitTimestamp,

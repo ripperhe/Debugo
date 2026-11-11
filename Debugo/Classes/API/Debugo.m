@@ -49,7 +49,7 @@ static Debugo *_instance = nil;
 }
 
 + (NSString *)version {
-    return @"0.3.0";
+    return @"0.4.0";
 }
 
 + (BOOL)canBeEnabled {
@@ -58,6 +58,17 @@ static Debugo *_instance = nil;
 #else
     return NO;
 #endif
+}
+
+static NSComparisonResult (^_sortUserComparator)(id obj1, id obj2) = ^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+    return obj1 < obj2;
+};
++ (void)setSortUserComparator:(NSComparisonResult (^)(id _Nonnull, id _Nonnull))sortUserComparator {
+    _sortUserComparator = sortUserComparator;
+}
+
++ (NSComparisonResult (^)(id _Nonnull, id _Nonnull))sortUserComparator {
+    return _sortUserComparator;
 }
 
 #pragma mark -

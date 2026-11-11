@@ -17,6 +17,9 @@
 #import "DGTouchPlugin.h"
 #import "DGColorPlugin.h"
 #import "DGPodPlugin.h"
+#import "DGAFNetworkingPlugin.h"
+#import "DGAlamofirePlugin.h"
+#import "DGLogPlugin.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addCustomPlugin:(Class<DGPluginProtocol>)plugin;
 
 /// 将工具放到 tabBar 上；默认是 DGActionPlugin
-/// 目前支持 DGActionPlugin DGFilePlugin DGAppInfoPlugin DGAccountPlugin DGColorPlugin DGPodPlugin
+/// 目前支持 DGActionPlugin DGFilePlugin DGAppInfoPlugin DGAccountPlugin DGColorPlugin DGPodPlugin DGAFNetworkingPlugin DGAlamofirePlugin
 /// 以及实现了 pluginViewController 的自定义工具
 - (void)putPluginsToTabBar:(nullable NSArray<Class<DGPluginProtocol>> *)plugins;
 
@@ -44,6 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 配置CocoaPods
 - (void)setupPodPlugin:(void (^)(DGPodPluginConfiguration *podConfiguration))block;
+
+/// 配置 Log 日志。点击网格里的「Log日志」会打开悬浮日志窗口。
+- (void)setupLogPlugin:(void (^)(DGLogPluginConfiguration *logConfiguration))block;
 
 @end
 

@@ -33,8 +33,9 @@
 
 - (void)pushVersionViewController {
     NSURL *url = [NSURL URLWithString:@"https://github.com/ripperhe/Debugo/releases"];
-    [[UIApplication sharedApplication] openURL:url];
-    DGLog(@"\n%@", url.absoluteString);
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+        DGLog(@"\n%d", success);
+    }];
 }
 
 #pragma mark -

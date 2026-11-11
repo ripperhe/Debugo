@@ -8,6 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DGDebugWindow.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,8 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
+@property (nonatomic, strong, readonly) DGDebugWindow *debugWindow;
+
 /// 显示悬浮球
 - (void)showBubble;
+
+/// 隐藏悬浮球
+- (void)hiddenBubble;
 
 /// 关闭 debug window
 - (void)closeDebugWindow;

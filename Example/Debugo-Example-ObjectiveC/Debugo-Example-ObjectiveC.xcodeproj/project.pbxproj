@@ -3,43 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */; };
+		A7E0000800000000000000E8 /* DGAlamofireSessionHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000700000000000000E7 /* DGAlamofireSessionHook.swift */; };
+		A7E0000A00000000000000EA /* DGExampleNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000900000000000000E9 /* DGExampleNetworkClient.swift */; };
+		475264224AA633A5A7EE6464 /* Pods_Debugo_Example_ObjectiveC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39314411BF17DF376628F853 /* Pods_Debugo_Example_ObjectiveC.framework */; };
+		A7E0000200000000000000E1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E0000100000000000000E2 /* SceneDelegate.m */; };
 		C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D3FD232E634500974DE8 /* CustomPlugin.m */; };
 		C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D400232E63D300974DE8 /* CustomPlugin2.m */; };
 		C901D404232E63F700974DE8 /* CustomPlugin2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D403232E63F700974DE8 /* CustomPlugin2ViewController.m */; };
-		C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */; };
-		C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DE92324ED5F003D8984 /* UIView+Debugo.m */; };
-		C9034DED2324F0D5003D8984 /* DGPluginGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9034DEC2324F0D5003D8984 /* DGPluginGridViewController.m */; };
-		C915FC542361922200189E8D /* DGPodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C915FC532361922200189E8D /* DGPodModel.m */; };
-		C916194722A11CB1009FF2A3 /* DGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194622A11CB1009FF2A3 /* DGTool.m */; };
-		C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */; };
-		C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */; };
-		C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C916195222A13C14009FF2A3 /* DGFilePlugin.m */; };
-		C928D754233B64D20078202B /* DGStaticRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D74D233B64D10078202B /* DGStaticRow.m */; };
-		C928D755233B64D20078202B /* UIControl+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D74E233B64D10078202B /* UIControl+Debugo.m */; };
-		C928D756233B64D20078202B /* DGStaticSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D74F233B64D10078202B /* DGStaticSection.m */; };
-		C928D757233B64D20078202B /* DGStaticProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C928D753233B64D10078202B /* DGStaticProvider.m */; };
-		C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F8C79221FA1E00080C156 /* DGPathFetcher.m */; };
-		C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */; };
-		C93A25C4233C5F09008AEC18 /* DGColorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25C3233C5F09008AEC18 /* DGColorPlugin.m */; };
-		C93A25C7233C5F4F008AEC18 /* UIView+DGColorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25C6233C5F4F008AEC18 /* UIView+DGColorPlugin.m */; };
-		C93A25CA233C5FB7008AEC18 /* UIColor+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25C9233C5FB7008AEC18 /* UIColor+Debugo.m */; };
-		C93A25CD233C6107008AEC18 /* DGColorPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A25CC233C6107008AEC18 /* DGColorPluginViewController.m */; };
-		C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C948A492232E27BE0061772C /* DGDebugWindow.m */; };
 		C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C976851A221D9D8700D8E418 /* picooc.production.sqlite */; };
-		C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */; };
-		C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */; };
-		C9A2562D23628D7500E6B3FA /* DGSpecRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2562C23628D7500E6B3FA /* DGSpecRepoModel.m */; };
-		C9A256312362991D00E6B3FA /* DGPodPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A256302362991D00E6B3FA /* DGPodPlugin.m */; };
-		C9A25638236299F300E6B3FA /* DGPodPluginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */; };
-		C9A2563E2362A14600E6B3FA /* NSString+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */; };
-		C9A256452362E0AC00E6B3FA /* DGBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A256442362E0AC00E6B3FA /* DGBuildInfo.m */; };
-		C9A2564B2362FD8600E6B3FA /* DGPodPluginConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */; };
-		C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */; };
 		C9B45642221D02A60098644E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45641221D02A60098644E /* AppDelegate.m */; };
 		C9B45645221D02A60098644E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45644221D02A60098644E /* ViewController.m */; };
 		C9B45648221D02A60098644E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B45646221D02A60098644E /* Main.storyboard */; };
@@ -49,129 +24,24 @@
 		C9B45659221D069B0098644E /* UIView+IB.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45657221D069B0098644E /* UIView+IB.m */; };
 		C9B4565F221D29240098644E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4565B221D29230098644E /* LoginViewController.m */; };
 		C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4565C221D29230098644E /* LoginSuccessViewController.m */; };
-		C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45667221D2B460098644E /* DGConfiguration.m */; };
-		C9B456F8221D2B460098644E /* DGEntrance.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566A221D2B460098644E /* DGEntrance.m */; };
-		C9B456F9221D2B460098644E /* Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566D221D2B460098644E /* Debugo.m */; };
-		C9B456FA221D2B460098644E /* DGAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4566F221D2B460098644E /* DGAction.m */; };
-		C9B456FB221D2B460098644E /* DGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45670221D2B460098644E /* DGAccount.m */; };
-		C9B456FC221D2B460098644E /* DGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45676221D2B460098644E /* DGCache.m */; };
-		C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45680221D2B460098644E /* DGNavigationController.m */; };
-		C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45681221D2B460098644E /* DGDebugViewController.m */; };
-		C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45683221D2B460098644E /* DGActionSubViewController.m */; };
-		C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45684221D2B460098644E /* DGAccountListViewController.m */; };
-		C9B45703221D2B460098644E /* DGActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45686221D2B460098644E /* DGActionViewController.m */; };
-		C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45687221D2B460098644E /* DGAppInfoViewController.m */; };
-		C9B45706221D2B460098644E /* DGFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568C221D2B460098644E /* DGFileViewController.m */; };
-		C9B45707221D2B460098644E /* DGAccountBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4568F221D2B460098644E /* DGAccountBackViewController.m */; };
-		C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45694221D2B460098644E /* NSObject+Debugo.m */; };
-		C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B45697221D2B460098644E /* NSDate+Debugo.m */; };
-		C9B4570A221D2B460098644E /* DGBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B4569B221D2B460098644E /* DGBundle.m */; };
-		C9B4570D221D2B460098644E /* DGDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456A8221D2B460098644E /* DGDevice.m */; };
-		C9B4570E221D2B460098644E /* DGPlister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AB221D2B460098644E /* DGPlister.m */; };
-		C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456AE221D2B460098644E /* DGOrderedDictionary.m */; };
-		C9B45710221D2B460098644E /* Debugo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B456B0221D2B460098644E /* Debugo.bundle */; };
-		C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B3221D2B460098644E /* DGApplePlugin.m */; };
-		C9B45712221D2B460098644E /* DGBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B5221D2B460098644E /* DGBubble.m */; };
-		C9B45713221D2B460098644E /* DGWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456B8221D2B460098644E /* DGWindow.m */; };
-		C9B45717221D2B460098644E /* DGFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C0221D2B460098644E /* DGFileParser.m */; };
-		C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C2221D2B460098644E /* DGFileInfoViewController.m */; };
-		C9B4571A221D2B460098644E /* DGFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C3221D2B460098644E /* DGFile.m */; };
-		C9B4571B221D2B460098644E /* DGFolderPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456C5221D2B460098644E /* DGFolderPreviewViewController.m */; };
-		C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */; };
-		C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */; };
-		C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D1221D2B460098644E /* DGDatabaseOperation.m */; };
-		C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D2221D2B460098644E /* DGDatabaseContentTableViewCell.m */; };
-		C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D3221D2B460098644E /* DGDatabaseGridView.m */; };
-		C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */; };
-		C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */; };
-		C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D6221D2B460098644E /* DGDatabasePreviewConfiguration.m */; };
-		C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */; };
-		C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */; };
-		C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */; };
-		C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */; };
-		C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E5221D2B460098644E /* DGPreviewManager.m */; };
-		C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */; };
-		C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456EE221D2B460098644E /* DGTouchFingerView.m */; };
-		C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F0221D2B460098644E /* DGTouchWindow.m */; };
-		C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B456F3221D2B460098644E /* DGTouchPlugin.m */; };
-		C9B96CCA2369385C00BE3FE4 /* DGPluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B96CC92369385C00BE3FE4 /* DGPluginManager.m */; };
-		C9BB4269232CB2AE00095F7E /* DGFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */; };
-		C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */; };
-		C9C210A822A110DE00D5EEDE /* DGAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */; };
-		C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */; };
-		C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */; };
-		C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E38B432285161500D46953 /* NSFileManager+Debugo.m */; };
-		C9F92C6C2326637200B8F882 /* DGPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F92C6B2326637200B8F882 /* DGPlugin.m */; };
-		C9F92C6F2326672A00B8F882 /* DGAppInfoPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F92C6E2326672A00B8F882 /* DGAppInfoPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7E0000700000000000000E7 /* DGAlamofireSessionHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DGAlamofireSessionHook.swift; path = ../../../Debugo/Optional/Alamofire/DGAlamofireSessionHook.swift; sourceTree = "<group>"; };
+		A7E0000900000000000000E9 /* DGExampleNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGExampleNetworkClient.swift; sourceTree = "<group>"; };
+		06550910F6F176182E6D1EE5 /* Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig"; sourceTree = "<group>"; };
 		21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
+		39314411BF17DF376628F853 /* Pods_Debugo_Example_ObjectiveC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debugo_Example_ObjectiveC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debugo-Example-ObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
-		926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Debugo-Example-ObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E0000100000000000000E1 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		A7E0000100000000000000E2 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		C901D3FC232E634500974DE8 /* CustomPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlugin.h; sourceTree = "<group>"; };
 		C901D3FD232E634500974DE8 /* CustomPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlugin.m; sourceTree = "<group>"; };
 		C901D3FF232E63D300974DE8 /* CustomPlugin2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlugin2.h; sourceTree = "<group>"; };
 		C901D400232E63D300974DE8 /* CustomPlugin2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlugin2.m; sourceTree = "<group>"; };
 		C901D402232E63F700974DE8 /* CustomPlugin2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlugin2ViewController.h; sourceTree = "<group>"; };
 		C901D403232E63F700974DE8 /* CustomPlugin2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlugin2ViewController.m; sourceTree = "<group>"; };
-		C9034DE52324E06D003D8984 /* DGCommonGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGCommonGridViewController.h; sourceTree = "<group>"; };
-		C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGCommonGridViewController.m; sourceTree = "<group>"; };
-		C9034DE82324ED5F003D8984 /* UIView+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Debugo.h"; sourceTree = "<group>"; };
-		C9034DE92324ED5F003D8984 /* UIView+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugo.m"; sourceTree = "<group>"; };
-		C9034DEB2324F0D5003D8984 /* DGPluginGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPluginGridViewController.h; sourceTree = "<group>"; };
-		C9034DEC2324F0D5003D8984 /* DGPluginGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPluginGridViewController.m; sourceTree = "<group>"; };
-		C915FC522361922200189E8D /* DGPodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodModel.h; sourceTree = "<group>"; };
-		C915FC532361922200189E8D /* DGPodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodModel.m; sourceTree = "<group>"; };
-		C916194522A11CB1009FF2A3 /* DGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTool.h; sourceTree = "<group>"; };
-		C916194622A11CB1009FF2A3 /* DGTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTool.m; sourceTree = "<group>"; };
-		C916194822A1222C009FF2A3 /* DGAccountPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountPluginConfiguration.h; sourceTree = "<group>"; };
-		C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountPluginConfiguration.m; sourceTree = "<group>"; };
-		C916194C22A12770009FF2A3 /* DGFilePluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePluginConfiguration.h; sourceTree = "<group>"; };
-		C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePluginConfiguration.m; sourceTree = "<group>"; };
-		C916195122A13C14009FF2A3 /* DGFilePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePlugin.h; sourceTree = "<group>"; };
-		C916195222A13C14009FF2A3 /* DGFilePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePlugin.m; sourceTree = "<group>"; };
-		C928D74C233B64D10078202B /* DGStaticSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStaticSection.h; sourceTree = "<group>"; };
-		C928D74D233B64D10078202B /* DGStaticRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStaticRow.m; sourceTree = "<group>"; };
-		C928D74E233B64D10078202B /* UIControl+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Debugo.m"; sourceTree = "<group>"; };
-		C928D74F233B64D10078202B /* DGStaticSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStaticSection.m; sourceTree = "<group>"; };
-		C928D750233B64D10078202B /* DGStaticProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStaticProvider.h; sourceTree = "<group>"; };
-		C928D751233B64D10078202B /* DGStaticRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStaticRow.h; sourceTree = "<group>"; };
-		C928D752233B64D10078202B /* UIControl+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Debugo.h"; sourceTree = "<group>"; };
-		C928D753233B64D10078202B /* DGStaticProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStaticProvider.m; sourceTree = "<group>"; };
-		C92F8C78221FA1E00080C156 /* DGPathFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPathFetcher.h; sourceTree = "<group>"; };
-		C92F8C79221FA1E00080C156 /* DGPathFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPathFetcher.m; sourceTree = "<group>"; };
-		C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFilePreviewConfiguration.h; sourceTree = "<group>"; };
-		C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFilePreviewConfiguration.m; sourceTree = "<group>"; };
-		C93A25C2233C5F09008AEC18 /* DGColorPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGColorPlugin.h; sourceTree = "<group>"; };
-		C93A25C3233C5F09008AEC18 /* DGColorPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGColorPlugin.m; sourceTree = "<group>"; };
-		C93A25C5233C5F4F008AEC18 /* UIView+DGColorPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+DGColorPlugin.h"; sourceTree = "<group>"; };
-		C93A25C6233C5F4F008AEC18 /* UIView+DGColorPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+DGColorPlugin.m"; sourceTree = "<group>"; };
-		C93A25C8233C5FB7008AEC18 /* UIColor+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Debugo.h"; sourceTree = "<group>"; };
-		C93A25C9233C5FB7008AEC18 /* UIColor+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Debugo.m"; sourceTree = "<group>"; };
-		C93A25CB233C6107008AEC18 /* DGColorPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGColorPluginViewController.h; sourceTree = "<group>"; };
-		C93A25CC233C6107008AEC18 /* DGColorPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGColorPluginViewController.m; sourceTree = "<group>"; };
-		C948A491232E27BE0061772C /* DGDebugWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGDebugWindow.h; sourceTree = "<group>"; };
-		C948A492232E27BE0061772C /* DGDebugWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGDebugWindow.m; sourceTree = "<group>"; };
 		C976851A221D9D8700D8E418 /* picooc.production.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = picooc.production.sqlite; sourceTree = "<group>"; };
-		C994DAB5232E1DD3004BA540 /* DGActionPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionPluginConfiguration.h; sourceTree = "<group>"; };
-		C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPluginConfiguration.m; sourceTree = "<group>"; };
-		C9A09F1B232A3ACD00C7983F /* DGTouchPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTouchPluginViewController.h; sourceTree = "<group>"; };
-		C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGTouchPluginViewController.m; sourceTree = "<group>"; };
-		C9A2562B23628D7500E6B3FA /* DGSpecRepoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGSpecRepoModel.h; sourceTree = "<group>"; };
-		C9A2562C23628D7500E6B3FA /* DGSpecRepoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGSpecRepoModel.m; sourceTree = "<group>"; };
-		C9A2562F2362991D00E6B3FA /* DGPodPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodPlugin.h; sourceTree = "<group>"; };
-		C9A256302362991D00E6B3FA /* DGPodPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodPlugin.m; sourceTree = "<group>"; };
-		C9A25636236299F300E6B3FA /* DGPodPluginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodPluginViewController.h; sourceTree = "<group>"; };
-		C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodPluginViewController.m; sourceTree = "<group>"; };
-		C9A2563C2362A14600E6B3FA /* NSString+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Debugo.h"; sourceTree = "<group>"; };
-		C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Debugo.m"; sourceTree = "<group>"; };
-		C9A256432362E0AC00E6B3FA /* DGBuildInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGBuildInfo.h; sourceTree = "<group>"; };
-		C9A256442362E0AC00E6B3FA /* DGBuildInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGBuildInfo.m; sourceTree = "<group>"; };
-		C9A256492362FD8600E6B3FA /* DGPodPluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPodPluginConfiguration.h; sourceTree = "<group>"; };
-		C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPodPluginConfiguration.m; sourceTree = "<group>"; };
-		C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAnimationDelegate.h; sourceTree = "<group>"; };
-		C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAnimationDelegate.m; sourceTree = "<group>"; };
 		C9B4563D221D02A60098644E /* Debugo-Example-ObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debugo-Example-ObjectiveC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B45640221D02A60098644E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9B45641221D02A60098644E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -189,117 +59,8 @@
 		C9B4565C221D29230098644E /* LoginSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSuccessViewController.m; sourceTree = "<group>"; };
 		C9B4565D221D29230098644E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C9B4565E221D29230098644E /* LoginSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSuccessViewController.h; sourceTree = "<group>"; };
-		C9B45666221D2B460098644E /* DGEntrance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEntrance.h; sourceTree = "<group>"; };
-		C9B45667221D2B460098644E /* DGConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGConfiguration.m; sourceTree = "<group>"; };
-		C9B45669221D2B460098644E /* DGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGConfiguration.h; sourceTree = "<group>"; };
-		C9B4566A221D2B460098644E /* DGEntrance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntrance.m; sourceTree = "<group>"; };
-		C9B4566B221D2B460098644E /* DebugoEnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugoEnable.h; sourceTree = "<group>"; };
-		C9B4566D221D2B460098644E /* Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugo.m; sourceTree = "<group>"; };
-		C9B4566F221D2B460098644E /* DGAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAction.m; sourceTree = "<group>"; };
-		C9B45670221D2B460098644E /* DGAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccount.m; sourceTree = "<group>"; };
-		C9B45671221D2B460098644E /* DGAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAction.h; sourceTree = "<group>"; };
-		C9B45672221D2B460098644E /* DGAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccount.h; sourceTree = "<group>"; };
-		C9B45673221D2B460098644E /* Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugo.h; sourceTree = "<group>"; };
-		C9B45676221D2B460098644E /* DGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCache.m; sourceTree = "<group>"; };
-		C9B45677221D2B460098644E /* DGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCache.h; sourceTree = "<group>"; };
-		C9B4567C221D2B460098644E /* DGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNavigationController.h; sourceTree = "<group>"; };
-		C9B4567D221D2B460098644E /* DGAccountBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountBackViewController.h; sourceTree = "<group>"; };
-		C9B4567E221D2B460098644E /* DGDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDebugViewController.h; sourceTree = "<group>"; };
-		C9B45680221D2B460098644E /* DGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNavigationController.m; sourceTree = "<group>"; };
-		C9B45681221D2B460098644E /* DGDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDebugViewController.m; sourceTree = "<group>"; };
-		C9B45683221D2B460098644E /* DGActionSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionSubViewController.m; sourceTree = "<group>"; };
-		C9B45684221D2B460098644E /* DGAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountListViewController.m; sourceTree = "<group>"; };
-		C9B45686221D2B460098644E /* DGActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionViewController.m; sourceTree = "<group>"; };
-		C9B45687221D2B460098644E /* DGAppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppInfoViewController.m; sourceTree = "<group>"; };
-		C9B45688221D2B460098644E /* DGFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileViewController.h; sourceTree = "<group>"; };
-		C9B4568A221D2B460098644E /* DGAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAccountListViewController.h; sourceTree = "<group>"; };
-		C9B4568B221D2B460098644E /* DGActionSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionSubViewController.h; sourceTree = "<group>"; };
-		C9B4568C221D2B460098644E /* DGFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileViewController.m; sourceTree = "<group>"; };
-		C9B4568D221D2B460098644E /* DGAppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppInfoViewController.h; sourceTree = "<group>"; };
-		C9B4568E221D2B460098644E /* DGActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionViewController.h; sourceTree = "<group>"; };
-		C9B4568F221D2B460098644E /* DGAccountBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAccountBackViewController.m; sourceTree = "<group>"; };
-		C9B45694221D2B460098644E /* NSObject+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Debugo.m"; sourceTree = "<group>"; };
-		C9B45695221D2B460098644E /* NSDate+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Debugo.h"; sourceTree = "<group>"; };
-		C9B45696221D2B460098644E /* NSObject+Debugo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Debugo.h"; sourceTree = "<group>"; };
-		C9B45697221D2B460098644E /* NSDate+Debugo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Debugo.m"; sourceTree = "<group>"; };
-		C9B45698221D2B460098644E /* DGCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCommon.h; sourceTree = "<group>"; };
-		C9B4569A221D2B460098644E /* DGBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBundle.h; sourceTree = "<group>"; };
-		C9B4569B221D2B460098644E /* DGBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBundle.m; sourceTree = "<group>"; };
-		C9B456A7221D2B460098644E /* DGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDevice.h; sourceTree = "<group>"; };
-		C9B456A8221D2B460098644E /* DGDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDevice.m; sourceTree = "<group>"; };
-		C9B456AA221D2B460098644E /* DGPlister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPlister.h; sourceTree = "<group>"; };
-		C9B456AB221D2B460098644E /* DGPlister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPlister.m; sourceTree = "<group>"; };
-		C9B456AD221D2B460098644E /* DGOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOrderedDictionary.h; sourceTree = "<group>"; };
-		C9B456AE221D2B460098644E /* DGOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOrderedDictionary.m; sourceTree = "<group>"; };
-		C9B456B0221D2B460098644E /* Debugo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Debugo.bundle; sourceTree = "<group>"; };
-		C9B456B2221D2B460098644E /* DGApplePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGApplePlugin.h; sourceTree = "<group>"; };
-		C9B456B3221D2B460098644E /* DGApplePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGApplePlugin.m; sourceTree = "<group>"; };
-		C9B456B5221D2B460098644E /* DGBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBubble.m; sourceTree = "<group>"; };
-		C9B456B8221D2B460098644E /* DGWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWindow.m; sourceTree = "<group>"; };
-		C9B456BB221D2B460098644E /* DGBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGBubble.h; sourceTree = "<group>"; };
-		C9B456BC221D2B460098644E /* DGWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWindow.h; sourceTree = "<group>"; };
-		C9B456C0221D2B460098644E /* DGFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileParser.m; sourceTree = "<group>"; };
-		C9B456C2221D2B460098644E /* DGFileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFileInfoViewController.m; sourceTree = "<group>"; };
-		C9B456C3221D2B460098644E /* DGFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFile.m; sourceTree = "<group>"; };
-		C9B456C4221D2B460098644E /* DGDefaultPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDefaultPreviewViewController.h; sourceTree = "<group>"; };
-		C9B456C5221D2B460098644E /* DGFolderPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFolderPreviewViewController.m; sourceTree = "<group>"; };
-		C9B456C6221D2B460098644E /* DGDatabasePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabasePreviewViewController.h; sourceTree = "<group>"; };
-		C9B456C7221D2B460098644E /* DGPreviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPreviewManager.h; sourceTree = "<group>"; };
-		C9B456C8221D2B460098644E /* DGWebviewPreviewViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWebviewPreviewViewContoller.h; sourceTree = "<group>"; };
-		C9B456C9221D2B460098644E /* DGFileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileInfoViewController.h; sourceTree = "<group>"; };
-		C9B456CB221D2B460098644E /* DGDatabaseTableContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableContentViewController.h; sourceTree = "<group>"; };
-		C9B456CC221D2B460098644E /* DGDatabaseTableInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableInfoViewController.h; sourceTree = "<group>"; };
-		C9B456CD221D2B460098644E /* DGDatabasePreviewConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabasePreviewConfiguration.h; sourceTree = "<group>"; };
-		C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseContentParser.h; sourceTree = "<group>"; };
-		C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableInfo.m; sourceTree = "<group>"; };
-		C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseLeftTableViewCell.m; sourceTree = "<group>"; };
-		C9B456D1221D2B460098644E /* DGDatabaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseOperation.m; sourceTree = "<group>"; };
-		C9B456D2221D2B460098644E /* DGDatabaseContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseContentTableViewCell.m; sourceTree = "<group>"; };
-		C9B456D3221D2B460098644E /* DGDatabaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseGridView.m; sourceTree = "<group>"; };
-		C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseColumnInfo.m; sourceTree = "<group>"; };
-		C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableInfoViewController.m; sourceTree = "<group>"; };
-		C9B456D6221D2B460098644E /* DGDatabasePreviewConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabasePreviewConfiguration.m; sourceTree = "<group>"; };
-		C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseTableContentViewController.m; sourceTree = "<group>"; };
-		C9B456D8221D2B460098644E /* DGDatabaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseOperation.h; sourceTree = "<group>"; };
-		C9B456D9221D2B460098644E /* DGDatabaseLeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseLeftTableViewCell.h; sourceTree = "<group>"; };
-		C9B456DA221D2B460098644E /* DGDatabaseTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseTableInfo.h; sourceTree = "<group>"; };
-		C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabaseContentParser.m; sourceTree = "<group>"; };
-		C9B456DC221D2B460098644E /* DGDatabaseContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseContentTableViewCell.h; sourceTree = "<group>"; };
-		C9B456DD221D2B460098644E /* DGDatabaseColumnInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseColumnInfo.h; sourceTree = "<group>"; };
-		C9B456DE221D2B460098644E /* DGDatabaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDatabaseGridView.h; sourceTree = "<group>"; };
-		C9B456E0221D2B460098644E /* DGFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFileParser.h; sourceTree = "<group>"; };
-		C9B456E1221D2B460098644E /* DGFolderPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFolderPreviewViewController.h; sourceTree = "<group>"; };
-		C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDefaultPreviewViewController.m; sourceTree = "<group>"; };
-		C9B456E3221D2B460098644E /* DGFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFile.h; sourceTree = "<group>"; };
-		C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWebviewPreviewViewContoller.m; sourceTree = "<group>"; };
-		C9B456E5221D2B460098644E /* DGPreviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPreviewManager.m; sourceTree = "<group>"; };
-		C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDatabasePreviewViewController.m; sourceTree = "<group>"; };
-		C9B456EE221D2B460098644E /* DGTouchFingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchFingerView.m; sourceTree = "<group>"; };
-		C9B456EF221D2B460098644E /* DGTouchPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchPlugin.h; sourceTree = "<group>"; };
-		C9B456F0221D2B460098644E /* DGTouchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchWindow.m; sourceTree = "<group>"; };
-		C9B456F3221D2B460098644E /* DGTouchPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTouchPlugin.m; sourceTree = "<group>"; };
-		C9B456F4221D2B460098644E /* DGTouchFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchFingerView.h; sourceTree = "<group>"; };
-		C9B456F6221D2B460098644E /* DGTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTouchWindow.h; sourceTree = "<group>"; };
-		C9B96CC82369385C00BE3FE4 /* DGPluginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPluginManager.h; sourceTree = "<group>"; };
-		C9B96CC92369385C00BE3FE4 /* DGPluginManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPluginManager.m; sourceTree = "<group>"; };
-		C9BB4267232CB2AE00095F7E /* DGFileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGFileTableViewCell.h; sourceTree = "<group>"; };
-		C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGFileTableViewCell.m; sourceTree = "<group>"; };
-		C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGActionPlugin.h; sourceTree = "<group>"; };
-		C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGActionPlugin.m; sourceTree = "<group>"; };
-		C9C210A622A110DE00D5EEDE /* DGAccountPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAccountPlugin.h; sourceTree = "<group>"; };
-		C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAccountPlugin.m; sourceTree = "<group>"; };
-		C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Debugo.h"; sourceTree = "<group>"; };
-		C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Debugo.m"; sourceTree = "<group>"; };
-		C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGShareBarButtonItem.h; sourceTree = "<group>"; };
-		C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGShareBarButtonItem.m; sourceTree = "<group>"; };
-		C9E38B422285161500D46953 /* NSFileManager+Debugo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Debugo.h"; sourceTree = "<group>"; };
-		C9E38B432285161500D46953 /* NSFileManager+Debugo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Debugo.m"; sourceTree = "<group>"; };
 		C9E73FC3221D399000BA9149 /* Debugo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Debugo.podspec; path = ../../Debugo.podspec; sourceTree = "<group>"; };
 		C9E73FC4221D399000BA9149 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		C9F92C6A2326637200B8F882 /* DGPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGPlugin.h; sourceTree = "<group>"; };
-		C9F92C6B2326637200B8F882 /* DGPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGPlugin.m; sourceTree = "<group>"; };
-		C9F92C6D2326672A00B8F882 /* DGAppInfoPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAppInfoPlugin.h; sourceTree = "<group>"; };
-		C9F92C6E2326672A00B8F882 /* DGAppInfoPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DGAppInfoPlugin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8E8B4B99C74A47CD2604AB7 /* libPods-Debugo-Example-ObjectiveC.a in Frameworks */,
+				475264224AA633A5A7EE6464 /* Pods_Debugo_Example_ObjectiveC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +80,7 @@
 			children = (
 				21A7873E68EE08CCC24AE20E /* Pods-Debugo-Example-ObjectiveC.debug.xcconfig */,
 				5DD8D0743E71B41E6A893F66 /* Pods-Debugo-Example-ObjectiveC.release.xcconfig */,
+				06550910F6F176182E6D1EE5 /* Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -336,149 +98,10 @@
 			path = CustomPlugin;
 			sourceTree = "<group>";
 		};
-		C9034DDE2324DC7B003D8984 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45673221D2B460098644E /* Debugo.h */,
-				C9B4566D221D2B460098644E /* Debugo.m */,
-				C9B4566B221D2B460098644E /* DebugoEnable.h */,
-				C9B45669221D2B460098644E /* DGConfiguration.h */,
-				C9B45667221D2B460098644E /* DGConfiguration.m */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		C9034DDF2324DC96003D8984 /* Entrance */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45666221D2B460098644E /* DGEntrance.h */,
-				C9B4566A221D2B460098644E /* DGEntrance.m */,
-				C9B456BB221D2B460098644E /* DGBubble.h */,
-				C9B456B5221D2B460098644E /* DGBubble.m */,
-				C948A491232E27BE0061772C /* DGDebugWindow.h */,
-				C948A492232E27BE0061772C /* DGDebugWindow.m */,
-				C9B4567E221D2B460098644E /* DGDebugViewController.h */,
-				C9B45681221D2B460098644E /* DGDebugViewController.m */,
-			);
-			path = Entrance;
-			sourceTree = "<group>";
-		};
-		C9034DE12324DCE6003D8984 /* ActionPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9C210A022A10A8300D5EEDE /* DGActionPlugin.h */,
-				C9C210A122A10A8300D5EEDE /* DGActionPlugin.m */,
-				C994DAB5232E1DD3004BA540 /* DGActionPluginConfiguration.h */,
-				C994DAB6232E1DD3004BA540 /* DGActionPluginConfiguration.m */,
-				C9B45671221D2B460098644E /* DGAction.h */,
-				C9B4566F221D2B460098644E /* DGAction.m */,
-				C9B4568E221D2B460098644E /* DGActionViewController.h */,
-				C9B45686221D2B460098644E /* DGActionViewController.m */,
-				C9B4568B221D2B460098644E /* DGActionSubViewController.h */,
-				C9B45683221D2B460098644E /* DGActionSubViewController.m */,
-			);
-			path = ActionPlugin;
-			sourceTree = "<group>";
-		};
-		C9034DE22324DD12003D8984 /* FilePlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C916195122A13C14009FF2A3 /* DGFilePlugin.h */,
-				C916195222A13C14009FF2A3 /* DGFilePlugin.m */,
-				C916194C22A12770009FF2A3 /* DGFilePluginConfiguration.h */,
-				C916194D22A12770009FF2A3 /* DGFilePluginConfiguration.m */,
-				C9B45688221D2B460098644E /* DGFileViewController.h */,
-				C9B4568C221D2B460098644E /* DGFileViewController.m */,
-				C934EDCB224369C400B6979C /* DGFilePreviewConfiguration.h */,
-				C934EDCC224369C400B6979C /* DGFilePreviewConfiguration.m */,
-				C9B456E3221D2B460098644E /* DGFile.h */,
-				C9B456C3221D2B460098644E /* DGFile.m */,
-				C9B456E0221D2B460098644E /* DGFileParser.h */,
-				C9B456C0221D2B460098644E /* DGFileParser.m */,
-				C9BB4267232CB2AE00095F7E /* DGFileTableViewCell.h */,
-				C9BB4268232CB2AE00095F7E /* DGFileTableViewCell.m */,
-				C9B456C9221D2B460098644E /* DGFileInfoViewController.h */,
-				C9B456C2221D2B460098644E /* DGFileInfoViewController.m */,
-				C9B456C7221D2B460098644E /* DGPreviewManager.h */,
-				C9B456E5221D2B460098644E /* DGPreviewManager.m */,
-				C9B456E1221D2B460098644E /* DGFolderPreviewViewController.h */,
-				C9B456C5221D2B460098644E /* DGFolderPreviewViewController.m */,
-				C9B456C4221D2B460098644E /* DGDefaultPreviewViewController.h */,
-				C9B456E2221D2B460098644E /* DGDefaultPreviewViewController.m */,
-				C9B456C8221D2B460098644E /* DGWebviewPreviewViewContoller.h */,
-				C9B456E4221D2B460098644E /* DGWebviewPreviewViewContoller.m */,
-				C9B456C6221D2B460098644E /* DGDatabasePreviewViewController.h */,
-				C9B456E6221D2B460098644E /* DGDatabasePreviewViewController.m */,
-				C9B456CD221D2B460098644E /* DGDatabasePreviewConfiguration.h */,
-				C9B456D6221D2B460098644E /* DGDatabasePreviewConfiguration.m */,
-				C9B456CC221D2B460098644E /* DGDatabaseTableInfoViewController.h */,
-				C9B456D5221D2B460098644E /* DGDatabaseTableInfoViewController.m */,
-				C9B456CB221D2B460098644E /* DGDatabaseTableContentViewController.h */,
-				C9B456D7221D2B460098644E /* DGDatabaseTableContentViewController.m */,
-				C9B456DE221D2B460098644E /* DGDatabaseGridView.h */,
-				C9B456D3221D2B460098644E /* DGDatabaseGridView.m */,
-				C9B456D9221D2B460098644E /* DGDatabaseLeftTableViewCell.h */,
-				C9B456D0221D2B460098644E /* DGDatabaseLeftTableViewCell.m */,
-				C9B456DC221D2B460098644E /* DGDatabaseContentTableViewCell.h */,
-				C9B456D2221D2B460098644E /* DGDatabaseContentTableViewCell.m */,
-				C9B456D8221D2B460098644E /* DGDatabaseOperation.h */,
-				C9B456D1221D2B460098644E /* DGDatabaseOperation.m */,
-				C9B456DA221D2B460098644E /* DGDatabaseTableInfo.h */,
-				C9B456CF221D2B460098644E /* DGDatabaseTableInfo.m */,
-				C9B456DD221D2B460098644E /* DGDatabaseColumnInfo.h */,
-				C9B456D4221D2B460098644E /* DGDatabaseColumnInfo.m */,
-				C9B456CE221D2B460098644E /* DGDatabaseContentParser.h */,
-				C9B456DB221D2B460098644E /* DGDatabaseContentParser.m */,
-			);
-			path = FilePlugin;
-			sourceTree = "<group>";
-		};
-		C9034DE42324DD41003D8984 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				C9034DDE2324DC7B003D8984 /* API */,
-				C9B45692221D2B460098644E /* Common */,
-				C9034DDF2324DC96003D8984 /* Entrance */,
-				C9B45690221D2B460098644E /* Plugin */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		C915FC502361899000189E8D /* PodPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9A2562F2362991D00E6B3FA /* DGPodPlugin.h */,
-				C9A256302362991D00E6B3FA /* DGPodPlugin.m */,
-				C9A256492362FD8600E6B3FA /* DGPodPluginConfiguration.h */,
-				C9A2564A2362FD8600E6B3FA /* DGPodPluginConfiguration.m */,
-				C9A25636236299F300E6B3FA /* DGPodPluginViewController.h */,
-				C9A25637236299F300E6B3FA /* DGPodPluginViewController.m */,
-				C9A2562B23628D7500E6B3FA /* DGSpecRepoModel.h */,
-				C9A2562C23628D7500E6B3FA /* DGSpecRepoModel.m */,
-				C915FC522361922200189E8D /* DGPodModel.h */,
-				C915FC532361922200189E8D /* DGPodModel.m */,
-			);
-			path = PodPlugin;
-			sourceTree = "<group>";
-		};
-		C93A25C1233C5EF3008AEC18 /* ColorPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C93A25C2233C5F09008AEC18 /* DGColorPlugin.h */,
-				C93A25C3233C5F09008AEC18 /* DGColorPlugin.m */,
-				C93A25CB233C6107008AEC18 /* DGColorPluginViewController.h */,
-				C93A25CC233C6107008AEC18 /* DGColorPluginViewController.m */,
-				C93A25C5233C5F4F008AEC18 /* UIView+DGColorPlugin.h */,
-				C93A25C6233C5F4F008AEC18 /* UIView+DGColorPlugin.m */,
-			);
-			path = ColorPlugin;
-			sourceTree = "<group>";
-		};
 		C9B45634221D02A50098644E = {
 			isa = PBXGroup;
 			children = (
 				C9E73FC2221D397200BA9149 /* Podspec Metadata */,
-				C9B45663221D2B460098644E /* Debugo */,
 				C9B4563F221D02A60098644E /* Debugo-Example-ObjectiveC */,
 				C9B4563E221D02A60098644E /* Products */,
 				322E2CA4D88365927F22FB2C /* Pods */,
@@ -501,8 +124,12 @@
 				C9B4565A221D29230098644E /* Login */,
 				C9B45640221D02A60098644E /* AppDelegate.h */,
 				C9B45641221D02A60098644E /* AppDelegate.m */,
+				A7E0000100000000000000E1 /* SceneDelegate.h */,
+				A7E0000100000000000000E2 /* SceneDelegate.m */,
 				C9B45643221D02A60098644E /* ViewController.h */,
 				C9B45644221D02A60098644E /* ViewController.m */,
+				A7E0000900000000000000E9 /* DGExampleNetworkClient.swift */,
+				A7E0000700000000000000E7 /* DGAlamofireSessionHook.swift */,
 				C9B45658221D069B0098644E /* UIView+IB.h */,
 				C9B45657221D069B0098644E /* UIView+IB.m */,
 				C9B45656221D02B90098644E /* PrefixHeader.pch */,
@@ -527,185 +154,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		C9B45663221D2B460098644E /* Debugo */ = {
-			isa = PBXGroup;
-			children = (
-				C9034DE42324DD41003D8984 /* Classes */,
-				C9B456AF221D2B460098644E /* Assets */,
-			);
-			name = Debugo;
-			path = ../../Debugo;
-			sourceTree = "<group>";
-		};
-		C9B4566E221D2B460098644E /* AccountPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9C210A622A110DE00D5EEDE /* DGAccountPlugin.h */,
-				C9C210A722A110DE00D5EEDE /* DGAccountPlugin.m */,
-				C916194822A1222C009FF2A3 /* DGAccountPluginConfiguration.h */,
-				C916194922A1222C009FF2A3 /* DGAccountPluginConfiguration.m */,
-				C9B45672221D2B460098644E /* DGAccount.h */,
-				C9B45670221D2B460098644E /* DGAccount.m */,
-				C9B4567D221D2B460098644E /* DGAccountBackViewController.h */,
-				C9B4568F221D2B460098644E /* DGAccountBackViewController.m */,
-				C9B4568A221D2B460098644E /* DGAccountListViewController.h */,
-				C9B45684221D2B460098644E /* DGAccountListViewController.m */,
-			);
-			path = AccountPlugin;
-			sourceTree = "<group>";
-		};
-		C9B4567A221D2B460098644E /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				C9B4567C221D2B460098644E /* DGNavigationController.h */,
-				C9B45680221D2B460098644E /* DGNavigationController.m */,
-				C9034DE52324E06D003D8984 /* DGCommonGridViewController.h */,
-				C9034DE62324E06D003D8984 /* DGCommonGridViewController.m */,
-				C9B456BC221D2B460098644E /* DGWindow.h */,
-				C9B456B8221D2B460098644E /* DGWindow.m */,
-				C9CEA5342242511000BD5AEB /* DGShareBarButtonItem.h */,
-				C9CEA5352242511000BD5AEB /* DGShareBarButtonItem.m */,
-				C9AA652D232B40ED003EAA21 /* DGAnimationDelegate.h */,
-				C9AA652E232B40ED003EAA21 /* DGAnimationDelegate.m */,
-				C928D750233B64D10078202B /* DGStaticProvider.h */,
-				C928D753233B64D10078202B /* DGStaticProvider.m */,
-				C928D74C233B64D10078202B /* DGStaticSection.h */,
-				C928D74F233B64D10078202B /* DGStaticSection.m */,
-				C928D751233B64D10078202B /* DGStaticRow.h */,
-				C928D74D233B64D10078202B /* DGStaticRow.m */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		C9B45690221D2B460098644E /* Plugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9F92C6A2326637200B8F882 /* DGPlugin.h */,
-				C9F92C6B2326637200B8F882 /* DGPlugin.m */,
-				C9B96CC82369385C00BE3FE4 /* DGPluginManager.h */,
-				C9B96CC92369385C00BE3FE4 /* DGPluginManager.m */,
-				C9034DEB2324F0D5003D8984 /* DGPluginGridViewController.h */,
-				C9034DEC2324F0D5003D8984 /* DGPluginGridViewController.m */,
-				C9034DE12324DCE6003D8984 /* ActionPlugin */,
-				C9034DE22324DD12003D8984 /* FilePlugin */,
-				C9C2109822A0DB4200D5EEDE /* AppInfoPlugin */,
-				C9B4566E221D2B460098644E /* AccountPlugin */,
-				C9B456B1221D2B460098644E /* ApplePlugin */,
-				C9B456EC221D2B460098644E /* TouchPlugin */,
-				C93A25C1233C5EF3008AEC18 /* ColorPlugin */,
-				C915FC502361899000189E8D /* PodPlugin */,
-			);
-			path = Plugin;
-			sourceTree = "<group>";
-		};
-		C9B45692221D2B460098644E /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45698221D2B460098644E /* DGCommon.h */,
-				C9B45699221D2B460098644E /* Source */,
-				C9B45693221D2B460098644E /* Category */,
-				C9B4569F221D2B460098644E /* Utility */,
-				C9B4567A221D2B460098644E /* UI */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		C9B45693221D2B460098644E /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				C9B45696221D2B460098644E /* NSObject+Debugo.h */,
-				C9B45694221D2B460098644E /* NSObject+Debugo.m */,
-				C9A2563C2362A14600E6B3FA /* NSString+Debugo.h */,
-				C9A2563D2362A14600E6B3FA /* NSString+Debugo.m */,
-				C9B45695221D2B460098644E /* NSDate+Debugo.h */,
-				C9B45697221D2B460098644E /* NSDate+Debugo.m */,
-				C9CEA5302242391800BD5AEB /* NSNumber+Debugo.h */,
-				C9CEA5312242391800BD5AEB /* NSNumber+Debugo.m */,
-				C9E38B422285161500D46953 /* NSFileManager+Debugo.h */,
-				C9E38B432285161500D46953 /* NSFileManager+Debugo.m */,
-				C9034DE82324ED5F003D8984 /* UIView+Debugo.h */,
-				C9034DE92324ED5F003D8984 /* UIView+Debugo.m */,
-				C928D752233B64D10078202B /* UIControl+Debugo.h */,
-				C928D74E233B64D10078202B /* UIControl+Debugo.m */,
-				C93A25C8233C5FB7008AEC18 /* UIColor+Debugo.h */,
-				C93A25C9233C5FB7008AEC18 /* UIColor+Debugo.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		C9B45699221D2B460098644E /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				C9B4569A221D2B460098644E /* DGBundle.h */,
-				C9B4569B221D2B460098644E /* DGBundle.m */,
-				C9B45677221D2B460098644E /* DGCache.h */,
-				C9B45676221D2B460098644E /* DGCache.m */,
-				C9A256432362E0AC00E6B3FA /* DGBuildInfo.h */,
-				C9A256442362E0AC00E6B3FA /* DGBuildInfo.m */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		C9B4569F221D2B460098644E /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				C916194522A11CB1009FF2A3 /* DGTool.h */,
-				C916194622A11CB1009FF2A3 /* DGTool.m */,
-				C9B456AA221D2B460098644E /* DGPlister.h */,
-				C9B456AB221D2B460098644E /* DGPlister.m */,
-				C9B456AD221D2B460098644E /* DGOrderedDictionary.h */,
-				C9B456AE221D2B460098644E /* DGOrderedDictionary.m */,
-				C9B456A7221D2B460098644E /* DGDevice.h */,
-				C9B456A8221D2B460098644E /* DGDevice.m */,
-				C92F8C78221FA1E00080C156 /* DGPathFetcher.h */,
-				C92F8C79221FA1E00080C156 /* DGPathFetcher.m */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		C9B456AF221D2B460098644E /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456B0221D2B460098644E /* Debugo.bundle */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		C9B456B1221D2B460098644E /* ApplePlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456B2221D2B460098644E /* DGApplePlugin.h */,
-				C9B456B3221D2B460098644E /* DGApplePlugin.m */,
-			);
-			path = ApplePlugin;
-			sourceTree = "<group>";
-		};
-		C9B456EC221D2B460098644E /* TouchPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9B456EF221D2B460098644E /* DGTouchPlugin.h */,
-				C9B456F3221D2B460098644E /* DGTouchPlugin.m */,
-				C9A09F1B232A3ACD00C7983F /* DGTouchPluginViewController.h */,
-				C9A09F1C232A3ACD00C7983F /* DGTouchPluginViewController.m */,
-				C9B456F6221D2B460098644E /* DGTouchWindow.h */,
-				C9B456F0221D2B460098644E /* DGTouchWindow.m */,
-				C9B456F4221D2B460098644E /* DGTouchFingerView.h */,
-				C9B456EE221D2B460098644E /* DGTouchFingerView.m */,
-			);
-			path = TouchPlugin;
-			sourceTree = "<group>";
-		};
-		C9C2109822A0DB4200D5EEDE /* AppInfoPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				C9F92C6D2326672A00B8F882 /* DGAppInfoPlugin.h */,
-				C9F92C6E2326672A00B8F882 /* DGAppInfoPlugin.m */,
-				C9B4568D221D2B460098644E /* DGAppInfoViewController.h */,
-				C9B45687221D2B460098644E /* DGAppInfoViewController.m */,
-			);
-			path = AppInfoPlugin;
-			sourceTree = "<group>";
-		};
 		C9E73FC2221D397200BA9149 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,7 +166,7 @@
 		FFF05105D6B17D3CEF96B84E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				926A9247E83F315F8B4F927B /* libPods-Debugo-Example-ObjectiveC.a */,
+				39314411BF17DF376628F853 /* Pods_Debugo_Example_ObjectiveC.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -735,6 +183,7 @@
 				C9B4563A221D02A60098644E /* Frameworks */,
 				C9B4563B221D02A60098644E /* Resources */,
 				C90FE8BB232F5F7C00F8EB22 /* Debugo Build Info */,
+				CDD40924A7052DC8525081FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -786,7 +235,6 @@
 				C9B4564A221D02A70098644E /* Assets.xcassets in Resources */,
 				C976851B221D9D8700D8E418 /* picooc.production.sqlite in Resources */,
 				C9B45648221D02A60098644E /* Main.storyboard in Resources */,
-				C9B45710221D2B460098644E /* Debugo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +281,23 @@
 			shellPath = /bin/sh;
 			shellScript = "# 直接拖拽引入或者 CocoaPods 没有使用 use_frameworks!\nbuildInfoSh=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n# CocoaPods use_frameworks!\nbuildInfoSh2=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Frameworks/Debugo.framework/Debugo.bundle/com.ripperhe.debugo.build.info.sh\"\n\nif [ -x \"${buildInfoSh}\" ]; then\n${buildInfoSh}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh}\"\nelif [ -x \"${buildInfoSh2}\" ]; then\n${buildInfoSh2}\necho \"com.ripperhe.debugo.build.info.sh path: ${buildInfoSh2}\"\nelse\necho \"com.ripperhe.debugo.build.info.sh not found!!! \"\nfi\n";
 		};
+		CDD40924A7052DC8525081FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Debugo-Example-ObjectiveC/Pods-Debugo-Example-ObjectiveC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -840,96 +305,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9B45709221D2B460098644E /* NSDate+Debugo.m in Sources */,
-				C9B45717221D2B460098644E /* DGFileParser.m in Sources */,
-				C9AA652F232B40ED003EAA21 /* DGAnimationDelegate.m in Sources */,
 				C9B45645221D02A60098644E /* ViewController.m in Sources */,
-				C9B4571C221D2B460098644E /* DGDatabaseTableInfo.m in Sources */,
-				C948A493232E27BE0061772C /* DGDebugWindow.m in Sources */,
-				C9CEA5362242511000BD5AEB /* DGShareBarButtonItem.m in Sources */,
-				C915FC542361922200189E8D /* DGPodModel.m in Sources */,
-				C9B4570E221D2B460098644E /* DGPlister.m in Sources */,
+				A7E0000A00000000000000EA /* DGExampleNetworkClient.swift in Sources */,
+				A7E0000800000000000000E8 /* DGAlamofireSessionHook.swift in Sources */,
 				C9B45659221D069B0098644E /* UIView+IB.m in Sources */,
-				C9B4571F221D2B460098644E /* DGDatabaseContentTableViewCell.m in Sources */,
-				C9B45721221D2B460098644E /* DGDatabaseColumnInfo.m in Sources */,
-				C9B4572F221D2B460098644E /* DGTouchPlugin.m in Sources */,
-				C916194A22A1222C009FF2A3 /* DGAccountPluginConfiguration.m in Sources */,
-				C9A2563E2362A14600E6B3FA /* NSString+Debugo.m in Sources */,
-				C9A256452362E0AC00E6B3FA /* DGBuildInfo.m in Sources */,
-				C916194722A11CB1009FF2A3 /* DGTool.m in Sources */,
-				C93A25CD233C6107008AEC18 /* DGColorPluginViewController.m in Sources */,
 				C901D3FE232E634500974DE8 /* CustomPlugin.m in Sources */,
-				C9B4572D221D2B460098644E /* DGTouchFingerView.m in Sources */,
-				C9A2562D23628D7500E6B3FA /* DGSpecRepoModel.m in Sources */,
-				C9B45708221D2B460098644E /* NSObject+Debugo.m in Sources */,
-				C9B45711221D2B460098644E /* DGApplePlugin.m in Sources */,
-				C9B45713221D2B460098644E /* DGWindow.m in Sources */,
 				C901D401232E63D300974DE8 /* CustomPlugin2.m in Sources */,
-				C93A25CA233C5FB7008AEC18 /* UIColor+Debugo.m in Sources */,
-				C9B4570D221D2B460098644E /* DGDevice.m in Sources */,
-				C9B45722221D2B460098644E /* DGDatabaseTableInfoViewController.m in Sources */,
 				C901D404232E63F700974DE8 /* CustomPlugin2ViewController.m in Sources */,
-				C9B456FF221D2B460098644E /* DGNavigationController.m in Sources */,
-				C9B456F7221D2B460098644E /* DGConfiguration.m in Sources */,
-				C9B45728221D2B460098644E /* DGPreviewManager.m in Sources */,
-				C928D756233B64D20078202B /* DGStaticSection.m in Sources */,
-				C9B45701221D2B460098644E /* DGActionSubViewController.m in Sources */,
-				C9B45720221D2B460098644E /* DGDatabaseGridView.m in Sources */,
-				C9CEA5322242391800BD5AEB /* NSNumber+Debugo.m in Sources */,
-				C9B456FC221D2B460098644E /* DGCache.m in Sources */,
-				C9A256312362991D00E6B3FA /* DGPodPlugin.m in Sources */,
-				C916195322A13C14009FF2A3 /* DGFilePlugin.m in Sources */,
-				C9B45727221D2B460098644E /* DGWebviewPreviewViewContoller.m in Sources */,
-				C9B45703221D2B460098644E /* DGActionViewController.m in Sources */,
-				C934EDCD224369C500B6979C /* DGFilePreviewConfiguration.m in Sources */,
-				C9BB4269232CB2AE00095F7E /* DGFileTableViewCell.m in Sources */,
-				C9B4571B221D2B460098644E /* DGFolderPreviewViewController.m in Sources */,
-				C9C210A822A110DE00D5EEDE /* DGAccountPlugin.m in Sources */,
-				C9B45700221D2B460098644E /* DGDebugViewController.m in Sources */,
 				C9B45650221D02A70098644E /* main.m in Sources */,
-				C9B45725221D2B460098644E /* DGDatabaseContentParser.m in Sources */,
-				C9B45729221D2B460098644E /* DGDatabasePreviewViewController.m in Sources */,
-				C9B456F9221D2B460098644E /* Debugo.m in Sources */,
-				C9F92C6C2326637200B8F882 /* DGPlugin.m in Sources */,
-				C9C210A222A10A8300D5EEDE /* DGActionPlugin.m in Sources */,
-				C9B4570F221D2B460098644E /* DGOrderedDictionary.m in Sources */,
-				C9B4571E221D2B460098644E /* DGDatabaseOperation.m in Sources */,
-				C9B456FB221D2B460098644E /* DGAccount.m in Sources */,
-				C9A09F1D232A3ACD00C7983F /* DGTouchPluginViewController.m in Sources */,
-				C928D755233B64D20078202B /* UIControl+Debugo.m in Sources */,
-				C9B45726221D2B460098644E /* DGDefaultPreviewViewController.m in Sources */,
-				C9B45719221D2B460098644E /* DGFileInfoViewController.m in Sources */,
-				C994DAB7232E1DD3004BA540 /* DGActionPluginConfiguration.m in Sources */,
-				C9B4571D221D2B460098644E /* DGDatabaseLeftTableViewCell.m in Sources */,
 				C9B45642221D02A60098644E /* AppDelegate.m in Sources */,
-				C9B45706221D2B460098644E /* DGFileViewController.m in Sources */,
-				C9B4571A221D2B460098644E /* DGFile.m in Sources */,
-				C9B45707221D2B460098644E /* DGAccountBackViewController.m in Sources */,
-				C9B96CCA2369385C00BE3FE4 /* DGPluginManager.m in Sources */,
-				C9B45712221D2B460098644E /* DGBubble.m in Sources */,
-				C9B45723221D2B460098644E /* DGDatabasePreviewConfiguration.m in Sources */,
-				C9B456F8221D2B460098644E /* DGEntrance.m in Sources */,
-				C9B4570A221D2B460098644E /* DGBundle.m in Sources */,
-				C93A25C7233C5F4F008AEC18 /* UIView+DGColorPlugin.m in Sources */,
+				A7E0000200000000000000E1 /* SceneDelegate.m in Sources */,
 				C9B45660221D29240098644E /* LoginSuccessViewController.m in Sources */,
-				C9B45724221D2B460098644E /* DGDatabaseTableContentViewController.m in Sources */,
-				C9034DED2324F0D5003D8984 /* DGPluginGridViewController.m in Sources */,
-				C9F92C6F2326672A00B8F882 /* DGAppInfoPlugin.m in Sources */,
-				C9B456FA221D2B460098644E /* DGAction.m in Sources */,
-				C9A2564B2362FD8600E6B3FA /* DGPodPluginConfiguration.m in Sources */,
 				C9B4565F221D29240098644E /* LoginViewController.m in Sources */,
-				C9B45702221D2B460098644E /* DGAccountListViewController.m in Sources */,
-				C928D757233B64D20078202B /* DGStaticProvider.m in Sources */,
-				C9B45704221D2B460098644E /* DGAppInfoViewController.m in Sources */,
-				C9034DE72324E06D003D8984 /* DGCommonGridViewController.m in Sources */,
-				C93A25C4233C5F09008AEC18 /* DGColorPlugin.m in Sources */,
-				C9B4572E221D2B460098644E /* DGTouchWindow.m in Sources */,
-				C9A25638236299F300E6B3FA /* DGPodPluginViewController.m in Sources */,
-				C9034DEA2324ED5F003D8984 /* UIView+Debugo.m in Sources */,
-				C916194E22A12770009FF2A3 /* DGFilePluginConfiguration.m in Sources */,
-				C9E38B442285161500D46953 /* NSFileManager+Debugo.m in Sources */,
-				C92F8C7A221FA1E00080C156 /* DGPathFetcher.m in Sources */,
-				C928D754233B64D20078202B /* DGStaticRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,6 +342,86 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		600B46E930933A90004EB90F /* ReleaseInhouse */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
+
+			};
+			name = ReleaseInhouse;
+		};
+		600B46EA30933A90004EB90F /* ReleaseInhouse */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06550910F6F176182E6D1EE5 /* Pods-Debugo-Example-ObjectiveC.releaseinhouse.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PYJ3M9TJFN;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
+				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ripperhe.debugoexample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+
+			};
+			name = ReleaseInhouse;
+		};
 		C9B45651221D02A70098644E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1006,11 +473,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Debug;
 		};
@@ -1059,11 +528,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Release;
 		};
@@ -1074,10 +545,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J93ZK943WH;
+				DEVELOPMENT_TEAM = 45H964TRL6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1086,6 +557,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Debug;
 		};
@@ -1096,10 +569,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J93ZK943WH;
+				DEVELOPMENT_TEAM = PYJ3M9TJFN;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Debugo-Example-ObjectiveC/PrefixHeader.pch";
 				INFOPLIST_FILE = "Debugo-Example-ObjectiveC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1108,6 +581,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 5.0;
+
 			};
 			name = Release;
 		};
@@ -1119,6 +594,7 @@
 			buildConfigurations = (
 				C9B45651221D02A70098644E /* Debug */,
 				C9B45652221D02A70098644E /* Release */,
+				600B46E930933A90004EB90F /* ReleaseInhouse */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1128,6 +604,7 @@
 			buildConfigurations = (
 				C9B45654221D02A70098644E /* Debug */,
 				C9B45655221D02A70098644E /* Release */,
+				600B46EA30933A90004EB90F /* ReleaseInhouse */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

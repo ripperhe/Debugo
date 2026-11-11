@@ -6,6 +6,7 @@
 * 获取 build 安装包的电脑 hostname、UUID
 * 获取当前代码的 git 分支以及最后一次 commit 信息
 * 获取工程依赖的 CocoaPods 库
+* 获取工程依赖的 Swift Package（`Package.resolved`）
 
 那么你需要添加脚本到工程中，具体如下
 
@@ -42,3 +43,13 @@
 如果使用脚本1的时候，build 信息中总是提示 `com.ripperhe.debugo.build.info.sh not found!!! `，可能是因为什么未知的原因没有找到脚本。
 
 [跳转到实际起作用的脚本文件链接 🚀](https://github.com/ripperhe/Debugo/blob/master/Debugo/Assets/Debugo.bundle/com.ripperhe.debugo.build.info.sh)
+
+## Swift Package Manager
+
+脚本会在编译时查找并拷贝 `Package.resolved` 到 App Bundle（文件名 `com.ripperhe.debugo.spm.package.resolved`），查找顺序大致为：
+
+1. `SRCROOT` / `PROJECT_DIR` / 当前目录下的 `Package.resolved`
+2. 同级目录中 `*.xcworkspace/xcshareddata/swiftpm/Package.resolved`（例如 `YourApp.xcworkspace/...`）
+3. `*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`
+
+Debugo 的 **Swift Package Manager** 插件会解析该文件，列出 identity / 当前版本；对 `github.com` 仓库会额外请求 GitHub Releases/Tags 展示最新版本（未认证接口有速率限制，失败时最新版本留空）。

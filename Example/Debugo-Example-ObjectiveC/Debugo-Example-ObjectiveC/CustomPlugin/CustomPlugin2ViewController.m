@@ -8,7 +8,7 @@
 
 #import "CustomPlugin2ViewController.h"
 #import "CustomPlugin2.h"
-#import "DGCommon.h"
+#import <Debugo/DGCommon.h>
 
 @implementation CustomPlugin2ViewController
 

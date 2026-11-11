@@ -14,7 +14,7 @@
 #define kIsIPhoneX ([[UIScreen mainScreen] nativeBounds].size.height >= 2436.0)
 #define kTopMargin (kIsIPhoneX ? 88.0 : 64.0)
 #define kBottomMargin (kIsIPhoneX ? 83.0 : 49.0)
-#define kHiddenProportion 0.14545455
+#define kHiddenProportion 0
 
 @implementation DGBubbleConfig
 
@@ -57,7 +57,7 @@
         NSAssert(0, @"DGBubble: 传入的 frame 值不对!");
         return nil;
     }else if (CGRectEqualToRect(frame, CGRectZero)) {
-        frame = CGRectMake(0, 100, 55, 55);
+        frame = CGRectMake(0, 100, 60, 60);
     }
     
     // update center

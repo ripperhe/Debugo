@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "LoginSuccessViewController.h"
-#import "Debugo.h"
+#import <Debugo/Debugo.h>
 
 @interface LoginViewController ()
 

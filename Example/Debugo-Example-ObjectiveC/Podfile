@@ -1,11 +1,46 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '15.0'
+use_frameworks! :linkage => :static
+
+project 'Debugo-Example-ObjectiveC',
+        'Debug' => :debug,
+        'Release' => :release,
+        'ReleaseInhouse' => :release
 
 target 'Debugo-Example-ObjectiveC' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
   # Pods for Debugo-Example-ObjectiveC
-  pod 'FMDB'
+  # 这种方式实现了 Release 配置下不会有Debugo这个组件(绝对安全, 还减小了包体积)
+  pod 'Debugo',
+    :configurations => ['Debug', 'ReleaseInhouse'],
+    :path => '../..'
+    
+  pod 'AFNetworking', '~> 4.0'
+  pod 'Alamofire', '~> 5.10'
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+
+      # App target 的预处理宏不会传递给 Pod，需要为 Debugo 单独启用 Debug 和内测配置。
+      # 以下代码配置 DebugoCanBeEnabled=1 代表 Debugo 可以看到,可以使用了,具体在什么情况下使用还是看 pod 的时候添加配置条件
+      if target.name == 'Debugo' && ['Debug', 'ReleaseInhouse'].include?(config.name)
+        definitions = Array(config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'])
+        definitions << '$(inherited)' unless definitions.include?('$(inherited)')
+        definitions << 'DebugoCanBeEnabled=1' unless definitions.include?('DebugoCanBeEnabled=1')
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = definitions
+      end
+      
+    end
+  end
+
+  # AFNetworking 4.0.1 导入了一个较新 Xcode 视为私有的头文件。
+  # 把对应的头文件删除一下
+  Dir.glob(File.join(installer.sandbox.root, 'AFNetworking/AFNetworking/*.m')).each do |file|
+    contents = File.read(file)
+    next unless contents.include?('#import <netinet6/in6.h>')
+    File.chmod(0644, file)
+    File.write(file, contents.gsub("#import <netinet6/in6.h>\n", ''))
+  end
 end

@@ -6,7 +6,7 @@
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "DGPlugin.h"
+#import <Debugo/DGPlugin.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

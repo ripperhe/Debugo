@@ -60,4 +60,12 @@
     DGPodPlugin.shared.configuration = configuration;
 }
 
+- (void)setupLogPlugin:(void (^)(DGLogPluginConfiguration * _Nonnull))block {
+    DGLogPluginConfiguration *configuration = [DGLogPluginConfiguration new];
+    if (block) {
+        block(configuration);
+    }
+    DGLogPlugin.shared.configuration = configuration;
+}
+
 @end

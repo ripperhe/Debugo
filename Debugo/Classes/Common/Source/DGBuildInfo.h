@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL gitEnable;
 /// 当前 git 分支
 @property (nonatomic, copy) NSString *gitBranch;
+/// 最后一次提交的message
+@property (nonatomic, copy) NSString *gitLastCommitMessage;
 /// 最后一次提交的缩写 hash
 @property (nonatomic, copy) NSString *gitLastCommitAbbreviatedHash;
 /// 最后一次提交的用户
@@ -38,6 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL cocoaPodsLockFileExist;
 /// Podfile.lock 文件名
 @property (nonatomic, copy) NSString *cocoaPodsLockFileName;
+/// 是否拷贝了 Package.resolved 文件
+@property (nonatomic, assign) BOOL spmResolvedFileExist;
+/// Package.resolved 文件名
+@property (nonatomic, copy) NSString *spmResolvedFileName;
 
 + (instancetype)shared;
 

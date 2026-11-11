@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "Debugo.h"
-#import "DGCommon.h"
+#import "SceneDelegate.h"
+#import <Debugo/Debugo.h>
+#import <Debugo/DGCommon.h>
 #import "CustomPlugin.h"
 #import "CustomPlugin2.h"
 
@@ -117,6 +118,13 @@
             }];
         }];
         
+        /// 配置 Log 日志。打开悬浮窗后，首页「写入一条 Log」会追加到窗口里。
+        [configuration setupLogPlugin:^(DGLogPluginConfiguration * _Nonnull logConfiguration) {
+            logConfiguration.executeBlock = ^(DGLogTypeModel * _Nonnull typeModel) {
+                NSLog(@"选中日志 #%d %@", typeModel.typeID, typeModel.dg_dic);
+            };
+        }];
+
         /// 配置 cocoapods
         [configuration setupPodPlugin:^(DGPodPluginConfiguration * _Nonnull podConfiguration) {
             [podConfiguration setGitLabSpecRepoRequestInfoBlock:^DGGitLabSpecRepoRequestInfo * _Nullable(NSString * _Nonnull specRepoUrl) {
@@ -175,6 +183,12 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
+}
+
+- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
+    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
+    configuration.delegateClass = SceneDelegate.class;
+    return configuration;
 }
 
 @end

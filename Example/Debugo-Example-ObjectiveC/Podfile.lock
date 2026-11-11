@@ -1,18 +1,52 @@
 PODS:
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - Alamofire (5.12.2)
+  - Debugo (0.4.0):
+    - Debugo/Core (= 0.4.0)
+  - Debugo/Core (0.4.0):
+    - AFNetworking (>= 4.0.1)
+    - FMDB (>= 2.7.2)
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
 
 DEPENDENCIES:
-  - FMDB
+  - AFNetworking (~> 4.0)
+  - Alamofire (~> 5.10)
+  - Debugo (from `../..`)
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
+    - AFNetworking
+    - Alamofire
     - FMDB
 
+EXTERNAL SOURCES:
+  Debugo:
+    :path: "../.."
+
 SPEC CHECKSUMS:
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: c5f37d8f438dc1d7fd3ff767f2f80fd01ca381d7
+  Debugo: 235394d539f06bb4d0ff012a17c375f29a9538bd
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
 
-PODFILE CHECKSUM: b56b17a416dbb09682442e37b0f00c0be117af95
+PODFILE CHECKSUM: 33dc053e35d8279c05fa5b6fc27c9df284a48f56
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.17.0

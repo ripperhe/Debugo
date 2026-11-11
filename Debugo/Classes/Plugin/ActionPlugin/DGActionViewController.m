@@ -12,6 +12,7 @@
 #import "DGActionSubViewController.h"
 #import "DGActionPlugin.h"
 #import "DGCommon.h"
+#import "Debugo.h"
 
 @interface DGActionViewController ()
 
@@ -67,7 +68,10 @@
 
         // 赋值
         NSMutableDictionary<NSString *,DGOrderedDictionary<NSString *,DGAction *> *> *usersActionsDic = DGActionPlugin.shared.usersActionsDic.mutableCopy;
-        [usersActionsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj, BOOL * _Nonnull stop) {
+        
+        NSArray *sortedKeys = [usersActionsDic.allKeys sortedArrayUsingComparator:Debugo.sortUserComparator];
+        [sortedKeys enumerateObjectsUsingBlock:^(NSString *_Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+            DGOrderedDictionary<NSString *,DGAction *> * _Nonnull obj = usersActionsDic[key];
             if (dg_current_user().length && [key isEqualToString:dg_current_user()]) {
                 // current
                 currentActions = obj.reverseSortedValues;
